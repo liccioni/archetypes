@@ -4,7 +4,7 @@ package net.liccioni.archetypes;
 /**
 * @generated
 */
-public class Party {
+public abstract class Party {
     
     /**
     * @generated

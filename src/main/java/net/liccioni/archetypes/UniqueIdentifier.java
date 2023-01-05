@@ -4,7 +4,7 @@ package net.liccioni.archetypes;
 /**
 * @generated
 */
-public class UniqueIdentifier {
+public abstract class UniqueIdentifier {
     
     /**
     * @generated
