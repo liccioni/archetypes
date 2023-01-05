@@ -35,3 +35,40 @@ public class PersonName {
     
     
 }
+
+Thu Jan 05 18:55:53 UTC 2023
+================================================================================
+package net.liccioni.archetypes;
+
+
+/**
+* @generated
+*/
+publicclass PersonName {
+    
+    /**
+    * @generated
+    */
+    private String familyName;
+    
+    
+    
+
+    /**
+    * @generated
+    */
+    public String getFamilyName() {
+        return this.familyName;
+    }
+    
+    /**
+    * @generated
+    */
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+    
+    
+    
+    
+}

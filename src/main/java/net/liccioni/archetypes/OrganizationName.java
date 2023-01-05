@@ -4,7 +4,7 @@ package net.liccioni.archetypes;
 /**
 * @generated
 */
-publicclass OrganizationName {
+public class OrganizationName {
     
     /**
     * @generated

@@ -35,3 +35,40 @@ public class OrganizationName {
     
     
 }
+
+Thu Jan 05 18:55:54 UTC 2023
+================================================================================
+package net.liccioni.archetypes;
+
+
+/**
+* @generated
+*/
+publicclass OrganizationName {
+    
+    /**
+    * @generated
+    */
+    private String name;
+    
+    
+    
+
+    /**
+    * @generated
+    */
+    private String getName() {
+        return this.name;
+    }
+    
+    /**
+    * @generated
+    */
+    private void setName(String name) {
+        this.name = name;
+    }
+    
+    
+    
+    
+}

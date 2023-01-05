@@ -4,7 +4,7 @@ package net.liccioni.archetypes;
 /**
 * @generated
 */
-publicclass PartyIdentifier extends UniqueIdentifier {
+public class PartyIdentifier extends UniqueIdentifier {
     
     
     

@@ -4,7 +4,7 @@ package net.liccioni.archetypes;
 /**
 * @generated
 */
-publicclass Person extends Party {
+public class Person extends Party {
     
     
     /**
