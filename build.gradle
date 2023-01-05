@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'com.github.jmongard.git-semver-plugin' version '0.4.2'
+}
+
+group 'net.liccioni'
+version = semver.version as String
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}
