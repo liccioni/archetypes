@@ -41,9 +41,9 @@ jobs:
         with:
           arguments: printVersion
       - name: Commit release
-          run: |
+        run: |
+          git push
 #            git config --global push.followTags true
 #            git config --global user.name 'ci_esmartit'
 #            git config --global user.email 'ci@esmartit.es'
 #            git status
-            git push
