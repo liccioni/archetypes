@@ -22,6 +22,13 @@ public abstract class Party {
     /**
     * @generated
     */
+    private Set<RegisteredIdentifier> registeredIdentifier;
+
+
+
+    /**
+    * @generated
+    */
     private String getName() {
         return this.name;
     }
@@ -47,6 +54,23 @@ public abstract class Party {
     */
     public void setPartyIdentifier(PartyIdentifier partyIdentifier) {
         this.partyIdentifier = partyIdentifier;
+    }
+
+    /**
+    * @generated
+    */
+    public Set<RegisteredIdentifier> getRegisteredIdentifier() {
+        if (this.registeredIdentifier == null) {
+            this.registeredIdentifier = new HashSet<RegisteredIdentifier>();
+        }
+        return this.registeredIdentifier;
+    }
+
+    /**
+    * @generated
+    */
+    public Set<RegisteredIdentifier> setRegisteredIdentifier(RegisteredIdentifier registeredIdentifier) {
+        this.registeredIdentifier = registeredIdentifier;
     }
     
     
