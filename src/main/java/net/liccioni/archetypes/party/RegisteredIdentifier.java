@@ -1,6 +1,8 @@
 package net.liccioni.archetypes.party;
 
 
+import net.liccioni.archetypes.TimeDate;
+
 /**
 * @generated
 */

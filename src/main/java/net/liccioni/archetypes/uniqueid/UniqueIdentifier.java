@@ -10,9 +10,6 @@ public abstract class UniqueIdentifier {
     * @generated
     */
     private String value;
-    
-    
-    
 
     /**
     * @generated
@@ -27,20 +24,4 @@ public abstract class UniqueIdentifier {
     private void setValue(String value) {
         this.value = value;
     }
-    
-    
-    
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public String getValue() {
-        //TODO
-        return "";
-    }
-    
-    
 }
