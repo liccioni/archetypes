@@ -45,5 +45,5 @@ jobs:
       - name: Commit release
         run: |
           git config --global push.followTags true
-          git push
-#          git push origin --tags
+          git push origin --tags
+#          git push
