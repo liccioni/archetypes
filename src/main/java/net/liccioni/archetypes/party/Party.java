@@ -66,5 +66,12 @@ public abstract class Party {
         }
         return this.registeredIdentifier;
     }
+
+    /**
+    * @generated
+    */
+    public void setRegisteredIdentifier(RegisteredIdentifier registeredIdentifier) {
+        this.registeredIdentifier = registeredIdentifier;
+    }
     
 }
