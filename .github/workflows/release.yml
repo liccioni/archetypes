@@ -33,7 +33,7 @@ jobs:
       - name: Create release with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: releaseVersion
+          arguments: releaseVersion --no-commit
       - name: Print version with Gradle
         uses: gradle/gradle-build-action@v2
         with:
