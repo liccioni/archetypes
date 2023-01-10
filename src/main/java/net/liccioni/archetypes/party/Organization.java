@@ -1,4 +1,4 @@
-package net.liccioni.archetypes;
+package net.liccioni.archetypes.party;
 
 
 /**

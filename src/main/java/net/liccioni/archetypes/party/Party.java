@@ -1,5 +1,7 @@
-package net.liccioni.archetypes;
+package net.liccioni.archetypes.party;
 
+import java.util.Set;
+import java.util.HashSet;
 
 /**
 * @generated
@@ -15,16 +17,14 @@ public abstract class Party {
     /**
     * @generated
     */
-    private PartyIdentifier partyIdentifier;
+    private Set<RegisteredIdentifier> registeredIdentifier;
     
-    
-
     /**
     * @generated
     */
-    private Set<RegisteredIdentifier> registeredIdentifier;
-
-
+    private PartyIdentifier partyIdentifier;
+    
+    
 
     /**
     * @generated
@@ -55,7 +55,8 @@ public abstract class Party {
     public void setPartyIdentifier(PartyIdentifier partyIdentifier) {
         this.partyIdentifier = partyIdentifier;
     }
-
+    
+    
     /**
     * @generated
     */
@@ -65,14 +66,5 @@ public abstract class Party {
         }
         return this.registeredIdentifier;
     }
-
-    /**
-    * @generated
-    */
-    public Set<RegisteredIdentifier> setRegisteredIdentifier(RegisteredIdentifier registeredIdentifier) {
-        this.registeredIdentifier = registeredIdentifier;
-    }
-    
-    
     
 }

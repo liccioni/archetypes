@@ -1,4 +1,4 @@
-package net.liccioni.archetypes;
+package net.liccioni.archetypes.uniqueid;
 
 
 /**
@@ -10,25 +10,18 @@ public abstract class UniqueIdentifier {
     * @generated
     */
     private String value;
-    
-    
-    
 
     /**
     * @generated
     */
-    public String getValue() {
+    private String getValue() {
         return this.value;
     }
     
     /**
     * @generated
     */
-    public void setValue(String value) {
+    private void setValue(String value) {
         this.value = value;
     }
-    
-    
-    
-    
 }
