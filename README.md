@@ -2,4 +2,4 @@
 
 [![](https://jitpack.io/v/liccioni/archetypes.svg)](https://jitpack.io/#liccioni/archetypes)
 
-v0.0.10
+v0.0.3
