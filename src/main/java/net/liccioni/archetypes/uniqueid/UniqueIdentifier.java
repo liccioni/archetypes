@@ -17,6 +17,14 @@ public abstract class UniqueIdentifier {
     private String getValue() {
         return this.value;
     }
+
+    /**
+    * @generated
+    */
+    public String getValue() {
+        //TODO
+        return "";
+    }
     
     /**
     * @generated
