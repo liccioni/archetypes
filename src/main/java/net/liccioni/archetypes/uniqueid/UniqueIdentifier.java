@@ -5,23 +5,23 @@ package net.liccioni.archetypes.uniqueid;
 * @generated
 */
 public abstract class UniqueIdentifier {
-    
-    /**
-    * @generated
-    */
-    private String value;
 
-    /**
+  /**
     * @generated
     */
-    private String getValue() {
-        return this.value;
+    private String identifier;
+
+  /**
+    * @generated
+    */
+    private String getIdentifier() {
+        return this.identifier;
     }
-    
-    /**
+
+  /**
     * @generated
     */
-    private void setValue(String value) {
-        this.value = value;
+    private void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 }
