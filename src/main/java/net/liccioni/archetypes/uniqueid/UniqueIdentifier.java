@@ -21,9 +21,8 @@ public abstract class UniqueIdentifier {
     /**
     * @generated
     */
-    public String getValue() {
-        //TODO
-        return "";
+    private String getValue() {
+        return this.value;
     }
     
     /**
