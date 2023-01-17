@@ -56,7 +56,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public String setCountryCode(String countryCode) {
+    public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
     }
     
@@ -71,7 +71,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public String setNationalDirectDialingPrefix(String nationalDirectDialingPrefix) {
+    public void setNationalDirectDialingPrefix(String nationalDirectDialingPrefix) {
         this.nationalDirectDialingPrefix = nationalDirectDialingPrefix;
     }
     
@@ -86,7 +86,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public String setAreaCode(String areaCode) {
+    public void setAreaCode(String areaCode) {
         this.areaCode = areaCode;
     }
     
@@ -101,7 +101,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public String setNumber(String number) {
+    public void setNumber(String number) {
         this.number = number;
     }
     
@@ -116,7 +116,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public String setExtension(String extension) {
+    public void setExtension(String extension) {
         this.extension = extension;
     }
     
@@ -131,7 +131,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public String setPhysicalType(String physicalType) {
+    public void setPhysicalType(String physicalType) {
         this.physicalType = physicalType;
     }
 
@@ -145,7 +145,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public Locale setLocale(Locale locale) {
+    public void setLocale(Locale locale) {
         this.locale = locale;
     }
     

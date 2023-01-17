@@ -34,7 +34,7 @@ public class ISOCountryCode extends Locale {
     /**
     * @generated
     */
-    public String setAlphabeticThreeCharCode(String alphabeticThreeCharCode) {
+    public void setAlphabeticThreeCharCode(String alphabeticThreeCharCode) {
         this.alphabeticThreeCharCode = alphabeticThreeCharCode;
     }
     
@@ -49,7 +49,7 @@ public class ISOCountryCode extends Locale {
     /**
     * @generated
     */
-    public String setNumericCode(String numericCode) {
+    public void setNumericCode(String numericCode) {
         this.numericCode = numericCode;
     }
     
@@ -64,7 +64,7 @@ public class ISOCountryCode extends Locale {
     /**
     * @generated
     */
-    public String setOfficialName(String officialName) {
+    public void setOfficialName(String officialName) {
         this.officialName = officialName;
     }
     

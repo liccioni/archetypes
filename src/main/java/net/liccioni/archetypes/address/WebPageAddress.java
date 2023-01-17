@@ -23,7 +23,7 @@ public class WebPageAddress extends Address {
     /**
     * @generated
     */
-    public String setUrl(String url) {
+    public void setUrl(String url) {
         this.url = url;
     }
     

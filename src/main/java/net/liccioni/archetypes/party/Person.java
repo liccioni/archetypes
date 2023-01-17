@@ -25,7 +25,7 @@ public class Person extends Party {
     /**
     * @generated
     */
-    public PersonName setPersonName(PersonName personName) {
+    public void setPersonName(PersonName personName) {
         this.personName = personName;
     }
     

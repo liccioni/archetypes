@@ -33,7 +33,7 @@ public abstract class Locale {
     /**
     * @generated
     */
-    public String setIdentifier(String identifier) {
+    public void setIdentifier(String identifier) {
         this.identifier = identifier;
     }
     
@@ -48,7 +48,7 @@ public abstract class Locale {
     /**
     * @generated
     */
-    public String setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
     
@@ -63,7 +63,7 @@ public abstract class Locale {
     /**
     * @generated
     */
-    public String setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
     

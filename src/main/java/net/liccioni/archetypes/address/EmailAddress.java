@@ -23,7 +23,7 @@ public class EmailAddress extends Address {
     /**
     * @generated
     */
-    public String setEmailAddress(String emailAddress) {
+    public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
     
