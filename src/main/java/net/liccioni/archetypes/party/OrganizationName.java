@@ -17,14 +17,14 @@ public class OrganizationName {
     /**
     * @generated
     */
-    private String getName() {
+    public String getName() {
         return this.name;
     }
     
     /**
     * @generated
     */
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
     

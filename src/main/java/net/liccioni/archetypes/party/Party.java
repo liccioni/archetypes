@@ -2,6 +2,7 @@ package net.liccioni.archetypes.party;
 
 import java.util.Set;
 import java.util.HashSet;
+import net.liccioni.archetypes.address.AddressProperties;
 
 /**
 * @generated
@@ -22,6 +23,12 @@ public abstract class Party {
     /**
     * @generated
     */
+    private Set<AddressProperties> addressProperties;
+
+
+    /**
+    * @generated
+    */
     private PartyIdentifier partyIdentifier;
     
     
@@ -29,14 +36,14 @@ public abstract class Party {
     /**
     * @generated
     */
-    private String getName() {
+    public String getName() {
         return this.name;
     }
     
     /**
     * @generated
     */
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
     
@@ -57,6 +64,23 @@ public abstract class Party {
     }
     
     
+    /**
+    * @generated
+    */
+    public Set<AddressProperties> getAddressProperties() {
+        if (this.addressProperties == null) {
+            this.addressProperties = new HashSet<AddressProperties>();
+        }
+        return this.addressProperties;
+    }
+
+    /**
+    * @generated
+    */
+    public void setAddressProperties(Set<AddressProperties> addressProperties) {
+        this.addressProperties = addressProperties;
+    }
+
     /**
     * @generated
     */

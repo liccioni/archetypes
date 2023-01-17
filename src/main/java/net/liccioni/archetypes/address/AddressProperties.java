@@ -1,17 +1,12 @@
-package net.liccioni.archetypes.party;
-
-
+package net.liccioni.archetypes.address;
+import java.util.Set;
+import java.util.HashSet;
 import net.liccioni.archetypes.TimeDate;
 
 /**
 * @generated
 */
-public class RegisteredIdentifier {
-    
-    /**
-    * @generated
-    */
-    private String identifier;
+public class AddressProperties {
     
     /**
     * @generated
@@ -26,26 +21,16 @@ public class RegisteredIdentifier {
     /**
     * @generated
     */
-    private String registrationAuthority;
+    private Set<String> use;
     
+    
+    /**
+    * @generated
+    */
+    private Address address;
     
     
 
-    /**
-    * @generated
-    */
-    public String getIdentifier() {
-        return this.identifier;
-    }
-    
-    /**
-    * @generated
-    */
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
-    }
-    
-    
     /**
     * @generated
     */
@@ -79,17 +64,33 @@ public class RegisteredIdentifier {
     /**
     * @generated
     */
-    public String getRegistrationAuthority() {
-        return this.registrationAuthority;
+    public Set<String> getUse() {
+        if (this.use == null) {
+            this.use = new HashSet<String>();
+        }
+        return this.use;
     }
     
     /**
     * @generated
     */
-    public void setRegistrationAuthority(String registrationAuthority) {
-        this.registrationAuthority = registrationAuthority;
+    public void setUse(Set<String> use) {
+        this.use = use;
+    }
+
+    /**
+    * @generated
+    */
+    public Address getAddress() {
+        return this.address;
     }
     
+    /**
+    * @generated
+    */
+    public void setAddress(Address address) {
+        this.address = address;
+    }
     
     
     
