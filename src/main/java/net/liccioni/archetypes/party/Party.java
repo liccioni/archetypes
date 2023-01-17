@@ -2,8 +2,7 @@ package net.liccioni.archetypes.party;
 
 import java.util.Set;
 import java.util.HashSet;
-import java.util.SortedSet;
-import java.util.OrderedSet;
+import net.liccioni.archetypes.address.AddressProperties;
 
 /**
 * @generated

@@ -1,99 +1,98 @@
 package net.liccioni.archetypes.address;
-import java.util.Set;
+
 import java.util.HashSet;
-import java.util.SortedSet;
-import java.util.OrderedSet;
+import java.util.Set;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class GeographicAddress extends Address {
-    
-    /**
-    * @generated
-    */
-    private Set<String> addressLine;
-    
-    /**
-    * @generated
-    */
-    private String city;
-    
-    /**
-    * @generated
-    */
-    private String regionOrState;
-    
-    /**
-    * @generated
-    */
-    private String zipOrPostCode;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private Set<String> addressLine;
+
+    /**
+     * @generated
+     */
+    private String city;
+
+    /**
+     * @generated
+     */
+    private String regionOrState;
+
+    /**
+     * @generated
+     */
+    private String zipOrPostCode;
+
+
+    /**
+     * @generated
+     */
     public Set<String> getAddressLine() {
         if (this.addressLine == null) {
             this.addressLine = new HashSet<String>();
         }
         return this.addressLine;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAddressLine(Set<String> addressLine) {
         this.addressLine = addressLine;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getCity() {
         return this.city;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setCity(String city) {
         this.city = city;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getRegionOrState() {
         return this.regionOrState;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setRegionOrState(String regionOrState) {
         this.regionOrState = regionOrState;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getZipOrPostCode() {
         return this.zipOrPostCode;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setZipOrPostCode(String zipOrPostCode) {
         this.zipOrPostCode = zipOrPostCode;
     }
-    
-    
-    
-    
+
+
+    @Override
+    public String getAddress() {
+        return String.join(",", this.addressLine);
+    }
 }

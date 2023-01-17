@@ -1,6 +1,7 @@
 package net.liccioni.archetypes.address;
 import java.util.Set;
 import java.util.HashSet;
+import net.liccioni.archetypes.TimeDate;
 
 /**
 * @generated

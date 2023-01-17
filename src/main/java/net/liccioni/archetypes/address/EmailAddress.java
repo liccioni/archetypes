@@ -26,8 +26,10 @@ public class EmailAddress extends Address {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
-    
-    
-    
-    
+
+
+    @Override
+    public String getAddress() {
+        return this.emailAddress;
+    }
 }

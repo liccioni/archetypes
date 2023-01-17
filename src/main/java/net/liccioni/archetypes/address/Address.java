@@ -1,25 +1,9 @@
 package net.liccioni.archetypes.address;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public abstract class Address {
-    
-    
-    
 
-    
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public String getAddress() {
-        //TODO
-        return "";
-    }
-    
-    
+    public abstract String getAddress();
 }
