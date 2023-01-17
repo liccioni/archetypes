@@ -78,7 +78,7 @@ public abstract class Party {
     /**
     * @generated
     */
-    public void setAddressProperties(AddressProperties addressProperties) {
+    public void setAddressProperties(Set<AddressProperties> addressProperties) {
         this.addressProperties = addressProperties;
     }
 
@@ -95,7 +95,7 @@ public abstract class Party {
     /**
     * @generated
     */
-    public void setRegisteredIdentifier(RegisteredIdentifier registeredIdentifier) {
+    public void setRegisteredIdentifier(Set<RegisteredIdentifier> registeredIdentifier) {
         this.registeredIdentifier = registeredIdentifier;
     }
 }

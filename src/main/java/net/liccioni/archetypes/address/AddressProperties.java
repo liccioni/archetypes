@@ -73,7 +73,7 @@ public class AddressProperties {
     /**
     * @generated
     */
-    public void setUse(String use) {
+    public void setUse(Set<String> use) {
         this.use = use;
     }
 

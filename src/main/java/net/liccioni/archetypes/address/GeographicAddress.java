@@ -43,7 +43,7 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    public void setAddressLine(String addressLine) {
+    public void setAddressLine(OrderedSet<String> addressLine) {
         this.addressLine = addressLine;
     }
 
