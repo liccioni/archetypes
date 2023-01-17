@@ -24,7 +24,7 @@ public abstract class Party {
     /**
     * @generated
     */
-    private OrderedSet<AddressProperties> addressProperties;
+    private Set<AddressProperties> addressProperties;
 
 
     /**
@@ -68,9 +68,9 @@ public abstract class Party {
     /**
     * @generated
     */
-    public OrderedSet<AddressProperties> getAddressProperties() {
+    public Set<AddressProperties> getAddressProperties() {
         if (this.addressProperties == null) {
-            this.addressProperties = new OrderedSet<AddressProperties>();
+            this.addressProperties = new HashSet<AddressProperties>();
         }
         return this.addressProperties;
     }
