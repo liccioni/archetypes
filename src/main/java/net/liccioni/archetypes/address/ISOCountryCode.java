@@ -1,5 +1,6 @@
 package net.liccioni.archetypes.address;
 
+
 /**
 * @generated
 */
@@ -18,7 +19,7 @@ public class ISOCountryCode extends Locale {
     /**
     * @generated
     */
-    private  officialName;
+    private String officialName;
     
     
     
@@ -33,7 +34,7 @@ public class ISOCountryCode extends Locale {
     /**
     * @generated
     */
-    public void setAlphabeticThreeCharCode(String alphabeticThreeCharCode) {
+    public String setAlphabeticThreeCharCode(String alphabeticThreeCharCode) {
         this.alphabeticThreeCharCode = alphabeticThreeCharCode;
     }
     
@@ -48,7 +49,7 @@ public class ISOCountryCode extends Locale {
     /**
     * @generated
     */
-    public void setNumericCode(String numericCode) {
+    public String setNumericCode(String numericCode) {
         this.numericCode = numericCode;
     }
     
@@ -56,14 +57,14 @@ public class ISOCountryCode extends Locale {
     /**
     * @generated
     */
-    public  getOfficialName() {
+    public String getOfficialName() {
         return this.officialName;
     }
     
     /**
     * @generated
     */
-    public void setOfficialName(invalid officialName) {
+    public String setOfficialName(String officialName) {
         this.officialName = officialName;
     }
     

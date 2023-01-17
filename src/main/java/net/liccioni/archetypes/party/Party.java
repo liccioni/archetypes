@@ -44,7 +44,7 @@ public abstract class Party {
     /**
     * @generated
     */
-    public void setName(String name) {
+    public String setName(String name) {
         this.name = name;
     }
     
@@ -60,7 +60,7 @@ public abstract class Party {
     /**
     * @generated
     */
-    public void setPartyIdentifier(PartyIdentifier partyIdentifier) {
+    public PartyIdentifier setPartyIdentifier(PartyIdentifier partyIdentifier) {
         this.partyIdentifier = partyIdentifier;
     }
     
@@ -78,7 +78,7 @@ public abstract class Party {
     /**
     * @generated
     */
-    public void setAddressProperties(OrderedSet<AddressProperties> addressProperties) {
+    public OrderedSet<AddressProperties> setAddressProperties(AddressProperties addressProperties) {
         this.addressProperties = addressProperties;
     }
 
@@ -95,7 +95,7 @@ public abstract class Party {
     /**
     * @generated
     */
-    public void setRegisteredIdentifier(Set<RegisteredIdentifier> registeredIdentifier) {
+    public Set<RegisteredIdentifier> setRegisteredIdentifier(RegisteredIdentifier registeredIdentifier) {
         this.registeredIdentifier = registeredIdentifier;
     }
 }

@@ -24,7 +24,7 @@ public class PersonName {
     /**
     * @generated
     */
-    public void setFamilyName(String familyName) {
+    public String setFamilyName(String familyName) {
         this.familyName = familyName;
     }
     

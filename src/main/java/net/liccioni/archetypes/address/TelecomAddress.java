@@ -41,6 +41,14 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
+    private Locale locale;
+
+
+
+
+    /**
+    * @generated
+    */
     public String getCountryCode() {
         return this.countryCode;
     }
@@ -48,7 +56,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public void setCountryCode(String countryCode) {
+    public String setCountryCode(String countryCode) {
         this.countryCode = countryCode;
     }
     
@@ -63,7 +71,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public void setNationalDirectDialingPrefix(String nationalDirectDialingPrefix) {
+    public String setNationalDirectDialingPrefix(String nationalDirectDialingPrefix) {
         this.nationalDirectDialingPrefix = nationalDirectDialingPrefix;
     }
     
@@ -78,7 +86,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public void setAreaCode(String areaCode) {
+    public String setAreaCode(String areaCode) {
         this.areaCode = areaCode;
     }
     
@@ -93,7 +101,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public void setNumber(String number) {
+    public String setNumber(String number) {
         this.number = number;
     }
     
@@ -108,7 +116,7 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public void setExtension(String extension) {
+    public String setExtension(String extension) {
         this.extension = extension;
     }
     
@@ -123,8 +131,22 @@ public class TelecomAddress extends Address {
     /**
     * @generated
     */
-    public void setPhysicalType(String physicalType) {
+    public String setPhysicalType(String physicalType) {
         this.physicalType = physicalType;
+    }
+
+    /**
+    * @generated
+    */
+    public Locale getLocale() {
+        return this.locale;
+    }
+
+    /**
+    * @generated
+    */
+    public Locale setLocale(Locale locale) {
+        this.locale = locale;
     }
     
     

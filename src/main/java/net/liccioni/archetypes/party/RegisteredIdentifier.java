@@ -41,7 +41,7 @@ public class RegisteredIdentifier {
     /**
     * @generated
     */
-    public void setIdentifier(String identifier) {
+    public String setIdentifier(String identifier) {
         this.identifier = identifier;
     }
     
@@ -56,7 +56,7 @@ public class RegisteredIdentifier {
     /**
     * @generated
     */
-    public void setValidFrom(TimeDate validFrom) {
+    public TimeDate setValidFrom(TimeDate validFrom) {
         this.validFrom = validFrom;
     }
     
@@ -71,7 +71,7 @@ public class RegisteredIdentifier {
     /**
     * @generated
     */
-    public void setValidTo(TimeDate validTo) {
+    public TimeDate setValidTo(TimeDate validTo) {
         this.validTo = validTo;
     }
     
@@ -86,7 +86,7 @@ public class RegisteredIdentifier {
     /**
     * @generated
     */
-    public void setRegistrationAuthority(String registrationAuthority) {
+    public String setRegistrationAuthority(String registrationAuthority) {
         this.registrationAuthority = registrationAuthority;
     }
     

@@ -40,7 +40,7 @@ public class AddressProperties {
     /**
     * @generated
     */
-    public void setValidFrom(TimeDate validFrom) {
+    public TimeDate setValidFrom(TimeDate validFrom) {
         this.validFrom = validFrom;
     }
     
@@ -55,7 +55,7 @@ public class AddressProperties {
     /**
     * @generated
     */
-    public void setValidTo(TimeDate validTo) {
+    public TimeDate setValidTo(TimeDate validTo) {
         this.validTo = validTo;
     }
     
@@ -63,7 +63,7 @@ public class AddressProperties {
     /**
     * @generated
     */
-    private Set<String> getUse() {
+    public Set<String> getUse() {
         if (this.use == null) {
             this.use = new HashSet<String>();
         }
@@ -73,12 +73,10 @@ public class AddressProperties {
     /**
     * @generated
     */
-    private void setUse(Set<String> use) {
+    public Set<String> setUse(String use) {
         this.use = use;
     }
-    
-    
-    
+
     /**
     * @generated
     */
@@ -89,7 +87,7 @@ public class AddressProperties {
     /**
     * @generated
     */
-    public void setAddress(Address address) {
+    public Address setAddress(Address address) {
         this.address = address;
     }
     

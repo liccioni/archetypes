@@ -25,7 +25,7 @@ public class Organization extends Party {
     /**
     * @generated
     */
-    public void setOrganizationName(OrganizationName organizationName) {
+    public OrganizationName setOrganizationName(OrganizationName organizationName) {
         this.organizationName = organizationName;
     }
     

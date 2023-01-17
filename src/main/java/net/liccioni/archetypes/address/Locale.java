@@ -3,7 +3,7 @@ package net.liccioni.archetypes.address;
 /**
 * @generated
 */
-public abstract class Locale extends Address {
+public abstract class Locale {
     
     /**
     * @generated
@@ -33,7 +33,7 @@ public abstract class Locale extends Address {
     /**
     * @generated
     */
-    public void setIdentifier(String identifier) {
+    public String setIdentifier(String identifier) {
         this.identifier = identifier;
     }
     
@@ -48,7 +48,7 @@ public abstract class Locale extends Address {
     /**
     * @generated
     */
-    public void setName(String name) {
+    public String setName(String name) {
         this.name = name;
     }
     
@@ -63,7 +63,7 @@ public abstract class Locale extends Address {
     /**
     * @generated
     */
-    public void setDescription(String description) {
+    public String setDescription(String description) {
         this.description = description;
     }
     

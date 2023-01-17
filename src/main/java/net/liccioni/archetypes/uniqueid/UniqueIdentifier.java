@@ -21,7 +21,7 @@ public abstract class UniqueIdentifier {
   /**
     * @generated
     */
-    public void setIdentifier(String identifier) {
+    public String setIdentifier(String identifier) {
         this.identifier = identifier;
     }
 }

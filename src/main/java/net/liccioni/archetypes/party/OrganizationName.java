@@ -24,7 +24,7 @@ public class OrganizationName {
     /**
     * @generated
     */
-    public void setName(String name) {
+    public String setName(String name) {
         this.name = name;
     }
     

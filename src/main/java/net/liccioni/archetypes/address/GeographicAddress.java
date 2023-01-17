@@ -33,7 +33,7 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    private OrderedSet<String> getAddressLine() {
+    public OrderedSet<String> getAddressLine() {
         if (this.addressLine == null) {
             this.addressLine = new OrderedSet<String>();
         }
@@ -43,11 +43,10 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    private void setAddressLine(OrderedSet<String> addressLine) {
+    public OrderedSet<String> setAddressLine(String addressLine) {
         this.addressLine = addressLine;
     }
-    
-    
+
     /**
     * @generated
     */
@@ -58,7 +57,7 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    public void setCity(String city) {
+    public String setCity(String city) {
         this.city = city;
     }
     
@@ -73,7 +72,7 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    public void setRegionOrState(String regionOrState) {
+    public String setRegionOrState(String regionOrState) {
         this.regionOrState = regionOrState;
     }
     
@@ -88,7 +87,7 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    public void setZipOrPostCode(String zipOrPostCode) {
+    public String setZipOrPostCode(String zipOrPostCode) {
         this.zipOrPostCode = zipOrPostCode;
     }
     
