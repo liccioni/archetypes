@@ -2,6 +2,8 @@ package net.liccioni.archetypes.party;
 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.SortedSet;
+import java.util.OrderedSet;
 
 /**
 * @generated
@@ -22,6 +24,12 @@ public abstract class Party {
     /**
     * @generated
     */
+    private OrderedSet<AddressProperties> addressProperties;
+
+
+    /**
+    * @generated
+    */
     private PartyIdentifier partyIdentifier;
     
     
@@ -29,14 +37,14 @@ public abstract class Party {
     /**
     * @generated
     */
-    private String getName() {
+    public String getName() {
         return this.name;
     }
     
     /**
     * @generated
     */
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
     
@@ -57,6 +65,23 @@ public abstract class Party {
     }
     
     
+    /**
+    * @generated
+    */
+    public OrderedSet<AddressProperties> getAddressProperties() {
+        if (this.addressProperties == null) {
+            this.addressProperties = new OrderedSet<AddressProperties>();
+        }
+        return this.addressProperties;
+    }
+
+    /**
+    * @generated
+    */
+    public void setAddressProperties(OrderedSet<AddressProperties> addressProperties) {
+        this.addressProperties = addressProperties;
+    }
+
     /**
     * @generated
     */
