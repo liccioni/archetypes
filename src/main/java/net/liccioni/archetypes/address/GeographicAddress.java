@@ -1,4 +1,6 @@
 package net.liccioni.archetypes.address;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.SortedSet;
 import java.util.OrderedSet;
 
@@ -10,7 +12,7 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    private OrderedSet<String> addressLine;
+    private Set<String> addressLine;
     
     /**
     * @generated
@@ -33,9 +35,9 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    public OrderedSet<String> getAddressLine() {
+    public Set<String> getAddressLine() {
         if (this.addressLine == null) {
-            this.addressLine = new OrderedSet<String>();
+            this.addressLine = new HashSet<String>();
         }
         return this.addressLine;
     }
@@ -43,7 +45,7 @@ public class GeographicAddress extends Address {
     /**
     * @generated
     */
-    public void setAddressLine(OrderedSet<String> addressLine) {
+    public void setAddressLine(Set<String> addressLine) {
         this.addressLine = addressLine;
     }
 
