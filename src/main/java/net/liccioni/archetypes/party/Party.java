@@ -3,6 +3,7 @@ package net.liccioni.archetypes.party;
 import java.util.Set;
 import java.util.HashSet;
 import net.liccioni.archetypes.address.AddressProperties;
+import net.liccioni.archetypes.preference.Preference;
 
 /**
 * @generated
@@ -15,6 +16,12 @@ public abstract class Party {
     private String name;
     
     
+    /**
+    * @generated
+    */
+    private Set<Preference> preferences;
+
+
     /**
     * @generated
     */
@@ -79,6 +86,23 @@ public abstract class Party {
     */
     public void setAddressProperties(Set<AddressProperties> addressProperties) {
         this.addressProperties = addressProperties;
+    }
+
+    /**
+    * @generated
+    */
+    public Set<Preference> getPreferences() {
+        if (this.preferences == null) {
+            this.preferences = new HashSet<Preference>();
+        }
+        return this.preferences;
+    }
+
+    /**
+    * @generated
+    */
+    public void setPreferences(Set<Preference> preferences) {
+        this.preferences = preferences;
     }
 
     /**
