@@ -4,11 +4,10 @@ package net.liccioni.archetypes.product;
 /**
 * @generated
 */
-public class ServiceDeliveryStatus {
-    
-    
-    
+public enum ServiceDeliveryStatus
+{
+  EXECUTING,
+  SCHEDULED,
+  CANCELLED
 
-    
-    
 }

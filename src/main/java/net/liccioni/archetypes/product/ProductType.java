@@ -155,6 +155,15 @@ public class ProductType {
         //TODO
         return null;
     }
+
+    /**
+    * @generated
+    */
+    public List<Price> getPrices(TimeDate validFrom, TimeDate validTo)
+    {
+        //TODO
+        return null;
+    }
     
     
 }
