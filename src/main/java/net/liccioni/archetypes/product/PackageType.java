@@ -90,7 +90,11 @@ public class PackageType extends ProductType {
     /**
     * @generated
     */
-    public abstract boolean addProductType(ProductType productType);
+    public boolean addProductType(ProductType productType)
+    {
+        //TODO
+        return false;
+    }
     
     
     
@@ -119,7 +123,7 @@ public class PackageType extends ProductType {
     /**
     * @generated
     */
-    public boolean validate(PackageInstance package)
+    public boolean validate(PackageInstance packageInstance)
     {
         //TODO
         return false;

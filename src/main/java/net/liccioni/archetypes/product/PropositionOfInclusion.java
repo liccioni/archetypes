@@ -119,7 +119,7 @@ public class PropositionOfInclusion {
     /**
     * @generated
     */
-    public boolean isSubSetOf(PackageInstance package)
+    public boolean isSubSetOf(PackageInstance packageInstance)
     {
         //TODO
         return false;
