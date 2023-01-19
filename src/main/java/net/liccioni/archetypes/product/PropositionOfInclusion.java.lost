@@ -1,0 +1,37 @@
+
+Thu Jan 19 14:41:14 UTC 2023
+================================================================================
+package net.liccioni.archetypes.product;
+
+
+/**
+* @generated
+*/
+public class PropositionOfInclusion {
+    
+    
+    /**
+    * @generated
+    */
+    private PackageInstance targetPackage;
+    
+    
+
+    
+    /**
+    * @generated
+    */
+    public PackageInstance getTargetPackage() {
+        return this.targetPackage;
+    }
+    
+    /**
+    * @generated
+    */
+    public void setTargetPackage(PackageInstance targetPackage) {
+        this.targetPackage = targetPackage;
+    }
+    
+    
+    
+}

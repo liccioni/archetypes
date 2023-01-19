@@ -10,11 +10,29 @@ public class ProductFeatureInstance {
     /**
     * @generated
     */
+    private String value;
+    /**
+    * @generated
+    */
     private ProductFeatureType productFeatureType;
     
     
 
     
+    /**
+    * @generated
+    */
+    public String getValue() {
+        return this.value;
+    }
+
+    /**
+    * @generated
+    */
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     /**
     * @generated
     */
@@ -27,6 +45,33 @@ public class ProductFeatureInstance {
     */
     public void setProductFeatureType(ProductFeatureType productFeatureType) {
         this.productFeatureType = productFeatureType;
+    }
+
+    /**
+    * @generated
+    */
+    public String getName()
+    {
+        //TODO
+        return "";
+    }
+
+    /**
+    * @generated
+    */
+    public String getDescription()
+    {
+        //TODO
+        return "";
+    }
+
+    /**
+    * @generated
+    */
+    public List<String> getPosibleValues()
+    {
+        //TODO
+        return "";
     }
     
     

@@ -12,26 +12,83 @@ public class CatalogEntry {
     /**
     * @generated
     */
-    private Set<ProductType> productType;
-    
-    
+    private String catalogIdentifier;
+  /**
+    * @generated
+    */
+    private String description;
+  /**
+    * @generated
+    */
+    private Set<String> category;
+  /**
+    * @generated
+    */
+    private Set<ProductType> productTypes;
 
-    
-    /**
+
+
+
+  /**
     * @generated
     */
-    public Set<ProductType> getProductType() {
-        if (this.productType == null) {
-            this.productType = new HashSet<ProductType>();
-        }
-        return this.productType;
+    public String getCatalogIdentifier() {
+        return this.catalogIdentifier;
     }
-    
-    /**
+
+  /**
     * @generated
     */
-    public void setProductType(Set<ProductType> productType) {
-        this.productType = productType;
+    public void setCatalogIdentifier(String catalogIdentifier) {
+        this.catalogIdentifier = catalogIdentifier;
+    }
+
+  /**
+    * @generated
+    */
+    public String getDescription() {
+        return this.description;
+    }
+
+  /**
+    * @generated
+    */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+  /**
+    * @generated
+    */
+    public Set<String> getCategory() {
+        if (this.category == null) {
+            this.category = new HashSet<String>();
+        }
+        return this.category;
+    }
+
+  /**
+    * @generated
+    */
+    public void setCategory(Set<String> category) {
+        this.category = category;
+    }
+
+  /**
+    * @generated
+    */
+    public Set<ProductType> getProductTypes() {
+        if (this.productTypes == null) {
+            this.productTypes = new HashSet<ProductType>();
+        }
+        return this.productTypes;
+    }
+
+  /**
+    * @generated
+    */
+    public void setProductTypes(Set<ProductType> productTypes) {
+        this.productTypes = productTypes;
     }
     
     

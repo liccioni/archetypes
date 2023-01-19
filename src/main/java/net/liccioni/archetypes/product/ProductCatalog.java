@@ -6,7 +6,7 @@ import java.util.HashSet;
 /**
 * @generated
 */
-public class ProductCatalog {
+public abstract class ProductCatalog {
     
     
     /**
@@ -33,6 +33,16 @@ public class ProductCatalog {
     public void setCatalogEntry(Set<CatalogEntry> catalogEntry) {
         this.catalogEntry = catalogEntry;
     }
+
+    /**
+    * @generated
+    */
+    public abstract boolean addProductType(ProductType productType);
+
+    /**
+    * @generated
+    */
+    public abstract boolean addProductType(ProductType productType, String catalogIdentifier);
     
     
     

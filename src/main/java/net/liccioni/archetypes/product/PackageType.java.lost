@@ -1,3 +1,6 @@
+
+Thu Jan 19 14:41:14 UTC 2023
+================================================================================
 package net.liccioni.archetypes.product;
 
 import java.util.Set;
@@ -80,50 +83,6 @@ public class PackageType extends ProductType {
         this.propositionOfInclusion = propositionOfInclusion;
     }
     
-    
-    
-
-    //                          Operations                                  
-    
-    
-    
-    /**
-    * @generated
-    */
-    public abstract boolean addProductType(ProductType productType);
-    
-    
-    
-    /**
-    * @generated
-    */
-    public boolean addProductSet(ProductSet set)
-    {
-        //TODO
-        return false;
-    }
-    
-    
-    
-    /**
-    * @generated
-    */
-    public boolean addPropositionOfInclusion(PropositionOfInclusion propositionOfInclusion)
-    {
-        //TODO
-        return false;
-    }
-    
-    
-    
-    /**
-    * @generated
-    */
-    public boolean validate(PackageInstance package)
-    {
-        //TODO
-        return false;
-    }
     
     
 }

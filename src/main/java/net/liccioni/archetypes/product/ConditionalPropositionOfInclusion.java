@@ -40,6 +40,24 @@ public class ConditionalPropositionOfInclusion extends PropositionOfInclusion {
     /**
     * @generated
     */
+    public boolean addCondition(PropositionOfInclusion conditionProposition)
+    {
+        //TODO
+        return false;
+    }
+
+    /**
+    * @generated
+    */
+    public boolean addBody(PropositionOfInclusion conditionProposition)
+    {
+        //TODO
+        return false;
+    }
+
+    /**
+    * @generated
+    */
     public Set<PropositionOfInclusion> getBody() {
         if (this.body == null) {
             this.body = new HashSet<PropositionOfInclusion>();
