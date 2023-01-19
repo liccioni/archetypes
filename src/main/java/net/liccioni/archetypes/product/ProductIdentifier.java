@@ -1,14 +1,12 @@
 package net.liccioni.archetypes.product;
 
 
-/**
-* @generated
-*/
-public class ProductIdentifier extends UniqueIdentifier {
-    
-    
-    
+import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
-    
-    
+/**
+ * @generated
+ */
+public class ProductIdentifier extends UniqueIdentifier {
+
+
 }

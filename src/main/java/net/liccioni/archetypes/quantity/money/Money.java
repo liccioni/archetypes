@@ -1,29 +1,22 @@
 package net.liccioni.archetypes.quantity.money;
 
 
+import net.liccioni.archetypes.quantity.Quantity;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Money extends Quantity {
-    
-    
-    
 
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public Currency getCurrency()
-    {
+     * @generated
+     */
+    public Currency getCurrency() {
         //TODO
         return null;
     }
-    
-    
 }

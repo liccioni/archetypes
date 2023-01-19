@@ -1,171 +1,164 @@
 package net.liccioni.archetypes.product;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import net.liccioni.archetypes.TimeDate;
+import net.liccioni.archetypes.rule.RuleContext;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ProductType {
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String description;
-    
-    
-    /**
-    * @generated
-    */
-    private Set<ProductFeatureType> optionalFeatureTypes;
-    
-    /**
-    * @generated
-    */
-    private Set<Price> prices;
-    
-    /**
-    * @generated
-    */
-    private ProductIdentifier productIdentifier;
-    
-    /**
-    * @generated
-    */
-    private Set<ProductFeatureType> mandatoryFeatureTypes;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String name;
+
+    /**
+     * @generated
+     */
+    private String description;
+
+
+    /**
+     * @generated
+     */
+    private Set<ProductFeatureType> optionalFeatureTypes;
+
+    /**
+     * @generated
+     */
+    private Set<Price> prices;
+
+    /**
+     * @generated
+     */
+    private ProductIdentifier productIdentifier;
+
+    /**
+     * @generated
+     */
+    private Set<ProductFeatureType> mandatoryFeatureTypes;
+
+
+    /**
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getDescription() {
         return this.description;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<ProductFeatureType> getMandatoryFeatureTypes() {
         if (this.mandatoryFeatureTypes == null) {
             this.mandatoryFeatureTypes = new HashSet<ProductFeatureType>();
         }
         return this.mandatoryFeatureTypes;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setMandatoryFeatureTypes(Set<ProductFeatureType> mandatoryFeatureTypes) {
         this.mandatoryFeatureTypes = mandatoryFeatureTypes;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<ProductFeatureType> getOptionalFeatureTypes() {
         if (this.optionalFeatureTypes == null) {
             this.optionalFeatureTypes = new HashSet<ProductFeatureType>();
         }
         return this.optionalFeatureTypes;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOptionalFeatureTypes(Set<ProductFeatureType> optionalFeatureTypes) {
         this.optionalFeatureTypes = optionalFeatureTypes;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<Price> getPrices() {
         if (this.prices == null) {
             this.prices = new HashSet<Price>();
         }
         return this.prices;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPrices(Set<Price> prices) {
         this.prices = prices;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ProductIdentifier getProductIdentifier() {
         return this.productIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setProductIdentifier(ProductIdentifier productIdentifier) {
         this.productIdentifier = productIdentifier;
     }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public List<Price> getPrices(RuleContext context)
-    {
+     * @generated
+     */
+    public List<Price> getPrices(RuleContext context) {
         //TODO
         return null;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
-    public List<Price> getPrices(TimeDate validFrom, TimeDate validTo)
-    {
+     * @generated
+     */
+    public List<Price> getPrices(TimeDate validFrom, TimeDate validTo) {
         //TODO
         return null;
     }
-    
-    
 }

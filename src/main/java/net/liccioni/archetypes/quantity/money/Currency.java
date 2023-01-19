@@ -1,179 +1,177 @@
 package net.liccioni.archetypes.quantity.money;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import net.liccioni.archetypes.TimeDate;
+import net.liccioni.archetypes.address.Locale;
+import net.liccioni.archetypes.quantity.Metric;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Currency extends Metric {
-    
-    /**
-    * @generated
-    */
-    private String alphabeticCode;
-    
-    /**
-    * @generated
-    */
-    private String numericCode;
-    
-    /**
-    * @generated
-    */
-    private String majorUnitSymbol;
-    
-    /**
-    * @generated
-    */
-    private String minorUnitSymbol;
-    
-    /**
-    * @generated
-    */
-    private double ratioOfMinorToMajorUnit;
-    
-    /**
-    * @generated
-    */
-    private TimeDate introductionDate;
-    
-    /**
-    * @generated
-    */
-    private TimeDate expirationDate;
-    
-    
-    /**
-    * @generated
-    */
-    private Set<Locale> acceptedIn;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String alphabeticCode;
+
+    /**
+     * @generated
+     */
+    private String numericCode;
+
+    /**
+     * @generated
+     */
+    private String majorUnitSymbol;
+
+    /**
+     * @generated
+     */
+    private String minorUnitSymbol;
+
+    /**
+     * @generated
+     */
+    private double ratioOfMinorToMajorUnit;
+
+    /**
+     * @generated
+     */
+    private TimeDate introductionDate;
+
+    /**
+     * @generated
+     */
+    private TimeDate expirationDate;
+
+
+    /**
+     * @generated
+     */
+    private Set<Locale> acceptedIn;
+
+
+    /**
+     * @generated
+     */
     public String getAlphabeticCode() {
         return this.alphabeticCode;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAlphabeticCode(String alphabeticCode) {
         this.alphabeticCode = alphabeticCode;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getNumericCode() {
         return this.numericCode;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setNumericCode(String numericCode) {
         this.numericCode = numericCode;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getMajorUnitSymbol() {
         return this.majorUnitSymbol;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setMajorUnitSymbol(String majorUnitSymbol) {
         this.majorUnitSymbol = majorUnitSymbol;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getMinorUnitSymbol() {
         return this.minorUnitSymbol;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setMinorUnitSymbol(String minorUnitSymbol) {
         this.minorUnitSymbol = minorUnitSymbol;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public double getRatioOfMinorToMajorUnit() {
         return this.ratioOfMinorToMajorUnit;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setRatioOfMinorToMajorUnit(double ratioOfMinorToMajorUnit) {
         this.ratioOfMinorToMajorUnit = ratioOfMinorToMajorUnit;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getIntroductionDate() {
         return this.introductionDate;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setIntroductionDate(TimeDate introductionDate) {
         this.introductionDate = introductionDate;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getExpirationDate() {
         return this.expirationDate;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setExpirationDate(TimeDate expirationDate) {
         this.expirationDate = expirationDate;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<Locale> getAcceptedIn() {
         if (this.acceptedIn == null) {
             this.acceptedIn = new HashSet<Locale>();
         }
         return this.acceptedIn;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAcceptedIn(Set<Locale> acceptedIn) {
         this.acceptedIn = acceptedIn;
     }
-    
-    
-    
 }

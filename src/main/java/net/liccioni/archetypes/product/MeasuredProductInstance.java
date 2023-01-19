@@ -1,34 +1,31 @@
 package net.liccioni.archetypes.product;
 
 
-/**
-* @generated
-*/
-public class MeasuredProductInstance extends ProductInstance {
-    
-    
-    /**
-    * @generated
-    */
-    private Quantity quantity;
-    
-    
+import net.liccioni.archetypes.quantity.Quantity;
 
-    
+/**
+ * @generated
+ */
+public class MeasuredProductInstance extends ProductInstance {
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private Quantity quantity;
+
+
+    /**
+     * @generated
+     */
     public Quantity getQuantity() {
         return this.quantity;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setQuantity(Quantity quantity) {
         this.quantity = quantity;
     }
-    
-    
-    
 }

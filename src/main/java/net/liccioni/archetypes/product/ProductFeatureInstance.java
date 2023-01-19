@@ -1,91 +1,81 @@
 package net.liccioni.archetypes.product;
 
 
+import java.util.List;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ProductFeatureInstance {
-    
-    /**
-    * @generated
-    */
-    private String value;
-    
-    
-    /**
-    * @generated
-    */
-    private ProductFeatureType productFeatureType;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String value;
+
+
+    /**
+     * @generated
+     */
+    private ProductFeatureType productFeatureType;
+
+
+    /**
+     * @generated
+     */
     public String getValue() {
         return this.value;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setValue(String value) {
         this.value = value;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ProductFeatureType getProductFeatureType() {
         return this.productFeatureType;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setProductFeatureType(ProductFeatureType productFeatureType) {
         this.productFeatureType = productFeatureType;
     }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public String getName()
-    {
+     * @generated
+     */
+    public String getName() {
         //TODO
         return "";
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
-    public String getDescription()
-    {
+     * @generated
+     */
+    public String getDescription() {
         //TODO
         return "";
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
-    public List<String> getPossibleValues()
-    {
+     * @generated
+     */
+    public List<String> getPossibleValues() {
         //TODO
-        return "";
+        return null;
     }
-    
-    
 }

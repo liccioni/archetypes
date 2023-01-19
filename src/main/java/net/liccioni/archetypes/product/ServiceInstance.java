@@ -1,114 +1,110 @@
 package net.liccioni.archetypes.product;
 
 
+import net.liccioni.archetypes.TimeDate;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ServiceInstance extends ProductInstance {
-    
-    /**
-    * @generated
-    */
-    private TimeDate start;
-    
-    /**
-    * @generated
-    */
-    private TimeDate end;
-    
-    /**
-    * @generated
-    */
-    private TimeDate scheduledStart;
-    
-    /**
-    * @generated
-    */
-    private TimeDate scheduledEnd;
-    
-    /**
-    * @generated
-    */
-    private ServiceDeliveryStatus serviceDeliverStatus;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private TimeDate start;
+
+    /**
+     * @generated
+     */
+    private TimeDate end;
+
+    /**
+     * @generated
+     */
+    private TimeDate scheduledStart;
+
+    /**
+     * @generated
+     */
+    private TimeDate scheduledEnd;
+
+    /**
+     * @generated
+     */
+    private ServiceDeliveryStatus serviceDeliverStatus;
+
+
+    /**
+     * @generated
+     */
     public TimeDate getStart() {
         return this.start;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setStart(TimeDate start) {
         this.start = start;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getEnd() {
         return this.end;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setEnd(TimeDate end) {
         this.end = end;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getScheduledStart() {
         return this.scheduledStart;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setScheduledStart(TimeDate scheduledStart) {
         this.scheduledStart = scheduledStart;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getScheduledEnd() {
         return this.scheduledEnd;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setScheduledEnd(TimeDate scheduledEnd) {
         this.scheduledEnd = scheduledEnd;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ServiceDeliveryStatus getServiceDeliverStatus() {
         return this.serviceDeliverStatus;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setServiceDeliverStatus(ServiceDeliveryStatus serviceDeliverStatus) {
         this.serviceDeliverStatus = serviceDeliverStatus;
     }
-    
-    
-    
-    
 }
