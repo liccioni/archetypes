@@ -2,13 +2,9 @@ package net.liccioni.archetypes.quantity;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Kelvin extends SIBaseUnit {
-    
-    
-    
 
-    
-    
+
 }

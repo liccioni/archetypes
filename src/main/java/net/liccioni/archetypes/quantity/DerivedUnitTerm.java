@@ -2,51 +2,49 @@ package net.liccioni.archetypes.quantity;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class DerivedUnitTerm {
-    
-    /**
-    * @generated
-    */
-    private int power;
-    
-    
-    /**
-    * @generated
-    */
-    private Unit unit;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private int power;
+
+
+    /**
+     * @generated
+     */
+    private Unit unit;
+
+
+    /**
+     * @generated
+     */
     public int getPower() {
         return this.power;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPower(int power) {
         this.power = power;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Unit getUnit() {
         return this.unit;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setUnit(Unit unit) {
         this.unit = unit;
     }
-    
-    
-    
+
+
 }

@@ -2,99 +2,89 @@ package net.liccioni.archetypes.partyrelationship;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PartyRelationship {
-    
-    
-    /**
-    * @generated
-    */
-    private PartyRole supplier;
-    
-    /**
-    * @generated
-    */
-    private PartyRole client;
-    
-    /**
-    * @generated
-    */
-    private PartyRelationshipType type;
-    
-    
 
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private PartyRole supplier;
+
+    /**
+     * @generated
+     */
+    private PartyRole client;
+
+    /**
+     * @generated
+     */
+    private PartyRelationshipType type;
+
+
+    /**
+     * @generated
+     */
     public PartyRelationshipType getType() {
         return this.type;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setType(PartyRelationshipType type) {
         this.type = type;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyRole getSupplier() {
         return this.supplier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setSupplier(PartyRole supplier) {
         this.supplier = supplier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyRole getClient() {
         return this.client;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setClient(PartyRole client) {
         this.client = client;
     }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public String getName()
-    {
+     * @generated
+     */
+    public String getName() {
         //TODO
         return "";
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
-    public String getDescription()
-    {
+     * @generated
+     */
+    public String getDescription() {
         //TODO
         return "";
     }
-    
-    
 }

@@ -2,138 +2,132 @@ package net.liccioni.archetypes.quantity;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Quantity {
-    
-    /**
-    * @generated
-    */
-    private double amount;
-    
-    
-    /**
-    * @generated
-    */
-    private Metric metric;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private double amount;
+
+
+    /**
+     * @generated
+     */
+    private Metric metric;
+
+
+    /**
+     * @generated
+     */
     public double getAmount() {
         return this.amount;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Metric getMetric() {
         return this.metric;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setMetric(Metric metric) {
         this.metric = metric;
     }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Quantity round(RoundingPolicy policy) {
         //TODO
         return null;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public boolean equalTo(Quantity quantity) {
         //TODO
         return false;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public boolean greaterThan(Quantity quantity) {
         //TODO
         return false;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public boolean lessThan(Quantity quantity) {
         //TODO
         return false;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Quantity add(Quantity quantity) {
         //TODO
         return null;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Quantity subtract(Quantity quantity) {
         //TODO
         return null;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Quantity multiply(double multiplier) {
         //TODO
         return null;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Quantity multiply(Quantity quantity) {
         //TODO
         return null;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Quantity divide(double divisor) {
         //TODO
         return null;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Quantity divide(Quantity quantity) {
         //TODO
         return null;
     }
-    
-    
 }

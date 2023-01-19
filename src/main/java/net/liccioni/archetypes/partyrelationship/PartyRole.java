@@ -1,100 +1,92 @@
 package net.liccioni.archetypes.partyrelationship;
 
 
-/**
-* @generated
-*/
-public class PartyRole {
-    
-    
-    /**
-    * @generated
-    */
-    private PartyRoleIdentifier identifier;
-    
-    /**
-    * @generated
-    */
-    private Party party;
-    
-    /**
-    * @generated
-    */
-    private PartyRoleType type;
-    
-    
+import net.liccioni.archetypes.party.Party;
 
-    
+/**
+ * @generated
+ */
+public class PartyRole {
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private PartyRoleIdentifier identifier;
+
+    /**
+     * @generated
+     */
+    private Party party;
+
+    /**
+     * @generated
+     */
+    private PartyRoleType type;
+
+
+    /**
+     * @generated
+     */
     public Party getParty() {
         return this.party;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setParty(Party party) {
         this.party = party;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyRoleIdentifier getIdentifier() {
         return this.identifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setIdentifier(PartyRoleIdentifier identifier) {
         this.identifier = identifier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyRoleType getType() {
         return this.type;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setType(PartyRoleType type) {
         this.type = type;
     }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public String getName()
-    {
+     * @generated
+     */
+    public String getName() {
         //TODO
         return "";
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
-    public String getDescription()
-    {
+     * @generated
+     */
+    public String getDescription() {
         //TODO
         return "";
     }
-    
-    
 }

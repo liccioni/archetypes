@@ -1,28 +1,26 @@
 package net.liccioni.archetypes.address;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class EmailAddress extends Address {
-    
-    /**
-    * @generated
-    */
-    private String emailAddress;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String emailAddress;
+
+
+    /**
+     * @generated
+     */
     public String getEmailAddress() {
         return this.emailAddress;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }

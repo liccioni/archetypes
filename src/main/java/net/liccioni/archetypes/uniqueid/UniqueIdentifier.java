@@ -2,25 +2,25 @@ package net.liccioni.archetypes.uniqueid;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class UniqueIdentifier {
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String identifier;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public String getIdentifier() {
         return this.identifier;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setIdentifier(String identifier) {
         this.identifier = identifier;
     }

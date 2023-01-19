@@ -1,120 +1,113 @@
 package net.liccioni.archetypes.partyrelationship;
 
 
+import net.liccioni.archetypes.TimeDate;
+import net.liccioni.archetypes.party.PartySignature;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class AssignedResponsibility {
-    
-    /**
-    * @generated
-    */
-    private TimeDate from;
-    
-    /**
-    * @generated
-    */
-    private TimeDate to;
-    
-    
-    /**
-    * @generated
-    */
-    private PartySignature partySignature;
-    
-    /**
-    * @generated
-    */
-    private Responsibility responsability;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private TimeDate from;
+
+    /**
+     * @generated
+     */
+    private TimeDate to;
+
+
+    /**
+     * @generated
+     */
+    private PartySignature partySignature;
+
+    /**
+     * @generated
+     */
+    private Responsibility responsability;
+
+
+    /**
+     * @generated
+     */
     public TimeDate getFrom() {
         return this.from;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setFrom(TimeDate from) {
         this.from = from;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getTo() {
         return this.to;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setTo(TimeDate to) {
         this.to = to;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Responsibility getResponsability() {
         return this.responsability;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setResponsability(Responsibility responsability) {
         this.responsability = responsability;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartySignature getPartySignature() {
         return this.partySignature;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPartySignature(PartySignature partySignature) {
         this.partySignature = partySignature;
     }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public String getName()
-    {
+     * @generated
+     */
+    public String getName() {
         //TODO
         return "";
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
-    public String getDescription()
-    {
+     * @generated
+     */
+    public String getDescription() {
         //TODO
         return "";
     }
-    
-    
 }

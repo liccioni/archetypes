@@ -1,74 +1,71 @@
 package net.liccioni.archetypes.party;
 
 
+import net.liccioni.archetypes.TimeDate;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PartySignature {
-    
-    /**
-    * @generated
-    */
-    private TimeDate when;
-    
-    /**
-    * @generated
-    */
-    private String reason;
-    
-    
-    /**
-    * @generated
-    */
-    private PartyIdentifier partyIdentifier;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private TimeDate when;
+
+    /**
+     * @generated
+     */
+    private String reason;
+
+
+    /**
+     * @generated
+     */
+    private PartyIdentifier partyIdentifier;
+
+
+    /**
+     * @generated
+     */
     public TimeDate getWhen() {
         return this.when;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setWhen(TimeDate when) {
         this.when = when;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getReason() {
         return this.reason;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setReason(String reason) {
         this.reason = reason;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyIdentifier getPartyIdentifier() {
         return this.partyIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPartyIdentifier(PartyIdentifier partyIdentifier) {
         this.partyIdentifier = partyIdentifier;
     }
-    
-    
-    
 }

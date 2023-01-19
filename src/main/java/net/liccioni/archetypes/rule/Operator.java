@@ -2,13 +2,13 @@ package net.liccioni.archetypes.rule;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Operator extends RuleElement {
-    
-    
-    
 
-    
-    
+
+    @Override
+    public String getType() {
+        return "Operator";
+    }
 }

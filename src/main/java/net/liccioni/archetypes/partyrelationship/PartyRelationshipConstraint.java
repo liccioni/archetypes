@@ -2,48 +2,39 @@ package net.liccioni.archetypes.partyrelationship;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PartyRelationshipConstraint {
-    
-    /**
-    * @generated
-    */
-    private String typeOfParty;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String typeOfParty;
+
+
+    /**
+     * @generated
+     */
     public String getTypeOfParty() {
         return this.typeOfParty;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setTypeOfParty(String typeOfParty) {
         this.typeOfParty = typeOfParty;
     }
-    
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public boolean canFormRelationship(PartyRole client, PartyRole supplier)
-    {
+     * @generated
+     */
+    public boolean canFormRelationship(PartyRole client, PartyRole supplier) {
         //TODO
         return false;
     }
-    
-    
 }

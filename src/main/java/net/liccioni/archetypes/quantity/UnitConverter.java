@@ -1,31 +1,26 @@
 package net.liccioni.archetypes.quantity;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class UnitConverter {
-    
-    
-    
 
-    
-    
 
-    //                          Operations                                  
-    
-    
+    //                          Operations
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Set<StandardConversion> converters;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public Set<StandardConversion> getConverters() {
         if (this.converters == null) {
             this.converters = new HashSet<StandardConversion>();
@@ -33,20 +28,18 @@ public class UnitConverter {
         return this.converters;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setConverters(Set<StandardConversion> converters) {
         this.converters = converters;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public Quantity convert(Quantity quantity, Unit targetUnit) {
         //TODO
         return null;
     }
-    
-    
 }

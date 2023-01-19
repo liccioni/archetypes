@@ -4,91 +4,83 @@ package net.liccioni.archetypes.party;
 import net.liccioni.archetypes.TimeDate;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class OrganizationName {
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String name;
+
+
+    /**
+     * @generated
+     */
     private String use;
     /**
-    * @generated
-    */
+     * @generated
+     */
     private TimeDate validFrom;
     /**
-    * @generated
-    */
+     * @generated
+     */
     private TimeDate validTo;
 
 
-
-
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getUse() {
         return this.use;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setUse(String use) {
         this.use = use;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getValidFrom() {
         return this.validFrom;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setValidFrom(TimeDate validFrom) {
         this.validFrom = validFrom;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getValidTo() {
         return this.validTo;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setValidTo(TimeDate validTo) {
         this.validTo = validTo;
     }
-    
-    
-    
-    
 }

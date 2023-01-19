@@ -1,14 +1,12 @@
 package net.liccioni.archetypes.partyrelationship;
 
 
-/**
-* @generated
-*/
-public class Capabilities extends RuleContext {
-    
-    
-    
+import net.liccioni.archetypes.rule.RuleContext;
 
-    
-    
+/**
+ * @generated
+ */
+public class Capabilities extends RuleContext {
+
+
 }

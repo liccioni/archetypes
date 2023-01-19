@@ -1,14 +1,12 @@
 package net.liccioni.archetypes.partyrelationship;
 
 
-/**
-* @generated
-*/
-public class PartyRoleIdentifier extends UniqueIdentifier {
-    
-    
-    
+import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
-    
-    
+/**
+ * @generated
+ */
+public class PartyRoleIdentifier extends UniqueIdentifier {
+
+
 }

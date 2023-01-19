@@ -1,191 +1,184 @@
 package net.liccioni.archetypes.partyrelationship;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import net.liccioni.archetypes.party.Party;
+import net.liccioni.archetypes.rule.RuleContext;
+import net.liccioni.archetypes.rule.RuleSet;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PartyRoleType {
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String description;
-    
-    
-    /**
-    * @generated
-    */
-    private RuleSet requirementsForRole;
-    
-    /**
-    * @generated
-    */
-    private Set<AssignedResponsibility> assignedResponsibilities;
-    
-    /**
-    * @generated
-    */
-    private PartyRoleConstraint constraints;
-    
-    /**
-    * @generated
-    */
-    private Set<Responsibility> optionalResponsibilities;
-    
-    /**
-    * @generated
-    */
-    private Set<Responsibility> mandatoryResponsibilities;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String name;
+
+    /**
+     * @generated
+     */
+    private String description;
+
+
+    /**
+     * @generated
+     */
+    private RuleSet requirementsForRole;
+
+    /**
+     * @generated
+     */
+    private Set<AssignedResponsibility> assignedResponsibilities;
+
+    /**
+     * @generated
+     */
+    private PartyRoleConstraint constraints;
+
+    /**
+     * @generated
+     */
+    private Set<Responsibility> optionalResponsibilities;
+
+    /**
+     * @generated
+     */
+    private Set<Responsibility> mandatoryResponsibilities;
+
+
+    /**
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getDescription() {
         return this.description;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public RuleSet getRequirementsForRole() {
         return this.requirementsForRole;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setRequirementsForRole(RuleSet requirementsForRole) {
         this.requirementsForRole = requirementsForRole;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<AssignedResponsibility> getAssignedResponsibilities() {
         if (this.assignedResponsibilities == null) {
             this.assignedResponsibilities = new HashSet<AssignedResponsibility>();
         }
         return this.assignedResponsibilities;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAssignedResponsibilities(Set<AssignedResponsibility> assignedResponsibilities) {
         this.assignedResponsibilities = assignedResponsibilities;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<Responsibility> getMandatoryResponsibilities() {
         if (this.mandatoryResponsibilities == null) {
             this.mandatoryResponsibilities = new HashSet<Responsibility>();
         }
         return this.mandatoryResponsibilities;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setMandatoryResponsibilities(Set<Responsibility> mandatoryResponsibilities) {
         this.mandatoryResponsibilities = mandatoryResponsibilities;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<Responsibility> getOptionalResponsibilities() {
         if (this.optionalResponsibilities == null) {
             this.optionalResponsibilities = new HashSet<Responsibility>();
         }
         return this.optionalResponsibilities;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOptionalResponsibilities(Set<Responsibility> optionalResponsibilities) {
         this.optionalResponsibilities = optionalResponsibilities;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyRoleConstraint getConstraints() {
         return this.constraints;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setConstraints(PartyRoleConstraint constraints) {
         this.constraints = constraints;
     }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public boolean canPlayRole(Party party)
-    {
+     * @generated
+     */
+    public boolean canPlayRole(Party party) {
         //TODO
         return false;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
-    public boolean canPlayRole(Party party, RuleContext context)
-    {
+     * @generated
+     */
+    public boolean canPlayRole(Party party, RuleContext context) {
         //TODO
         return false;
     }
-    
-    
 }

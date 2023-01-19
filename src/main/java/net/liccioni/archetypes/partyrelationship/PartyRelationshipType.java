@@ -1,120 +1,113 @@
 package net.liccioni.archetypes.partyrelationship;
 
 
+import net.liccioni.archetypes.rule.RuleContext;
+import net.liccioni.archetypes.rule.RuleSet;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PartyRelationshipType {
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String description;
-    
-    
-    /**
-    * @generated
-    */
-    private RuleSet requirementsForRelationship;
-    
-    /**
-    * @generated
-    */
-    private PartyRelationshipConstraint constraints;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String name;
+
+    /**
+     * @generated
+     */
+    private String description;
+
+
+    /**
+     * @generated
+     */
+    private RuleSet requirementsForRelationship;
+
+    /**
+     * @generated
+     */
+    private PartyRelationshipConstraint constraints;
+
+
+    /**
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getDescription() {
         return this.description;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyRelationshipConstraint getConstraints() {
         return this.constraints;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setConstraints(PartyRelationshipConstraint constraints) {
         this.constraints = constraints;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public RuleSet getRequirementsForRelationship() {
         return this.requirementsForRelationship;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setRequirementsForRelationship(RuleSet requirementsForRelationship) {
         this.requirementsForRelationship = requirementsForRelationship;
     }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
-    public boolean canFormRelationship(PartyRole client, PartyRole supplier)
-    {
+     * @generated
+     */
+    public boolean canFormRelationship(PartyRole client, PartyRole supplier) {
         //TODO
         return false;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
-    public boolean canFormRelationship(PartyRole client, PartyRole supplier, RuleContext context)
-    {
+     * @generated
+     */
+    public boolean canFormRelationship(PartyRole client, PartyRole supplier, RuleContext context) {
         //TODO
         return false;
     }
-    
-    
 }

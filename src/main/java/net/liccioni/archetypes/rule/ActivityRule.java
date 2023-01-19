@@ -2,24 +2,18 @@ package net.liccioni.archetypes.rule;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public abstract class ActivityRule extends Rule {
-    
-    
-    
 
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+    //                          Operations
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public abstract boolean activity();
-    
-    
+
+
 }

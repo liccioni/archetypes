@@ -2,44 +2,36 @@ package net.liccioni.archetypes.rule;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public abstract class RuleElement {
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String name;
+
+
+    /**
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-    
-    
 
-    //                          Operations                                  
-    
-    
-    
+
+    //                          Operations
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public abstract String getType();
-    
-    
 }

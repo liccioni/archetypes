@@ -1,94 +1,90 @@
 package net.liccioni.archetypes.rule;
 
 
+import net.liccioni.archetypes.TimeDate;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class RuleOverride {
-    
-    /**
-    * @generated
-    */
-    private String ruleName;
-    
-    /**
-    * @generated
-    */
-    private boolean override;
-    
-    /**
-    * @generated
-    */
-    private String why;
-    
-    /**
-    * @generated
-    */
-    private TimeDate when;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String ruleName;
+
+    /**
+     * @generated
+     */
+    private boolean override;
+
+    /**
+     * @generated
+     */
+    private String why;
+
+    /**
+     * @generated
+     */
+    private TimeDate when;
+
+
+    /**
+     * @generated
+     */
     public String getRuleName() {
         return this.ruleName;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setRuleName(String ruleName) {
         this.ruleName = ruleName;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public boolean getOverride() {
         return this.override;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOverride(boolean override) {
         this.override = override;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getWhy() {
         return this.why;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setWhy(String why) {
         this.why = why;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getWhen() {
         return this.when;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setWhen(TimeDate when) {
         this.when = when;
     }
-    
-    
-    
-    
 }
