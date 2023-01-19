@@ -68,7 +68,7 @@ public class ProductFeatureInstance {
     /**
     * @generated
     */
-    public List<String> getPosibleValues()
+    public List<String> getPossibleValues()
     {
         //TODO
         return "";
