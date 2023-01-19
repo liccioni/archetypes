@@ -150,7 +150,7 @@ public class ProductType {
     /**
     * @generated
     */
-    public Price getPrices(RuleContext context)
+    public List<Price> getPrices(RuleContext context)
     {
         //TODO
         return null;
