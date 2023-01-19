@@ -86,7 +86,7 @@ public class Quantity {
     /**
      * @generated
      */
-    public List<Quantity> add(Quantity quantity) {
+    public Quantity add(Quantity quantity) {
         //TODO
         return null;
     }
