@@ -19,6 +19,12 @@ public abstract class Party {
     /**
     * @generated
     */
+    private Capabilities capabilities;
+
+
+    /**
+    * @generated
+    */
     private Set<Preference> preferences;
 
 
@@ -31,6 +37,12 @@ public abstract class Party {
     * @generated
     */
     private Set<AddressProperties> addressProperties;
+
+
+    /**
+    * @generated
+    */
+    private Set<PartyRole> roles;
 
 
     /**
@@ -74,6 +86,23 @@ public abstract class Party {
     /**
     * @generated
     */
+    public Set<PartyRole> getRoles() {
+        if (this.roles == null) {
+            this.roles = new HashSet<PartyRole>();
+        }
+        return this.roles;
+    }
+
+    /**
+    * @generated
+    */
+    public void setRoles(Set<PartyRole> roles) {
+        this.roles = roles;
+    }
+
+    /**
+    * @generated
+    */
     public Set<AddressProperties> getAddressProperties() {
         if (this.addressProperties == null) {
             this.addressProperties = new HashSet<AddressProperties>();
@@ -103,6 +132,20 @@ public abstract class Party {
     */
     public void setPreferences(Set<Preference> preferences) {
         this.preferences = preferences;
+    }
+
+    /**
+    * @generated
+    */
+    public Capabilities getCapabilities() {
+        return this.capabilities;
+    }
+
+    /**
+    * @generated
+    */
+    public void setCapabilities(Capabilities capabilities) {
+        this.capabilities = capabilities;
     }
 
     /**
