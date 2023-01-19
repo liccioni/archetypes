@@ -2,53 +2,47 @@ package net.liccioni.archetypes.quantity;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class SystemOfUnits {
-    
-    /**
-    * @generated
-    */
-    private String nameOfSystem;
-    
-    /**
-    * @generated
-    */
-    private String nameOfStandardizationBody;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String nameOfSystem;
+
+    /**
+     * @generated
+     */
+    private String nameOfStandardizationBody;
+
+
+    /**
+     * @generated
+     */
     public String getNameOfSystem() {
         return this.nameOfSystem;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setNameOfSystem(String nameOfSystem) {
         this.nameOfSystem = nameOfSystem;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getNameOfStandardizationBody() {
         return this.nameOfStandardizationBody;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setNameOfStandardizationBody(String nameOfStandardizationBody) {
         this.nameOfStandardizationBody = nameOfStandardizationBody;
     }
-    
-    
-    
-    
 }

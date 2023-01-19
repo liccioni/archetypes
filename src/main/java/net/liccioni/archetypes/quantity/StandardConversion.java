@@ -2,71 +2,67 @@ package net.liccioni.archetypes.quantity;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class StandardConversion {
-    
-    /**
-    * @generated
-    */
-    private double conversionFactor;
-    
-    
-    /**
-    * @generated
-    */
-    private Unit source;
-    
-    /**
-    * @generated
-    */
-    private Unit target;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private double conversionFactor;
+
+
+    /**
+     * @generated
+     */
+    private Unit source;
+
+    /**
+     * @generated
+     */
+    private Unit target;
+
+
+    /**
+     * @generated
+     */
     public double getConversionFactor() {
         return this.conversionFactor;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setConversionFactor(double conversionFactor) {
         this.conversionFactor = conversionFactor;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Unit getTarget() {
         return this.target;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setTarget(Unit target) {
         this.target = target;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Unit getSource() {
         return this.source;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setSource(Unit source) {
         this.source = source;
     }
-    
-    
-    
 }

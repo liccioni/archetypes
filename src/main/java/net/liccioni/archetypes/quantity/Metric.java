@@ -2,73 +2,67 @@ package net.liccioni.archetypes.quantity;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public abstract class Metric {
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String symbol;
-    
-    /**
-    * @generated
-    */
-    private String definition;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String name;
+
+    /**
+     * @generated
+     */
+    private String symbol;
+
+    /**
+     * @generated
+     */
+    private String definition;
+
+
+    /**
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getSymbol() {
         return this.symbol;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getDefinition() {
         return this.definition;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDefinition(String definition) {
         this.definition = definition;
     }
-    
-    
-    
-    
 }

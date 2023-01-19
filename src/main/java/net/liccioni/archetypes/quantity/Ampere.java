@@ -2,13 +2,9 @@ package net.liccioni.archetypes.quantity;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Ampere extends SIBaseUnit {
-    
-    
-    
 
-    
-    
+
 }
