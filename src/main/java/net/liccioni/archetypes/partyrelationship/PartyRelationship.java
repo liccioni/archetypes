@@ -9,17 +9,6 @@ public class PartyRelationship {
     /**
     * @generated
     */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String description;
-    
-    
-    /**
-    * @generated
-    */
     private PartyRole supplier;
     
     /**
@@ -32,33 +21,39 @@ public class PartyRelationship {
     /**
     * @generated
     */
-    public String getName() {
-        return this.name;
-    }
-    
+    private PartyRelationshipType type;
+
+
+
     /**
     * @generated
     */
-    public void setName(String name) {
-        this.name = name;
+    public PartyRelationshipType getType() {
+        return this.type;
     }
-    
+
+    /**
+    * @generated
+    */
+    public void setType(PartyRelationshipType type) {
+        this.type = type;
+    }
+
+    /**
+    * @generated
+    */
+    public String getName() {
+        //TODO
+        return "";
+    }
     
     /**
     * @generated
     */
     public String getDescription() {
-        return this.description;
+        //TODO
+        return "";
     }
-    
-    /**
-    * @generated
-    */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    
     
     /**
     * @generated

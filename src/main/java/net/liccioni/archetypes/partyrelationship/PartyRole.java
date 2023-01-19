@@ -9,17 +9,6 @@ public class PartyRole {
     /**
     * @generated
     */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String description;
-    
-    
-    /**
-    * @generated
-    */
     private PartyRoleIdentifier identifier;
     
     /**
@@ -38,32 +27,17 @@ public class PartyRole {
     * @generated
     */
     public String getName() {
-        return this.name;
+        //TODO
+        return "";
     }
-    
-    /**
-    * @generated
-    */
-    public void setName(String name) {
-        this.name = name;
-    }
-    
     
     /**
     * @generated
     */
     public String getDescription() {
-        return this.description;
+        //TODO
+        return "";
     }
-    
-    /**
-    * @generated
-    */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    
     
     /**
     * @generated
