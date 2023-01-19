@@ -32,7 +32,7 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    private Set<AssignedResponsability> assignedResponsibilities;
+    private Set<AssignedResponsibility> assignedResponsibilities;
 
     /**
     * @generated
@@ -141,9 +141,9 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    public Set<AssignedResponsability> getAssignedResponsibilities() {
+    public Set<AssignedResponsibility> getAssignedResponsibilities() {
         if (this.assignedResponsibilities == null) {
-            this.assignedResponsibilities = new HashSet<AssignedResponsability>();
+            this.assignedResponsibilities = new HashSet<AssignedResponsibility>();
         }
         return this.assignedResponsibilities;
     }
@@ -151,7 +151,7 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    public void setAssignedResponsibilities(Set<AssignedResponsability> assignedResponsibilities) {
+    public void setAssignedResponsibilities(Set<AssignedResponsibility> assignedResponsibilities) {
         this.assignedResponsibilities = assignedResponsibilities;
     }
 
