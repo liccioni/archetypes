@@ -22,8 +22,18 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    private Set<AssignedResponsability> assignedResponsabilities;
-    
+    private RuleSet requirementsForRole;
+
+    /**
+    * @generated
+    */
+    private Set<Responsability> mandatoryResponsibilities;
+
+    /**
+    * @generated
+    */
+    private Set<AssignedResponsability> assignedResponsibilities;
+
     /**
     * @generated
     */
@@ -32,19 +42,7 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    private Set<Responsability> mandatiryResponsabilities;
-    
-    /**
-    * @generated
-    */
-    private Set<Responsability> optionalResponsabilities;
-    
-    /**
-    * @generated
-    */
-    private RuleSet requierementsForRole;
-    
-    
+    private Set<Responsability> optionalResponsibilities;
 
     /**
     * @generated
@@ -80,57 +78,34 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    public Set<Responsability> getMandatiryResponsabilities() {
-        if (this.mandatiryResponsabilities == null) {
-            this.mandatiryResponsabilities = new HashSet<Responsability>();
+    public RuleSet getRequirementsForRole() {
+        return this.requirementsForRole;
+    }
+
+    /**
+    * @generated
+    */
+    public void setRequirementsForRole(RuleSet requirementsForRole) {
+        this.requirementsForRole = requirementsForRole;
+    }
+
+    /**
+    * @generated
+    */
+    public Set<Responsability> getOptionalResponsibilities() {
+        if (this.optionalResponsibilities == null) {
+            this.optionalResponsibilities = new HashSet<Responsability>();
         }
-        return this.mandatiryResponsabilities;
+        return this.optionalResponsibilities;
     }
-    
+
     /**
     * @generated
     */
-    public void setMandatiryResponsabilities(Set<Responsability> mandatiryResponsabilities) {
-        this.mandatiryResponsabilities = mandatiryResponsabilities;
+    public void setOptionalResponsibilities(Set<Responsability> optionalResponsibilities) {
+        this.optionalResponsibilities = optionalResponsibilities;
     }
-    
-    
-    /**
-    * @generated
-    */
-    public Set<Responsability> getOptionalResponsabilities() {
-        if (this.optionalResponsabilities == null) {
-            this.optionalResponsabilities = new HashSet<Responsability>();
-        }
-        return this.optionalResponsabilities;
-    }
-    
-    /**
-    * @generated
-    */
-    public void setOptionalResponsabilities(Set<Responsability> optionalResponsabilities) {
-        this.optionalResponsabilities = optionalResponsabilities;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    public Set<AssignedResponsability> getAssignedResponsabilities() {
-        if (this.assignedResponsabilities == null) {
-            this.assignedResponsabilities = new HashSet<AssignedResponsability>();
-        }
-        return this.assignedResponsabilities;
-    }
-    
-    /**
-    * @generated
-    */
-    public void setAssignedResponsabilities(Set<AssignedResponsability> assignedResponsabilities) {
-        this.assignedResponsabilities = assignedResponsabilities;
-    }
-    
-    
+
     /**
     * @generated
     */
@@ -149,19 +124,36 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    public RuleSet getRequierementsForRole() {
-        return this.requierementsForRole;
+    public Set<Responsability> getMandatoryResponsibilities() {
+        if (this.mandatoryResponsibilities == null) {
+            this.mandatoryResponsibilities = new HashSet<Responsability>();
+        }
+        return this.mandatoryResponsibilities;
     }
-    
+
     /**
     * @generated
     */
-    public void setRequierementsForRole(RuleSet requierementsForRole) {
-        this.requierementsForRole = requierementsForRole;
+    public void setMandatoryResponsibilities(Set<Responsability> mandatoryResponsibilities) {
+        this.mandatoryResponsibilities = mandatoryResponsibilities;
     }
-    
-    
-    
+
+    /**
+    * @generated
+    */
+    public Set<AssignedResponsability> getAssignedResponsibilities() {
+        if (this.assignedResponsibilities == null) {
+            this.assignedResponsibilities = new HashSet<AssignedResponsability>();
+        }
+        return this.assignedResponsibilities;
+    }
+
+    /**
+    * @generated
+    */
+    public void setAssignedResponsibilities(Set<AssignedResponsability> assignedResponsibilities) {
+        this.assignedResponsibilities = assignedResponsibilities;
+    }
 
     //                          Operations                                  
     
