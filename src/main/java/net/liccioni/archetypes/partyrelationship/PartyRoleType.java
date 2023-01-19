@@ -27,7 +27,7 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    private Set<Responsability> mandatoryResponsibilities;
+    private Set<Responsibility> mandatoryResponsibilities;
 
     /**
     * @generated
@@ -42,7 +42,7 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    private Set<Responsability> optionalResponsibilities;
+    private Set<Responsibility> optionalResponsibilities;
 
     /**
     * @generated
@@ -92,9 +92,9 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    public Set<Responsability> getOptionalResponsibilities() {
+    public Set<Responsibility> getOptionalResponsibilities() {
         if (this.optionalResponsibilities == null) {
-            this.optionalResponsibilities = new HashSet<Responsability>();
+            this.optionalResponsibilities = new HashSet<Responsibility>();
         }
         return this.optionalResponsibilities;
     }
@@ -102,7 +102,7 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    public void setOptionalResponsibilities(Set<Responsability> optionalResponsibilities) {
+    public void setOptionalResponsibilities(Set<Responsibility> optionalResponsibilities) {
         this.optionalResponsibilities = optionalResponsibilities;
     }
 
@@ -124,9 +124,9 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    public Set<Responsability> getMandatoryResponsibilities() {
+    public Set<Responsibility> getMandatoryResponsibilities() {
         if (this.mandatoryResponsibilities == null) {
-            this.mandatoryResponsibilities = new HashSet<Responsability>();
+            this.mandatoryResponsibilities = new HashSet<Responsibility>();
         }
         return this.mandatoryResponsibilities;
     }
@@ -134,7 +134,7 @@ public class PartyRoleType {
     /**
     * @generated
     */
-    public void setMandatoryResponsibilities(Set<Responsability> mandatoryResponsibilities) {
+    public void setMandatoryResponsibilities(Set<Responsibility> mandatoryResponsibilities) {
         this.mandatoryResponsibilities = mandatoryResponsibilities;
     }
 

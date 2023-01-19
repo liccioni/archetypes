@@ -25,7 +25,7 @@ public class AssignedResponsibility {
     /**
     * @generated
     */
-    private Responsability responsability;
+    private Responsibility responsability;
     
     
 
@@ -78,19 +78,16 @@ public class AssignedResponsibility {
     /**
     * @generated
     */
-    public Responsability getResponsability() {
+    public Responsibility getResponsability() {
         return this.responsability;
     }
     
     /**
     * @generated
     */
-    public void setResponsability(Responsability responsability) {
+    public void setResponsability(Responsibility responsability) {
         this.responsability = responsability;
     }
-    
-    
-    
 
     //                          Operations                                  
     
