@@ -76,6 +76,6 @@ public class ProductFeatureInstance {
      */
     public List<String> getPossibleValues() {
         //TODO
-        return null;
+        return "";
     }
 }
