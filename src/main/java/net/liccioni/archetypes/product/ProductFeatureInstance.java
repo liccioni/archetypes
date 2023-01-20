@@ -69,13 +69,4 @@ public class ProductFeatureInstance {
         //TODO
         return "";
     }
-
-
-    /**
-     * @generated
-     */
-    public List<String> getPossibleValues() {
-        //TODO
-        return "";
-    }
 }
