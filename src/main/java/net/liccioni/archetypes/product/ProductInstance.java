@@ -17,6 +17,18 @@ public class ProductInstance {
     /**
     * @generated
     */
+    private ReservationIdentifier reservation;
+
+
+    /**
+    * @generated
+    */
+    private ReservationStatus reservationStatus;
+
+
+    /**
+    * @generated
+    */
     private Price agreed;
     
     /**
@@ -62,6 +74,34 @@ public class ProductInstance {
     
     
     
+    /**
+    * @generated
+    */
+    public ReservationIdentifier getReservation() {
+        return this.reservation;
+    }
+
+    /**
+    * @generated
+    */
+    public void setReservation(ReservationIdentifier reservation) {
+        this.reservation = reservation;
+    }
+
+    /**
+    * @generated
+    */
+    public ReservationStatus getReservationStatus() {
+        return this.reservationStatus;
+    }
+
+    /**
+    * @generated
+    */
+    public void setReservationStatus(ReservationStatus reservationStatus) {
+        this.reservationStatus = reservationStatus;
+    }
+
     /**
     * @generated
     */
@@ -152,6 +192,24 @@ public class ProductInstance {
     */
     public void setFeatures(Set<ProductFeatureInstance> features) {
         this.features = features;
+    }
+
+    /**
+    * @generated
+    */
+    public boolean reserve(ReservationIdentifier reservationIdentifier)
+    {
+        //TODO
+        return false;
+    }
+
+    /**
+    * @generated
+    */
+    public boolean cancelReservation()
+    {
+        //TODO
+        return false;
     }
     
     

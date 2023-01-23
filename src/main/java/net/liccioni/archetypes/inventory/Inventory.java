@@ -17,17 +17,7 @@ public class Inventory {
     /**
     * @generated
     */
-    private Set<ProductType> productTypes;
-    
-    /**
-    * @generated
-    */
     private Set<ReservationRequest> requests;
-    
-    /**
-    * @generated
-    */
-    private Set<ProductInstance> productInstances;
     
     /**
     * @generated
@@ -59,19 +49,9 @@ public class Inventory {
     * @generated
     */
     public Set<ProductType> getProductTypes() {
-        if (this.productTypes == null) {
-            this.productTypes = new HashSet<ProductType>();
-        }
-        return this.productTypes;
+        //TODO
+        return null;
     }
-    
-    /**
-    * @generated
-    */
-    public void setProductTypes(Set<ProductType> productTypes) {
-        this.productTypes = productTypes;
-    }
-    
     
     /**
     * @generated
@@ -109,26 +89,6 @@ public class Inventory {
     }
     
     
-    /**
-    * @generated
-    */
-    public Set<ProductInstance> getProductInstances() {
-        if (this.productInstances == null) {
-            this.productInstances = new HashSet<ProductInstance>();
-        }
-        return this.productInstances;
-    }
-    
-    /**
-    * @generated
-    */
-    public void setProductInstances(Set<ProductInstance> productInstances) {
-        this.productInstances = productInstances;
-    }
-    
-    
-    
-
     //                          Operations                                  
     
     
