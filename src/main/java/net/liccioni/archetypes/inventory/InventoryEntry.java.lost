@@ -1,3 +1,6 @@
+
+Mon Jan 23 14:26:35 UTC 2023
+================================================================================
 package net.liccioni.archetypes.inventory;
 
 import java.util.Set;
@@ -117,7 +120,7 @@ public class InventoryEntry {
     /**
     * @generated
     */
-    public boolean canAcceptReservationRequest(ReservationRequest request)
+    public boolean can|AcceptReservationRequest(ReservationRequest request)
     {
         //TODO
         return false;
