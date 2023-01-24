@@ -28,6 +28,15 @@ public class DiscountType {
     public void setRuleSet(RuleSet ruleSet) {
         this.ruleSet = ruleSet;
     }
+
+    /**
+    * @generated
+    */
+    public Discount getDiscount(RuleContext context)
+    {
+        //TODO
+        return null;
+    }
     
     
     

@@ -6,7 +6,7 @@ import java.util.HashSet;
 /**
 * @generated
 */
-public class OrderManager {
+public abstract class OrderManager {
     
     
     /**

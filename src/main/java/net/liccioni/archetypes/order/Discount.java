@@ -4,9 +4,13 @@ package net.liccioni.archetypes.order;
 /**
 * @generated
 */
-public class Discount {
+public abstract class Discount {
     
     
+    /**
+    * @generated
+    */
+    private String reason;
     /**
     * @generated
     */
@@ -15,6 +19,20 @@ public class Discount {
     
 
     
+    /**
+    * @generated
+    */
+    public String getReason() {
+        return this.reason;
+    }
+
+    /**
+    * @generated
+    */
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
     /**
     * @generated
     */
@@ -27,6 +45,15 @@ public class Discount {
     */
     public void setDiscountType(DiscountType discountType) {
         this.discountType = discountType;
+    }
+
+    /**
+    * @generated
+    */
+    public Price calculateDiscountedPrice(Price price)
+    {
+        //TODO
+        return null;
     }
     
     

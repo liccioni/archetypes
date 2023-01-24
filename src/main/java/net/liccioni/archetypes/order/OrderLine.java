@@ -12,6 +12,41 @@ public class OrderLine {
     /**
     * @generated
     */
+    private ProductIdentifier productType;
+
+  /**
+    * @generated
+    */
+    private SerialNumber serialNumber;
+
+  /**
+    * @generated
+    */
+    private String description;
+
+  /**
+    * @generated
+    */
+    private String comment;
+
+  /**
+    * @generated
+    */
+    private int numberOrdered;
+
+  /**
+    * @generated
+    */
+    private Money unitPrice;
+
+  /**
+    * @generated
+    */
+    private TimeDate expectedDeliveryDate;
+
+    /**
+    * @generated
+    */
     private ChargeLine chargeLine;
     
     /**
@@ -32,6 +67,104 @@ public class OrderLine {
     
 
     
+    /**
+    * @generated
+    */
+    public ProductIdentifier getProductType() {
+        return this.productType;
+    }
+
+    /**
+    * @generated
+    */
+    public void setProductType(ProductIdentifier productType) {
+        this.productType = productType;
+    }
+
+    /**
+    * @generated
+    */
+    public SerialNumber getSerialNumber() {
+        return this.serialNumber;
+    }
+
+    /**
+    * @generated
+    */
+    public void setSerialNumber(SerialNumber serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    /**
+    * @generated
+    */
+    public String getDescription() {
+        return this.description;
+    }
+
+    /**
+    * @generated
+    */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+    * @generated
+    */
+    public String getComment() {
+        return this.comment;
+    }
+
+    /**
+    * @generated
+    */
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    /**
+    * @generated
+    */
+    public int getNumberOrdered() {
+        return this.numberOrdered;
+    }
+
+    /**
+    * @generated
+    */
+    public void setNumberOrdered(int numberOrdered) {
+        this.numberOrdered = numberOrdered;
+    }
+
+    /**
+    * @generated
+    */
+    public Money getUnitPrice() {
+        return this.unitPrice;
+    }
+
+    /**
+    * @generated
+    */
+    public void setUnitPrice(Money unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    /**
+    * @generated
+    */
+    public TimeDate getExpectedDeliveryDate() {
+        return this.expectedDeliveryDate;
+    }
+
+    /**
+    * @generated
+    */
+    public void setExpectedDeliveryDate(TimeDate expectedDeliveryDate) {
+        this.expectedDeliveryDate = expectedDeliveryDate;
+    }
+
     /**
     * @generated
     */

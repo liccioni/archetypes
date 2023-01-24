@@ -17,6 +17,36 @@ public class Order {
     /**
     * @generated
     */
+    private TimeDate dateCreated;
+
+
+    /**
+    * @generated
+    */
+    private String salesChannel;
+
+
+    /**
+    * @generated
+    */
+    private String termsAndCondition;
+
+
+    /**
+    * @generated
+    */
+    private RuleContext discountContext;
+
+
+    /**
+    * @generated
+    */
+    private Set<OrderEvent> auditTrail;
+
+
+    /**
+    * @generated
+    */
     private PartySummary paymentReceiver;
     
     /**
@@ -77,6 +107,62 @@ public class Order {
     
     
     
+    /**
+    * @generated
+    */
+    public TimeDate getDateCreated() {
+        return this.dateCreated;
+    }
+
+    /**
+    * @generated
+    */
+    public void setDateCreated(TimeDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    /**
+    * @generated
+    */
+    public String getSalesChannel() {
+        return this.salesChannel;
+    }
+
+    /**
+    * @generated
+    */
+    public void setSalesChannel(String salesChannel) {
+        this.salesChannel = salesChannel;
+    }
+
+    /**
+    * @generated
+    */
+    public String getTermsAndCondition() {
+        return this.termsAndCondition;
+    }
+
+    /**
+    * @generated
+    */
+    public void setTermsAndCondition(String termsAndCondition) {
+        this.termsAndCondition = termsAndCondition;
+    }
+
+    /**
+    * @generated
+    */
+    public RuleContext getDiscountContext() {
+        return this.discountContext;
+    }
+
+    /**
+    * @generated
+    */
+    public void setDiscountContext(RuleContext discountContext) {
+        this.discountContext = discountContext;
+    }
+
     /**
     * @generated
     */
@@ -215,6 +301,68 @@ public class Order {
     */
     public void setOrderIdentifier(OrderIdentifier orderIdentifier) {
         this.orderIdentifier = orderIdentifier;
+    }
+
+    /**
+    * @generated
+    */
+    public Set<OrderEvent> getAuditTrail() {
+        if (this.auditTrail == null) {
+            this.auditTrail = new HashSet<OrderEvent>();
+        }
+        return this.auditTrail;
+    }
+
+    /**
+    * @generated
+    */
+    public void setAuditTrail(Set<OrderEvent> auditTrail) {
+        this.auditTrail = auditTrail;
+    }
+
+    /**
+    * @generated
+    */
+    public boolean acceptEvent(OrderEvent orderEvent)
+    {
+        //TODO
+        return false;
+    }
+
+    /**
+    * @generated
+    */
+    public boolean processDiscountEvent()
+    {
+        //TODO
+        return false;
+    }
+
+    /**
+    * @generated
+    */
+    public boolean processLifeCycleEvent()
+    {
+        //TODO
+        return false;
+    }
+
+    /**
+    * @generated
+    */
+    public boolean processAmendEvent()
+    {
+        //TODO
+        return false;
+    }
+
+    /**
+    * @generated
+    */
+    public boolean processInvoiceEvent()
+    {
+        //TODO
+        return false;
     }
     
     
