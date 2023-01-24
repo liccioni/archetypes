@@ -1,23 +1,35 @@
 package net.liccioni.archetypes.rule;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-/**
- * @generated
- */
 public class RuleContext {
+
+    private final Map<String, RuleElement> elements = new HashMap<>();
+
+    public void addProposition(String statement, boolean value) {
+        Proposition proposition = new Proposition(statement, value);
+        elements.put(statement, proposition);
+    }
+
+    public <R extends Comparable<R>> void addVariable(String name, R value) {
+        elements.put(name, new Variable<>(name, value));
+    }
+
+    public void addVariable(String name, String value) {
+        elements.put(name, new StringVariable(name, value));
+    }
+
+    public Optional<RuleElement> findElement(String name) {
+        return Optional.ofNullable(elements.get(name));
+    }
+
 
     /**
      * @generated
      */
     private String name;
-
-
-    /**
-     * @generated
-     */
-    private Set<RuleElement> elements;
 
 
     /**
@@ -34,44 +46,7 @@ public class RuleContext {
         this.name = name;
     }
 
-
-    /**
-     * @generated
-     */
-    public Set<RuleElement> getElements() {
-        if (this.elements == null) {
-            this.elements = new HashSet<RuleElement>();
-        }
-        return this.elements;
-    }
-
-    /**
-     * @generated
-     */
-    public void setElements(Set<RuleElement> elements) {
-        this.elements = elements;
-    }
-
-
     //                          Operations
-
-
-    /**
-     * @generated
-     */
-    public boolean addProposition(String name, boolean value) {
-        //TODO
-        return false;
-    }
-
-
-    /**
-     * @generated
-     */
-    public boolean addVariable(String name, String value) {
-        //TODO
-        return false;
-    }
 
 
     /**

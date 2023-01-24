@@ -1,6 +1,8 @@
 package net.liccioni.archetypes.rule;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -8,34 +10,26 @@ import java.util.Set;
  */
 public class RuleSet {
 
+    private final List<Rule> rules;
 
-    /**
-     * @generated
-     */
-    private Set<Rule> rules;
+    public RuleSet(List<Rule> rules) {
+        this.rules = rules;
+    }
+
+    public RuleSet(Rule ... rules) {
+        this.rules = Arrays.asList(rules);
+    }
+
+    public boolean evaluate(RuleContext context) {
+        return rules.stream()
+                .map(rule -> rule.evaluate(context))
+                .allMatch(Proposition::getValue);
+    }
 
     /**
      * @generated
      */
     private Set<RuleOverride> ruleOverrides;
-
-
-    /**
-     * @generated
-     */
-    public Set<Rule> getRules() {
-        if (this.rules == null) {
-            this.rules = new HashSet<Rule>();
-        }
-        return this.rules;
-    }
-
-    /**
-     * @generated
-     */
-    public void setRules(Set<Rule> rules) {
-        this.rules = rules;
-    }
 
 
     /**
@@ -74,14 +68,5 @@ public class RuleSet {
     public boolean addRuleOverride(RuleOverride ruleOverride) {
         //TODO
         return false;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Proposition evaluate(RuleContext context) {
-        //TODO
-        return null;
     }
 }

@@ -1,72 +1,89 @@
 package net.liccioni.archetypes.rule;
 
 
+import static net.liccioni.archetypes.rule.Operation.AND;
+import static net.liccioni.archetypes.rule.Operation.NOT;
+import static net.liccioni.archetypes.rule.Operation.OR;
+import static net.liccioni.archetypes.rule.Operation.XOR;
+
+import java.util.Objects;
+
 /**
  * @generated
  */
 public class Proposition extends RuleElement {
 
-    /**
-     * @generated
-     */
-    private boolean value;
+    private final boolean value;
 
-
-    /**
-     * @generated
-     */
-    public boolean getValue() {
-        return this.value;
+    public Proposition(String name) {
+        super(name);
+        this.value = false;
     }
 
-    /**
-     * @generated
-     */
-    public void setValue(boolean value) {
+    public Proposition(String name, boolean value) {
+        super(name);
         this.value = value;
-    }
-
-
-    //                          Operations
-
-
-    /**
-     * @generated
-     */
-    public Proposition and(Proposition rhs) {
-        //TODO
-        return null;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Proposition or(Proposition rhs) {
-        //TODO
-        return null;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Proposition xor(Proposition rhs) {
-        //TODO
-        return null;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Proposition not() {
-        //TODO
-        return null;
     }
 
     @Override
     public String getType() {
         return "Proposition";
+    }
+
+    @Override
+    void acceptStack(RuleExecutionStack stack) {
+        stack.acceptElement(this);
+    }
+
+    public boolean getValue() {
+        return value;
+    }
+
+    public Proposition and(Proposition other) {
+        return newProposition(other.getName(), AND.name(), other.value && this.value);
+    }
+
+    public Proposition or(Proposition other) {
+        return newProposition(other.getName(), OR.name(), other.value || this.value);
+    }
+
+    public Proposition xor(Proposition other) {
+        return newProposition(other.getName(), XOR.name(), other.value ^ this.value);
+    }
+
+    public Proposition not() {
+        return new Proposition(String.format("%s_%s", NOT.name(), this.getName()), !this.value);
+    }
+
+    private Proposition newProposition(String otherName, String operation, boolean newValue) {
+        return new Proposition(String.format("%s_%s_%s", otherName, operation, this.getName()), newValue);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Proposition)) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
+        Proposition that = (Proposition) o;
+        return getValue() == that.getValue();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getValue());
+    }
+
+    @Override
+    public String toString() {
+        return "Proposition{" +
+                "name=" + this.getName() + ", " +
+                "value=" + value +
+                '}';
     }
 }

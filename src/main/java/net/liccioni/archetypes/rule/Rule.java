@@ -1,93 +1,26 @@
 package net.liccioni.archetypes.rule;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
-/**
- * @generated
- */
 public class Rule {
 
-    /**
-     * @generated
-     */
-    private String name;
+    private final String name;
 
+    private final List<RuleElement> elements;
 
-    /**
-     * @generated
-     */
-    private Set<RuleElement> elements;
-
-
-    /**
-     * @generated
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * @generated
-     */
-    public void setName(String name) {
+    Rule(String name, List<RuleElement> elements) {
         this.name = name;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<RuleElement> getElements() {
-        if (this.elements == null) {
-            this.elements = new HashSet<RuleElement>();
-        }
-        return this.elements;
-    }
-
-    /**
-     * @generated
-     */
-    public void setElements(Set<RuleElement> elements) {
         this.elements = elements;
     }
 
-
-    //                          Operations
-
-
-    /**
-     * @generated
-     */
-    public boolean addOperator(Operator operator) {
-        //TODO
-        return false;
+    public String getName() {
+        return name;
     }
 
-
-    /**
-     * @generated
-     */
-    public boolean addProposition(Proposition operator) {
-        //TODO
-        return false;
-    }
-
-
-    /**
-     * @generated
-     */
-    public boolean addVariable(Variable variable) {
-        //TODO
-        return false;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Proposition evaluate(RuleContext context) {
-        //TODO
-        return null;
+    public Proposition evaluate(RuleContext ruleContext) {
+        RuleExecutionStack stack = new RuleExecutionStack(ruleContext);
+        elements.forEach(stack::acceptElement);
+        return Optional.ofNullable(stack.result()).orElseGet(() -> new Proposition("Evaluation Failed"));
     }
 }
