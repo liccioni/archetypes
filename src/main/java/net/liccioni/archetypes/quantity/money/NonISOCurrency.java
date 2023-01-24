@@ -2,13 +2,9 @@ package net.liccioni.archetypes.quantity.money;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class NonISOCurrency extends Currency {
-    
-    
-    
 
-    
-    
+
 }

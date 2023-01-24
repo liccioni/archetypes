@@ -1,7 +1,8 @@
 package net.liccioni.archetypes.product;
 
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @generated
@@ -12,6 +13,12 @@ public class ProductFeatureInstance {
      * @generated
      */
     private String value;
+
+
+    /**
+     * @generated
+     */
+    private Set<String> possibleValues;
 
 
     /**
@@ -34,6 +41,23 @@ public class ProductFeatureInstance {
         this.value = value;
     }
 
+
+    /**
+     * @generated
+     */
+    public Set<String> getPossibleValues() {
+        if (this.possibleValues == null) {
+            this.possibleValues = new HashSet<String>();
+        }
+        return this.possibleValues;
+    }
+
+    /**
+     * @generated
+     */
+    public void setPossibleValues(Set<String> possibleValues) {
+        this.possibleValues = possibleValues;
+    }
 
     /**
      * @generated
@@ -68,14 +92,5 @@ public class ProductFeatureInstance {
     public String getDescription() {
         //TODO
         return "";
-    }
-
-
-    /**
-     * @generated
-     */
-    public List<String> getPossibleValues() {
-        //TODO
-        return null;
     }
 }

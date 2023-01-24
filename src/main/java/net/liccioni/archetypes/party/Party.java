@@ -33,6 +33,12 @@ public abstract class Party {
     /**
      * @generated
      */
+    private Set<PartyAuthentication> authentications;
+
+
+    /**
+     * @generated
+     */
     private Set<RegisteredIdentifier> registeredIdentifier;
 
     /**
@@ -132,6 +138,23 @@ public abstract class Party {
      */
     public void setPreferences(Set<Preference> preferences) {
         this.preferences = preferences;
+    }
+
+    /**
+     * @generated
+     */
+    public Set<PartyAuthentication> getAuthentications() {
+        if (this.authentications == null) {
+            this.authentications = new HashSet<PartyAuthentication>();
+        }
+        return this.authentications;
+    }
+
+    /**
+     * @generated
+     */
+    public void setAuthentications(Set<PartyAuthentication> authentications) {
+        this.authentications = authentications;
     }
 
     /**

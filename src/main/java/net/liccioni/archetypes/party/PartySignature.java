@@ -22,6 +22,11 @@ public class PartySignature {
     /**
      * @generated
      */
+    private PartyAuthentication authentication;
+
+    /**
+     * @generated
+     */
     private PartyIdentifier partyIdentifier;
 
 
@@ -67,5 +72,19 @@ public class PartySignature {
      */
     public void setPartyIdentifier(PartyIdentifier partyIdentifier) {
         this.partyIdentifier = partyIdentifier;
+    }
+
+    /**
+     * @generated
+     */
+    public PartyAuthentication getAuthentication() {
+        return this.authentication;
+    }
+
+    /**
+     * @generated
+     */
+    public void setAuthentication(PartyAuthentication authentication) {
+        this.authentication = authentication;
     }
 }

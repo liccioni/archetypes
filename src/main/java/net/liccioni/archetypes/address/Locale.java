@@ -1,73 +1,69 @@
 package net.liccioni.archetypes.address;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public abstract class Locale {
-    
-    /**
-    * @generated
-    */
-    private String identifier;
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String description;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String identifier;
+
+    /**
+     * @generated
+     */
+    private String name;
+
+    /**
+     * @generated
+     */
+    private String description;
+
+
+    /**
+     * @generated
+     */
     public String getIdentifier() {
         return this.identifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setIdentifier(String identifier) {
         this.identifier = identifier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getDescription() {
         return this.description;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
-    
-    
+
+
 }
