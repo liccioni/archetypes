@@ -22,6 +22,14 @@ public class PaymentEvent extends OrderEvent {
     /**
     * @generated
     */
+    private OrderPayment orderPayment;
+
+
+
+
+    /**
+    * @generated
+    */
     public OrderLineIdentifier getOrderLineIdentifier() {
         return this.orderLineIdentifier;
     }
@@ -46,6 +54,20 @@ public class PaymentEvent extends OrderEvent {
     */
     public void setInvoiceIdentifier(String invoiceIdentifier) {
         this.invoiceIdentifier = invoiceIdentifier;
+    }
+
+    /**
+    * @generated
+    */
+    public OrderPayment getOrderPayment() {
+        return this.orderPayment;
+    }
+
+    /**
+    * @generated
+    */
+    public void setOrderPayment(OrderPayment orderPayment) {
+        this.orderPayment = orderPayment;
     }
     
     
