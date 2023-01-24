@@ -31,8 +31,8 @@ public abstract class Party {
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Set<PartyAuthentication> authentications;
 
 
@@ -141,8 +141,8 @@ public abstract class Party {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<PartyAuthentication> getAuthentications() {
         if (this.authentications == null) {
             this.authentications = new HashSet<PartyAuthentication>();
@@ -151,8 +151,8 @@ public abstract class Party {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAuthentications(Set<PartyAuthentication> authentications) {
         this.authentications = authentications;
     }

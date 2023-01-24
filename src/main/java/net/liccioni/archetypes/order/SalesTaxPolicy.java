@@ -2,50 +2,46 @@ package net.liccioni.archetypes.order;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class SalesTaxPolicy {
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String taxationType;
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private double taxationRate;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public String getTaxationType() {
         return this.taxationType;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setTaxationType(String taxationType) {
         this.taxationType = taxationType;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public double getTaxationRate() {
         return this.taxationRate;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setTaxationRate(double taxationRate) {
         this.taxationRate = taxationRate;
     }
-    
-    
-    
 
-    
-    
+
 }

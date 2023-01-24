@@ -1,61 +1,59 @@
 package net.liccioni.archetypes.order;
 
 
+import net.liccioni.archetypes.product.Price;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public abstract class Discount {
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private String reason;
     /**
-    * @generated
-    */
+     * @generated
+     */
     private DiscountType discountType;
-    
-    
 
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getReason() {
         return this.reason;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setReason(String reason) {
         this.reason = reason;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public DiscountType getDiscountType() {
         return this.discountType;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDiscountType(DiscountType discountType) {
         this.discountType = discountType;
     }
 
     /**
-    * @generated
-    */
-    public Price calculateDiscountedPrice(Price price)
-    {
+     * @generated
+     */
+    public Price calculateDiscountedPrice(Price price) {
         //TODO
         return null;
     }
-    
-    
-    
+
+
 }

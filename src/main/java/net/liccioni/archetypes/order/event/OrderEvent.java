@@ -1,94 +1,94 @@
 package net.liccioni.archetypes.order.event;
 
 
+import net.liccioni.archetypes.TimeDate;
+import net.liccioni.archetypes.order.OrderIdentifier;
+import net.liccioni.archetypes.party.PartySignature;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class OrderEvent {
-    
-    /**
-    * @generated
-    */
-    private OrderIdentifier orderIdentifier;
-    
-    /**
-    * @generated
-    */
-    private PartySignature authorization;
-    
-    /**
-    * @generated
-    */
-    private TimeDate dateAuthorized;
-    
-    /**
-    * @generated
-    */
-    private boolean processed;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private OrderIdentifier orderIdentifier;
+
+    /**
+     * @generated
+     */
+    private PartySignature authorization;
+
+    /**
+     * @generated
+     */
+    private TimeDate dateAuthorized;
+
+    /**
+     * @generated
+     */
+    private boolean processed;
+
+
+    /**
+     * @generated
+     */
     public OrderIdentifier getOrderIdentifier() {
         return this.orderIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOrderIdentifier(OrderIdentifier orderIdentifier) {
         this.orderIdentifier = orderIdentifier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartySignature getAuthorization() {
         return this.authorization;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAuthorization(PartySignature authorization) {
         this.authorization = authorization;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getDateAuthorized() {
         return this.dateAuthorized;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDateAuthorized(TimeDate dateAuthorized) {
         this.dateAuthorized = dateAuthorized;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public boolean getProcessed() {
         return this.processed;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setProcessed(boolean processed) {
         this.processed = processed;
     }
-    
-    
-    
-    
+
+
 }

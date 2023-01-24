@@ -2,53 +2,50 @@ package net.liccioni.archetypes.product;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ProductRelationship {
-    
-    
-    /**
-    * @generated
-    */
-    private ProductType supplier;
-    
-    /**
-    * @generated
-    */
-    private ProductType client;
-    
-    
 
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private ProductType supplier;
+
+    /**
+     * @generated
+     */
+    private ProductType client;
+
+
+    /**
+     * @generated
+     */
     public ProductType getClient() {
         return this.client;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setClient(ProductType client) {
         this.client = client;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ProductType getSupplier() {
         return this.supplier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setSupplier(ProductType supplier) {
         this.supplier = supplier;
     }
-    
-    
-    
+
+
 }

@@ -2,33 +2,30 @@ package net.liccioni.archetypes.inventory;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Reservation {
-    
-    
-    /**
-    * @generated
-    */
-    private ReservationRequest request;
-    
-    
 
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private ReservationRequest request;
+
+
+    /**
+     * @generated
+     */
     public ReservationRequest getRequest() {
         return this.request;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setRequest(ReservationRequest request) {
         this.request = request;
     }
-    
-    
-    
+
+
 }

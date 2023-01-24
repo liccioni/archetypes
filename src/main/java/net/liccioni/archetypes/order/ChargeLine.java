@@ -1,88 +1,87 @@
 package net.liccioni.archetypes.order;
 
 
+import net.liccioni.archetypes.quantity.money.Money;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ChargeLine {
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Money amount;
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String description;
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String comment;
     /**
-    * @generated
-    */
+     * @generated
+     */
     private TaxOnLine taxOnLine;
-    
-    
 
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Money getAmount() {
         return this.amount;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAmount(Money amount) {
         this.amount = amount;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getDescription() {
         return this.description;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getComment() {
         return this.comment;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setComment(String comment) {
         this.comment = comment;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TaxOnLine getTaxOnLine() {
         return this.taxOnLine;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setTaxOnLine(TaxOnLine taxOnLine) {
         this.taxOnLine = taxOnLine;
     }
-    
-    
-    
+
+
 }

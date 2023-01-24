@@ -2,13 +2,9 @@ package net.liccioni.archetypes.order;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PercentageDiscount extends Discount {
-    
-    
-    
 
-    
-    
+
 }

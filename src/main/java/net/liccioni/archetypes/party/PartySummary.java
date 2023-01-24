@@ -1,154 +1,154 @@
 package net.liccioni.archetypes.party;
 
 
+import net.liccioni.archetypes.inventory.ReservationRequest;
+import net.liccioni.archetypes.partyrelationship.PartyRoleIdentifier;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PartySummary {
-    
-    /**
-    * @generated
-    */
-    private PartyRoleIdentifier partyRoleIdentifier;
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String address;
-    
-    /**
-    * @generated
-    */
-    private String telephoneNumber;
-    
-    /**
-    * @generated
-    */
-    private String emailAddress;
-    
-    
-    /**
-    * @generated
-    */
-    private ReservationRequest reservationRequest;
-    
-    /**
-    * @generated
-    */
-    private PartyIdentifier partyIdentifier;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private PartyRoleIdentifier partyRoleIdentifier;
+
+    /**
+     * @generated
+     */
+    private String name;
+
+    /**
+     * @generated
+     */
+    private String address;
+
+    /**
+     * @generated
+     */
+    private String telephoneNumber;
+
+    /**
+     * @generated
+     */
+    private String emailAddress;
+
+
+    /**
+     * @generated
+     */
+    private ReservationRequest reservationRequest;
+
+    /**
+     * @generated
+     */
+    private PartyIdentifier partyIdentifier;
+
+
+    /**
+     * @generated
+     */
     public PartyRoleIdentifier getPartyRoleIdentifier() {
         return this.partyRoleIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPartyRoleIdentifier(PartyRoleIdentifier partyRoleIdentifier) {
         this.partyRoleIdentifier = partyRoleIdentifier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getAddress() {
         return this.address;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getTelephoneNumber() {
         return this.telephoneNumber;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getEmailAddress() {
         return this.emailAddress;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyIdentifier getPartyIdentifier() {
         return this.partyIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPartyIdentifier(PartyIdentifier partyIdentifier) {
         this.partyIdentifier = partyIdentifier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ReservationRequest getReservationRequest() {
         return this.reservationRequest;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setReservationRequest(ReservationRequest reservationRequest) {
         this.reservationRequest = reservationRequest;
     }
-    
-    
-    
+
+
 }

@@ -1,51 +1,50 @@
 package net.liccioni.archetypes.inventory;
 
 
+import net.liccioni.archetypes.rule.RuleContext;
+import net.liccioni.archetypes.rule.RuleSet;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class RestockPolicy {
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private RuleContext ruleContext;
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private RuleSet ruleSet;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public RuleContext getRuleContext() {
         return this.ruleContext;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setRuleContext(RuleContext ruleContext) {
         this.ruleContext = ruleContext;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public RuleSet getRuleSet() {
         return this.ruleSet;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setRuleSet(RuleSet ruleSet) {
         this.ruleSet = ruleSet;
     }
-    
-    
-    
 
-    
-    
+
 }

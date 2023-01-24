@@ -2,13 +2,9 @@ package net.liccioni.archetypes.order.event;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class MakePaymentEvent extends PaymentEvent {
-    
-    
-    
 
-    
-    
+
 }

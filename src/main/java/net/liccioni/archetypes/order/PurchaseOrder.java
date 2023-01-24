@@ -1,69 +1,63 @@
 package net.liccioni.archetypes.order;
 
 
+import net.liccioni.archetypes.TimeDate;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PurchaseOrder extends Order {
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private TimeDate dateSent;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public TimeDate getDateSent() {
         return this.dateSent;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setDateSent(TimeDate dateSent) {
         this.dateSent = dateSent;
     }
 
-  /**
-    * @generated
-    */
-    public boolean processReceiptEvent()
-    {
+    /**
+     * @generated
+     */
+    public boolean processReceiptEvent() {
         //TODO
         return false;
     }
 
-  /**
-    * @generated
-    */
-    public boolean processInvoiceEvent()
-    {
+    /**
+     * @generated
+     */
+    public boolean processInvoiceEvent() {
         //TODO
         return false;
     }
 
-  /**
-    * @generated
-    */
-    public boolean processMakePaymentEvent()
-    {
+    /**
+     * @generated
+     */
+    public boolean processMakePaymentEvent() {
         //TODO
         return false;
     }
 
-  /**
-    * @generated
-    */
-    public boolean processAcceptRefundEvent()
-    {
+    /**
+     * @generated
+     */
+    public boolean processAcceptRefundEvent() {
         //TODO
         return false;
     }
-    
-    
-    
 
-    
-    
+
 }

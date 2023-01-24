@@ -1,87 +1,81 @@
 package net.liccioni.archetypes.order;
 
 
+import net.liccioni.archetypes.TimeDate;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class SalesOrder extends Order {
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private TimeDate datePurchaseOrderReceived;
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String customerOrderPurchaseReference;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public TimeDate getDatePurchaseOrderReceived() {
         return this.datePurchaseOrderReceived;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setDatePurchaseOrderReceived(TimeDate datePurchaseOrderReceived) {
         this.datePurchaseOrderReceived = datePurchaseOrderReceived;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public String getCustomerOrderPurchaseReference() {
         return this.customerOrderPurchaseReference;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setCustomerOrderPurchaseReference(String customerOrderPurchaseReference) {
         this.customerOrderPurchaseReference = customerOrderPurchaseReference;
     }
 
-  /**
-    * @generated
-    */
-    public boolean processDespatchEvent()
-    {
+    /**
+     * @generated
+     */
+    public boolean processDespatchEvent() {
         //TODO
         return false;
     }
 
-  /**
-    * @generated
-    */
-    public boolean processInvoiceEvent()
-    {
+    /**
+     * @generated
+     */
+    public boolean processInvoiceEvent() {
         //TODO
         return false;
     }
 
-  /**
-    * @generated
-    */
-    public boolean processAcceptPaymentEvent()
-    {
+    /**
+     * @generated
+     */
+    public boolean processAcceptPaymentEvent() {
         //TODO
         return false;
     }
 
-  /**
-    * @generated
-    */
-    public boolean processMakeRefundEvent()
-    {
+    /**
+     * @generated
+     */
+    public boolean processMakeRefundEvent() {
         //TODO
         return false;
     }
-    
-    
-    
 
-    
-    
+
 }

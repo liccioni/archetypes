@@ -1,34 +1,33 @@
 package net.liccioni.archetypes.inventory;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import net.liccioni.archetypes.party.PartySummary;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ReservationRequest {
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Set<PartySummary> receivers;
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private Set<PartySummary> requesters;
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ReservationIdentifier reservationIdentifier;
-    
-    
 
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<PartySummary> getReceivers() {
         if (this.receivers == null) {
             this.receivers = new HashSet<PartySummary>();
@@ -37,29 +36,29 @@ public class ReservationRequest {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setReceivers(Set<PartySummary> receivers) {
         this.receivers = receivers;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ReservationIdentifier getReservationIdentifier() {
         return this.reservationIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setReservationIdentifier(ReservationIdentifier reservationIdentifier) {
         this.reservationIdentifier = reservationIdentifier;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<PartySummary> getRequesters() {
         if (this.requesters == null) {
             this.requesters = new HashSet<PartySummary>();
@@ -68,12 +67,11 @@ public class ReservationRequest {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setRequesters(Set<PartySummary> requesters) {
         this.requesters = requesters;
     }
-    
-    
-    
+
+
 }

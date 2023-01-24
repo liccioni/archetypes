@@ -2,13 +2,9 @@ package net.liccioni.archetypes.inventory;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class PurchaseOrder {
-    
-    
-    
 
-    
-    
+
 }

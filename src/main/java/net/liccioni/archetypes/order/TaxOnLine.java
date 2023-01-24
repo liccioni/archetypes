@@ -2,68 +2,64 @@ package net.liccioni.archetypes.order;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class TaxOnLine {
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String taxationType;
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private double taxationRate;
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String comment;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public String getTaxationType() {
         return this.taxationType;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setTaxationType(String taxationType) {
         this.taxationType = taxationType;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public double getTaxationRate() {
         return this.taxationRate;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setTaxationRate(double taxationRate) {
         this.taxationRate = taxationRate;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public String getComment() {
         return this.comment;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
-    
-    
 
-    
-    
+
 }

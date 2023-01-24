@@ -2,13 +2,9 @@ package net.liccioni.archetypes.order.event;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class OpenEvent extends LifeCycleEvent {
-    
-    
-    
 
-    
-    
+
 }

@@ -2,13 +2,9 @@ package net.liccioni.archetypes.product;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class SubstitutedBy extends ProductRelationship {
-    
-    
-    
 
-    
-    
+
 }

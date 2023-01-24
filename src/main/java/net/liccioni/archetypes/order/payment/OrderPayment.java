@@ -2,53 +2,49 @@ package net.liccioni.archetypes.order.payment;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class OrderPayment extends Payment {
-    
-    /**
-    * @generated
-    */
-    private String toAccount;
-    
-    /**
-    * @generated
-    */
-    private String fromAccount;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String toAccount;
+
+    /**
+     * @generated
+     */
+    private String fromAccount;
+
+
+    /**
+     * @generated
+     */
     public String getToAccount() {
         return this.toAccount;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setToAccount(String toAccount) {
         this.toAccount = toAccount;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getFromAccount() {
         return this.fromAccount;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setFromAccount(String fromAccount) {
         this.fromAccount = fromAccount;
     }
-    
-    
-    
-    
+
+
 }

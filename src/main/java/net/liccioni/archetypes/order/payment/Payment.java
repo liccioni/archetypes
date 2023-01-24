@@ -1,94 +1,93 @@
 package net.liccioni.archetypes.order.payment;
 
 
+import net.liccioni.archetypes.TimeDate;
+import net.liccioni.archetypes.quantity.money.Money;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Payment extends Money {
-    
-    /**
-    * @generated
-    */
-    private TimeDate dateMade;
-    
-    /**
-    * @generated
-    */
-    private TimeDate dateReceived;
-    
-    /**
-    * @generated
-    */
-    private TimeDate dateDue;
-    
-    /**
-    * @generated
-    */
-    private TimeDate dateCreated;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private TimeDate dateMade;
+
+    /**
+     * @generated
+     */
+    private TimeDate dateReceived;
+
+    /**
+     * @generated
+     */
+    private TimeDate dateDue;
+
+    /**
+     * @generated
+     */
+    private TimeDate dateCreated;
+
+
+    /**
+     * @generated
+     */
     public TimeDate getDateMade() {
         return this.dateMade;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDateMade(TimeDate dateMade) {
         this.dateMade = dateMade;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getDateReceived() {
         return this.dateReceived;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDateReceived(TimeDate dateReceived) {
         this.dateReceived = dateReceived;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getDateDue() {
         return this.dateDue;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDateDue(TimeDate dateDue) {
         this.dateDue = dateDue;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getDateCreated() {
         return this.dateCreated;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDateCreated(TimeDate dateCreated) {
         this.dateCreated = dateCreated;
     }
-    
-    
-    
-    
+
+
 }

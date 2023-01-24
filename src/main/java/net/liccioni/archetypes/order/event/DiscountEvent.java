@@ -2,33 +2,29 @@ package net.liccioni.archetypes.order.event;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class DiscountEvent extends OrderEvent {
-    
-    /**
-    * @generated
-    */
-    private boolean add;
-    
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private boolean add;
+
+
+    /**
+     * @generated
+     */
     public boolean getAdd() {
         return this.add;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAdd(boolean add) {
         this.add = add;
     }
-    
-    
-    
-    
+
+
 }

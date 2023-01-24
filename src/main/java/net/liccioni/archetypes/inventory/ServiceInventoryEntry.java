@@ -1,42 +1,41 @@
 package net.liccioni.archetypes.inventory;
 
 
+import java.util.Set;
+import net.liccioni.archetypes.TimeDate;
+import net.liccioni.archetypes.product.ServiceInstance;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ServiceInventoryEntry extends InventoryEntry {
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private CapacityManager capacityManager;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public CapacityManager getCapacityManager() {
         return this.capacityManager;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setCapacityManager(CapacityManager capacityManager) {
         this.capacityManager = capacityManager;
     }
 
-  /**
-    * @generated
-    */
-    public Set<ServiceInstance> getProductInstances(TimeDate start, TimeDate end)
-    {
+    /**
+     * @generated
+     */
+    public Set<ServiceInstance> getProductInstances(TimeDate start, TimeDate end) {
         //TODO
         return null;
     }
-    
-    
-    
 
-    
-    
+
 }

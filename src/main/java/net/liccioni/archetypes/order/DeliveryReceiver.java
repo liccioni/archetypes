@@ -1,33 +1,31 @@
 package net.liccioni.archetypes.order;
 
 
+import net.liccioni.archetypes.party.PartySummary;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class DeliveryReceiver extends PartySummary {
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String deliveryInstructions;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public String getDeliveryInstructions() {
         return this.deliveryInstructions;
     }
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     public void setDeliveryInstructions(String deliveryInstructions) {
         this.deliveryInstructions = deliveryInstructions;
     }
-    
-    
-    
 
-    
-    
+
 }

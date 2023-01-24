@@ -2,13 +2,9 @@ package net.liccioni.archetypes.party;
 
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public abstract class PartyAuthentication {
-    
-    
-    
 
-    
-    
+
 }

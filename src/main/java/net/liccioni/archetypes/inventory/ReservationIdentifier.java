@@ -1,14 +1,12 @@
 package net.liccioni.archetypes.inventory;
 
 
-/**
-* @generated
-*/
-public class ReservationIdentifier extends UniqueIdentifier {
-    
-    
-    
+import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
-    
-    
+/**
+ * @generated
+ */
+public class ReservationIdentifier extends UniqueIdentifier {
+
+
 }

@@ -1,311 +1,313 @@
 package net.liccioni.archetypes.order;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import net.liccioni.archetypes.TimeDate;
+import net.liccioni.archetypes.order.event.OrderEvent;
+import net.liccioni.archetypes.party.PartySummary;
+import net.liccioni.archetypes.rule.RuleContext;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class Order {
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private OrderStatus status;
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private TimeDate dateCreated;
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private String salesChannel;
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private String termsAndCondition;
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private RuleContext discountContext;
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Set<OrderEvent> auditTrail;
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private PartySummary paymentReceiver;
-    
-    /**
-    * @generated
-    */
-    private Set<OrderLine> lineItems;
-    
-    /**
-    * @generated
-    */
-    private OrderIdentifier orderIdentifier;
-    
-    /**
-    * @generated
-    */
-    private PartySummary purchaser;
-    
-    /**
-    * @generated
-    */
-    private Set<ChargeLine> chargeLines;
-    
-    /**
-    * @generated
-    */
-    private PartySummary salesAgent;
-    
-    /**
-    * @generated
-    */
-    private DeliveryReceiver orderReceiver;
-    
-    /**
-    * @generated
-    */
-    private PartySummary orderInitiator;
-    
-    /**
-    * @generated
-    */
-    private PartySummary vendor;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private Set<OrderLine> lineItems;
+
+    /**
+     * @generated
+     */
+    private OrderIdentifier orderIdentifier;
+
+    /**
+     * @generated
+     */
+    private PartySummary purchaser;
+
+    /**
+     * @generated
+     */
+    private Set<ChargeLine> chargeLines;
+
+    /**
+     * @generated
+     */
+    private PartySummary salesAgent;
+
+    /**
+     * @generated
+     */
+    private DeliveryReceiver orderReceiver;
+
+    /**
+     * @generated
+     */
+    private PartySummary orderInitiator;
+
+    /**
+     * @generated
+     */
+    private PartySummary vendor;
+
+
+    /**
+     * @generated
+     */
     public OrderStatus getStatus() {
         return this.status;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getDateCreated() {
         return this.dateCreated;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDateCreated(TimeDate dateCreated) {
         this.dateCreated = dateCreated;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getSalesChannel() {
         return this.salesChannel;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setSalesChannel(String salesChannel) {
         this.salesChannel = salesChannel;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getTermsAndCondition() {
         return this.termsAndCondition;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setTermsAndCondition(String termsAndCondition) {
         this.termsAndCondition = termsAndCondition;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public RuleContext getDiscountContext() {
         return this.discountContext;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDiscountContext(RuleContext discountContext) {
         this.discountContext = discountContext;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartySummary getSalesAgent() {
         return this.salesAgent;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setSalesAgent(PartySummary salesAgent) {
         this.salesAgent = salesAgent;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<OrderLine> getLineItems() {
         if (this.lineItems == null) {
             this.lineItems = new HashSet<OrderLine>();
         }
         return this.lineItems;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setLineItems(Set<OrderLine> lineItems) {
         this.lineItems = lineItems;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public DeliveryReceiver getOrderReceiver() {
         return this.orderReceiver;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOrderReceiver(DeliveryReceiver orderReceiver) {
         this.orderReceiver = orderReceiver;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartySummary getPaymentReceiver() {
         return this.paymentReceiver;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPaymentReceiver(PartySummary paymentReceiver) {
         this.paymentReceiver = paymentReceiver;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<ChargeLine> getChargeLines() {
         if (this.chargeLines == null) {
             this.chargeLines = new HashSet<ChargeLine>();
         }
         return this.chargeLines;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setChargeLines(Set<ChargeLine> chargeLines) {
         this.chargeLines = chargeLines;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartySummary getOrderInitiator() {
         return this.orderInitiator;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOrderInitiator(PartySummary orderInitiator) {
         this.orderInitiator = orderInitiator;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartySummary getVendor() {
         return this.vendor;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setVendor(PartySummary vendor) {
         this.vendor = vendor;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartySummary getPurchaser() {
         return this.purchaser;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPurchaser(PartySummary purchaser) {
         this.purchaser = purchaser;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public OrderIdentifier getOrderIdentifier() {
         return this.orderIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOrderIdentifier(OrderIdentifier orderIdentifier) {
         this.orderIdentifier = orderIdentifier;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<OrderEvent> getAuditTrail() {
         if (this.auditTrail == null) {
             this.auditTrail = new HashSet<OrderEvent>();
@@ -314,57 +316,51 @@ public class Order {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAuditTrail(Set<OrderEvent> auditTrail) {
         this.auditTrail = auditTrail;
     }
 
     /**
-    * @generated
-    */
-    public boolean acceptEvent(OrderEvent orderEvent)
-    {
+     * @generated
+     */
+    public boolean acceptEvent(OrderEvent orderEvent) {
         //TODO
         return false;
     }
 
     /**
-    * @generated
-    */
-    public boolean processDiscountEvent()
-    {
+     * @generated
+     */
+    public boolean processDiscountEvent() {
         //TODO
         return false;
     }
 
     /**
-    * @generated
-    */
-    public boolean processLifeCycleEvent()
-    {
+     * @generated
+     */
+    public boolean processLifeCycleEvent() {
         //TODO
         return false;
     }
 
     /**
-    * @generated
-    */
-    public boolean processAmendEvent()
-    {
+     * @generated
+     */
+    public boolean processAmendEvent() {
         //TODO
         return false;
     }
 
     /**
-    * @generated
-    */
-    public boolean processInvoiceEvent()
-    {
+     * @generated
+     */
+    public boolean processInvoiceEvent() {
         //TODO
         return false;
     }
-    
-    
-    
+
+
 }

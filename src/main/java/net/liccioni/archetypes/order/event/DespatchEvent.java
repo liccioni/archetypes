@@ -1,99 +1,97 @@
 package net.liccioni.archetypes.order.event;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import net.liccioni.archetypes.TimeDate;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class DespatchEvent extends OrderEvent {
-    
-    /**
-    * @generated
-    */
-    private String despatchIdentifier;
-    
-    /**
-    * @generated
-    */
-    private TimeDate date;
-    
-    /**
-    * @generated
-    */
-    private Set<String> shippingInstructions;
-    
-    
-    /**
-    * @generated
-    */
-    private DespatchLine despatchLines;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String despatchIdentifier;
+
+    /**
+     * @generated
+     */
+    private TimeDate date;
+
+    /**
+     * @generated
+     */
+    private Set<String> shippingInstructions;
+
+
+    /**
+     * @generated
+     */
+    private DespatchLine despatchLines;
+
+
+    /**
+     * @generated
+     */
     public String getDespatchIdentifier() {
         return this.despatchIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDespatchIdentifier(String despatchIdentifier) {
         this.despatchIdentifier = despatchIdentifier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getDate() {
         return this.date;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDate(TimeDate date) {
         this.date = date;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<String> getShippingInstructions() {
         if (this.shippingInstructions == null) {
             this.shippingInstructions = new HashSet<String>();
         }
         return this.shippingInstructions;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setShippingInstructions(Set<String> shippingInstructions) {
         this.shippingInstructions = shippingInstructions;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public DespatchLine getDespatchLines() {
         return this.despatchLines;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDespatchLines(DespatchLine despatchLines) {
         this.despatchLines = despatchLines;
     }
-    
-    
-    
+
+
 }

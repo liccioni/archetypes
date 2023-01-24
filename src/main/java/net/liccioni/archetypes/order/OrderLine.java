@@ -1,232 +1,233 @@
 package net.liccioni.archetypes.order;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import net.liccioni.archetypes.TimeDate;
+import net.liccioni.archetypes.product.ProductIdentifier;
+import net.liccioni.archetypes.product.SerialNumber;
+import net.liccioni.archetypes.quantity.money.Money;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class OrderLine {
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ProductIdentifier productType;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private SerialNumber serialNumber;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String description;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private String comment;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private int numberOrdered;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private Money unitPrice;
 
-  /**
-    * @generated
-    */
+    /**
+     * @generated
+     */
     private TimeDate expectedDeliveryDate;
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ChargeLine chargeLine;
-    
-    /**
-    * @generated
-    */
-    private OrderLineIdentifier orderLineIdentifier;
-    
-    /**
-    * @generated
-    */
-    private Set<TaxOnLine> taxes;
-    
-    /**
-    * @generated
-    */
-    private DeliveryReceiver orderLineReceiver;
-    
-    
 
-    
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private OrderLineIdentifier orderLineIdentifier;
+
+    /**
+     * @generated
+     */
+    private Set<TaxOnLine> taxes;
+
+    /**
+     * @generated
+     */
+    private DeliveryReceiver orderLineReceiver;
+
+
+    /**
+     * @generated
+     */
     public ProductIdentifier getProductType() {
         return this.productType;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setProductType(ProductIdentifier productType) {
         this.productType = productType;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public SerialNumber getSerialNumber() {
         return this.serialNumber;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setSerialNumber(SerialNumber serialNumber) {
         this.serialNumber = serialNumber;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getDescription() {
         return this.description;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getComment() {
         return this.comment;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setComment(String comment) {
         this.comment = comment;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public int getNumberOrdered() {
         return this.numberOrdered;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setNumberOrdered(int numberOrdered) {
         this.numberOrdered = numberOrdered;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Money getUnitPrice() {
         return this.unitPrice;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setUnitPrice(Money unitPrice) {
         this.unitPrice = unitPrice;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getExpectedDeliveryDate() {
         return this.expectedDeliveryDate;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setExpectedDeliveryDate(TimeDate expectedDeliveryDate) {
         this.expectedDeliveryDate = expectedDeliveryDate;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public DeliveryReceiver getOrderLineReceiver() {
         return this.orderLineReceiver;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOrderLineReceiver(DeliveryReceiver orderLineReceiver) {
         this.orderLineReceiver = orderLineReceiver;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<TaxOnLine> getTaxes() {
         if (this.taxes == null) {
             this.taxes = new HashSet<TaxOnLine>();
         }
         return this.taxes;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setTaxes(Set<TaxOnLine> taxes) {
         this.taxes = taxes;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public OrderLineIdentifier getOrderLineIdentifier() {
         return this.orderLineIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setOrderLineIdentifier(OrderLineIdentifier orderLineIdentifier) {
         this.orderLineIdentifier = orderLineIdentifier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ChargeLine getChargeLine() {
         return this.chargeLine;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setChargeLine(ChargeLine chargeLine) {
         this.chargeLine = chargeLine;
     }
-    
-    
-    
+
+
 }

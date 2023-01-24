@@ -20,8 +20,8 @@ public class PartySignature {
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private PartyAuthentication authentication;
 
     /**
@@ -75,15 +75,15 @@ public class PartySignature {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public PartyAuthentication getAuthentication() {
         return this.authentication;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAuthentication(PartyAuthentication authentication) {
         this.authentication = authentication;
     }

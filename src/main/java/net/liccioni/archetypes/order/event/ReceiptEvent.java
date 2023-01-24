@@ -1,74 +1,73 @@
 package net.liccioni.archetypes.order.event;
 
 
+import net.liccioni.archetypes.TimeDate;
+
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ReceiptEvent extends OrderEvent {
-    
-    /**
-    * @generated
-    */
-    private String deliveryIdentifier;
-    
-    /**
-    * @generated
-    */
-    private TimeDate date;
-    
-    
-    /**
-    * @generated
-    */
-    private ReceiptLine receiptLines;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private String deliveryIdentifier;
+
+    /**
+     * @generated
+     */
+    private TimeDate date;
+
+
+    /**
+     * @generated
+     */
+    private ReceiptLine receiptLines;
+
+
+    /**
+     * @generated
+     */
     public String getDeliveryIdentifier() {
         return this.deliveryIdentifier;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDeliveryIdentifier(String deliveryIdentifier) {
         this.deliveryIdentifier = deliveryIdentifier;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public TimeDate getDate() {
         return this.date;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setDate(TimeDate date) {
         this.date = date;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ReceiptLine getReceiptLines() {
         return this.receiptLines;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setReceiptLines(ReceiptLine receiptLines) {
         this.receiptLines = receiptLines;
     }
-    
-    
-    
+
+
 }

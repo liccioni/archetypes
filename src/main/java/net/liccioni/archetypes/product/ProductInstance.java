@@ -1,217 +1,214 @@
 package net.liccioni.archetypes.product;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import net.liccioni.archetypes.inventory.ReservationIdentifier;
+import net.liccioni.archetypes.inventory.ReservationStatus;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class ProductInstance {
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private String name;
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ReservationIdentifier reservation;
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ReservationStatus reservationStatus;
 
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Price agreed;
-    
-    /**
-    * @generated
-    */
-    private ProductType productType;
-    
-    /**
-    * @generated
-    */
-    private ArbitraryPrice applied;
-    
-    /**
-    * @generated
-    */
-    private Batch batch;
-    
-    /**
-    * @generated
-    */
-    private Set<ProductFeatureInstance> features;
-    
-    /**
-    * @generated
-    */
-    private SerialNumber serialNumber;
-    
-    
 
     /**
-    * @generated
-    */
+     * @generated
+     */
+    private ProductType productType;
+
+    /**
+     * @generated
+     */
+    private ArbitraryPrice applied;
+
+    /**
+     * @generated
+     */
+    private Batch batch;
+
+    /**
+     * @generated
+     */
+    private Set<ProductFeatureInstance> features;
+
+    /**
+     * @generated
+     */
+    private SerialNumber serialNumber;
+
+
+    /**
+     * @generated
+     */
     public String getName() {
         return this.name;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ReservationIdentifier getReservation() {
         return this.reservation;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setReservation(ReservationIdentifier reservation) {
         this.reservation = reservation;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ReservationStatus getReservationStatus() {
         return this.reservationStatus;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setReservationStatus(ReservationStatus reservationStatus) {
         this.reservationStatus = reservationStatus;
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ProductType getProductType() {
         return this.productType;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setProductType(ProductType productType) {
         this.productType = productType;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Price getAgreed() {
         return this.agreed;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setAgreed(Price agreed) {
         this.agreed = agreed;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ArbitraryPrice getApplied() {
         return this.applied;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setApplied(ArbitraryPrice applied) {
         this.applied = applied;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Batch getBatch() {
         return this.batch;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setBatch(Batch batch) {
         this.batch = batch;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public SerialNumber getSerialNumber() {
         return this.serialNumber;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setSerialNumber(SerialNumber serialNumber) {
         this.serialNumber = serialNumber;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Set<ProductFeatureInstance> getFeatures() {
         if (this.features == null) {
             this.features = new HashSet<ProductFeatureInstance>();
         }
         return this.features;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setFeatures(Set<ProductFeatureInstance> features) {
         this.features = features;
     }
 
     /**
-    * @generated
-    */
-    public boolean reserve(ReservationIdentifier reservationIdentifier)
-    {
+     * @generated
+     */
+    public boolean reserve(ReservationIdentifier reservationIdentifier) {
         //TODO
         return false;
     }
 
     /**
-    * @generated
-    */
-    public boolean cancelReservation()
-    {
+     * @generated
+     */
+    public boolean cancelReservation() {
         //TODO
         return false;
     }
-    
-    
-    
+
+
 }
