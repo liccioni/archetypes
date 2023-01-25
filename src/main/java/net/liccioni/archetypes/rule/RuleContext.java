@@ -6,7 +6,13 @@ import java.util.Optional;
 
 public class RuleContext {
 
+    private final String name;
+
     private final Map<String, RuleElement> elements = new HashMap<>();
+
+    public RuleContext(final String name) {
+        this.name = name;
+    }
 
     public void addProposition(String statement, boolean value) {
         Proposition proposition = new Proposition(statement, value);
@@ -25,29 +31,9 @@ public class RuleContext {
         return Optional.ofNullable(elements.get(name));
     }
 
-
-    /**
-     * @generated
-     */
-    private String name;
-
-
-    /**
-     * @generated
-     */
     public String getName() {
         return this.name;
     }
-
-    /**
-     * @generated
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    //                          Operations
-
 
     /**
      * @generated

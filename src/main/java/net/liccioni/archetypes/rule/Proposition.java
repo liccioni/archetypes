@@ -8,9 +8,6 @@ import static net.liccioni.archetypes.rule.Operation.XOR;
 
 import java.util.Objects;
 
-/**
- * @generated
- */
 public class Proposition extends RuleElement {
 
     private final boolean value;
@@ -25,6 +22,10 @@ public class Proposition extends RuleElement {
         this.value = value;
     }
 
+    public boolean getValue() {
+        return value;
+    }
+
     @Override
     public String getType() {
         return "Proposition";
@@ -33,10 +34,6 @@ public class Proposition extends RuleElement {
     @Override
     void acceptStack(RuleExecutionStack stack) {
         stack.acceptElement(this);
-    }
-
-    public boolean getValue() {
-        return value;
     }
 
     public Proposition and(Proposition other) {

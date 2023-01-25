@@ -3,42 +3,18 @@ package net.liccioni.archetypes.rule;
 
 import java.util.Objects;
 
-/**
- * @generated
- */
 public abstract class RuleElement {
 
-    /**
-     * @generated
-     */
-    private String name;
+    private final String name;
 
     public RuleElement(final String name) {
         this.name = name;
     }
 
-
-    /**
-     * @generated
-     */
     public String getName() {
         return this.name;
     }
 
-    /**
-     * @generated
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    //                          Operations
-
-
-    /**
-     * @generated
-     */
     public abstract String getType();
 
     @Override

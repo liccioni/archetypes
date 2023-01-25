@@ -9,4 +9,7 @@ import net.liccioni.archetypes.rule.RuleContext;
 public class Capabilities extends RuleContext {
 
 
+    public Capabilities(String name) {
+        super(name);
+    }
 }

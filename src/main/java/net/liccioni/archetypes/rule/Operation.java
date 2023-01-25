@@ -1,6 +1,5 @@
 package net.liccioni.archetypes.rule;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public enum Operation {

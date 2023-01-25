@@ -1,7 +1,6 @@
 package net.liccioni.archetypes.rule;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -11,12 +10,13 @@ import java.util.Set;
 public class RuleSet {
 
     private final List<Rule> rules;
+    private Set<RuleOverride> ruleOverrides;
 
     public RuleSet(List<Rule> rules) {
         this.rules = rules;
     }
 
-    public RuleSet(Rule ... rules) {
+    public RuleSet(Rule... rules) {
         this.rules = Arrays.asList(rules);
     }
 
@@ -26,31 +26,9 @@ public class RuleSet {
                 .allMatch(Proposition::getValue);
     }
 
-    /**
-     * @generated
-     */
-    private Set<RuleOverride> ruleOverrides;
-
-
-    /**
-     * @generated
-     */
-    public Set<RuleOverride> getRuleOverrides() {
-        if (this.ruleOverrides == null) {
-            this.ruleOverrides = new HashSet<RuleOverride>();
-        }
-        return this.ruleOverrides;
-    }
-
-    /**
-     * @generated
-     */
     public void setRuleOverrides(Set<RuleOverride> ruleOverrides) {
         this.ruleOverrides = ruleOverrides;
     }
-
-
-    //                          Operations
 
 
     /**
