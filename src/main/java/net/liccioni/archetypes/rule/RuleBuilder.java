@@ -1,16 +1,16 @@
 package net.liccioni.archetypes.rule;
 
-import static net.liccioni.archetypes.rule.Operation.AND;
-import static net.liccioni.archetypes.rule.Operation.EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operation.GREATER_THAN;
-import static net.liccioni.archetypes.rule.Operation.GREATER_THAN_OR_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operation.LESS_THAN;
-import static net.liccioni.archetypes.rule.Operation.LESS_THAN_OR_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operation.MATCHES;
-import static net.liccioni.archetypes.rule.Operation.NOT;
-import static net.liccioni.archetypes.rule.Operation.NOT_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operation.OR;
-import static net.liccioni.archetypes.rule.Operation.XOR;
+import static net.liccioni.archetypes.rule.Operator.AND;
+import static net.liccioni.archetypes.rule.Operator.EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.GREATER_THAN;
+import static net.liccioni.archetypes.rule.Operator.GREATER_THAN_OR_EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.LESS_THAN;
+import static net.liccioni.archetypes.rule.Operator.LESS_THAN_OR_EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.MATCHES;
+import static net.liccioni.archetypes.rule.Operator.NOT;
+import static net.liccioni.archetypes.rule.Operator.NOT_EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.OR;
+import static net.liccioni.archetypes.rule.Operator.XOR;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class RuleBuilder {
 
     public PropositionDSL not(String name) {
         elements.add(new Proposition(name));
-        elements.add(NOT.getOperator());
+        elements.add(NOT);
         return new PropositionDSL(elements::add);
     }
 
@@ -64,15 +64,15 @@ public class RuleBuilder {
         }
 
         public PropositionDSL and(PropositionDSL other) {
-            return buildPropositionDSL(other, AND.getOperator());
+            return buildPropositionDSL(other, AND);
         }
 
         public PropositionDSL or(PropositionDSL other) {
-            return buildPropositionDSL(other, OR.getOperator());
+            return buildPropositionDSL(other, OR);
         }
 
         public PropositionDSL xor(PropositionDSL other) {
-            return buildPropositionDSL(other, XOR.getOperator());
+            return buildPropositionDSL(other, XOR);
         }
 
         private PropositionDSL buildPropositionDSL(PropositionDSL other, Operator operator) {
@@ -90,27 +90,27 @@ public class RuleBuilder {
         }
 
         public PropositionDSL equalTo(VariableDSL other) {
-            return buildPropositionDSL(other, EQUAL_TO.getOperator());
+            return buildPropositionDSL(other, EQUAL_TO);
         }
 
         public PropositionDSL notEqualTo(VariableDSL other) {
-            return buildPropositionDSL(other, NOT_EQUAL_TO.getOperator());
+            return buildPropositionDSL(other, NOT_EQUAL_TO);
         }
 
         public PropositionDSL greaterThan(VariableDSL other) {
-            return buildPropositionDSL(other, GREATER_THAN.getOperator());
+            return buildPropositionDSL(other, GREATER_THAN);
         }
 
         public PropositionDSL lessThan(VariableDSL other) {
-            return buildPropositionDSL(other, LESS_THAN.getOperator());
+            return buildPropositionDSL(other, LESS_THAN);
         }
 
         public PropositionDSL greaterThanOrEqualTo(VariableDSL other) {
-            return buildPropositionDSL(other, GREATER_THAN_OR_EQUAL_TO.getOperator());
+            return buildPropositionDSL(other, GREATER_THAN_OR_EQUAL_TO);
         }
 
         public PropositionDSL lessThanOrEqualTo(VariableDSL other) {
-            return buildPropositionDSL(other, LESS_THAN_OR_EQUAL_TO.getOperator());
+            return buildPropositionDSL(other, LESS_THAN_OR_EQUAL_TO);
         }
 
         protected PropositionDSL buildPropositionDSL(VariableDSL other, Operator operator) {
@@ -126,7 +126,7 @@ public class RuleBuilder {
         }
 
         public PropositionDSL matches(StringVariableDSL other) {
-            return buildPropositionDSL(other, MATCHES.getOperator());
+            return buildPropositionDSL(other, MATCHES);
         }
     }
 }

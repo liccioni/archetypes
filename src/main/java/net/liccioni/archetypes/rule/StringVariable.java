@@ -1,6 +1,6 @@
 package net.liccioni.archetypes.rule;
 
-import static net.liccioni.archetypes.rule.Operation.MATCHES;
+import static net.liccioni.archetypes.rule.Operator.MATCHES;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +17,7 @@ public class StringVariable extends Variable<String> {
 
     public Proposition matches(Variable<?> other) {
         boolean newValue = isAssignableFrom(other) && internalMatches(other);
-        return newProposition(newValue, other, MATCHES.name());
+        return newProposition(newValue, other, MATCHES);
     }
 
     private boolean internalMatches(Variable<?> other) {

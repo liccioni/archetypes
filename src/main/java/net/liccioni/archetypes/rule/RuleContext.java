@@ -38,20 +38,7 @@ public class RuleContext {
         return this.name;
     }
 
-    /**
-     * @generated
-     */
-    public boolean addRuleOverride(RuleOverride ruleOverride) {
-        //TODO
-        return false;
-    }
-
-
-    /**
-     * @generated
-     */
-    public boolean append(RuleContext context) {
-        //TODO
-        return false;
+    public void append(RuleContext context) {
+        this.elements.putAll(context.elements);
     }
 }
