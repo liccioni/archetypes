@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.stream.Stream;
-import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -23,13 +23,13 @@ class RuleBuilderTest {
                 .and(builder.variable("passengerCarryOnBaggageWeightKg")
                         .lessThanOrEqualTo(builder.variable("carryOnBaggageAllowanceKg")))
                 .and(builder.proposition("passengerDressIsSmart")));
-        RuleContext context = new RuleContext("complexRule");
-        context.addProposition("passengerIsEconomy", true);
-        context.addProposition("passengerIsGoldCardHolder", false);
-        context.addProposition("passengerIsSilverCardHolder", true);
-        context.addProposition("passengerDressIsSmart", true);
-        context.addVariable("passengerCarryOnBaggageWeightKg", 9);
-        context.addVariable("carryOnBaggageAllowanceKg", 15);
+        RuleContext context = new RuleContext("complexRule")
+                .addProposition("passengerIsEconomy", true)
+                .addProposition("passengerIsGoldCardHolder", false)
+                .addProposition("passengerIsSilverCardHolder", true)
+                .addProposition("passengerDressIsSmart", true)
+                .addVariable("passengerCarryOnBaggageWeightKg", 9)
+                .addVariable("carryOnBaggageAllowanceKg", 15);
         Proposition actual = rule.evaluate(context);
         Proposition expected = new Proposition(
                 "passengerIsEconomy_AND_passengerIsGoldCardHolder_XOR_passengerIsSilverCardHolder_AND_passengerCarryOnBaggageWeightKg_LESS_THAN_OR_EQUAL_TO_carryOnBaggageAllowanceKg_AND_passengerDressIsSmart",
@@ -106,9 +106,9 @@ class RuleBuilderTest {
     void shouldEvaluate_NOT_EQUAL_TO(String firstOp, String secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("NOT_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("firstOp").notEqualTo(ruleBuilder.variable("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_NOT_EQUAL_TO");
-        context.addVariable("firstOp", firstOp);
-        context.addVariable("secondOp", secondOp);
+        RuleContext context = new RuleContext("shouldEvaluate_NOT_EQUAL_TO")
+                .addVariable("firstOp", firstOp)
+                .addVariable("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
         Proposition expected = new Proposition("firstOp_NOT_EQUAL_TO_secondOp", expectedValue);
         assertThat(actual).isEqualTo(expected);
@@ -227,18 +227,35 @@ class RuleBuilderTest {
 
 
     private static Stream<Arguments> provideStringsForIsBlank() {
+
+        final var context1 = Map.of("firstOp", 1, "secondOp", 2, "thirdOp", 4, "fourthOp", 3)
+                .entrySet().stream().reduce(new RuleContext("shouldEvaluateToTrue"),
+                        (context, e) -> context.addVariable(e.getKey(), e.getValue()), (a, b) -> null);
+
+        final var context2 = Map.of("firstOp", 1, "secondOp", 2, "thirdOp", 3, "fourthOp", 4)
+                .entrySet().stream().reduce(new RuleContext("shouldEvaluateToFalse"),
+                        (context, e) -> context.addVariable(e.getKey(), e.getValue()), (a, b) -> null);
+
         return Stream.of(
-                Arguments.of(null, true),
-                Arguments.of("", true),
-                Arguments.of("  ", true),
-                Arguments.of("not blank", false)
+                Arguments.of(context1, new RuleOverride("ruleUnderTest", true), true),
+                Arguments.of(context1, new RuleOverride("ruleUnderTest", false), true),
+                Arguments.of(context2, new RuleOverride("ruleUnderTest", true), true),
+                Arguments.of(context2, new RuleOverride("ruleUnderTest", false), false)
         );
     }
 
     @ParameterizedTest
     @MethodSource("provideStringsForIsBlank")
-    void isBlank_ShouldReturnTrueForNullOrBlankStringsVariableSource(
-            String input, boolean expected) {
-        assertThat(Strings.isNullOrEmpty(input)).isEqualTo(expected);
+    void isBlank_ShouldReturnTrueForNullOrBlankStringsVariableSource(RuleContext context,
+                                                                     RuleOverride override,
+                                                                     boolean expected) {
+        Rule rule1 = RuleBuilder.newRule("alwaysTrue", ruleBuilder ->
+                ruleBuilder.variable("firstOp").lessThanOrEqualTo(ruleBuilder.variable("secondOp")));
+        Rule rule2 = RuleBuilder.newRule("ruleUnderTest", ruleBuilder ->
+                ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
+
+        RuleSet ruleSet = new RuleSet(Arrays.asList(rule1, rule2));
+        ruleSet.addRuleOverride(override);
+        assertThat(ruleSet.evaluate(context)).isEqualTo(expected);
     }
 }

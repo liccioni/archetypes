@@ -1,16 +1,15 @@
 package net.liccioni.archetypes.rule;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.Optional;
 
-/**
- * @generated
- */
 public class RuleSet {
 
     private final List<Rule> rules;
-    private Set<RuleOverride> ruleOverrides;
+    private final Map<String, RuleOverride> ruleOverrides = new HashMap<>();
 
     public RuleSet(List<Rule> rules) {
         this.rules = rules;
@@ -22,14 +21,10 @@ public class RuleSet {
 
     public boolean evaluate(RuleContext context) {
         return rules.stream()
+                .filter(this::isNotOverride)
                 .map(rule -> rule.evaluate(context))
                 .allMatch(Proposition::getValue);
     }
-
-    public void setRuleOverrides(Set<RuleOverride> ruleOverrides) {
-        this.ruleOverrides = ruleOverrides;
-    }
-
 
     /**
      * @generated
@@ -39,12 +34,13 @@ public class RuleSet {
         return false;
     }
 
+    public void addRuleOverride(RuleOverride ruleOverride) {
+        this.ruleOverrides.put(ruleOverride.getRuleName(), ruleOverride);
+    }
 
-    /**
-     * @generated
-     */
-    public boolean addRuleOverride(RuleOverride ruleOverride) {
-        //TODO
-        return false;
+    private boolean isNotOverride(final Rule rule) {
+        return !Optional.ofNullable(ruleOverrides.get(rule.getName()))
+                .map(RuleOverride::isOverride)
+                .orElse(false);
     }
 }

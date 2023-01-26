@@ -14,17 +14,20 @@ public class RuleContext {
         this.name = name;
     }
 
-    public void addProposition(String statement, boolean value) {
+    public RuleContext addProposition(String statement, boolean value) {
         Proposition proposition = new Proposition(statement, value);
         elements.put(statement, proposition);
+        return this;
     }
 
-    public <R extends Comparable<R>> void addVariable(String name, R value) {
+    public <R> RuleContext addVariable(String name, R value) {
         elements.put(name, new Variable<>(name, value));
+        return this;
     }
 
-    public void addVariable(String name, String value) {
+    public RuleContext addVariable(String name, String value) {
         elements.put(name, new StringVariable(name, value));
+        return this;
     }
 
     public Optional<RuleElement> findElement(String name) {

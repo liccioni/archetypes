@@ -9,7 +9,7 @@ import static net.liccioni.archetypes.rule.Operation.NOT_EQUAL_TO;
 
 import java.util.Objects;
 
-public class Variable<T extends Comparable<T>> extends RuleElement {
+public class Variable<T> extends RuleElement {
     private final T value;
     private final Class<?> type;
 
@@ -71,7 +71,7 @@ public class Variable<T extends Comparable<T>> extends RuleElement {
 
     @SuppressWarnings("unchecked")
     private int compareTo(Object value) {
-        return this.value.compareTo((T) value);
+        return ((Comparable<T>) this.value).compareTo((T) value);
     }
 
     @Override
