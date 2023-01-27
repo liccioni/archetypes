@@ -4,25 +4,7 @@ package net.liccioni.archetypes.quantity;
 /**
  * @generated
  */
-public abstract class Unit extends Metric {
+public interface Unit extends Metric {
 
-    /**
-     * @generated
-     */
-    private SystemOfUnits systemOfUnits;
-
-
-    /**
-     * @generated
-     */
-    public SystemOfUnits getSystemOfUnits() {
-        return this.systemOfUnits;
-    }
-
-    /**
-     * @generated
-     */
-    public void setSystemOfUnits(SystemOfUnits systemOfUnits) {
-        this.systemOfUnits = systemOfUnits;
-    }
+    SystemOfUnits getSystemOfUnits();
 }

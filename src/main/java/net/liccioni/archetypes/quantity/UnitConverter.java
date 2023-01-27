@@ -1,45 +1,28 @@
 package net.liccioni.archetypes.quantity;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-
-/**
- * @generated
- */
 public class UnitConverter {
 
+    private final Set<StandardConversion> converters = new HashSet<>();
 
-    //                          Operations
-
-
-    /**
-     * @generated
-     */
-    private Set<StandardConversion> converters;
-
-    /**
-     * @generated
-     */
-    public Set<StandardConversion> getConverters() {
-        if (this.converters == null) {
-            this.converters = new HashSet<StandardConversion>();
-        }
-        return this.converters;
+    public void addConverter(final StandardConversion converter) {
+        this.converters.add(converter);
     }
 
-    /**
-     * @generated
-     */
-    public void setConverters(Set<StandardConversion> converters) {
-        this.converters = converters;
+    public void removeConverter(final StandardConversion converter) {
+        this.converters.remove(converter);
     }
 
-    /**
-     * @generated
-     */
     public Quantity convert(Quantity quantity, Unit targetUnit) {
-        //TODO
-        return null;
+
+        return this.converters.stream()
+                .filter(p -> p.getSource().equals(quantity.getMetric()))
+                .map(p -> quantity.getAmount().multiply(p.getConversionFactor()))
+                .map(p -> new Quantity(p, targetUnit))
+                .findFirst().orElseThrow(() -> new IllegalStateException(
+                        "Cannot find converter for " + quantity.getMetric() + " to " + targetUnit));
     }
 }

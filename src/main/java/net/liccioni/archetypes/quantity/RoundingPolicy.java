@@ -1,86 +1,44 @@
 package net.liccioni.archetypes.quantity;
 
+import java.math.BigDecimal;
 
-/**
- * @generated
- */
 public class RoundingPolicy {
 
-    /**
-     * @generated
-     */
-    private RoundingStrategy roundingStrategy;
+    private final RoundingStrategy roundingStrategy;
 
-    /**
-     * @generated
-     */
-    private int numberOfDigits;
+    private final int numberOfDigits;
 
-    /**
-     * @generated
-     */
-    private int roundingDigit;
+    private final int roundingDigit;
 
-    /**
-     * @generated
-     */
-    private int roundingStep;
+    private final double roundingStep;
 
-
-    /**
-     * @generated
-     */
-    public RoundingStrategy getRoundingStrategy() {
-        return this.roundingStrategy;
-    }
-
-    /**
-     * @generated
-     */
-    public void setRoundingStrategy(RoundingStrategy roundingStrategy) {
+    public RoundingPolicy(final RoundingStrategy roundingStrategy,
+                          final int numberOfDigits,
+                          final int roundingDigit,
+                          final double roundingStep) {
         this.roundingStrategy = roundingStrategy;
-    }
-
-
-    /**
-     * @generated
-     */
-    public int getNumberOfDigits() {
-        return this.numberOfDigits;
-    }
-
-    /**
-     * @generated
-     */
-    public void setNumberOfDigits(int numberOfDigits) {
         this.numberOfDigits = numberOfDigits;
-    }
-
-    /**
-     * @generated
-     */
-    public int getRoundingDigit() {
-        return this.roundingDigit;
-    }
-
-    /**
-     * @generated
-     */
-    public void setRoundingDigit(int roundingDigit) {
         this.roundingDigit = roundingDigit;
-    }
-
-    /**
-     * @generated
-     */
-    public int getRoundingStep() {
-        return this.roundingStep;
-    }
-
-    /**
-     * @generated
-     */
-    public void setRoundingStep(int roundingStep) {
         this.roundingStep = roundingStep;
+    }
+
+    public RoundingStrategy getRoundingStrategy() {
+        return roundingStrategy;
+    }
+
+    public int getNumberOfDigits() {
+        return numberOfDigits;
+    }
+
+    public int getRoundingDigit() {
+        return roundingDigit;
+    }
+
+    double getRoundingStep() {
+        return roundingStep;
+    }
+
+    public BigDecimal round(final BigDecimal amount) {
+        return roundingStrategy.round(amount, this);
     }
 }

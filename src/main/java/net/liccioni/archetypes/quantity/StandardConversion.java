@@ -1,68 +1,28 @@
 package net.liccioni.archetypes.quantity;
 
+import java.math.BigDecimal;
 
-/**
- * @generated
- */
 public class StandardConversion {
 
-    /**
-     * @generated
-     */
-    private double conversionFactor;
+    private final Unit source;
+    private final Unit target;
+    private final BigDecimal conversionFactor;
 
-
-    /**
-     * @generated
-     */
-    private Unit source;
-
-    /**
-     * @generated
-     */
-    private Unit target;
-
-
-    /**
-     * @generated
-     */
-    public double getConversionFactor() {
-        return this.conversionFactor;
-    }
-
-    /**
-     * @generated
-     */
-    public void setConversionFactor(double conversionFactor) {
-        this.conversionFactor = conversionFactor;
-    }
-
-    /**
-     * @generated
-     */
-    public Unit getTarget() {
-        return this.target;
-    }
-
-    /**
-     * @generated
-     */
-    public void setTarget(Unit target) {
-        this.target = target;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Unit getSource() {
-        return this.source;
-    }
-
-    /**
-     * @generated
-     */
-    public void setSource(Unit source) {
+    public StandardConversion(final Unit source, final Unit target, final Number conversionFactor) {
         this.source = source;
+        this.target = target;
+        this.conversionFactor = BigDecimal.valueOf(conversionFactor.doubleValue());
+    }
+
+    public Unit getSource() {
+        return source;
+    }
+
+    public Unit getTarget() {
+        return target;
+    }
+
+    public BigDecimal getConversionFactor() {
+        return conversionFactor;
     }
 }

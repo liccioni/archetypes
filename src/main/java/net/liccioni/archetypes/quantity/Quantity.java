@@ -1,50 +1,31 @@
 package net.liccioni.archetypes.quantity;
 
 
-/**
- * @generated
- */
+import java.math.BigDecimal;
+import java.util.Objects;
+
 public class Quantity {
 
-    /**
-     * @generated
-     */
-    private double amount;
+    private final BigDecimal amount;
 
+    private final Metric metric;
 
-    /**
-     * @generated
-     */
-    private Metric metric;
-
-
-    /**
-     * @generated
-     */
-    public double getAmount() {
-        return this.amount;
-    }
-
-    /**
-     * @generated
-     */
-    public void setAmount(double amount) {
+    public Quantity(final BigDecimal amount, final Metric metric) {
         this.amount = amount;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Metric getMetric() {
-        return this.metric;
-    }
-
-    /**
-     * @generated
-     */
-    public void setMetric(Metric metric) {
         this.metric = metric;
+    }
+
+    public Quantity(final Number amount, final Metric metric) {
+        this.amount = BigDecimal.valueOf(amount.doubleValue());
+        this.metric = metric;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public Metric getMetric() {
+        return metric;
     }
 
 
@@ -55,8 +36,7 @@ public class Quantity {
      * @generated
      */
     public Quantity round(RoundingPolicy policy) {
-        //TODO
-        return null;
+        return new Quantity(policy.round(this.amount), this.metric);
     }
 
     /**
@@ -129,5 +109,30 @@ public class Quantity {
     public Quantity divide(Quantity quantity) {
         //TODO
         return null;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Quantity)) {
+            return false;
+        }
+        Quantity quantity = (Quantity) o;
+        return amount.equals(quantity.amount) && metric.equals(quantity.metric);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, metric);
+    }
+
+    @Override
+    public String toString() {
+        return "Quantity{" +
+                "amount=" + amount +
+                ", metric=" + metric +
+                '}';
     }
 }

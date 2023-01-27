@@ -1,50 +1,39 @@
 package net.liccioni.archetypes.quantity;
 
+import java.util.Objects;
 
-/**
- * @generated
- */
 public class DerivedUnitTerm {
 
-    /**
-     * @generated
-     */
-    private int power;
+    private final int power;
+    private final Unit unit;
 
-
-    /**
-     * @generated
-     */
-    private Unit unit;
-
-
-    /**
-     * @generated
-     */
-    public int getPower() {
-        return this.power;
-    }
-
-    /**
-     * @generated
-     */
-    public void setPower(int power) {
+    public DerivedUnitTerm(final int power, final Unit unit) {
         this.power = power;
-    }
-
-    /**
-     * @generated
-     */
-    public Unit getUnit() {
-        return this.unit;
-    }
-
-    /**
-     * @generated
-     */
-    public void setUnit(Unit unit) {
         this.unit = unit;
     }
 
+    public int getPower() {
+        return power;
+    }
 
+    public Unit getUnit() {
+        return unit;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DerivedUnitTerm)) {
+            return false;
+        }
+        DerivedUnitTerm that = (DerivedUnitTerm) o;
+        return power == that.power && unit.equals(that.unit);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(power, unit);
+    }
 }
