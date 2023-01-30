@@ -22,11 +22,7 @@ public class RoundingPolicy {
         this.roundingStep = roundingStep;
     }
 
-    public RoundingStrategy getRoundingStrategy() {
-        return roundingStrategy;
-    }
-
-    public int getNumberOfDigits() {
+    int getNumberOfDigits() {
         return numberOfDigits;
     }
 

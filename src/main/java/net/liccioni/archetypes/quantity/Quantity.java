@@ -67,32 +67,37 @@ public class Quantity {
      * @generated
      */
     public Quantity add(Quantity quantity) {
-        //TODO
-        return null;
+        if (!this.metric.equals(quantity.metric)) {
+            throw new IllegalArgumentException("Different units, cannot add " + this + " and " + quantity);
+        }
+        return new Quantity(this.amount.add(quantity.amount), this.metric);
     }
 
     /**
      * @generated
      */
     public Quantity subtract(Quantity quantity) {
-        //TODO
-        return null;
+        if (!this.metric.equals(quantity.metric)) {
+            throw new IllegalArgumentException("Different units, cannot subtract " + this + " and " + quantity);
+        }
+        return new Quantity(this.amount.subtract(quantity.amount), this.metric);
     }
 
     /**
      * @generated
      */
     public Quantity multiply(double multiplier) {
-        //TODO
-        return null;
+        return new Quantity(this.amount.multiply(BigDecimal.valueOf(multiplier)), this.metric);
     }
 
     /**
      * @generated
      */
     public Quantity multiply(Quantity quantity) {
-        //TODO
-        return null;
+        final var derivedMetric = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
+        derivedMetric.addTerm(new DerivedUnitTerm(1, this.metric));
+        derivedMetric.addTerm(new DerivedUnitTerm(1, quantity.metric));
+        return new Quantity(this.amount.multiply(quantity.amount), derivedMetric);
     }
 
     /**

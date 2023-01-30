@@ -5,7 +5,9 @@ import java.math.RoundingMode;
 import java.util.function.BiFunction;
 
 public enum RoundingStrategy {
-    ROUND(RoundingStrategy::roundNormal),
+    ROUND((bigDecimal, roundingPolicy) -> {
+        throw new UnsupportedOperationException("ROUND is not implemented");
+    }),
     ROUND_UP(RoundingStrategy::roundUp),
     ROUND_UP_BY_STEP(RoundingStrategy::roundUpByStep),
     ROUND_TOWARDS_POSITIVE(RoundingStrategy::roundTowardsPositive),
@@ -49,9 +51,5 @@ public enum RoundingStrategy {
 
     private static BigDecimal roundTowardsNegative(BigDecimal amount, RoundingPolicy policy) {
         return amount.setScale(policy.getNumberOfDigits(), RoundingMode.FLOOR);
-    }
-
-    private static BigDecimal roundNormal(BigDecimal amount, RoundingPolicy policy) {
-        return null;
     }
 }

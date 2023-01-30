@@ -5,9 +5,9 @@ import java.util.Objects;
 public class DerivedUnitTerm {
 
     private final int power;
-    private final Unit unit;
+    private final Metric unit;
 
-    public DerivedUnitTerm(final int power, final Unit unit) {
+    public DerivedUnitTerm(final int power, final Metric unit) {
         this.power = power;
         this.unit = unit;
     }
@@ -16,7 +16,7 @@ public class DerivedUnitTerm {
         return power;
     }
 
-    public Unit getUnit() {
+    public Metric getUnit() {
         return unit;
     }
 
@@ -29,11 +29,19 @@ public class DerivedUnitTerm {
             return false;
         }
         DerivedUnitTerm that = (DerivedUnitTerm) o;
-        return power == that.power && unit.equals(that.unit);
+        return unit.equals(that.unit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(power, unit);
+        return Objects.hash(unit);
+    }
+
+    @Override
+    public String toString() {
+        return "DerivedUnitTerm{" +
+                "power=" + power +
+                ", unit=" + unit +
+                '}';
     }
 }

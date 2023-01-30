@@ -1,42 +1,34 @@
 package net.liccioni.archetypes.quantity;
 
-import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public class DerivedUnit implements Unit {
 
-    private final String name;
-    private final String symbol;
-    private final String definition;
     private final SystemOfUnits systemOfUnits;
-    private final Set<DerivedUnitTerm> terms = new HashSet<>();
+    private final Map<Metric, DerivedUnitTerm> terms = new ConcurrentHashMap<>();
 
-    public DerivedUnit(final String name, final String symbol, final String definition,
-                       final SystemOfUnits systemOfUnits) {
-        this.name = name;
-        this.symbol = symbol;
-        this.definition = definition;
+    public DerivedUnit(final SystemOfUnits systemOfUnits) {
         this.systemOfUnits = systemOfUnits;
-    }
-
-    public Set<DerivedUnitTerm> getTerms() {
-        return this.terms;
     }
 
     @Override
     public String getName() {
-        return this.name;
+        return this.terms.values().stream().map(p -> p.getUnit().getSymbol() + p.getPower())
+                .collect(Collectors.joining(","));
     }
 
     @Override
     public String getSymbol() {
-        return this.symbol;
+        return this.terms.values().stream().map(p -> p.getUnit().getSymbol() + p.getPower())
+                .collect(Collectors.joining(","));
     }
 
     @Override
     public String getDefinition() {
-        return this.definition;
+        return "";
     }
 
     @Override
@@ -45,11 +37,21 @@ public class DerivedUnit implements Unit {
     }
 
     public void addTerm(final DerivedUnitTerm term) {
-        this.terms.add(term);
+        if (term.getUnit() instanceof DerivedUnit) {
+            ((DerivedUnit) term.getUnit()).terms.values().forEach(this::addTermInternal);
+        } else {
+            addTermInternal(term);
+        }
+    }
+
+    private void addTermInternal(final DerivedUnitTerm term) {
+        this.terms.computeIfPresent(term.getUnit(),
+                (metric, existingTerm) -> new DerivedUnitTerm(term.getPower() + existingTerm.getPower(), metric));
+        this.terms.putIfAbsent(term.getUnit(), term);
     }
 
     public void removeTerm(final DerivedUnitTerm term) {
-        this.terms.remove(term);
+        this.terms.remove(term.getUnit());
     }
 
     @Override
@@ -61,20 +63,21 @@ public class DerivedUnit implements Unit {
             return false;
         }
         DerivedUnit that = (DerivedUnit) o;
-        return symbol.equals(that.symbol);
+        return getSymbol().equals(that.getSymbol());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol);
+        return Objects.hash(getSymbol());
     }
 
     @Override
     public String toString() {
         return "DerivedUnit{" +
-                "name='" + name + '\'' +
-                ", symbol='" + symbol + '\'' +
+                "name='" + getName() + '\'' +
+                ", symbol='" + getSymbol() + '\'' +
                 ", systemOfUnits=" + systemOfUnits +
+                ", terms=" + terms.values().stream().map(Object::toString).collect(Collectors.joining(",")) +
                 '}';
     }
 }

@@ -1,6 +1,5 @@
 package net.liccioni.archetypes.quantity;
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,10 +18,16 @@ public class UnitConverter {
     public Quantity convert(Quantity quantity, Unit targetUnit) {
 
         return this.converters.stream()
-                .filter(p -> p.getSource().equals(quantity.getMetric()))
-                .map(p -> quantity.getAmount().multiply(p.getConversionFactor()))
-                .map(p -> new Quantity(p, targetUnit))
+                .filter(converter -> converterMatches(quantity.getMetric(), targetUnit, converter))
+                .map(converter -> quantity.getAmount().multiply(converter.getConversionFactor()))
+                .map(convertedAmount -> new Quantity(convertedAmount, targetUnit))
                 .findFirst().orElseThrow(() -> new IllegalStateException(
                         "Cannot find converter for " + quantity.getMetric() + " to " + targetUnit));
+    }
+
+    private boolean converterMatches(final Metric sourceUnit, final Unit targetUnit,
+                                     final StandardConversion converter) {
+        return converter.getSource().equals(sourceUnit) &&
+                converter.getTarget().equals(targetUnit);
     }
 }
