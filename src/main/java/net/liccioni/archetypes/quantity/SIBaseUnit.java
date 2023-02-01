@@ -8,8 +8,7 @@ public enum SIBaseUnit implements Unit {
     AMPERE("A", "electric current"),
     KELVIN("K", "thermodynamic temperature"),
     MOLE("mol", "amount of substance"),
-    CANDELA("cd", "luminous intensity")
-    ;
+    CANDELA("cd", "luminous intensity");
     private final String symbol;
     private final String definition;
     private final SystemOfUnits systemOfUnits = SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS;
@@ -18,7 +17,6 @@ public enum SIBaseUnit implements Unit {
         this.symbol = symbol;
         this.definition = definition;
     }
-
 
     @Override
     public String getName() {

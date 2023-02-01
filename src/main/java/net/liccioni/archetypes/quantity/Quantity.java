@@ -2,6 +2,7 @@ package net.liccioni.archetypes.quantity;
 
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Quantity {
@@ -28,44 +29,24 @@ public class Quantity {
         return metric;
     }
 
-
-    //                          Operations
-
-
-    /**
-     * @generated
-     */
     public Quantity round(RoundingPolicy policy) {
         return new Quantity(policy.round(this.amount), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public boolean equalTo(Quantity quantity) {
-        //TODO
-        return false;
+        return this.equals(quantity);
     }
 
-    /**
-     * @generated
-     */
     public boolean greaterThan(Quantity quantity) {
         //TODO
         return false;
     }
 
-    /**
-     * @generated
-     */
     public boolean lessThan(Quantity quantity) {
         //TODO
         return false;
     }
 
-    /**
-     * @generated
-     */
     public Quantity add(Quantity quantity) {
         if (!this.metric.equals(quantity.metric)) {
             throw new IllegalArgumentException("Different units, cannot add " + this + " and " + quantity);
@@ -73,9 +54,6 @@ public class Quantity {
         return new Quantity(this.amount.add(quantity.amount), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity subtract(Quantity quantity) {
         if (!this.metric.equals(quantity.metric)) {
             throw new IllegalArgumentException("Different units, cannot subtract " + this + " and " + quantity);
@@ -83,16 +61,10 @@ public class Quantity {
         return new Quantity(this.amount.subtract(quantity.amount), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity multiply(double multiplier) {
         return new Quantity(this.amount.multiply(BigDecimal.valueOf(multiplier)), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity multiply(Quantity quantity) {
         final var derivedMetric = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
         derivedMetric.addTerm(new DerivedUnitTerm(1, this.metric));
@@ -100,20 +72,15 @@ public class Quantity {
         return new Quantity(this.amount.multiply(quantity.amount), derivedMetric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity divide(double divisor) {
-        //TODO
-        return null;
+        return new Quantity(this.amount.divide(BigDecimal.valueOf(divisor), RoundingMode.UP), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity divide(Quantity quantity) {
-        //TODO
-        return null;
+        final var derivedMetric = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
+        derivedMetric.addTerm(new DerivedUnitTerm(1, this.metric));
+        derivedMetric.addTerm(new DerivedUnitTerm(-1, quantity.metric));
+        return new Quantity(this.amount.divide(quantity.amount, RoundingMode.UP), derivedMetric);
     }
 
     @Override

@@ -71,7 +71,7 @@ class UnitConverterTest {
                 () -> unitConverter.convert(new Quantity(1, METRE), km), "IllegalStateException was expected");
 
         Assertions.assertEquals(
-                "Cannot find converter for METRE to SimpleUnit{name='Kilometre', symbol='km', definition='length', " +
+                "Cannot find converter for METRE to Unit{name='Kilometre', symbol='km', definition='length', " +
                         "systemOfUnits=INTERNATIONAL_SYSTEM_OF_UNITS}",
                 thrown.getMessage());
 

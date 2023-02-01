@@ -1,7 +1,9 @@
 package net.liccioni.archetypes.quantity;
 
+import java.util.Comparator;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -16,13 +18,14 @@ public class DerivedUnit implements Unit {
 
     @Override
     public String getName() {
-        return this.terms.values().stream().map(p -> p.getUnit().getSymbol() + p.getPower())
-                .collect(Collectors.joining(","));
+        return this.getSymbol();
     }
 
     @Override
     public String getSymbol() {
-        return this.terms.values().stream().map(p -> p.getUnit().getSymbol() + p.getPower())
+        return this.terms.values().stream()
+                .sorted(Comparator.comparing(o -> o.getUnit().getSymbol()))
+                .map(p -> p.getUnit().getSymbol() + (p.getPower() != 1 ? p.getPower() : ""))
                 .collect(Collectors.joining(","));
     }
 
@@ -45,9 +48,20 @@ public class DerivedUnit implements Unit {
     }
 
     private void addTermInternal(final DerivedUnitTerm term) {
-        this.terms.computeIfPresent(term.getUnit(),
-                (metric, existingTerm) -> new DerivedUnitTerm(term.getPower() + existingTerm.getPower(), metric));
-        this.terms.putIfAbsent(term.getUnit(), term);
+
+        this.terms.compute(term.getUnit(), (metric, derivedUnitTerm) -> {
+
+            if (derivedUnitTerm == null) {
+                return term;
+            }
+
+            return Optional.of(derivedUnitTerm)
+                    .map(DerivedUnitTerm::getPower)
+                    .map(p -> p + term.getPower())
+                    .filter(p -> p != 0)
+                    .map(p -> new DerivedUnitTerm(p, metric))
+                    .orElse(null);
+        });
     }
 
     public void removeTerm(final DerivedUnitTerm term) {
@@ -59,10 +73,10 @@ public class DerivedUnit implements Unit {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof DerivedUnit)) {
+        if (!(o instanceof Unit)) {
             return false;
         }
-        DerivedUnit that = (DerivedUnit) o;
+        Unit that = (Unit) o;
         return getSymbol().equals(that.getSymbol());
     }
 
