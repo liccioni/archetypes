@@ -2,4 +2,8 @@ jdk:
   - openjdk11
 install:
   - echo "Running a custom install command"
+<<<<<<< Updated upstream
   - ./gradlew clean install -xtest
+=======
+  - ./gradlew tasks --all
+>>>>>>> Stashed changes
