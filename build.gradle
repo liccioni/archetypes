@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'com.github.jmongard.git-semver-plugin' version '0.4.2'
     id 'com.adarshr.test-logger' version '3.0.0'
-//    id 'maven-publish'
+    id 'maven-publish'
 }
 
 group 'net.liccioni'
@@ -36,4 +36,15 @@ test {
 
 testlogger {
     theme 'mocha'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'net.liccioni'
+            artifactId = 'archetypes'
+            version = version
+            from components.java
+        }
+    }
 }
