@@ -1,37 +1,38 @@
 package net.liccioni.archetypes.rule;
 
-import static net.liccioni.archetypes.rule.Operation.EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operation.GREATER_THAN;
-import static net.liccioni.archetypes.rule.Operation.GREATER_THAN_OR_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operation.LESS_THAN;
-import static net.liccioni.archetypes.rule.Operation.LESS_THAN_OR_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operation.NOT_EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.GREATER_THAN;
+import static net.liccioni.archetypes.rule.Operator.GREATER_THAN_OR_EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.LESS_THAN;
+import static net.liccioni.archetypes.rule.Operator.LESS_THAN_OR_EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.NOT_EQUAL_TO;
 
-import java.util.Objects;
+import java.util.Optional;
 
-public class Variable<T extends Comparable<T>> extends RuleElement {
+public class Variable<T> implements RuleElement {
     private final T value;
     private final Class<?> type;
+    private final String name;
 
     public Variable(String name) {
-        super(name);
+        this.name = name;
         this.value = null;
         this.type = null;
     }
 
     public Variable(String name, T value) {
-        super(name);
+        this.name = name;
         this.value = value;
         this.type = value.getClass();
     }
 
     @Override
-    public String getType() {
-        return "Variable";
+    public String getName() {
+        return this.name;
     }
 
     @Override
-    void acceptStack(RuleExecutionStack stack) {
+    public void acceptStack(RuleExecutionStack stack) {
         stack.acceptElement(this);
     }
 
@@ -41,65 +42,45 @@ public class Variable<T extends Comparable<T>> extends RuleElement {
 
     public Proposition equalTo(Variable<?> other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) == 0;
-        return newProposition(newValue, other, EQUAL_TO.name());
+        return newProposition(newValue, other, EQUAL_TO);
     }
 
     public Proposition notEqualTo(Variable<?> other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) != 0;
-        return newProposition(newValue, other, NOT_EQUAL_TO.name());
+        return newProposition(newValue, other, NOT_EQUAL_TO);
     }
 
     public Proposition greaterThan(Variable<?> other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) > 0;
-        return newProposition(newValue, other, GREATER_THAN.name());
+        return newProposition(newValue, other, GREATER_THAN);
     }
 
     public Proposition lessThan(Variable<?> other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) < 0;
-        return newProposition(newValue, other, LESS_THAN.name());
+        return newProposition(newValue, other, LESS_THAN);
     }
 
     public Proposition greaterThanOrEqualTo(Variable<?> other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) >= 0;
-        return newProposition(newValue, other, GREATER_THAN_OR_EQUAL_TO.name());
+        return newProposition(newValue, other, GREATER_THAN_OR_EQUAL_TO);
     }
 
     public Proposition lessThanOrEqualTo(Variable<?> other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) <= 0;
-        return newProposition(newValue, other, LESS_THAN_OR_EQUAL_TO.name());
+        return newProposition(newValue, other, LESS_THAN_OR_EQUAL_TO);
     }
 
     @SuppressWarnings("unchecked")
     private int compareTo(Object value) {
-        return this.value.compareTo((T) value);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Variable)) {
-            return false;
-        }
-        if (!super.equals(o)) {
-            return false;
-        }
-        Variable<?> variable = (Variable<?>) o;
-        return Objects.equals(getValue(), variable.getValue()) && getType().equals(variable.getType());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), getValue(), getType());
+        return ((Comparable<T>) this.value).compareTo((T) value);
     }
 
     @Override
     public String toString() {
         return "Variable{" +
-                "name=" + this.getName() + ", " +
-                "value=" + value +
-                ", type=" + type +
+                "name='" + name + '\'' +
+                Optional.ofNullable(type).map(t -> ", type=" + t).orElse("") +
+                Optional.ofNullable(value).map(t -> ", value=" + t).orElse("") +
                 '}';
     }
 
@@ -107,7 +88,7 @@ public class Variable<T extends Comparable<T>> extends RuleElement {
         return other.type.isAssignableFrom(this.type);
     }
 
-    protected Proposition newProposition(boolean newValue, Variable<?> other, String operation) {
-        return new Proposition(String.format("%s_%s_%s", other.getName(), operation, this.getName()), newValue);
+    protected Proposition newProposition(boolean newValue, Variable<?> other, Operator operator) {
+        return new Proposition(String.format("%s_%s_%s", other.getName(), operator.getName(), this.getName()), newValue);
     }
 }

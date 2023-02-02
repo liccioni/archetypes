@@ -1,48 +1,22 @@
 package net.liccioni.archetypes.quantity;
 
+public enum SystemOfUnits {
+    INTERNATIONAL_SYSTEM_OF_UNITS("SI", "BIPM");
 
-/**
- * @generated
- */
-public class SystemOfUnits {
+    private final String nameOfSystem;
 
-    /**
-     * @generated
-     */
-    private String nameOfSystem;
+    private final String nameOfStandardizationBody;
 
-    /**
-     * @generated
-     */
-    private String nameOfStandardizationBody;
+    SystemOfUnits(final String nameOfSystem, final String nameOfStandardizationBody) {
+        this.nameOfSystem = nameOfSystem;
+        this.nameOfStandardizationBody = nameOfStandardizationBody;
+    }
 
-
-    /**
-     * @generated
-     */
     public String getNameOfSystem() {
         return this.nameOfSystem;
     }
 
-    /**
-     * @generated
-     */
-    public void setNameOfSystem(String nameOfSystem) {
-        this.nameOfSystem = nameOfSystem;
-    }
-
-
-    /**
-     * @generated
-     */
     public String getNameOfStandardizationBody() {
         return this.nameOfStandardizationBody;
-    }
-
-    /**
-     * @generated
-     */
-    public void setNameOfStandardizationBody(String nameOfStandardizationBody) {
-        this.nameOfStandardizationBody = nameOfStandardizationBody;
     }
 }

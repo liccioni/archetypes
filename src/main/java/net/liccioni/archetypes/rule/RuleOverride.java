@@ -1,90 +1,70 @@
 package net.liccioni.archetypes.rule;
 
-
+import java.util.Objects;
 import net.liccioni.archetypes.TimeDate;
 
-/**
- * @generated
- */
 public class RuleOverride {
 
-    /**
-     * @generated
-     */
-    private String ruleName;
+    private final String ruleName;
+    private final boolean override;
+    private final String why;
+    private final TimeDate when;
 
-    /**
-     * @generated
-     */
-    private boolean override;
-
-    /**
-     * @generated
-     */
-    private String why;
-
-    /**
-     * @generated
-     */
-    private TimeDate when;
-
-
-    /**
-     * @generated
-     */
-    public String getRuleName() {
-        return this.ruleName;
-    }
-
-    /**
-     * @generated
-     */
-    public void setRuleName(String ruleName) {
+    public RuleOverride(final String ruleName, final boolean override) {
         this.ruleName = ruleName;
-    }
-
-
-    /**
-     * @generated
-     */
-    public boolean getOverride() {
-        return this.override;
-    }
-
-    /**
-     * @generated
-     */
-    public void setOverride(boolean override) {
         this.override = override;
+        this.why = "";
+        this.when = new TimeDate();
     }
 
-
-    /**
-     * @generated
-     */
-    public String getWhy() {
-        return this.why;
-    }
-
-    /**
-     * @generated
-     */
-    public void setWhy(String why) {
+    public RuleOverride(final String ruleName, final boolean override, final String why,
+                        final TimeDate when) {
+        this.ruleName = ruleName;
+        this.override = override;
         this.why = why;
-    }
-
-
-    /**
-     * @generated
-     */
-    public TimeDate getWhen() {
-        return this.when;
-    }
-
-    /**
-     * @generated
-     */
-    public void setWhen(TimeDate when) {
         this.when = when;
+    }
+
+    public String getRuleName() {
+        return ruleName;
+    }
+
+    public boolean isOverride() {
+        return override;
+    }
+
+    public String getWhy() {
+        return why;
+    }
+
+    public TimeDate getWhen() {
+        return when;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof RuleOverride)) {
+            return false;
+        }
+        RuleOverride that = (RuleOverride) o;
+        return ruleName.equals(that.ruleName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ruleName);
+    }
+
+    @Override
+    public String toString() {
+        return "RuleOverride{" +
+                "ruleName='" + ruleName + '\'' +
+                ", override=" + override +
+                ", why='" + why + '\'' +
+                ", when=" + when +
+                '}';
     }
 }

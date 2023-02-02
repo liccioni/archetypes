@@ -1,28 +1,10 @@
 package net.liccioni.archetypes.quantity;
 
+public interface Unit extends Metric {
 
-/**
- * @generated
- */
-public abstract class Unit extends Metric {
+    SystemOfUnits getSystemOfUnits();
 
-    /**
-     * @generated
-     */
-    private SystemOfUnits systemOfUnits;
-
-
-    /**
-     * @generated
-     */
-    public SystemOfUnits getSystemOfUnits() {
-        return this.systemOfUnits;
-    }
-
-    /**
-     * @generated
-     */
-    public void setSystemOfUnits(SystemOfUnits systemOfUnits) {
-        this.systemOfUnits = systemOfUnits;
+    default boolean isEqualTo(Unit other) {
+        return getSymbol().equals(other.getSymbol()) && getSystemOfUnits().equals(other.getSystemOfUnits());
     }
 }

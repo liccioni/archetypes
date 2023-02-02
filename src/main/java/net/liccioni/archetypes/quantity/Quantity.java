@@ -1,133 +1,114 @@
 package net.liccioni.archetypes.quantity;
 
 
-/**
- * @generated
- */
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Objects;
+
 public class Quantity {
 
-    /**
-     * @generated
-     */
-    private double amount;
+    private final BigDecimal amount;
 
+    private final Unit metric;
 
-    /**
-     * @generated
-     */
-    private Metric metric;
-
-
-    /**
-     * @generated
-     */
-    public double getAmount() {
-        return this.amount;
-    }
-
-    /**
-     * @generated
-     */
-    public void setAmount(double amount) {
+    public Quantity(final BigDecimal amount, final Unit metric) {
         this.amount = amount;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Metric getMetric() {
-        return this.metric;
-    }
-
-    /**
-     * @generated
-     */
-    public void setMetric(Metric metric) {
         this.metric = metric;
     }
 
+    public Quantity(final Number amount, final Unit metric) {
+        this.amount = BigDecimal.valueOf(amount.doubleValue());
+        this.metric = metric;
+    }
 
-    //                          Operations
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
+    public Unit getMetric() {
+        return metric;
+    }
 
-    /**
-     * @generated
-     */
     public Quantity round(RoundingPolicy policy) {
-        //TODO
-        return null;
+        return new Quantity(policy.round(this.amount), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public boolean equalTo(Quantity quantity) {
-        //TODO
-        return false;
+        return this.equals(quantity);
     }
 
-    /**
-     * @generated
-     */
     public boolean greaterThan(Quantity quantity) {
-        //TODO
-        return false;
+        if (!metric.isEqualTo(quantity.metric)) {
+            throw new IllegalArgumentException("Different units, cannot compare " + this + " and " + quantity);
+        }
+        return amount.compareTo(quantity.amount) > 0;
     }
 
-    /**
-     * @generated
-     */
     public boolean lessThan(Quantity quantity) {
-        //TODO
-        return false;
+        if (!metric.isEqualTo(quantity.metric)) {
+            throw new IllegalArgumentException("Different units, cannot compare " + this + " and " + quantity);
+        }
+        return amount.compareTo(quantity.amount) < 0;
     }
 
-    /**
-     * @generated
-     */
     public Quantity add(Quantity quantity) {
-        //TODO
-        return null;
+        if (!metric.isEqualTo(quantity.metric)) {
+            throw new IllegalArgumentException("Different units, cannot add " + this + " and " + quantity);
+        }
+        return new Quantity(this.amount.add(quantity.amount), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity subtract(Quantity quantity) {
-        //TODO
-        return null;
+        if (!metric.isEqualTo(quantity.metric)) {
+            throw new IllegalArgumentException("Different units, cannot subtract " + this + " and " + quantity);
+        }
+        return new Quantity(this.amount.subtract(quantity.amount), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity multiply(double multiplier) {
-        //TODO
-        return null;
+        return new Quantity(this.amount.multiply(BigDecimal.valueOf(multiplier)), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity multiply(Quantity quantity) {
-        //TODO
-        return null;
+        final var derivedMetric = new DerivedUnit(metric.getSystemOfUnits(),
+                new DerivedUnitTerm(1, this.metric),
+                new DerivedUnitTerm(1, quantity.metric));
+        return new Quantity(this.amount.multiply(quantity.amount), derivedMetric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity divide(double divisor) {
-        //TODO
-        return null;
+        return new Quantity(this.amount.divide(BigDecimal.valueOf(divisor), RoundingMode.UP), this.metric);
     }
 
-    /**
-     * @generated
-     */
     public Quantity divide(Quantity quantity) {
-        //TODO
-        return null;
+        final var derivedMetric = new DerivedUnit(metric.getSystemOfUnits(),
+                new DerivedUnitTerm(1, this.metric),
+                new DerivedUnitTerm(-1, quantity.metric));
+        return new Quantity(this.amount.divide(quantity.amount, RoundingMode.UP), derivedMetric);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Quantity)) {
+            return false;
+        }
+        Quantity quantity = (Quantity) o;
+        return amount.equals(quantity.amount) && metric.isEqualTo(quantity.metric);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, metric);
+    }
+
+    @Override
+    public String toString() {
+        return "Quantity{" +
+                "amount=" + amount +
+                ", metric=" + metric +
+                '}';
     }
 }

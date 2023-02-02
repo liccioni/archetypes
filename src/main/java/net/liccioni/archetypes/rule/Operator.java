@@ -3,26 +3,38 @@ package net.liccioni.archetypes.rule;
 
 import java.util.function.Consumer;
 
-/**
- * @generated
- */
-public class Operator extends RuleElement {
+public enum Operator implements RuleElement {
+
+    NOT(RuleExecutionStack::not),
+    AND(RuleExecutionStack::and),
+    OR(RuleExecutionStack::or),
+    XOR(RuleExecutionStack::xor),
+    EQUAL_TO(RuleExecutionStack::equalTo),
+    NOT_EQUAL_TO(RuleExecutionStack::notEqualTo),
+    GREATER_THAN(RuleExecutionStack::greaterThan),
+    LESS_THAN(RuleExecutionStack::lessThan),
+    GREATER_THAN_OR_EQUAL_TO(RuleExecutionStack::greaterThanOrEqualTo),
+    LESS_THAN_OR_EQUAL_TO(RuleExecutionStack::lessThanOrEqualTo),
+    MATCHES(RuleExecutionStack::matches);
 
     private final Consumer<RuleExecutionStack> operation;
 
-    public Operator(final String name,
-                    final Consumer<RuleExecutionStack> operation) {
-        super(name);
+    Operator(final Consumer<RuleExecutionStack> operation) {
         this.operation = operation;
     }
 
     @Override
-    public String getType() {
-        return "Operator";
+    public String getName() {
+        return this.name();
     }
 
     @Override
-    void acceptStack(final RuleExecutionStack ruleExecutionStack) {
-        operation.accept(ruleExecutionStack);
+    public void acceptStack(final RuleExecutionStack stack) {
+        operation.accept(stack);
+    }
+
+    @Override
+    public String toString() {
+        return "Operator{name=" + this.name() + "} ";
     }
 }

@@ -3,43 +3,31 @@ package net.liccioni.archetypes.quantity;
 import java.util.HashSet;
 import java.util.Set;
 
-
-/**
- * @generated
- */
 public class UnitConverter {
 
+    private final Set<StandardConversion> converters = new HashSet<>();
 
-    //                          Operations
-
-
-    /**
-     * @generated
-     */
-    private Set<StandardConversion> converters;
-
-    /**
-     * @generated
-     */
-    public Set<StandardConversion> getConverters() {
-        if (this.converters == null) {
-            this.converters = new HashSet<StandardConversion>();
-        }
-        return this.converters;
+    public void addConverter(final StandardConversion converter) {
+        this.converters.add(converter);
     }
 
-    /**
-     * @generated
-     */
-    public void setConverters(Set<StandardConversion> converters) {
-        this.converters = converters;
+    public void removeConverter(final StandardConversion converter) {
+        this.converters.remove(converter);
     }
 
-    /**
-     * @generated
-     */
     public Quantity convert(Quantity quantity, Unit targetUnit) {
-        //TODO
-        return null;
+
+        return this.converters.stream()
+                .filter(converter -> converterMatches(quantity.getMetric(), targetUnit, converter))
+                .map(converter -> quantity.getAmount().multiply(converter.getConversionFactor()))
+                .map(convertedAmount -> new Quantity(convertedAmount, targetUnit))
+                .findFirst().orElseThrow(() -> new IllegalStateException(
+                        "Cannot find converter for " + quantity.getMetric() + " to " + targetUnit));
+    }
+
+    private boolean converterMatches(final Unit sourceUnit, final Unit targetUnit,
+                                     final StandardConversion converter) {
+        return converter.getSource().isEqualTo(sourceUnit) &&
+                converter.getTarget().isEqualTo(targetUnit);
     }
 }
