@@ -37,4 +37,14 @@ public enum SIBaseUnit implements Unit {
     public SystemOfUnits getSystemOfUnits() {
         return this.systemOfUnits;
     }
+
+    @Override
+    public String toString() {
+        return "Unit{" +
+                "name='" + getName() + '\'' +
+                ", symbol='" + getSymbol() + '\'' +
+                ", definition='" + getDefinition() + '\'' +
+                ", systemOfUnits=" + getSystemOfUnits() +
+                "} ";
+    }
 }

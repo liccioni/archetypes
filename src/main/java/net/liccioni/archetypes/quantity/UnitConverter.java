@@ -25,9 +25,9 @@ public class UnitConverter {
                         "Cannot find converter for " + quantity.getMetric() + " to " + targetUnit));
     }
 
-    private boolean converterMatches(final Metric sourceUnit, final Unit targetUnit,
+    private boolean converterMatches(final Unit sourceUnit, final Unit targetUnit,
                                      final StandardConversion converter) {
-        return converter.getSource().equals(sourceUnit) &&
-                converter.getTarget().equals(targetUnit);
+        return converter.getSource().isEqualTo(sourceUnit) &&
+                converter.getTarget().isEqualTo(targetUnit);
     }
 }

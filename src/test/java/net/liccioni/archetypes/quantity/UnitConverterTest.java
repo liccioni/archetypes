@@ -13,17 +13,20 @@ class UnitConverterTest {
 
     private final SimpleUnit km = new SimpleUnit("Kilometre", "km", "length", INTERNATIONAL_SYSTEM_OF_UNITS);
     private final SimpleUnit hour = new SimpleUnit("hour", "h", "time", INTERNATIONAL_SYSTEM_OF_UNITS);
-    private final DerivedUnit kmPerHour = new DerivedUnit(INTERNATIONAL_SYSTEM_OF_UNITS);
-    private final DerivedUnit mPerSecond = new DerivedUnit(INTERNATIONAL_SYSTEM_OF_UNITS);
+    private final DerivedUnit kmPerHour =
+            new DerivedUnit(INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(-1, hour), new DerivedUnitTerm(1, km));
+    private final DerivedUnit mPerSecond =
+            new DerivedUnit(INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(-1, SECOND),
+                    new DerivedUnitTerm(1, METRE));
     private final RoundingPolicy roundingPolicy = new RoundingPolicy(RoundingStrategy.ROUND_UP, 5, 5, 1);
     private final RoundingPolicy simple = new RoundingPolicy(RoundingStrategy.ROUND_UP, 1, 5, 1);
 
-    {
-        kmPerHour.addTerm(new DerivedUnitTerm(-1, hour));
-        kmPerHour.addTerm(new DerivedUnitTerm(1, km));
-        mPerSecond.addTerm(new DerivedUnitTerm(-1, SECOND));
-        mPerSecond.addTerm(new DerivedUnitTerm(1, METRE));
-    }
+//    {
+//        kmPerHour.addTerm(new DerivedUnitTerm(-1, hour));
+//        kmPerHour.addTerm(new DerivedUnitTerm(1, km));
+//        mPerSecond.addTerm(new DerivedUnitTerm(-1, SECOND));
+//        mPerSecond.addTerm(new DerivedUnitTerm(1, METRE));
+//    }
 
     private final StandardConversion kmTom = new StandardConversion(km, METRE, 0.001);
     private final StandardConversion mToKm = new StandardConversion(METRE, km, 1000);
@@ -71,8 +74,9 @@ class UnitConverterTest {
                 () -> unitConverter.convert(new Quantity(1, METRE), km), "IllegalStateException was expected");
 
         Assertions.assertEquals(
-                "Cannot find converter for METRE to Unit{name='Kilometre', symbol='km', definition='length', " +
-                        "systemOfUnits=INTERNATIONAL_SYSTEM_OF_UNITS}",
+                "Cannot find converter for Unit{name='metre', symbol='m', definition='length', " +
+                        "systemOfUnits=INTERNATIONAL_SYSTEM_OF_UNITS}  to Unit{name='Kilometre', symbol='km', " +
+                        "definition='length', systemOfUnits=INTERNATIONAL_SYSTEM_OF_UNITS}",
                 thrown.getMessage());
 
     }

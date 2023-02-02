@@ -9,14 +9,14 @@ public class Quantity {
 
     private final BigDecimal amount;
 
-    private final Metric metric;
+    private final Unit metric;
 
-    public Quantity(final BigDecimal amount, final Metric metric) {
+    public Quantity(final BigDecimal amount, final Unit metric) {
         this.amount = amount;
         this.metric = metric;
     }
 
-    public Quantity(final Number amount, final Metric metric) {
+    public Quantity(final Number amount, final Unit metric) {
         this.amount = BigDecimal.valueOf(amount.doubleValue());
         this.metric = metric;
     }
@@ -25,7 +25,7 @@ public class Quantity {
         return amount;
     }
 
-    public Metric getMetric() {
+    public Unit getMetric() {
         return metric;
     }
 
@@ -38,24 +38,28 @@ public class Quantity {
     }
 
     public boolean greaterThan(Quantity quantity) {
-        //TODO
-        return false;
+        if (!metric.isEqualTo(quantity.metric)) {
+            throw new IllegalArgumentException("Different units, cannot compare " + this + " and " + quantity);
+        }
+        return amount.compareTo(quantity.amount) > 0;
     }
 
     public boolean lessThan(Quantity quantity) {
-        //TODO
-        return false;
+        if (!metric.isEqualTo(quantity.metric)) {
+            throw new IllegalArgumentException("Different units, cannot compare " + this + " and " + quantity);
+        }
+        return amount.compareTo(quantity.amount) < 0;
     }
 
     public Quantity add(Quantity quantity) {
-        if (!this.metric.equals(quantity.metric)) {
+        if (!metric.isEqualTo(quantity.metric)) {
             throw new IllegalArgumentException("Different units, cannot add " + this + " and " + quantity);
         }
         return new Quantity(this.amount.add(quantity.amount), this.metric);
     }
 
     public Quantity subtract(Quantity quantity) {
-        if (!this.metric.equals(quantity.metric)) {
+        if (!metric.isEqualTo(quantity.metric)) {
             throw new IllegalArgumentException("Different units, cannot subtract " + this + " and " + quantity);
         }
         return new Quantity(this.amount.subtract(quantity.amount), this.metric);
@@ -66,9 +70,9 @@ public class Quantity {
     }
 
     public Quantity multiply(Quantity quantity) {
-        final var derivedMetric = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        derivedMetric.addTerm(new DerivedUnitTerm(1, this.metric));
-        derivedMetric.addTerm(new DerivedUnitTerm(1, quantity.metric));
+        final var derivedMetric = new DerivedUnit(metric.getSystemOfUnits(),
+                new DerivedUnitTerm(1, this.metric),
+                new DerivedUnitTerm(1, quantity.metric));
         return new Quantity(this.amount.multiply(quantity.amount), derivedMetric);
     }
 
@@ -77,9 +81,9 @@ public class Quantity {
     }
 
     public Quantity divide(Quantity quantity) {
-        final var derivedMetric = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        derivedMetric.addTerm(new DerivedUnitTerm(1, this.metric));
-        derivedMetric.addTerm(new DerivedUnitTerm(-1, quantity.metric));
+        final var derivedMetric = new DerivedUnit(metric.getSystemOfUnits(),
+                new DerivedUnitTerm(1, this.metric),
+                new DerivedUnitTerm(-1, quantity.metric));
         return new Quantity(this.amount.divide(quantity.amount, RoundingMode.UP), derivedMetric);
     }
 
@@ -92,7 +96,7 @@ public class Quantity {
             return false;
         }
         Quantity quantity = (Quantity) o;
-        return amount.equals(quantity.amount) && metric.equals(quantity.metric);
+        return amount.equals(quantity.amount) && metric.isEqualTo(quantity.metric);
     }
 
     @Override

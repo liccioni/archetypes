@@ -63,8 +63,8 @@ class QuantityTest {
 
         Quantity actual =
                 new Quantity(3, METRE).multiply(new Quantity(5, METRE));
-        final var squareMetre = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        squareMetre.addTerm(new DerivedUnitTerm(2, METRE));
+        final var squareMetre =
+                new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(2, METRE));
         Quantity expected = new Quantity(new BigDecimal("15.00"), squareMetre);
         assertThat(actual).isEqualTo(expected);
         System.out.println(actual);
@@ -75,9 +75,9 @@ class QuantityTest {
 
         Quantity actual =
                 new Quantity(3, METRE).multiply(new Quantity(5, SECOND));
-        final var metreAndSecond = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        metreAndSecond.addTerm(new DerivedUnitTerm(1, METRE));
-        metreAndSecond.addTerm(new DerivedUnitTerm(1, SECOND));
+        final var metreAndSecond =
+                new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(1, METRE),
+                        new DerivedUnitTerm(1, SECOND));
         Quantity expected = new Quantity(new BigDecimal("15.00"), metreAndSecond);
         assertThat(actual).isEqualTo(expected);
         System.out.println(actual);
@@ -86,10 +86,9 @@ class QuantityTest {
     @Test
     void shouldMultiplyQuantitySameMetricDerived() {
 
-        final var squareMetre = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        squareMetre.addTerm(new DerivedUnitTerm(2, METRE));
-        final var cubeMetre = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        cubeMetre.addTerm(new DerivedUnitTerm(3, METRE));
+        final var cubeMetre =
+                new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(3, METRE));
+
         Quantity expected = new Quantity(new BigDecimal("30.000"), cubeMetre);
         Quantity actual = new Quantity(3, METRE).multiply(new Quantity(5, METRE))
                 .multiply(new Quantity(2, METRE));
@@ -118,8 +117,8 @@ class QuantityTest {
 
     @Test
     void shouldDivideQuantityDifferentMetricPowers() {
-        final var squareMetre = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        squareMetre.addTerm(new DerivedUnitTerm(2, METRE));
+        final var squareMetre =
+                new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(2, METRE));
         Quantity actual = new Quantity(15, squareMetre).divide(new Quantity(3, METRE));
         Quantity expected = new Quantity(new BigDecimal("15.0"), METRE);
         assertThat(new Quantity(10, METRE).add(actual)).isEqualTo(expected);
@@ -128,9 +127,9 @@ class QuantityTest {
 
     @Test
     void shouldDivideQuantityDifferentMetrics() {
-        final var metrePerSecond = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        metrePerSecond.addTerm(new DerivedUnitTerm(1, METRE));
-        metrePerSecond.addTerm(new DerivedUnitTerm(-1, SECOND));
+        final var metrePerSecond =
+                new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(1, METRE),
+                        new DerivedUnitTerm(-1, SECOND));
         Quantity actual = new Quantity(15, METRE).divide(new Quantity(3, SECOND));
         Quantity expected = new Quantity(new BigDecimal("5.0"), metrePerSecond);
         assertThat(actual).isEqualTo(expected);
@@ -139,9 +138,9 @@ class QuantityTest {
 
     @Test
     void shouldDivideQuantityDifferentMetricsAndPowers() {
-        final var metrePerSecond = new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS);
-        metrePerSecond.addTerm(new DerivedUnitTerm(1, METRE));
-        metrePerSecond.addTerm(new DerivedUnitTerm(-2, SECOND));
+        final var metrePerSecond =
+                new DerivedUnit(SystemOfUnits.INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(1, METRE),
+                        new DerivedUnitTerm(-2, SECOND));
         Quantity actual = new Quantity(15, METRE).divide(new Quantity(3, SECOND))
                 .divide(new Quantity(3, SECOND));
         Quantity expected = new Quantity(new BigDecimal("1.7"), metrePerSecond);
@@ -158,5 +157,21 @@ class QuantityTest {
         assertThat(twoMetre.equalTo(new Quantity(2, METRE))).isTrue();
         assertThat(oneMetre.lessThan(twoMetre)).isTrue();
         assertThat(oneMetre.greaterThan(twoMetre)).isFalse();
+        assertThat(twoMetre.greaterThan(oneMetre)).isTrue();
+    }
+
+    @Test
+    void shouldExpectExceptionWhenComparingQuantitiesDifferentMetric() {
+
+        final var qa = new Quantity(3, METRE);
+        final var qb = new Quantity(2, SECOND);
+        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> qa.lessThan(qb), "IllegalArgumentException was expected");
+        Assertions.assertEquals("Different units, cannot compare " + qa + " and " + qb, thrown.getMessage());
+
+        IllegalArgumentException thrownGreaterThan = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> qa.greaterThan(qb), "IllegalArgumentException was expected");
+        Assertions.assertEquals("Different units, cannot compare " + qa + " and " + qb,
+                thrownGreaterThan.getMessage());
     }
 }
