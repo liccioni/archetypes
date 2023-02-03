@@ -19,4 +19,12 @@ public enum SystemOfUnits {
     public String getNameOfStandardizationBody() {
         return this.nameOfStandardizationBody;
     }
+
+    @Override
+    public String toString() {
+        return "SystemOfUnits{" +
+                "nameOfSystem='" + getNameOfSystem() + '\'' +
+                ", nameOfStandardizationBody='" + getNameOfStandardizationBody() + '\'' +
+                "} ";
+    }
 }

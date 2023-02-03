@@ -29,6 +29,10 @@ public class Payment extends Money {
      */
     private TimeDate dateCreated;
 
+    public Payment() {
+        super(null, null);
+    }
+
 
     /**
      * @generated
