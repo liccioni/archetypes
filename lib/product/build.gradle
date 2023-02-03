@@ -9,12 +9,3 @@
 dependencies {
     api project(':lib:party')
 }
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            artifactId 'archetypes-product'
-            from components.java
-        }
-    }
-}

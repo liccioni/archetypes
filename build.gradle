@@ -42,4 +42,12 @@ allprojects {
         // Use JUnit Platform for unit tests.
         useJUnitPlatform()
     }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+            }
+        }
+    }
 }

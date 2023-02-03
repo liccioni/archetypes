@@ -9,12 +9,3 @@
 dependencies {
     api project(':lib:common')
 }
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            artifactId 'archetypes-address'
-            from components.java
-        }
-    }
-}
