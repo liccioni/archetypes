@@ -6,7 +6,6 @@ plugins {
 allprojects {
 
     apply plugin: 'java-library'
-    apply plugin: 'com.github.jmongard.git-semver-plugin'
     apply plugin: 'com.adarshr.test-logger'
     apply plugin: 'maven-publish'
 
@@ -37,7 +36,6 @@ allprojects {
         testImplementation libs.junit.jupiter
         testImplementation libs.junit.params
         testRuntimeOnly libs.junit.engine
-//        implementation 'com.github.liccioni:archetypes:0.0.24'
     }
 
     tasks.named('test') {
