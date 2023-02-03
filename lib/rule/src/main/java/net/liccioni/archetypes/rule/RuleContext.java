@@ -3,16 +3,17 @@ package net.liccioni.archetypes.rule;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Value;
 
+@Value
 public class RuleContext {
 
-    private final String name;
+    String name;
 
-    private final Map<String, RuleElement> elements = new HashMap<>();
-
-    public RuleContext(final String name) {
-        this.name = name;
-    }
+    @Getter(AccessLevel.NONE)
+    Map<String, RuleElement> elements = new HashMap<>();
 
     public RuleContext addProposition(String statement, boolean value) {
         Proposition proposition = new Proposition(statement, value);
@@ -32,10 +33,6 @@ public class RuleContext {
 
     public Optional<RuleElement> findElement(String name) {
         return Optional.ofNullable(elements.get(name));
-    }
-
-    public String getName() {
-        return this.name;
     }
 
     public void append(RuleContext context) {

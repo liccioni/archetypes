@@ -25,13 +25,13 @@ public class RuleBuilder {
     }
 
     public PropositionDSL not(String name) {
-        elements.add(new Proposition(name));
+        elements.add(new Proposition(name, false));
         elements.add(NOT);
         return new PropositionDSL(elements::add);
     }
 
     public PropositionDSL proposition(String name) {
-        elements.add(new Proposition(name));
+        elements.add(new Proposition(name, false));
         return new PropositionDSL(elements::add);
     }
 

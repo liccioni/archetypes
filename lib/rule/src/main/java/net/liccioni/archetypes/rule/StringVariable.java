@@ -7,10 +7,6 @@ import java.util.regex.Pattern;
 
 public class StringVariable extends Variable<String> {
 
-    public StringVariable(String name) {
-        super(name);
-    }
-
     public StringVariable(String name, String value) {
         super(name, value);
     }

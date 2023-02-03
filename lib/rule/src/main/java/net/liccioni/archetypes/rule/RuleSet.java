@@ -8,12 +8,17 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Value;
 
+@Value
 public class RuleSet {
 
-    private final Set<Rule> rules = new TreeSet<>(Comparator.comparing(Rule::getName));
-    private final Map<String, RuleOverride> ruleOverrides = new HashMap<>();
+    @Getter(AccessLevel.NONE)
+    Set<Rule> rules = new TreeSet<>(Comparator.comparing(Rule::getName));
+    @Getter(AccessLevel.NONE)
+    Map<String, RuleOverride> ruleOverrides = new HashMap<>();
 
     public RuleSet(List<Rule> rules) {
 
@@ -28,7 +33,7 @@ public class RuleSet {
         return rules.stream()
                 .filter(this::isNotOverride)
                 .map(rule -> rule.evaluate(context))
-                .allMatch(Proposition::getValue);
+                .allMatch(Proposition::isValue);
     }
 
     public void addRuleOverride(RuleOverride ruleOverride) {
@@ -41,14 +46,5 @@ public class RuleSet {
         return !Optional.ofNullable(ruleOverrides.get(rule.getName()))
                 .map(RuleOverride::isOverride)
                 .orElse(false);
-    }
-
-    @Override
-    public String toString() {
-        return "RuleSet{" +
-                "rules=\n" + rules.stream().map(Object::toString).collect(Collectors.joining(",\n")) +
-                ",\n ruleOverrides=" +
-                ruleOverrides.values().stream().map(Object::toString).collect(Collectors.joining(",")) +
-                '}';
     }
 }

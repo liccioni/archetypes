@@ -273,13 +273,14 @@ class RuleBuilderTest {
                 new RuleOverride("ruleUnderTest", true, "because why not",
                         new TimeDate(Instant.parse("2023-01-26T10:22:47.353154Z"))));
         var actual = ruleSet.toString();
-        assertThat(actual).isEqualTo("RuleSet{rules=\n" +
-                "Rule{name='alwaysTrue', elements=Variable{name='firstOp'},Variable{name='secondOp'}," +
-                "Operator{name=LESS_THAN_OR_EQUAL_TO} },\n" +
-                "Rule{name='ruleUnderTest', elements=Variable{name='fourthOp'},Variable{name='thirdOp'}," +
-                "Operator{name=LESS_THAN_OR_EQUAL_TO} ,Proposition{name=fifthOp, value=false},Operator{name=AND} },\n" +
-                " ruleOverrides=RuleOverride{ruleName='ruleUnderTest', override=true, why='because why not', " +
-                "when=TimeDate{value=2023-01-26T10:22:47.353154Z}}}");
+        assertThat(actual).isEqualTo(
+                "RuleSet(rules=[Rule(name=alwaysTrue, elements=[Variable(value=null, type=null, name=firstOp), " +
+                        "Variable(value=null, type=null, name=secondOp), Operator{name=LESS_THAN_OR_EQUAL_TO} ]), " +
+                        "Rule(name=ruleUnderTest, elements=[Variable(value=null, type=null, name=fourthOp), Variable" +
+                        "(value=null, type=null, name=thirdOp), Operator{name=LESS_THAN_OR_EQUAL_TO} , Proposition" +
+                        "(name=fifthOp, value=false), Operator{name=AND} ])], " +
+                        "ruleOverrides={ruleUnderTest=RuleOverride(ruleName=ruleUnderTest, override=true, why=because" +
+                        " why not, when=TimeDate{value=2023-01-26T10:22:47.353154Z})})");
     }
 
     @Test
