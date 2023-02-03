@@ -21,6 +21,15 @@ public class DerivedUnit extends SimpleUnit {
                 .collect(Collectors.joining(","));
     }
 
+    public DerivedUnit(final Metric metric, DerivedUnitTerm... terms) {
+        super("", "", "", metric instanceof Unit ? ((Unit) metric).getSystemOfUnits() : null);
+        Arrays.stream(terms).forEach(this::addTerm);
+        this.symbol = this.terms.values().stream()
+                .sorted(Comparator.comparing(o -> o.getUnit().getSymbol()))
+                .map(p -> p.getUnit().getSymbol() + (p.getPower() != 1 ? p.getPower() : ""))
+                .collect(Collectors.joining(","));
+    }
+
     @Override
     public String getSymbol() {
         return this.symbol;

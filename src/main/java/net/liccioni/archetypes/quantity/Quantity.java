@@ -9,14 +9,14 @@ public class Quantity {
 
     private final BigDecimal amount;
 
-    private final Unit metric;
+    private final Metric metric;
 
-    public Quantity(final BigDecimal amount, final Unit metric) {
+    public Quantity(final BigDecimal amount, final Metric metric) {
         this.amount = amount;
         this.metric = metric;
     }
 
-    public Quantity(final Number amount, final Unit metric) {
+    public Quantity(final Number amount, final Metric metric) {
         this.amount = BigDecimal.valueOf(amount.doubleValue());
         this.metric = metric;
     }
@@ -25,7 +25,7 @@ public class Quantity {
         return amount;
     }
 
-    public Unit getMetric() {
+    public Metric getMetric() {
         return metric;
     }
 
@@ -70,7 +70,7 @@ public class Quantity {
     }
 
     public Quantity multiply(Quantity quantity) {
-        final var derivedMetric = new DerivedUnit(metric.getSystemOfUnits(),
+        final var derivedMetric = new DerivedUnit(metric,
                 new DerivedUnitTerm(1, this.metric),
                 new DerivedUnitTerm(1, quantity.metric));
         return new Quantity(this.amount.multiply(quantity.amount), derivedMetric);
@@ -81,7 +81,7 @@ public class Quantity {
     }
 
     public Quantity divide(Quantity quantity) {
-        final var derivedMetric = new DerivedUnit(metric.getSystemOfUnits(),
+        final var derivedMetric = new DerivedUnit(metric,
                 new DerivedUnitTerm(1, this.metric),
                 new DerivedUnitTerm(-1, quantity.metric));
         return new Quantity(this.amount.divide(quantity.amount, RoundingMode.UP), derivedMetric);

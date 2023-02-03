@@ -7,4 +7,6 @@ public interface Metric {
     String getSymbol();
 
     String getDefinition();
+
+    boolean isEqualTo(Metric metric);
 }
