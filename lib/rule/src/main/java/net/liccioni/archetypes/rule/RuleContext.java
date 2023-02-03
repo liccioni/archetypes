@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Getter;
-import lombok.Value;
 
-@Value
+@Data
 public class RuleContext {
 
-    String name;
+    private final String name;
 
     @Getter(AccessLevel.NONE)
-    Map<String, RuleElement> elements = new HashMap<>();
+    private final Map<String, RuleElement> elements = new HashMap<>();
 
     public RuleContext addProposition(String statement, boolean value) {
         Proposition proposition = new Proposition(statement, value);

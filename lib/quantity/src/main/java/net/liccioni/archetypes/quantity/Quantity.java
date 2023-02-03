@@ -3,10 +3,13 @@ package net.liccioni.archetypes.quantity;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Objects;
+import lombok.Data;
+import lombok.With;
 
+@Data
 public class Quantity {
 
+    @With
     private final BigDecimal amount;
 
     private final Metric metric;
@@ -19,14 +22,6 @@ public class Quantity {
     public Quantity(final Number amount, final Metric metric) {
         this.amount = BigDecimal.valueOf(amount.doubleValue());
         this.metric = metric;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public Metric getMetric() {
-        return metric;
     }
 
     public Quantity round(RoundingPolicy policy) {
@@ -55,18 +50,18 @@ public class Quantity {
         if (!metric.isEqualTo(quantity.metric)) {
             throw new IllegalArgumentException("Different units, cannot add " + this + " and " + quantity);
         }
-        return new Quantity(this.amount.add(quantity.amount), this.metric);
+        return this.withAmount(this.amount.add(quantity.amount));
     }
 
     public Quantity subtract(Quantity quantity) {
         if (!metric.isEqualTo(quantity.metric)) {
             throw new IllegalArgumentException("Different units, cannot subtract " + this + " and " + quantity);
         }
-        return new Quantity(this.amount.subtract(quantity.amount), this.metric);
+        return this.withAmount(this.amount.subtract(quantity.amount));
     }
 
     public Quantity multiply(double multiplier) {
-        return new Quantity(this.amount.multiply(BigDecimal.valueOf(multiplier)), this.metric);
+        return this.withAmount(this.amount.multiply(BigDecimal.valueOf(multiplier)));
     }
 
     public Quantity multiply(Quantity quantity) {
@@ -77,7 +72,7 @@ public class Quantity {
     }
 
     public Quantity divide(double divisor) {
-        return new Quantity(this.amount.divide(BigDecimal.valueOf(divisor), RoundingMode.UP), this.metric);
+        return this.withAmount(this.amount.divide(BigDecimal.valueOf(divisor), RoundingMode.UP));
     }
 
     public Quantity divide(Quantity quantity) {
@@ -85,30 +80,5 @@ public class Quantity {
                 new DerivedUnitTerm(1, this.metric),
                 new DerivedUnitTerm(-1, quantity.metric));
         return new Quantity(this.amount.divide(quantity.amount, RoundingMode.UP), derivedMetric);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Quantity)) {
-            return false;
-        }
-        Quantity quantity = (Quantity) o;
-        return amount.equals(quantity.amount) && metric.isEqualTo(quantity.metric);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(amount, metric);
-    }
-
-    @Override
-    public String toString() {
-        return "Quantity{" +
-                "amount=" + amount +
-                ", metric=" + metric +
-                '}';
     }
 }
