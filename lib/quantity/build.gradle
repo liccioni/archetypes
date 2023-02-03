@@ -7,15 +7,5 @@
  */
 
 dependencies {
-//    api project(':lib:common')
     api project(':lib:address')
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            artifactId 'archetypes-quantity'
-            from components.java
-        }
-    }
 }

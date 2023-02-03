@@ -7,16 +7,5 @@
  */
 
 dependencies {
-//    api project(':lib:common')
     api project(':lib:product')
-//    api project(':lib:rule')
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            artifactId 'archetypes-order'
-            from components.java
-        }
-    }
 }
