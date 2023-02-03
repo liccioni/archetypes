@@ -7,6 +7,7 @@ import java.util.function.BiFunction;
 class RuleExecutionStack {
 
     private final Deque<RuleElement> stack = new ArrayDeque<>();
+
     private final RuleContext ruleContext;
 
     RuleExecutionStack(RuleContext ruleContext) {

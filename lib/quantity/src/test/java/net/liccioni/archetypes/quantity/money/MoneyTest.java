@@ -11,13 +11,14 @@ import org.junit.jupiter.api.Test;
 
 class MoneyTest {
 
-    private final ISOCurrency currencyPounds = new ISOCurrency("British Pound", "GBP");
+    private final ISOCurrency currencyPounds = ISOCurrency.builder().name("British Pound").alphabeticCode("GBP").build();
+    private final ISOCurrency euro = ISOCurrency.builder().name("Euro").alphabeticCode("EUR").build();
 
     @Test
     void shouldCreateMoneyObject() {
 
         var threePounds = new Money(3, currencyPounds);
-        var threeEuro = new Money(3, new ISOCurrency("Euro", "EUR"));
+        var threeEuro = new Money(3, euro);
         var otherThreePounds = new Money(3, currencyPounds);
         var fivePounds = new Money(5, currencyPounds);
         assertThat(threePounds).isEqualTo(otherThreePounds);
@@ -36,9 +37,9 @@ class MoneyTest {
     }
 
     @Test
-    void shouldNotAddMoneySameCurrency() {
+    void shouldNotAddMoneyDifferentCurrency() {
         var threePounds = new Money(3, currencyPounds);
-        var fiveEuro = new Money(5, new ISOCurrency("Euro", "EUR"));
+        var fiveEuro = new Money(5, euro);
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class,
                 () -> fiveEuro.subtract(threePounds), "IllegalArgumentException was expected");
         Assertions.assertEquals("Different units, cannot subtract " + fiveEuro + " and " + threePounds,
@@ -46,8 +47,8 @@ class MoneyTest {
 
         final var oneMetre = new Quantity(1, METRE);
         thrown = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> fiveEuro.subtract(oneMetre), "IllegalArgumentException was expected");
-        Assertions.assertEquals("Different units, cannot subtract " + fiveEuro + " and " + oneMetre,
+                () -> fiveEuro.add(oneMetre), "IllegalArgumentException was expected");
+        Assertions.assertEquals("Different units, cannot add " + fiveEuro + " and " + oneMetre,
                 thrown.getMessage());
         System.out.println(threePounds);
     }
@@ -55,7 +56,7 @@ class MoneyTest {
     @Test
     void shouldNotDivedMoney() {
         var threePounds = new Money(3, currencyPounds);
-        var fiveEuro = new Money(5, new ISOCurrency("Euro", "EUR"));
+        var fiveEuro = new Money(5, euro);
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class,
                 () -> fiveEuro.divide(threePounds), "IllegalArgumentException was expected");
         Assertions.assertEquals("Money cannot be divided by money " + fiveEuro + " / " + threePounds,
@@ -75,7 +76,7 @@ class MoneyTest {
     @Test
     void shouldNotMultiplyMoney() {
         var threePounds = new Money(3, currencyPounds);
-        var fiveEuro = new Money(5, new ISOCurrency("Euro", "EUR"));
+        var fiveEuro = new Money(5, euro);
         UnsupportedOperationException thrown = Assertions.assertThrows(UnsupportedOperationException.class,
                 () -> fiveEuro.multiply(threePounds), "IllegalArgumentException was expected");
         Assertions.assertEquals("Money cannot be multiplied by anything " + fiveEuro + " * " + threePounds,

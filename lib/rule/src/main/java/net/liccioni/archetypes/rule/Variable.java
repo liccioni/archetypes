@@ -7,10 +7,13 @@ import static net.liccioni.archetypes.rule.Operator.LESS_THAN;
 import static net.liccioni.archetypes.rule.Operator.LESS_THAN_OR_EQUAL_TO;
 import static net.liccioni.archetypes.rule.Operator.NOT_EQUAL_TO;
 
-import java.util.Optional;
+import lombok.Data;
+import lombok.ToString;
 
+@Data
 public class Variable<T> implements RuleElement {
     private final T value;
+    @ToString.Exclude
     private final Class<?> type;
     private final String name;
 
@@ -27,17 +30,8 @@ public class Variable<T> implements RuleElement {
     }
 
     @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
     public void acceptStack(RuleExecutionStack stack) {
         stack.acceptElement(this);
-    }
-
-    public T getValue() {
-        return value;
     }
 
     public Proposition equalTo(Variable<?> other) {
@@ -75,20 +69,12 @@ public class Variable<T> implements RuleElement {
         return ((Comparable<T>) this.value).compareTo((T) value);
     }
 
-    @Override
-    public String toString() {
-        return "Variable{" +
-                "name='" + name + '\'' +
-                Optional.ofNullable(type).map(t -> ", type=" + t).orElse("") +
-                Optional.ofNullable(value).map(t -> ", value=" + t).orElse("") +
-                '}';
-    }
-
     protected boolean isAssignableFrom(Variable<?> other) {
         return other.type.isAssignableFrom(this.type);
     }
 
     protected Proposition newProposition(boolean newValue, Variable<?> other, Operator operator) {
-        return new Proposition(String.format("%s_%s_%s", other.getName(), operator.getName(), this.getName()), newValue);
+        return new Proposition(String.format("%s_%s_%s", other.getName(), operator.getName(), this.getName()),
+                newValue);
     }
 }

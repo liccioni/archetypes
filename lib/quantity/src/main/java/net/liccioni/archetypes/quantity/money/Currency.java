@@ -16,7 +16,7 @@ public interface Currency extends Metric {
 
     String getMinorUnitSymbol();
 
-    double getRatioOfMinorToMajorUnit();
+    Double getRatioOfMinorToMajorUnit();
 
     TimeDate getIntroductionDate();
 

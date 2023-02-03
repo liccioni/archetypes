@@ -1,38 +1,19 @@
 package net.liccioni.archetypes.quantity;
 
 import java.math.BigDecimal;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Value;
 
+@Value
 public class RoundingPolicy {
 
-    private final RoundingStrategy roundingStrategy;
-
-    private final int numberOfDigits;
-
-    private final int roundingDigit;
-
-    private final double roundingStep;
-
-    public RoundingPolicy(final RoundingStrategy roundingStrategy,
-                          final int numberOfDigits,
-                          final int roundingDigit,
-                          final double roundingStep) {
-        this.roundingStrategy = roundingStrategy;
-        this.numberOfDigits = numberOfDigits;
-        this.roundingDigit = roundingDigit;
-        this.roundingStep = roundingStep;
-    }
-
-    int getNumberOfDigits() {
-        return numberOfDigits;
-    }
-
-    public int getRoundingDigit() {
-        return roundingDigit;
-    }
-
-    double getRoundingStep() {
-        return roundingStep;
-    }
+    @Getter(AccessLevel.NONE)
+    RoundingStrategy roundingStrategy;
+    int numberOfDigits;
+    @Getter(AccessLevel.NONE)
+    int roundingDigit;
+    double roundingStep;
 
     public BigDecimal round(final BigDecimal amount) {
         return roundingStrategy.round(amount, this);
