@@ -8,10 +8,12 @@ import static net.liccioni.archetypes.rule.Operator.LESS_THAN_OR_EQUAL_TO;
 import static net.liccioni.archetypes.rule.Operator.NOT_EQUAL_TO;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 public class Variable<T> implements RuleElement {
     private final T value;
+    @ToString.Exclude
     private final Class<?> type;
     private final String name;
 
