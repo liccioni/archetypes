@@ -33,7 +33,7 @@ public class PartyRelationshipConstraint {
     /**
      * @generated
      */
-    public boolean canFormRelationship(PartyRole client, PartyRole supplier) {
+    public boolean canFormRelationship(net.liccioni.archetypes.partyrelationship.PartyRole client, PartyRole supplier) {
         //TODO
         return false;
     }

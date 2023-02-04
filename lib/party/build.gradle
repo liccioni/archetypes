@@ -7,6 +7,8 @@
  */
 
 dependencies {
-    api project(':lib:preference')
+    api project(':lib:uniqueid')
+    api project(':lib:quantity')
     api project(':lib:rule')
+    implementation 'io.vavr:vavr:1.0.0-alpha-4'
 }

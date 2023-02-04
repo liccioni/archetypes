@@ -28,7 +28,7 @@ public class AssignedResponsibility {
     /**
      * @generated
      */
-    private Responsibility responsability;
+    private net.liccioni.archetypes.partyrelationship.Responsibility responsability;
 
 
     /**
@@ -64,7 +64,7 @@ public class AssignedResponsibility {
     /**
      * @generated
      */
-    public Responsibility getResponsability() {
+    public net.liccioni.archetypes.partyrelationship.Responsibility getResponsability() {
         return this.responsability;
     }
 

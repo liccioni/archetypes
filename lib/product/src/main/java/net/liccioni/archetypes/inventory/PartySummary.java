@@ -1,7 +1,6 @@
 package net.liccioni.archetypes.inventory;
 
 
-import net.liccioni.archetypes.inventory.ReservationRequest;
 import net.liccioni.archetypes.party.PartyIdentifier;
 import net.liccioni.archetypes.partyrelationship.PartyRoleIdentifier;
 
