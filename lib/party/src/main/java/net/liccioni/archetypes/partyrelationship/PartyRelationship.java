@@ -10,12 +10,12 @@ public class PartyRelationship {
     /**
      * @generated
      */
-    private PartyRole supplier;
+    private net.liccioni.archetypes.partyrelationship.PartyRole supplier;
 
     /**
      * @generated
      */
-    private PartyRole client;
+    private net.liccioni.archetypes.partyrelationship.PartyRole client;
 
     /**
      * @generated
@@ -41,14 +41,14 @@ public class PartyRelationship {
     /**
      * @generated
      */
-    public PartyRole getSupplier() {
+    public net.liccioni.archetypes.partyrelationship.PartyRole getSupplier() {
         return this.supplier;
     }
 
     /**
      * @generated
      */
-    public void setSupplier(PartyRole supplier) {
+    public void setSupplier(net.liccioni.archetypes.partyrelationship.PartyRole supplier) {
         this.supplier = supplier;
     }
 
@@ -56,7 +56,7 @@ public class PartyRelationship {
     /**
      * @generated
      */
-    public PartyRole getClient() {
+    public net.liccioni.archetypes.partyrelationship.PartyRole getClient() {
         return this.client;
     }
 

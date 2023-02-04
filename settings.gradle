@@ -33,4 +33,4 @@ dependencyResolutionManagement {
 }
 
 
-include('lib:common', 'lib:rule', 'lib:uniqueid', 'lib:address', 'lib:order', 'lib:party', 'lib:preference', 'lib:product', 'lib:quantity')
+include('lib:common', 'lib:rule', 'lib:uniqueid', 'lib:address', 'lib:order', 'lib:party', 'lib:product', 'lib:quantity')

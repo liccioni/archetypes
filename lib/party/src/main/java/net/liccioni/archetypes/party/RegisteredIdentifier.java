@@ -8,6 +8,8 @@ import net.liccioni.archetypes.common.TimeDate;
  */
 public class RegisteredIdentifier {
 
+    public io.vavr.collection.List<Integer> something;
+
     /**
      * @generated
      */

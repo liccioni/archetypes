@@ -40,12 +40,12 @@ public class PartyRoleType {
     /**
      * @generated
      */
-    private Set<Responsibility> optionalResponsibilities;
+    private Set<net.liccioni.archetypes.partyrelationship.Responsibility> optionalResponsibilities;
 
     /**
      * @generated
      */
-    private Set<Responsibility> mandatoryResponsibilities;
+    private Set<net.liccioni.archetypes.partyrelationship.Responsibility> mandatoryResponsibilities;
 
 
     /**
@@ -114,9 +114,9 @@ public class PartyRoleType {
     /**
      * @generated
      */
-    public Set<Responsibility> getMandatoryResponsibilities() {
+    public Set<net.liccioni.archetypes.partyrelationship.Responsibility> getMandatoryResponsibilities() {
         if (this.mandatoryResponsibilities == null) {
-            this.mandatoryResponsibilities = new HashSet<Responsibility>();
+            this.mandatoryResponsibilities = new HashSet<net.liccioni.archetypes.partyrelationship.Responsibility>();
         }
         return this.mandatoryResponsibilities;
     }
@@ -124,7 +124,7 @@ public class PartyRoleType {
     /**
      * @generated
      */
-    public void setMandatoryResponsibilities(Set<Responsibility> mandatoryResponsibilities) {
+    public void setMandatoryResponsibilities(Set<net.liccioni.archetypes.partyrelationship.Responsibility> mandatoryResponsibilities) {
         this.mandatoryResponsibilities = mandatoryResponsibilities;
     }
 
@@ -132,9 +132,9 @@ public class PartyRoleType {
     /**
      * @generated
      */
-    public Set<Responsibility> getOptionalResponsibilities() {
+    public Set<net.liccioni.archetypes.partyrelationship.Responsibility> getOptionalResponsibilities() {
         if (this.optionalResponsibilities == null) {
-            this.optionalResponsibilities = new HashSet<Responsibility>();
+            this.optionalResponsibilities = new HashSet<net.liccioni.archetypes.partyrelationship.Responsibility>();
         }
         return this.optionalResponsibilities;
     }

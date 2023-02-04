@@ -19,10 +19,6 @@ public class Rule {
         this.elements = elements;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Proposition evaluate(RuleContext ruleContext) {
         RuleExecutionStack stack = new RuleExecutionStack(ruleContext);
         elements.forEach(stack::acceptElement);

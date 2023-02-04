@@ -97,7 +97,7 @@ public class PartyRelationshipType {
     /**
      * @generated
      */
-    public boolean canFormRelationship(PartyRole client, PartyRole supplier) {
+    public boolean canFormRelationship(net.liccioni.archetypes.partyrelationship.PartyRole client, net.liccioni.archetypes.partyrelationship.PartyRole supplier) {
         //TODO
         return false;
     }
@@ -106,7 +106,7 @@ public class PartyRelationshipType {
     /**
      * @generated
      */
-    public boolean canFormRelationship(PartyRole client, PartyRole supplier, RuleContext context) {
+    public boolean canFormRelationship(net.liccioni.archetypes.partyrelationship.PartyRole client, PartyRole supplier, RuleContext context) {
         //TODO
         return false;
     }
