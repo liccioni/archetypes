@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.stream.Stream;
 import net.liccioni.archetypes.common.TimeDate;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ class RuleBuilderTest {
                 .and(builder.variable("passengerCarryOnBaggageWeightKg")
                         .lessThanOrEqualTo(builder.variable("carryOnBaggageAllowanceKg")))
                 .and(builder.proposition("passengerDressIsSmart")));
-        RuleContext context = new RuleContext("complexRule")
+        RuleContext context = RuleContext.builder().name("complexRule").build()
                 .addProposition("passengerIsEconomy", true)
                 .addProposition("passengerIsGoldCardHolder", false)
                 .addProposition("passengerIsSilverCardHolder", true)
@@ -43,7 +44,7 @@ class RuleBuilderTest {
     void shouldEvaluate_AND(boolean firstOp, boolean secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("AND", ruleBuilder ->
                 ruleBuilder.proposition("firstOp").and(ruleBuilder.proposition("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_AND");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_AND").build();
         context.addProposition("firstOp", firstOp);
         context.addProposition("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -57,7 +58,7 @@ class RuleBuilderTest {
     void shouldEvaluate_OR(boolean firstOp, boolean secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("OR", ruleBuilder ->
                 ruleBuilder.proposition("firstOp").or(ruleBuilder.proposition("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_OR");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_OR").build();
         context.addProposition("firstOp", firstOp);
         context.addProposition("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -70,7 +71,7 @@ class RuleBuilderTest {
     void shouldEvaluate_XOR(boolean firstOp, boolean secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("XOR", ruleBuilder ->
                 ruleBuilder.proposition("firstOp").xor(ruleBuilder.proposition("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_XOR");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_XOR").build();
         context.addProposition("firstOp", firstOp);
         context.addProposition("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -82,7 +83,7 @@ class RuleBuilderTest {
     @CsvSource(value = {"true:false", "false:true"}, delimiter = ':')
     void shouldEvaluate_NOT(boolean firstOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("NOT", ruleBuilder -> ruleBuilder.not("firstOp"));
-        RuleContext context = new RuleContext("shouldEvaluate_NOT");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_NOT").build();
         context.addProposition("firstOp", firstOp);
         Proposition actual = rule.evaluate(context);
         Proposition expected = new Proposition("NOT_firstOp", expectedValue);
@@ -94,7 +95,7 @@ class RuleBuilderTest {
     void shouldEvaluate_EQUAL_TO(String firstOp, String secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("firstOp").equalTo(ruleBuilder.variable("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_EQUAL_TO");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_EQUAL_TO").build();
         context.addVariable("firstOp", firstOp);
         context.addVariable("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -107,7 +108,7 @@ class RuleBuilderTest {
     void shouldEvaluate_NOT_EQUAL_TO(String firstOp, String secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("NOT_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("firstOp").notEqualTo(ruleBuilder.variable("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_NOT_EQUAL_TO")
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_NOT_EQUAL_TO").build()
                 .addVariable("firstOp", firstOp)
                 .addVariable("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -120,7 +121,7 @@ class RuleBuilderTest {
     void shouldEvaluate_GREATER_THAN(String firstOp, String secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("GREATER_THAN", ruleBuilder ->
                 ruleBuilder.variable("firstOp").greaterThan(ruleBuilder.variable("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_GREATER_THAN");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_GREATER_THAN").build();
         context.addVariable("firstOp", firstOp);
         context.addVariable("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -133,7 +134,7 @@ class RuleBuilderTest {
     void shouldEvaluate_LESS_THAN(String firstOp, String secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("LESS_THAN", ruleBuilder ->
                 ruleBuilder.variable("firstOp").lessThan(ruleBuilder.variable("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_LESS_THAN");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_LESS_THAN").build();
         context.addVariable("firstOp", firstOp);
         context.addVariable("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -146,7 +147,7 @@ class RuleBuilderTest {
     void shouldEvaluate_GREATER_THAN_OR_EQUAL_TO(String firstOp, String secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("GREATER_THAN_OR_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("firstOp").greaterThanOrEqualTo(ruleBuilder.variable("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_GREATER_THAN_OR_EQUAL_TO");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_GREATER_THAN_OR_EQUAL_TO").build();
         context.addVariable("firstOp", firstOp);
         context.addVariable("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -159,7 +160,7 @@ class RuleBuilderTest {
     void shouldEvaluate_LESS_THAN_OR_EQUAL_TO(String firstOp, String secondOp, boolean expectedValue) {
         Rule rule = RuleBuilder.newRule("LESS_THAN_OR_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("firstOp").lessThanOrEqualTo(ruleBuilder.variable("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluate_LESS_THAN_OR_EQUAL_TO");
+        RuleContext context = RuleContext.builder().name("shouldEvaluate_LESS_THAN_OR_EQUAL_TO").build();
         context.addVariable("firstOp", firstOp);
         context.addVariable("secondOp", secondOp);
         Proposition actual = rule.evaluate(context);
@@ -171,7 +172,7 @@ class RuleBuilderTest {
     void shouldEvaluateDates() {
         Rule rule = RuleBuilder.newRule("LESS_THAN_OR_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("firstOp").lessThanOrEqualTo(ruleBuilder.variable("secondOp")));
-        RuleContext context = new RuleContext("shouldEvaluateDates");
+        RuleContext context = RuleContext.builder().name("shouldEvaluateDates").build();
         context.addVariable("firstOp", Instant.now().minusSeconds(20));
         context.addVariable("secondOp", Instant.now());
         Proposition actual = rule.evaluate(context);
@@ -184,7 +185,7 @@ class RuleBuilderTest {
         Rule rule = RuleBuilder.newRule("MATCHES", ruleBuilder ->
                 ruleBuilder.stringVariable("firstOp").matches(ruleBuilder.stringVariable("secondOp"))
                         .or(ruleBuilder.stringVariable("firstOp").equalTo(ruleBuilder.stringVariable("secondOp"))));
-        RuleContext context = new RuleContext("shouldEvaluateStringMatch");
+        RuleContext context = RuleContext.builder().name("shouldEvaluateStringMatch").build();
         context.addVariable("firstOp", "occurrences of the http:// pattern.");
         context.addVariable("secondOp", ".*http://.*");
         Proposition actual = rule.evaluate(context);
@@ -200,8 +201,8 @@ class RuleBuilderTest {
         Rule rule2 = RuleBuilder.newRule("LESS_THAN_OR_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
 
-        RuleSet ruleSet = new RuleSet(rule1, rule2);
-        RuleContext context = new RuleContext("shouldEvaluateToTrue");
+        RuleSet ruleSet = new RuleSet("", rule1, rule2);
+        RuleContext context = RuleContext.builder().name("shouldEvaluateToTrue").build();
         context.addVariable("firstOp", 1);
         context.addVariable("secondOp", 2);
         context.addVariable("thirdOp", 4);
@@ -217,8 +218,8 @@ class RuleBuilderTest {
         Rule rule2 = RuleBuilder.newRule("LESS_THAN_OR_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
 
-        RuleSet ruleSet = new RuleSet(Arrays.asList(rule1, rule2));
-        RuleContext context = new RuleContext("shouldEvaluateToFalse");
+        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
+        RuleContext context = RuleContext.builder().name("shouldEvaluateToFalse").build();
         context.addVariable("firstOp", 1);
         context.addVariable("secondOp", 2);
         context.addVariable("thirdOp", 3);
@@ -230,12 +231,20 @@ class RuleBuilderTest {
     private static Stream<Arguments> shouldEvaluateWithRuleOverrideArgs() {
 
         final var context1 = Map.of("firstOp", 1, "secondOp", 2, "thirdOp", 4, "fourthOp", 3)
-                .entrySet().stream().reduce(new RuleContext("shouldEvaluateToTrue"),
-                        (context, e) -> context.addVariable(e.getKey(), e.getValue()), (a, b) -> null);
+                .entrySet().stream().reduce(RuleContext.builder()
+                                .name("shouldEvaluateToTrue")
+                                .build(),
+                        (BiFunction<RuleContext, Map.Entry<String, Integer>, RuleContext>)
+                                (context, e) -> context.addVariable(
+                                        e.getKey(), e.getValue()), (a, b) -> null);
 
         final var context2 = Map.of("firstOp", 1, "secondOp", 2, "thirdOp", 3, "fourthOp", 4)
-                .entrySet().stream().reduce(new RuleContext("shouldEvaluateToFalse"),
-                        (context, e) -> context.addVariable(e.getKey(), e.getValue()), (a, b) -> null);
+                .entrySet().stream().reduce(RuleContext.builder()
+                                .name("shouldEvaluateToFalse")
+                                .build(),
+                        (BiFunction<RuleContext, Map.Entry<String, Integer>, RuleContext>)
+                                (context, e) -> context.addVariable(
+                                        e.getKey(), e.getValue()), (a, b) -> null);
 
         return Stream.of(
                 Arguments.of(context1, new RuleOverride("ruleUnderTest", true), true),
@@ -255,7 +264,7 @@ class RuleBuilderTest {
         Rule rule2 = RuleBuilder.newRule("ruleUnderTest", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
 
-        RuleSet ruleSet = new RuleSet(Arrays.asList(rule1, rule2));
+        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
         ruleSet.addRuleOverride(override);
         assertThat(ruleSet.evaluate(context)).isEqualTo(expected);
     }
@@ -268,13 +277,13 @@ class RuleBuilderTest {
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp"))
                         .and(ruleBuilder.proposition("fifthOp")));
 
-        RuleSet ruleSet = new RuleSet(Arrays.asList(rule1, rule2));
+        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
         ruleSet.addRuleOverride(
                 new RuleOverride("ruleUnderTest", true, "because why not",
                         new TimeDate(Instant.parse("2023-01-26T10:22:47.353154Z"))));
         var actual = ruleSet.toString();
         assertThat(actual).isEqualTo(
-                "RuleSet(rules=[Rule(name=alwaysTrue, elements=[Variable(value=null, name=firstOp), Variable" +
+                "RuleSet(name=, rules=[Rule(name=alwaysTrue, elements=[Variable(value=null, name=firstOp), Variable" +
                         "(value=null, name=secondOp), Operator{name=LESS_THAN_OR_EQUAL_TO} ]), Rule" +
                         "(name=ruleUnderTest, elements=[Variable(value=null, name=fourthOp), Variable(value=null, " +
                         "name=thirdOp), Operator{name=LESS_THAN_OR_EQUAL_TO} , Proposition(name=fifthOp, value=false)" +
@@ -288,14 +297,14 @@ class RuleBuilderTest {
                 ruleBuilder.variable("firstOp").lessThanOrEqualTo(ruleBuilder.variable("secondOp")));
         Rule rule2 = RuleBuilder.newRule("lessThanAlsoTrue", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
-        var context1 = new RuleContext("context1");
-        var context2 = new RuleContext("context2");
+        var context1 = RuleContext.builder().name("context1").build();
+        var context2 = RuleContext.builder().name("context2").build();
         context1.addVariable("firstOp", 1);
         context1.addVariable("secondOp", 2);
         context2.addVariable("thirdOp", 4);
         context2.addVariable("fourthOp", 3);
         context1.append(context2);
-        RuleSet ruleSet = new RuleSet(rule1, rule2);
+        RuleSet ruleSet = new RuleSet("", rule1, rule2);
         assertThat(ruleSet.evaluate(context1)).isEqualTo(true);
     }
 }

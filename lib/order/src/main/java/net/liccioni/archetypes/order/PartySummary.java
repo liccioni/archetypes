@@ -2,7 +2,7 @@ package net.liccioni.archetypes.order;
 
 
 import net.liccioni.archetypes.party.PartyIdentifier;
-import net.liccioni.archetypes.partyrelationship.PartyRoleIdentifier;
+import net.liccioni.archetypes.relationship.PartyRoleIdentifier;
 
 /**
  * @generated

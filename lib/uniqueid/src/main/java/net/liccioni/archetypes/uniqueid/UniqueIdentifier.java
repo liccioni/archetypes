@@ -1,27 +1,11 @@
 package net.liccioni.archetypes.uniqueid;
 
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
-/**
- * @generated
- */
+@Data
+@SuperBuilder(toBuilder = true)
 public class UniqueIdentifier {
 
-    /**
-     * @generated
-     */
-    private String identifier;
-
-    /**
-     * @generated
-     */
-    public String getIdentifier() {
-        return this.identifier;
-    }
-
-    /**
-     * @generated
-     */
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
-    }
+    private final String id;
 }

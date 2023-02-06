@@ -15,17 +15,20 @@ import lombok.Value;
 @Value
 public class RuleSet {
 
+    String name;
     @Getter(AccessLevel.NONE)
     Set<Rule> rules = new TreeSet<>(Comparator.comparing(Rule::getName));
     @Getter(AccessLevel.NONE)
     Map<String, RuleOverride> ruleOverrides = new HashMap<>();
 
-    public RuleSet(List<Rule> rules) {
+    public RuleSet(final String name, List<Rule> rules) {
+        this.name = name;
 
         this.rules.addAll(rules);
     }
 
-    public RuleSet(Rule... rules) {
+    public RuleSet(final String name, Rule... rules) {
+        this.name = name;
         this.rules.addAll(Arrays.asList(rules));
     }
 

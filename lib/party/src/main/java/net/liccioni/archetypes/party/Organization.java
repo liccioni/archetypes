@@ -1,29 +1,15 @@
 package net.liccioni.archetypes.party;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
-/**
- * @generated
- */
+@Data
+@ToString(callSuper = true)
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 public class Organization extends Party {
 
-
-    /**
-     * @generated
-     */
-    private OrganizationName organizationName;
-
-
-    /**
-     * @generated
-     */
-    public OrganizationName getOrganizationName() {
-        return this.organizationName;
-    }
-
-    /**
-     * @generated
-     */
-    public void setOrganizationName(OrganizationName organizationName) {
-        this.organizationName = organizationName;
-    }
+    private final OrganizationName organizationName;
 }

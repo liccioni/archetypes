@@ -6,8 +6,10 @@ import java.util.Optional;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 @Data
+@SuperBuilder(toBuilder = true)
 public class RuleContext {
 
     private final String name;

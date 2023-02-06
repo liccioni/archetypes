@@ -1,92 +1,16 @@
 package net.liccioni.archetypes.party;
 
 
+import lombok.Builder;
+import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 
-/**
- * @generated
- */
+@Value
+@Builder(toBuilder = true)
 public class RegisteredIdentifier {
 
-    public io.vavr.collection.List<Integer> something;
-
-    /**
-     * @generated
-     */
-    private String identifier;
-
-    /**
-     * @generated
-     */
-    private TimeDate validFrom;
-
-    /**
-     * @generated
-     */
-    private TimeDate validTo;
-
-    /**
-     * @generated
-     */
-    private String registrationAuthority;
-
-
-    /**
-     * @generated
-     */
-    public String getIdentifier() {
-        return this.identifier;
-    }
-
-    /**
-     * @generated
-     */
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
-    }
-
-
-    /**
-     * @generated
-     */
-    public TimeDate getValidFrom() {
-        return this.validFrom;
-    }
-
-    /**
-     * @generated
-     */
-    public void setValidFrom(TimeDate validFrom) {
-        this.validFrom = validFrom;
-    }
-
-
-    /**
-     * @generated
-     */
-    public TimeDate getValidTo() {
-        return this.validTo;
-    }
-
-    /**
-     * @generated
-     */
-    public void setValidTo(TimeDate validTo) {
-        this.validTo = validTo;
-    }
-
-
-    /**
-     * @generated
-     */
-    public String getRegistrationAuthority() {
-        return this.registrationAuthority;
-    }
-
-    /**
-     * @generated
-     */
-    public void setRegistrationAuthority(String registrationAuthority) {
-        this.registrationAuthority = registrationAuthority;
-    }
+    String identifier;
+    TimeDate validFrom;
+    TimeDate validTo;
+    String registrationAuthority;
 }
