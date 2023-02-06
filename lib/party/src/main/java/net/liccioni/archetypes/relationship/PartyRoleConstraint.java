@@ -6,7 +6,7 @@ import lombok.Value;
 import net.liccioni.archetypes.party.Party;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 public class PartyRoleConstraint {
 
     Class<? extends Party> typeOfParty;

@@ -6,7 +6,7 @@ import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 public class PersonName {
 
     String familyName;

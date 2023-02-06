@@ -6,7 +6,7 @@ import lombok.Value;
 import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 public class PreferenceType {
 
     UniqueIdentifier id;

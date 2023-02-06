@@ -201,7 +201,7 @@ class RuleBuilderTest {
         Rule rule2 = RuleBuilder.newRule("LESS_THAN_OR_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
 
-        RuleSet ruleSet = new RuleSet(rule1, rule2);
+        RuleSet ruleSet = new RuleSet("", rule1, rule2);
         RuleContext context = RuleContext.builder().name("shouldEvaluateToTrue").build();
         context.addVariable("firstOp", 1);
         context.addVariable("secondOp", 2);
@@ -218,7 +218,7 @@ class RuleBuilderTest {
         Rule rule2 = RuleBuilder.newRule("LESS_THAN_OR_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
 
-        RuleSet ruleSet = new RuleSet(Arrays.asList(rule1, rule2));
+        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
         RuleContext context = RuleContext.builder().name("shouldEvaluateToFalse").build();
         context.addVariable("firstOp", 1);
         context.addVariable("secondOp", 2);
@@ -264,7 +264,7 @@ class RuleBuilderTest {
         Rule rule2 = RuleBuilder.newRule("ruleUnderTest", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
 
-        RuleSet ruleSet = new RuleSet(Arrays.asList(rule1, rule2));
+        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
         ruleSet.addRuleOverride(override);
         assertThat(ruleSet.evaluate(context)).isEqualTo(expected);
     }
@@ -277,13 +277,13 @@ class RuleBuilderTest {
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp"))
                         .and(ruleBuilder.proposition("fifthOp")));
 
-        RuleSet ruleSet = new RuleSet(Arrays.asList(rule1, rule2));
+        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
         ruleSet.addRuleOverride(
                 new RuleOverride("ruleUnderTest", true, "because why not",
                         new TimeDate(Instant.parse("2023-01-26T10:22:47.353154Z"))));
         var actual = ruleSet.toString();
         assertThat(actual).isEqualTo(
-                "RuleSet(rules=[Rule(name=alwaysTrue, elements=[Variable(value=null, name=firstOp), Variable" +
+                "RuleSet(name=, rules=[Rule(name=alwaysTrue, elements=[Variable(value=null, name=firstOp), Variable" +
                         "(value=null, name=secondOp), Operator{name=LESS_THAN_OR_EQUAL_TO} ]), Rule" +
                         "(name=ruleUnderTest, elements=[Variable(value=null, name=fourthOp), Variable(value=null, " +
                         "name=thirdOp), Operator{name=LESS_THAN_OR_EQUAL_TO} , Proposition(name=fifthOp, value=false)" +
@@ -304,7 +304,7 @@ class RuleBuilderTest {
         context2.addVariable("thirdOp", 4);
         context2.addVariable("fourthOp", 3);
         context1.append(context2);
-        RuleSet ruleSet = new RuleSet(rule1, rule2);
+        RuleSet ruleSet = new RuleSet("", rule1, rule2);
         assertThat(ruleSet.evaluate(context1)).isEqualTo(true);
     }
 }

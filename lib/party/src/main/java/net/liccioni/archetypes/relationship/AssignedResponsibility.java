@@ -7,7 +7,7 @@ import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.party.PartySignature;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 public class AssignedResponsibility {
 
     TimeDate from;

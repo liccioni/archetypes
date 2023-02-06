@@ -6,8 +6,8 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
 @ToString(callSuper = true)
+@SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true)
 public class Organization extends Party {
 

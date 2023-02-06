@@ -6,7 +6,7 @@ import lombok.Value;
 import net.liccioni.archetypes.rule.RuleSet;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 public class Responsibility {
 
     String name;

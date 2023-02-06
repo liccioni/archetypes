@@ -26,10 +26,14 @@ class PartyTest {
                 .partyIdentifier(PartyIdentifier.builder().id("1").build())
                 .personName(PersonName.builder().familyName("Rodriguez").build()).build();
         gus3.getPreferences()
-                .add(new Preference(new Quantity(1, METRE), PreferenceType.builder()
-                        .id(UniqueIdentifier.builder().id("2").build())
-                        .name("Communication")
-                        .build(), new PreferenceOption("Email", "")));
+                .add(Preference.builder()
+                        .option(PreferenceOption.builder().name("email").build())
+                        .preferenceWeight(new Quantity(1, METRE))
+                        .preferenceType(PreferenceType.builder()
+                                .id(UniqueIdentifier.builder().id("2").build())
+                                .name("Communication")
+                                .build())
+                        .build());
 
         final Person dora = Person.builder()
                 .partyIdentifier(PartyIdentifier.builder().id("2").build())

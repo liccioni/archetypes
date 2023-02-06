@@ -3,6 +3,6 @@ package net.liccioni.archetypes.party;
 
 import lombok.experimental.SuperBuilder;
 
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 public abstract class PartyAuthentication {
 }

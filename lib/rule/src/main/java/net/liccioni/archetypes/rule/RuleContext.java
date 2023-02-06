@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 public class RuleContext {
 
     private final String name;

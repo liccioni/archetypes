@@ -1,19 +1,27 @@
 package net.liccioni.archetypes.relationship;
 
 
+import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.ToString;
 import lombok.Value;
 import net.liccioni.archetypes.party.Party;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 public class PartyRole {
 
     PartyRoleIdentifier identifier;
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     Party party;
+    @NonNull
     PartyRoleType type;
-    Set<AssignedResponsibility> assignedResponsibilities;
+    @Builder.Default
+    Set<AssignedResponsibility> assignedResponsibilities = new HashSet<>();
 
     public String getName() {
         return this.type.getName();
