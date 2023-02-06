@@ -1,29 +1,16 @@
 package net.liccioni.archetypes.party;
 
 
-/**
- * @generated
- */
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
+
+@Data
+@SuperBuilder
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class Person extends Party {
 
-
-    /**
-     * @generated
-     */
     private PersonName personName;
-
-
-    /**
-     * @generated
-     */
-    public PersonName getPersonName() {
-        return this.personName;
-    }
-
-    /**
-     * @generated
-     */
-    public void setPersonName(PersonName personName) {
-        this.personName = personName;
-    }
 }

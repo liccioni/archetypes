@@ -1,12 +1,9 @@
 package net.liccioni.archetypes.inventory;
 
 
+import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
-/**
- * @generated
- */
+@SuperBuilder
 public class ReservationIdentifier extends UniqueIdentifier {
-
-
 }

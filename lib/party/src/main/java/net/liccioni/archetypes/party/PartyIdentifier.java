@@ -1,9 +1,8 @@
 package net.liccioni.archetypes.party;
 
+import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
-/**
- * @generated
- */
+@SuperBuilder
 public class PartyIdentifier extends UniqueIdentifier {
 }

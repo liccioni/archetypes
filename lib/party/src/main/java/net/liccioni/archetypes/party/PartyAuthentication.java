@@ -1,10 +1,8 @@
 package net.liccioni.archetypes.party;
 
 
-/**
- * @generated
- */
+import lombok.experimental.SuperBuilder;
+
+@SuperBuilder
 public abstract class PartyAuthentication {
-
-
 }

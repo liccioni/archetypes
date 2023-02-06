@@ -1,12 +1,9 @@
 package net.liccioni.archetypes.product;
 
 
+import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
-/**
- * @generated
- */
+@SuperBuilder
 public class SerialNumber extends UniqueIdentifier {
-
-
 }
