@@ -2,6 +2,7 @@ package net.liccioni.archetypes.relationship;
 
 
 import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.party.PartySignature;
@@ -13,6 +14,7 @@ public class AssignedResponsibility {
     TimeDate from;
     TimeDate to;
     PartySignature partySignature;
+    @NonNull
     Responsibility responsibility;
 
     public String getName(){

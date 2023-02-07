@@ -4,6 +4,7 @@ package net.liccioni.archetypes.relationship;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import net.liccioni.archetypes.rule.RuleContext;
 import net.liccioni.archetypes.rule.RuleSet;
@@ -12,9 +13,11 @@ import net.liccioni.archetypes.rule.RuleSet;
 @Builder(toBuilder = true)
 public class PartyRelationshipType {
 
+    @NonNull
     String name;
     String description;
-    RuleSet requirementsForRelationship;
+    @Builder.Default
+    RuleSet requirementsForRelationship = new RuleSet("");
     @Builder.Default
     Set<PartyRelationshipConstraint> constraints = new HashSet<>();
 

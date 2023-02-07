@@ -2,6 +2,7 @@ package net.liccioni.archetypes.relationship;
 
 
 import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import net.liccioni.archetypes.party.Party;
 
@@ -9,6 +10,7 @@ import net.liccioni.archetypes.party.Party;
 @Builder(toBuilder = true)
 public class PartyRoleConstraint {
 
+    @NonNull
     Class<? extends Party> typeOfParty;
 
     public boolean canPlayRole(Party party) {
