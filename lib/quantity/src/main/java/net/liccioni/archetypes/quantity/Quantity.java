@@ -4,12 +4,14 @@ package net.liccioni.archetypes.quantity;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import lombok.Data;
+import lombok.NonNull;
 import lombok.With;
 
 @Data
 public class Quantity {
 
     @With
+    @NonNull
     private final BigDecimal amount;
 
     private final Metric metric;

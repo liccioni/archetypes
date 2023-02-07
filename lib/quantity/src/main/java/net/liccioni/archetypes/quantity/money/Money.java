@@ -1,18 +1,18 @@
 package net.liccioni.archetypes.quantity.money;
 
 
+import lombok.Getter;
 import net.liccioni.archetypes.quantity.Quantity;
 
+
 public class Money extends Quantity {
+
+    @Getter
     private final Currency currency;
 
     public Money(final Number amount, final Currency currency) {
         super(amount, currency);
         this.currency = currency;
-    }
-
-    public Currency getCurrency() {
-        return this.currency;
     }
 
     @Override

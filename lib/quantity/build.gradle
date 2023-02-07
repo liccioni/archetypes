@@ -1,3 +1,4 @@
 dependencies {
     api project(':lib:address')
+    api project(':lib:rule')
 }

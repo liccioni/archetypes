@@ -280,7 +280,7 @@ class RuleBuilderTest {
         RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
         ruleSet.addRuleOverride(
                 new RuleOverride("ruleUnderTest", true, "because why not",
-                        new TimeDate(Instant.parse("2023-01-26T10:22:47.353154Z"))));
+                        TimeDate.builder().value(Instant.parse("2023-01-26T10:22:47.353154Z")).build()));
         var actual = ruleSet.toString();
         assertThat(actual).isEqualTo(
                 "RuleSet(name=, rules=[Rule(name=alwaysTrue, elements=[Variable(value=null, name=firstOp), Variable" +
@@ -288,7 +288,7 @@ class RuleBuilderTest {
                         "(name=ruleUnderTest, elements=[Variable(value=null, name=fourthOp), Variable(value=null, " +
                         "name=thirdOp), Operator{name=LESS_THAN_OR_EQUAL_TO} , Proposition(name=fifthOp, value=false)" +
                         ", Operator{name=AND} ])], ruleOverrides={ruleUnderTest=RuleOverride(ruleName=ruleUnderTest, " +
-                        "override=true, why=because why not, when=TimeDate{value=2023-01-26T10:22:47.353154Z})})");
+                        "override=true, why=because why not, when=TimeDate(value=2023-01-26T10:22:47.353154Z))})");
     }
 
     @Test

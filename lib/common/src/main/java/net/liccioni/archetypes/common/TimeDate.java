@@ -1,27 +1,14 @@
 package net.liccioni.archetypes.common;
 
 import java.time.Instant;
+import lombok.Builder;
+import lombok.NonNull;
+import lombok.Value;
 
+@Value
+@Builder(toBuilder = true)
 public class TimeDate {
 
-    private final Instant value;
-
-    public TimeDate() {
-        this.value = Instant.now();
-    }
-
-    public TimeDate(final Instant value) {
-        this.value = value;
-    }
-
-    public Instant getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return "TimeDate{" +
-                "value=" + value +
-                '}';
-    }
+    @NonNull
+    Instant value;
 }
