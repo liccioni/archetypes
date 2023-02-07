@@ -1,30 +1,15 @@
 package net.liccioni.archetypes.address;
 
-/**
- * @generated
- */
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
+
+@Value
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 public class WebPageAddress extends Address {
 
-    /**
-     * @generated
-     */
-    private String url;
-
-
-    /**
-     * @generated
-     */
-    public String getUrl() {
-        return this.url;
-    }
-
-    /**
-     * @generated
-     */
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
+    String url;
 
     @Override
     public String getAddress() {

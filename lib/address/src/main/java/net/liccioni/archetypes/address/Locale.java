@@ -1,69 +1,16 @@
 package net.liccioni.archetypes.address;
 
-/**
- * @generated
- */
+import lombok.Data;
+import lombok.NonNull;
+import lombok.experimental.SuperBuilder;
+
+@Data
+@SuperBuilder(toBuilder = true)
 public abstract class Locale {
 
-    /**
-     * @generated
-     */
-    private String identifier;
-
-    /**
-     * @generated
-     */
-    private String name;
-
-    /**
-     * @generated
-     */
-    private String description;
-
-
-    /**
-     * @generated
-     */
-    public String getIdentifier() {
-        return this.identifier;
-    }
-
-    /**
-     * @generated
-     */
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
-    }
-
-
-    /**
-     * @generated
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * @generated
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    /**
-     * @generated
-     */
-    public String getDescription() {
-        return this.description;
-    }
-
-    /**
-     * @generated
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
+    @NonNull
+    private final String identifier;
+    @NonNull
+    private final String name;
+    private final String description;
 }

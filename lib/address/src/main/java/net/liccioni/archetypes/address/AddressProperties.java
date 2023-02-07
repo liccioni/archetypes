@@ -2,93 +2,19 @@ package net.liccioni.archetypes.address;
 
 import java.util.HashSet;
 import java.util.Set;
+import lombok.Builder;
+import lombok.NonNull;
+import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 
-/**
- * @generated
- */
+@Value
+@Builder(toBuilder = true)
 public class AddressProperties {
 
-    /**
-     * @generated
-     */
-    private TimeDate validFrom;
-
-    /**
-     * @generated
-     */
-    private TimeDate validTo;
-
-    /**
-     * @generated
-     */
-    private Set<String> use;
-
-
-    /**
-     * @generated
-     */
-    private Address address;
-
-
-    /**
-     * @generated
-     */
-    public TimeDate getValidFrom() {
-        return this.validFrom;
-    }
-
-    /**
-     * @generated
-     */
-    public void setValidFrom(TimeDate validFrom) {
-        this.validFrom = validFrom;
-    }
-
-
-    /**
-     * @generated
-     */
-    public TimeDate getValidTo() {
-        return this.validTo;
-    }
-
-    /**
-     * @generated
-     */
-    public void setValidTo(TimeDate validTo) {
-        this.validTo = validTo;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<String> getUse() {
-        if (this.use == null) {
-            this.use = new HashSet<String>();
-        }
-        return this.use;
-    }
-
-    /**
-     * @generated
-     */
-    public void setUse(Set<String> use) {
-        this.use = use;
-    }
-
-    /**
-     * @generated
-     */
-    public Address getAddress() {
-        return this.address;
-    }
-
-    /**
-     * @generated
-     */
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+    TimeDate validFrom;
+    TimeDate validTo;
+    @Builder.Default
+    Set<String> use = new HashSet<>();
+    @NonNull
+    Address address;
 }
