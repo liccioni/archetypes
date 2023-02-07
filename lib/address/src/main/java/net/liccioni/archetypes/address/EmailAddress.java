@@ -1,30 +1,17 @@
 package net.liccioni.archetypes.address;
 
-/**
- * @generated
- */
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
+
+@Value
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 public class EmailAddress extends Address {
 
-    /**
-     * @generated
-     */
-    private String emailAddress;
-
-
-    /**
-     * @generated
-     */
-    public String getEmailAddress() {
-        return this.emailAddress;
-    }
-
-    /**
-     * @generated
-     */
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
+    @NonNull
+    String emailAddress;
 
     @Override
     public String getAddress() {

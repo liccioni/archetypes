@@ -1,87 +1,26 @@
 package net.liccioni.archetypes.address;
 
 
-/**
- * @generated
- */
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
+
+@Value
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 public class ISOCountryCode extends Locale {
 
-    /**
-     * @generated
-     */
-    private String alphabeticThreeCharCode;
+    String alphabeticThreeCharCode;
+    String numericCode;
+    String officialName;
 
-    /**
-     * @generated
-     */
-    private String numericCode;
-
-    /**
-     * @generated
-     */
-    private String officialName;
-
-
-    /**
-     * @generated
-     */
-    public String getAlphabeticThreeCharCode() {
-        return this.alphabeticThreeCharCode;
-    }
-
-    /**
-     * @generated
-     */
-    public void setAlphabeticThreeCharCode(String alphabeticThreeCharCode) {
-        this.alphabeticThreeCharCode = alphabeticThreeCharCode;
-    }
-
-
-    /**
-     * @generated
-     */
-    public String getNumericCode() {
-        return this.numericCode;
-    }
-
-    /**
-     * @generated
-     */
-    public void setNumericCode(String numericCode) {
-        this.numericCode = numericCode;
-    }
-
-
-    /**
-     * @generated
-     */
-    public String getOfficialName() {
-        return this.officialName;
-    }
-
-    /**
-     * @generated
-     */
-    public void setOfficialName(String officialName) {
-        this.officialName = officialName;
-    }
-
-
-    //                          Operations
-
-    /**
-     * @generated
-     */
     public String getShortName() {
-        //TODO
-        return "";
+
+        return this.getName();
     }
 
-    /**
-     * @generated
-     */
     public String getAlphabeticTwoCharCode() {
-        //TODO
-        return "";
+
+        return this.getIdentifier();
     }
 }
