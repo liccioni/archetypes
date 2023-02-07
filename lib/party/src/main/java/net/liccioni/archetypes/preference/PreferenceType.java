@@ -1,7 +1,9 @@
 package net.liccioni.archetypes.preference;
 
+import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
@@ -10,7 +12,9 @@ import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 public class PreferenceType {
 
     UniqueIdentifier id;
+    @NonNull
     String name;
     String description;
-    Set<PreferenceOption> preferenceOptions;
+    @Builder.Default
+    Set<PreferenceOption> preferenceOptions = new HashSet<>();
 }

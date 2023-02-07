@@ -3,6 +3,7 @@ package net.liccioni.archetypes.relationship;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import net.liccioni.archetypes.party.Party;
 import net.liccioni.archetypes.rule.RuleContext;
@@ -12,6 +13,7 @@ import net.liccioni.archetypes.rule.RuleSet;
 @Builder(toBuilder = true)
 public class PartyRoleType {
 
+    @NonNull
     String name;
     String description;
     @Builder.Default

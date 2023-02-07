@@ -3,6 +3,7 @@ package net.liccioni.archetypes.party;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
@@ -12,5 +13,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class Person extends Party {
 
+    @NonNull
     private PersonName personName;
 }
