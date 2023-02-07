@@ -15,7 +15,7 @@ public class RuleOverride {
         this.ruleName = ruleName;
         this.override = override;
         this.why = "";
-        this.when = new TimeDate();
+        this.when = null;
     }
 
     public RuleOverride(final String ruleName, final boolean override, final String why,
