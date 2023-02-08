@@ -1,9 +1,9 @@
 package net.liccioni.archetypes.money;
 
-import static net.liccioni.archetypes.quantity.SIBaseUnit.METRE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import lombok.val;
+import net.liccioni.archetypes.money.payment.Payment;
 import net.liccioni.archetypes.quantity.DerivedUnit;
 import net.liccioni.archetypes.quantity.DerivedUnitTerm;
 import net.liccioni.archetypes.quantity.Quantity;

@@ -1,10 +1,12 @@
-package net.liccioni.archetypes.money;
+package net.liccioni.archetypes.money.payment;
 
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import net.liccioni.archetypes.common.TimeDate;
+import net.liccioni.archetypes.money.Currency;
+import net.liccioni.archetypes.money.Money;
 
 @ToString(callSuper = true)
 public class Payment extends Money {

@@ -3,8 +3,8 @@ package net.liccioni.archetypes.order.payment;
 
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.money.Currency;
-import net.liccioni.archetypes.money.Payment;
-import net.liccioni.archetypes.money.PaymentMethod;
+import net.liccioni.archetypes.money.payment.Payment;
+import net.liccioni.archetypes.money.payment.PaymentMethod;
 
 /**
  * @generated
