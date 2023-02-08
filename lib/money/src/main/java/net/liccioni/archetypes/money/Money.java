@@ -1,16 +1,21 @@
-package net.liccioni.archetypes.quantity.money;
+package net.liccioni.archetypes.money;
 
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
 import net.liccioni.archetypes.quantity.Quantity;
 
-
+@ToString(callSuper = true)
 public class Money extends Quantity {
 
     @Getter
+    @ToString.Exclude
     private final Currency currency;
 
-    public Money(final Number amount, final Currency currency) {
+    @Builder(builderMethodName = "moneyBuilder")
+    public Money(final Number amount, @NonNull final Currency currency) {
         super(amount, currency);
         this.currency = currency;
     }

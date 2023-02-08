@@ -2,8 +2,9 @@ package net.liccioni.archetypes.order.payment;
 
 
 import net.liccioni.archetypes.common.TimeDate;
-import net.liccioni.archetypes.quantity.money.Currency;
-import net.liccioni.archetypes.quantity.money.Payment;
+import net.liccioni.archetypes.money.Currency;
+import net.liccioni.archetypes.money.payment.Payment;
+import net.liccioni.archetypes.money.payment.PaymentMethod;
 
 /**
  * @generated
@@ -20,12 +21,14 @@ public class OrderPayment extends Payment {
      */
     private String fromAccount;
 
-    public OrderPayment(final Number amount, final Currency currency,
+    public OrderPayment(final Number amount,
+                        final Currency currency,
                         final TimeDate dateMade,
                         final TimeDate dateReceived,
                         final TimeDate dateDue,
-                        final TimeDate dateCreated) {
-        super(amount, currency, dateMade, dateReceived, dateDue, dateCreated);
+                        final TimeDate dateCreated,
+                        final PaymentMethod paymentMethod) {
+        super(amount, currency, dateMade, dateReceived, dateDue, dateCreated, paymentMethod);
     }
 
 

@@ -1,4 +1,4 @@
-package net.liccioni.archetypes.quantity.money;
+package net.liccioni.archetypes.money;
 
 import java.util.Objects;
 import java.util.Set;

@@ -3,6 +3,7 @@ package net.liccioni.archetypes.quantity;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.With;
@@ -11,17 +12,12 @@ import lombok.With;
 public class Quantity {
 
     @With
-    @NonNull
     private final BigDecimal amount;
 
     private final Metric metric;
 
-    public Quantity(final BigDecimal amount, final Metric metric) {
-        this.amount = amount;
-        this.metric = metric;
-    }
-
-    public Quantity(final Number amount, final Metric metric) {
+    @Builder
+    public Quantity(@NonNull final Number amount, final Metric metric) {
         this.amount = BigDecimal.valueOf(amount.doubleValue());
         this.metric = metric;
     }
