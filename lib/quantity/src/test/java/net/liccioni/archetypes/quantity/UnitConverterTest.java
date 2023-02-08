@@ -21,13 +21,6 @@ class UnitConverterTest {
     private final RoundingPolicy roundingPolicy = new RoundingPolicy(RoundingStrategy.ROUND_UP, 5, 5, 1);
     private final RoundingPolicy simple = new RoundingPolicy(RoundingStrategy.ROUND_UP, 1, 5, 1);
 
-//    {
-//        kmPerHour.addTerm(new DerivedUnitTerm(-1, hour));
-//        kmPerHour.addTerm(new DerivedUnitTerm(1, km));
-//        mPerSecond.addTerm(new DerivedUnitTerm(-1, SECOND));
-//        mPerSecond.addTerm(new DerivedUnitTerm(1, METRE));
-//    }
-
     private final StandardConversion kmTom = new StandardConversion(km, METRE, 0.001);
     private final StandardConversion mToKm = new StandardConversion(METRE, km, 1000);
     private final StandardConversion kmPerHrToMetrePerSecond = new StandardConversion(kmPerHour, mPerSecond, 1 / 3.6);

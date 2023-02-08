@@ -1,16 +1,14 @@
-package net.liccioni.archetypes.quantity.money;
+package net.liccioni.archetypes.money;
 
 import static java.time.ZoneOffset.UTC;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Set;
 import lombok.val;
 import net.liccioni.archetypes.common.TimeDate;
-import net.liccioni.archetypes.quantity.Quantity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

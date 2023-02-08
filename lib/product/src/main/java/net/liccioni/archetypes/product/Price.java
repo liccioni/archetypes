@@ -3,7 +3,7 @@ package net.liccioni.archetypes.product;
 
 import java.util.Set;
 import net.liccioni.archetypes.common.TimeDate;
-import net.liccioni.archetypes.quantity.money.Money;
+import net.liccioni.archetypes.money.Money;
 import net.liccioni.archetypes.rule.RuleContext;
 import net.liccioni.archetypes.rule.RuleOverride;
 import net.liccioni.archetypes.rule.RuleSet;

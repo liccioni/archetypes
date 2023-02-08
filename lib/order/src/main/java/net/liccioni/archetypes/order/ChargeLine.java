@@ -1,7 +1,7 @@
 package net.liccioni.archetypes.order;
 
 
-import net.liccioni.archetypes.quantity.money.Money;
+import net.liccioni.archetypes.money.Money;
 
 /**
  * @generated
