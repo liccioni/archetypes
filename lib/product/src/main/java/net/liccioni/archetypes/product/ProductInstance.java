@@ -1,6 +1,7 @@
 package net.liccioni.archetypes.product;
 
 import java.util.Set;
+import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.inventory.ReservationIdentifier;
@@ -12,29 +13,25 @@ import net.liccioni.archetypes.product.price.Price;
 @SuperBuilder(toBuilder = true)
 public class ProductInstance {
 
-    private SerialNumber serialNumber;
-    private ProductType productType;
-    private String name;
-    private Set<ProductFeatureInstance> features;
-    private Price agreed;
-    private ArbitraryPrice applied;
-    private Batch batch;
+    private final SerialNumber serialNumber;
+    private final ProductType productType;
+    private final String name;
+    private final Set<ProductFeatureInstance> features;
+    private final Price agreed;
+    private final ArbitraryPrice applied;
+    private final Batch batch;
     private ReservationIdentifier reservation;
-    private ReservationStatus reservationStatus;
+    @Builder.Default
+    private ReservationStatus reservationStatus = ReservationStatus.AVAILABLE;
 
-    /**
-     * @generated
-     */
-    public boolean reserve(ReservationIdentifier reservationIdentifier) {
-        //TODO
-        return false;
+    public void reserve(ReservationIdentifier reservationIdentifier) {
+
+        this.reservation = reservationIdentifier;
+        this.reservationStatus = ReservationStatus.RESERVED;
     }
 
-    /**
-     * @generated
-     */
-    public boolean cancelReservation() {
-        //TODO
-        return false;
+    public void cancelReservation() {
+        this.reservation = null;
+        this.reservationStatus = ReservationStatus.AVAILABLE;
     }
 }

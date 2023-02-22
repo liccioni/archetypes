@@ -12,7 +12,7 @@ import net.liccioni.archetypes.product.ProductType;
 public abstract class ProductCatalog {
 
     @Builder.Default
-    private Set<CatalogEntry> catalogEntry = new HashSet<>();
+    private final Set<CatalogEntry> catalogEntry = new HashSet<>();
 
     public abstract boolean addProductType(ProductType productType);
 

@@ -1,28 +1,18 @@
 package net.liccioni.archetypes.rule;
 
+import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 
 @Value
+@Builder
 public class RuleOverride {
 
+    @NonNull
     String ruleName;
-    boolean override;
+    @NonNull
+    Boolean override;
     String why;
     TimeDate when;
-
-    public RuleOverride(final String ruleName, final boolean override) {
-        this.ruleName = ruleName;
-        this.override = override;
-        this.why = "";
-        this.when = null;
-    }
-
-    public RuleOverride(final String ruleName, final boolean override, final String why,
-                        final TimeDate when) {
-        this.ruleName = ruleName;
-        this.override = override;
-        this.why = why;
-        this.when = when;
-    }
 }

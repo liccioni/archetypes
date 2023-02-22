@@ -14,12 +14,7 @@ public class ProductSet {
     @Builder.Default
     Set<ProductIdentifier> productIdentifier = new HashSet<>();
 
-    public boolean addProductReference(ProductIdentifier reference) {
-        return productIdentifier.add(reference);
-    }
-
-    public int count(ProductIdentifier reference) {
-        //TODO
-        return 0;
+    public boolean contains(ProductIdentifier reference) {
+        return productIdentifier.contains(reference);
     }
 }
