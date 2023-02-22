@@ -1,7 +1,7 @@
 package net.liccioni.archetypes.order;
 
 
-import net.liccioni.archetypes.product.Price;
+import net.liccioni.archetypes.product.price.Price;
 
 /**
  * @generated

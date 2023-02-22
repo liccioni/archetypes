@@ -1,198 +1,26 @@
 package net.liccioni.archetypes.product;
 
-import java.util.HashSet;
 import java.util.Set;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.inventory.ReservationIdentifier;
 import net.liccioni.archetypes.inventory.ReservationStatus;
+import net.liccioni.archetypes.product.price.ArbitraryPrice;
+import net.liccioni.archetypes.product.price.Price;
 
-/**
- * @generated
- */
+@Data
+@SuperBuilder(toBuilder = true)
 public class ProductInstance {
 
-    /**
-     * @generated
-     */
-    private String name;
-
-
-    /**
-     * @generated
-     */
-    private ReservationIdentifier reservation;
-
-
-    /**
-     * @generated
-     */
-    private ReservationStatus reservationStatus;
-
-
-    /**
-     * @generated
-     */
-    private Price agreed;
-
-    /**
-     * @generated
-     */
-    private ProductType productType;
-
-    /**
-     * @generated
-     */
-    private ArbitraryPrice applied;
-
-    /**
-     * @generated
-     */
-    private Batch batch;
-
-    /**
-     * @generated
-     */
-    private Set<ProductFeatureInstance> features;
-
-    /**
-     * @generated
-     */
     private SerialNumber serialNumber;
-
-
-    /**
-     * @generated
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * @generated
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    /**
-     * @generated
-     */
-    public ReservationIdentifier getReservation() {
-        return this.reservation;
-    }
-
-    /**
-     * @generated
-     */
-    public void setReservation(ReservationIdentifier reservation) {
-        this.reservation = reservation;
-    }
-
-    /**
-     * @generated
-     */
-    public ReservationStatus getReservationStatus() {
-        return this.reservationStatus;
-    }
-
-    /**
-     * @generated
-     */
-    public void setReservationStatus(ReservationStatus reservationStatus) {
-        this.reservationStatus = reservationStatus;
-    }
-
-    /**
-     * @generated
-     */
-    public ProductType getProductType() {
-        return this.productType;
-    }
-
-    /**
-     * @generated
-     */
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Price getAgreed() {
-        return this.agreed;
-    }
-
-    /**
-     * @generated
-     */
-    public void setAgreed(Price agreed) {
-        this.agreed = agreed;
-    }
-
-
-    /**
-     * @generated
-     */
-    public ArbitraryPrice getApplied() {
-        return this.applied;
-    }
-
-    /**
-     * @generated
-     */
-    public void setApplied(ArbitraryPrice applied) {
-        this.applied = applied;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Batch getBatch() {
-        return this.batch;
-    }
-
-    /**
-     * @generated
-     */
-    public void setBatch(Batch batch) {
-        this.batch = batch;
-    }
-
-
-    /**
-     * @generated
-     */
-    public SerialNumber getSerialNumber() {
-        return this.serialNumber;
-    }
-
-    /**
-     * @generated
-     */
-    public void setSerialNumber(SerialNumber serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<ProductFeatureInstance> getFeatures() {
-        if (this.features == null) {
-            this.features = new HashSet<ProductFeatureInstance>();
-        }
-        return this.features;
-    }
-
-    /**
-     * @generated
-     */
-    public void setFeatures(Set<ProductFeatureInstance> features) {
-        this.features = features;
-    }
+    private ProductType productType;
+    private String name;
+    private Set<ProductFeatureInstance> features;
+    private Price agreed;
+    private ArbitraryPrice applied;
+    private Batch batch;
+    private ReservationIdentifier reservation;
+    private ReservationStatus reservationStatus;
 
     /**
      * @generated
@@ -209,6 +37,4 @@ public class ProductInstance {
         //TODO
         return false;
     }
-
-
 }
