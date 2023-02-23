@@ -249,7 +249,7 @@ class RuleBuilderTest {
                 Arguments.of(context1, RuleOverride.builder().ruleName("ruleUnderTest").override(true).build(), true),
                 Arguments.of(context1, RuleOverride.builder().ruleName("ruleUnderTest").override(false).build(), true),
                 Arguments.of(context2, RuleOverride.builder().ruleName("ruleUnderTest").override(true).build(), true),
-                Arguments.of(context2, RuleOverride.builder().ruleName("ruleUnderTest").override(false).build(), true)
+                Arguments.of(context2, RuleOverride.builder().ruleName("ruleUnderTest").override(false).build(), false)
         );
     }
 

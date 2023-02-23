@@ -3,6 +3,8 @@ package net.liccioni.archetypes.product;
 import java.util.Set;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NonNull;
 import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.inventory.ReservationIdentifier;
 import net.liccioni.archetypes.inventory.ReservationStatus;
@@ -14,11 +16,15 @@ import net.liccioni.archetypes.product.price.Price;
 public class ProductInstance {
 
     private final SerialNumber serialNumber;
+    @NonNull
     private final ProductType productType;
-    private final String name;
+    @Getter(lazy = true)
+    private final String name = productTypeGetName();
+
     private final Set<ProductFeatureInstance> features;
-    private final Price agreed;
-    private final ArbitraryPrice applied;
+
+    private final Price priceAgreed;
+    private final ArbitraryPrice priceApplied;
     private final Batch batch;
     private ReservationIdentifier reservation;
     @Builder.Default
@@ -33,5 +39,10 @@ public class ProductInstance {
     public void cancelReservation() {
         this.reservation = null;
         this.reservationStatus = ReservationStatus.AVAILABLE;
+    }
+
+    private String productTypeGetName() {
+        assert productType != null;
+        return productType.getName();
     }
 }

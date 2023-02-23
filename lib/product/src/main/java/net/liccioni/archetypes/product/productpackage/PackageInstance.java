@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.product.ProductInstance;
 
 @Value
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true)
 public class PackageInstance extends ProductInstance {
 

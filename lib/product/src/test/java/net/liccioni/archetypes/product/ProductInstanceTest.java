@@ -10,7 +10,9 @@ class ProductInstanceTest {
 
     @Test
     void shouldReserve() {
-        final ProductInstance p1 = ProductInstance.builder().build();
+        final ProductInstance p1 = ProductInstance.builder().productType(ProductType.builder()
+                        .name("p1")
+                .build()).build();
         final ReservationIdentifier reservationIdentifier = ReservationIdentifier.builder().id("1").build();
         p1.reserve(reservationIdentifier);
         assertThat(p1.getReservationStatus()).isEqualTo(ReservationStatus.RESERVED);

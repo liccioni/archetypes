@@ -26,25 +26,27 @@ class PropositionOfInclusionTest {
                 .name("Salade de chèvre chaud").build();
 
         final var starters = ProductSet.builder().name("Starters set")
-                .productIdentifier(Stream.of(starter1, starter2, starter3, starter4)
+                .products(Stream.of(starter1, starter2, starter3, starter4)
                         .map(ProductType::getProductIdentifier).collect(toSet()))
                 .build();
         final var startersRule =
                 PropositionOfInclusion.builder().name("Starters").minimum(1).maximum(1).productSet(starters).build();
 
-        final var oneStartersPackage = buildInstanceSet(starter1);
+        ProductType type = PackageType.builder().name("package").build();
+        final var oneStartersPackage = buildInstanceSet(type, starter1);
         final var shouldResultTrue = startersRule.isSubSetOf(oneStartersPackage);
         assertThat(shouldResultTrue).isTrue();
 
-        final var twoStartersPackage = buildInstanceSet(starter1,starter2);
+        final var twoStartersPackage = buildInstanceSet(type, starter1, starter2);
         final var shouldResultFalse = startersRule.isSubSetOf(twoStartersPackage);
         assertThat(shouldResultFalse).isFalse();
     }
 
-    private PackageInstance buildInstanceSet(ProductType... types) {
+    private PackageInstance buildInstanceSet(final ProductType type,
+                                             ProductType... types) {
         final Set<ProductInstance> components =
                 Arrays.stream(types).map(p -> ProductInstance.builder().productType(p).build())
                         .collect(toSet());
-        return PackageInstance.builder().components(components).build();
+        return PackageInstance.builder().productType(type).components(components).build();
     }
 }

@@ -20,7 +20,6 @@ import net.liccioni.archetypes.rule.RuleContext;
 @SuperBuilder(toBuilder = true)
 public class ProductType {
 
-
     private final ProductIdentifier productIdentifier;
     @NonNull
     private final String name;
