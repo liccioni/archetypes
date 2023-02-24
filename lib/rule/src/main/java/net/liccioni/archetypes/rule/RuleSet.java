@@ -3,16 +3,17 @@ package net.liccioni.archetypes.rule;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Value;
 
 @Value
+@Builder(toBuilder = true)
 public class RuleSet {
 
     String name;
@@ -21,12 +22,7 @@ public class RuleSet {
     @Getter(AccessLevel.NONE)
     Map<String, RuleOverride> ruleOverrides = new HashMap<>();
 
-    public RuleSet(final String name, List<Rule> rules) {
-        this.name = name;
-
-        this.rules.addAll(rules);
-    }
-
+    @Builder
     public RuleSet(final String name, Rule... rules) {
         this.name = name;
         this.rules.addAll(Arrays.asList(rules));
@@ -47,7 +43,7 @@ public class RuleSet {
 
     private boolean isNotOverride(final Rule rule) {
         return !Optional.ofNullable(ruleOverrides.get(rule.getName()))
-                .map(RuleOverride::isOverride)
+                .map(RuleOverride::getOverride)
                 .orElse(false);
     }
 }

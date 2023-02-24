@@ -3,7 +3,7 @@ package net.liccioni.archetypes.inventory;
 
 import java.util.Set;
 import net.liccioni.archetypes.common.TimeDate;
-import net.liccioni.archetypes.product.ServiceInstance;
+import net.liccioni.archetypes.product.service.ServiceInstance;
 
 /**
  * @generated

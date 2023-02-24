@@ -3,7 +3,6 @@ package net.liccioni.archetypes.rule;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Instant;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
@@ -218,7 +217,7 @@ class RuleBuilderTest {
         Rule rule2 = RuleBuilder.newRule("LESS_THAN_OR_EQUAL_TO", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
 
-        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
+        RuleSet ruleSet = new RuleSet("", rule1, rule2);
         RuleContext context = RuleContext.builder().name("shouldEvaluateToFalse").build();
         context.addVariable("firstOp", 1);
         context.addVariable("secondOp", 2);
@@ -247,10 +246,10 @@ class RuleBuilderTest {
                                         e.getKey(), e.getValue()), (a, b) -> null);
 
         return Stream.of(
-                Arguments.of(context1, new RuleOverride("ruleUnderTest", true), true),
-                Arguments.of(context1, new RuleOverride("ruleUnderTest", false), true),
-                Arguments.of(context2, new RuleOverride("ruleUnderTest", true), true),
-                Arguments.of(context2, new RuleOverride("ruleUnderTest", false), false)
+                Arguments.of(context1, RuleOverride.builder().ruleName("ruleUnderTest").override(true).build(), true),
+                Arguments.of(context1, RuleOverride.builder().ruleName("ruleUnderTest").override(false).build(), true),
+                Arguments.of(context2, RuleOverride.builder().ruleName("ruleUnderTest").override(true).build(), true),
+                Arguments.of(context2, RuleOverride.builder().ruleName("ruleUnderTest").override(false).build(), false)
         );
     }
 
@@ -264,7 +263,7 @@ class RuleBuilderTest {
         Rule rule2 = RuleBuilder.newRule("ruleUnderTest", ruleBuilder ->
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp")));
 
-        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
+        RuleSet ruleSet = new RuleSet("", rule1, rule2);
         ruleSet.addRuleOverride(override);
         assertThat(ruleSet.evaluate(context)).isEqualTo(expected);
     }
@@ -277,7 +276,7 @@ class RuleBuilderTest {
                 ruleBuilder.variable("fourthOp").lessThanOrEqualTo(ruleBuilder.variable("thirdOp"))
                         .and(ruleBuilder.proposition("fifthOp")));
 
-        RuleSet ruleSet = new RuleSet("", Arrays.asList(rule1, rule2));
+        RuleSet ruleSet = new RuleSet("", rule1, rule2);
         ruleSet.addRuleOverride(
                 new RuleOverride("ruleUnderTest", true, "because why not",
                         TimeDate.builder().value(Instant.parse("2023-01-26T10:22:47.353154Z")).build()));

@@ -1,4 +1,4 @@
-package net.liccioni.archetypes.product;
+package net.liccioni.archetypes.product.service;
 
 public enum ServiceDeliveryStatus {
     SCHEDULED, EXECUTING, COMPLETED, CANCELLED

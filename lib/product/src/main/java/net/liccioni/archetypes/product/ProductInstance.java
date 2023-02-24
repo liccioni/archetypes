@@ -1,214 +1,48 @@
 package net.liccioni.archetypes.product;
 
-import java.util.HashSet;
 import java.util.Set;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.inventory.ReservationIdentifier;
 import net.liccioni.archetypes.inventory.ReservationStatus;
+import net.liccioni.archetypes.product.price.ArbitraryPrice;
+import net.liccioni.archetypes.product.price.Price;
 
-/**
- * @generated
- */
+@Data
+@SuperBuilder(toBuilder = true)
 public class ProductInstance {
 
-    /**
-     * @generated
-     */
-    private String name;
+    private final SerialNumber serialNumber;
+    @NonNull
+    private final ProductType productType;
+    @Getter(lazy = true)
+    private final String name = productTypeGetName();
 
+    private final Set<ProductFeatureInstance> features;
 
-    /**
-     * @generated
-     */
+    private final Price priceAgreed;
+    private final ArbitraryPrice priceApplied;
+    private final Batch batch;
     private ReservationIdentifier reservation;
+    @Builder.Default
+    private ReservationStatus reservationStatus = ReservationStatus.AVAILABLE;
 
+    public void reserve(ReservationIdentifier reservationIdentifier) {
 
-    /**
-     * @generated
-     */
-    private ReservationStatus reservationStatus;
-
-
-    /**
-     * @generated
-     */
-    private Price agreed;
-
-    /**
-     * @generated
-     */
-    private ProductType productType;
-
-    /**
-     * @generated
-     */
-    private ArbitraryPrice applied;
-
-    /**
-     * @generated
-     */
-    private Batch batch;
-
-    /**
-     * @generated
-     */
-    private Set<ProductFeatureInstance> features;
-
-    /**
-     * @generated
-     */
-    private SerialNumber serialNumber;
-
-
-    /**
-     * @generated
-     */
-    public String getName() {
-        return this.name;
+        this.reservation = reservationIdentifier;
+        this.reservationStatus = ReservationStatus.RESERVED;
     }
 
-    /**
-     * @generated
-     */
-    public void setName(String name) {
-        this.name = name;
+    public void cancelReservation() {
+        this.reservation = null;
+        this.reservationStatus = ReservationStatus.AVAILABLE;
     }
 
-
-    /**
-     * @generated
-     */
-    public ReservationIdentifier getReservation() {
-        return this.reservation;
+    private String productTypeGetName() {
+        assert productType != null;
+        return productType.getName();
     }
-
-    /**
-     * @generated
-     */
-    public void setReservation(ReservationIdentifier reservation) {
-        this.reservation = reservation;
-    }
-
-    /**
-     * @generated
-     */
-    public ReservationStatus getReservationStatus() {
-        return this.reservationStatus;
-    }
-
-    /**
-     * @generated
-     */
-    public void setReservationStatus(ReservationStatus reservationStatus) {
-        this.reservationStatus = reservationStatus;
-    }
-
-    /**
-     * @generated
-     */
-    public ProductType getProductType() {
-        return this.productType;
-    }
-
-    /**
-     * @generated
-     */
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Price getAgreed() {
-        return this.agreed;
-    }
-
-    /**
-     * @generated
-     */
-    public void setAgreed(Price agreed) {
-        this.agreed = agreed;
-    }
-
-
-    /**
-     * @generated
-     */
-    public ArbitraryPrice getApplied() {
-        return this.applied;
-    }
-
-    /**
-     * @generated
-     */
-    public void setApplied(ArbitraryPrice applied) {
-        this.applied = applied;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Batch getBatch() {
-        return this.batch;
-    }
-
-    /**
-     * @generated
-     */
-    public void setBatch(Batch batch) {
-        this.batch = batch;
-    }
-
-
-    /**
-     * @generated
-     */
-    public SerialNumber getSerialNumber() {
-        return this.serialNumber;
-    }
-
-    /**
-     * @generated
-     */
-    public void setSerialNumber(SerialNumber serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<ProductFeatureInstance> getFeatures() {
-        if (this.features == null) {
-            this.features = new HashSet<ProductFeatureInstance>();
-        }
-        return this.features;
-    }
-
-    /**
-     * @generated
-     */
-    public void setFeatures(Set<ProductFeatureInstance> features) {
-        this.features = features;
-    }
-
-    /**
-     * @generated
-     */
-    public boolean reserve(ReservationIdentifier reservationIdentifier) {
-        //TODO
-        return false;
-    }
-
-    /**
-     * @generated
-     */
-    public boolean cancelReservation() {
-        //TODO
-        return false;
-    }
-
-
 }

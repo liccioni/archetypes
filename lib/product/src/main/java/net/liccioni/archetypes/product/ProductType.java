@@ -1,164 +1,54 @@
 package net.liccioni.archetypes.product;
 
+import java.time.Instant;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.common.TimeDate;
+import net.liccioni.archetypes.product.price.Price;
 import net.liccioni.archetypes.rule.RuleContext;
 
-/**
- * @generated
- */
+@Data
+@SuperBuilder(toBuilder = true)
 public class ProductType {
 
-    /**
-     * @generated
-     */
-    private String name;
+    private final ProductIdentifier productIdentifier;
+    @NonNull
+    private final String name;
+    private final String description;
+    @Builder.Default
+    private final Set<ProductFeatureType> mandatoryFeatureTypes = new HashSet<>();
+    @Builder.Default
+    private final Set<ProductFeatureType> optionalFeatureTypes = new HashSet<>();
+    @Builder.Default
+    private final Set<Price> prices = new HashSet<>();
 
-    /**
-     * @generated
-     */
-    private String description;
-
-
-    /**
-     * @generated
-     */
-    private Set<ProductFeatureType> optionalFeatureTypes;
-
-    /**
-     * @generated
-     */
-    private Set<Price> prices;
-
-    /**
-     * @generated
-     */
-    private ProductIdentifier productIdentifier;
-
-    /**
-     * @generated
-     */
-    private Set<ProductFeatureType> mandatoryFeatureTypes;
-
-
-    /**
-     * @generated
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * @generated
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    /**
-     * @generated
-     */
-    public String getDescription() {
-        return this.description;
-    }
-
-    /**
-     * @generated
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<ProductFeatureType> getMandatoryFeatureTypes() {
-        if (this.mandatoryFeatureTypes == null) {
-            this.mandatoryFeatureTypes = new HashSet<ProductFeatureType>();
-        }
-        return this.mandatoryFeatureTypes;
-    }
-
-    /**
-     * @generated
-     */
-    public void setMandatoryFeatureTypes(Set<ProductFeatureType> mandatoryFeatureTypes) {
-        this.mandatoryFeatureTypes = mandatoryFeatureTypes;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<ProductFeatureType> getOptionalFeatureTypes() {
-        if (this.optionalFeatureTypes == null) {
-            this.optionalFeatureTypes = new HashSet<ProductFeatureType>();
-        }
-        return this.optionalFeatureTypes;
-    }
-
-    /**
-     * @generated
-     */
-    public void setOptionalFeatureTypes(Set<ProductFeatureType> optionalFeatureTypes) {
-        this.optionalFeatureTypes = optionalFeatureTypes;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<Price> getPrices() {
-        if (this.prices == null) {
-            this.prices = new HashSet<Price>();
-        }
-        return this.prices;
-    }
-
-    /**
-     * @generated
-     */
-    public void setPrices(Set<Price> prices) {
-        this.prices = prices;
-    }
-
-
-    /**
-     * @generated
-     */
-    public ProductIdentifier getProductIdentifier() {
-        return this.productIdentifier;
-    }
-
-    /**
-     * @generated
-     */
-    public void setProductIdentifier(ProductIdentifier productIdentifier) {
-        this.productIdentifier = productIdentifier;
-    }
-
-
-    //                          Operations
-
-
-    /**
-     * @generated
-     */
     public List<Price> getPrices(RuleContext context) {
-        //TODO
-        return null;
+        return prices.stream().filter(p -> p.isValid(context, Collections.emptySet()))
+                .collect(Collectors.toList());
     }
 
-
-    /**
-     * @generated
-     */
     public List<Price> getPrices(TimeDate validFrom, TimeDate validTo) {
-        //TODO
-        return null;
+
+        return prices.stream()
+                .filter(p -> isValid(p.getValidFrom(), priceFrom -> priceFrom.isAfter(validFrom.getValue())))
+                .filter(p -> isValid(p.getValidTo(), priceTo -> priceTo.isBefore(validTo.getValue())))
+                .collect(Collectors.toList());
+    }
+
+    private boolean isValid(final TimeDate priceValidFrom,
+                            final Predicate<Instant> isValid) {
+        return Optional.ofNullable(priceValidFrom)
+                .map(TimeDate::getValue)
+                .filter(isValid)
+                .isPresent();
     }
 }

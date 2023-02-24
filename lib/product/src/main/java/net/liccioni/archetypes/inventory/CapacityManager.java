@@ -1,7 +1,7 @@
 package net.liccioni.archetypes.inventory;
 
 
-import net.liccioni.archetypes.product.ServiceInstance;
+import net.liccioni.archetypes.product.service.ServiceInstance;
 
 /**
  * @generated
