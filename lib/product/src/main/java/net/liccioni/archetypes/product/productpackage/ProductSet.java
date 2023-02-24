@@ -3,6 +3,7 @@ package net.liccioni.archetypes.product.productpackage;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.Value;
 import net.liccioni.archetypes.product.ProductIdentifier;
@@ -14,6 +15,7 @@ public class ProductSet {
     @NonNull
     String name;
     @Builder.Default
+//    @EqualsAndHashCode.Exclude
     Set<ProductIdentifier> products = new HashSet<>();
 
     public boolean contains(ProductIdentifier reference) {

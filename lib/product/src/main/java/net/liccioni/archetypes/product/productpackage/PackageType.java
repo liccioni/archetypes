@@ -4,11 +4,9 @@ import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.reducing;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -30,11 +28,21 @@ public class PackageType extends ProductType {
     @Builder.Default
     Set<PropositionOfInclusion> propositionOfInclusion = new HashSet<>();
 
-    @Getter(lazy = true, value = AccessLevel.PRIVATE)
-    Set<PropositionOfInclusion> internalPropositionOfInclusion = buildInternalPropositionOfInclusion();
+    public boolean validate(final PackageInstance packageInstance) {
 
-    public boolean validate(PackageInstance packageInstance) {
-        return propositionOfInclusion.stream().allMatch(p -> p.isSubSetOf(packageInstance));
+        return propositionOfInclusion.stream()
+                .peek(p -> p.setTargetPackage(packageInstance))
+                .collect(groupingBy(PropositionOfInclusion::getProductSet,
+                        reducing((poi1, poi2) -> poi1.toBuilder()
+                                .name(poi1.getName().concat("_").concat(poi2.getName()))
+                                .maximum(poi1.getMaximum() + poi2.getMaximum())
+                                .minimum(poi1.getMinimum() + poi2.getMinimum())
+                                .targetPackage(packageInstance)
+                                .build())))
+                .values().stream()
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .allMatch(PropositionOfInclusion::isSubSetOf);
     }
 
     private Set<ProductSet> buildProductSets() {
@@ -45,21 +53,6 @@ public class PackageType extends ProductType {
     private Set<ProductIdentifier> buildComponents() {
         assert propositionOfInclusion != null;
         return propositionOfInclusion.stream().flatMap(p -> p.getProductSet().getProducts().stream())
-                .collect(Collectors.toSet());
-    }
-
-    private Set<PropositionOfInclusion> buildInternalPropositionOfInclusion() {
-        assert propositionOfInclusion != null;
-        return propositionOfInclusion.stream()
-                .filter(p -> Objects.nonNull(p.getProductSet()))
-                .collect(groupingBy(PropositionOfInclusion::getProductSet,
-                        reducing((poi1, poi2) -> poi1.toBuilder()
-                                .name(poi1.getName().concat("_").concat(poi2.getName()))
-                                .maximum(poi1.getMaximum() + poi2.getMaximum())
-                                .minimum(poi1.getMinimum() + poi2.getMinimum())
-                                .build()))).values().stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
                 .collect(Collectors.toSet());
     }
 }

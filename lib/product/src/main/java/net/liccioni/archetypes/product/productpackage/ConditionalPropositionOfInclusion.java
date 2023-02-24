@@ -2,6 +2,7 @@ package net.liccioni.archetypes.product.productpackage;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -18,9 +19,29 @@ public class ConditionalPropositionOfInclusion extends PropositionOfInclusion {
     Set<PropositionOfInclusion> body = new HashSet<>();
 
     @Override
-    public boolean isSubSetOf(final PackageInstance targetPackage) {
-        if (condition.isSubSetOf(targetPackage)) {
-            return body.stream().allMatch(p -> p.isSubSetOf(targetPackage));
+    public void setTargetPackage(final PackageInstance targetPackage) {
+        condition.setTargetPackage(targetPackage);
+        body.forEach(p -> p.setTargetPackage(targetPackage));
+    }
+
+    @Override
+    public ProductSet getProductSet() {
+        if (condition.isSubSetOf()) {
+            return ProductSet.builder()
+                    .name(condition.getName())
+                    .products(body.stream().flatMap(p -> p.getProductSet().getProducts().stream())
+                            .collect(Collectors.toSet()))
+                    .build();
+        }
+        return ProductSet.builder()
+                .name(condition.getName())
+                .build();
+    }
+
+    @Override
+    public boolean isSubSetOf() {
+        if (condition.isSubSetOf()) {
+            return body.stream().allMatch(PropositionOfInclusion::isSubSetOf);
         }
         return true;
     }

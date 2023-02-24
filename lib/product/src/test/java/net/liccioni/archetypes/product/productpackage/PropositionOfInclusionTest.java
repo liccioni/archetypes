@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Stream;
 import net.liccioni.archetypes.product.ProductIdentifier;
 import net.liccioni.archetypes.product.ProductInstance;
@@ -36,11 +35,13 @@ class PropositionOfInclusionTest {
 
         ProductType type = PackageType.builder().name("package").build();
         final var oneStartersPackage = buildInstanceSet(type, starter1);
-        final var shouldResultTrue = startersRule.isSubSetOf(oneStartersPackage);
+        startersRule.setTargetPackage(oneStartersPackage);
+        final var shouldResultTrue = startersRule.isSubSetOf();
         assertThat(shouldResultTrue).isTrue();
 
         final var twoStartersPackage = buildInstanceSet(type, starter1, starter2);
-        final var shouldResultFalse = startersRule.isSubSetOf(twoStartersPackage);
+        startersRule.setTargetPackage(twoStartersPackage);
+        final var shouldResultFalse = startersRule.isSubSetOf();
         assertThat(shouldResultFalse).isFalse();
     }
 
