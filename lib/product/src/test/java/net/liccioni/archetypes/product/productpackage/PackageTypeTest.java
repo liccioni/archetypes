@@ -82,7 +82,7 @@ class PackageTypeTest {
                 .productType(menu)
                 .components(Stream.of(starters.get(0), mains.get(2), desserts.get(3))
                         .map(p -> ProductInstance.builder().productType(p).build())
-                        .collect(Collectors.toSet()))
+                        .collect(Collectors.toList()))
                 .build();
 
         assertThat(menu.validate(validInstance)).isTrue();
@@ -91,7 +91,7 @@ class PackageTypeTest {
                 .productType(menu)
                 .components(Stream.of(starters.get(0), mains.get(2), desserts.get(3), desserts.get(0))
                         .map(p -> ProductInstance.builder().productType(p).build())
-                        .collect(Collectors.toSet()))
+                        .collect(Collectors.toList()))
                 .build();
 
         assertThat(menu.validate(inValidInstance)).isFalse();
@@ -113,7 +113,7 @@ class PackageTypeTest {
                 .productType(menu2StartersOptional)
                 .components(Stream.of(starters.get(0), mains.get(2), desserts.get(3))
                         .map(p -> ProductInstance.builder().productType(p).build())
-                        .collect(Collectors.toSet()))
+                        .collect(Collectors.toList()))
                 .build();
 
         assertThat(menu2StartersOptional.validate(validInstance)).isTrue();
@@ -122,7 +122,7 @@ class PackageTypeTest {
                 .productType(menu2StartersOptional)
                 .components(Stream.of(starters.get(0), starters.get(1), mains.get(2), desserts.get(3))
                         .map(p -> ProductInstance.builder().productType(p).build())
-                        .collect(Collectors.toSet()))
+                        .collect(Collectors.toList()))
                 .build();
 
         assertThat(menu2StartersOptional.validate(validInstanceSecondStarter)).isTrue();

@@ -1,9 +1,11 @@
 package net.liccioni.archetypes.product.productpackage;
 
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 import net.liccioni.archetypes.product.ProductIdentifier;
@@ -44,9 +46,9 @@ class PropositionOfInclusionTest {
 
     private PackageInstance buildInstanceSet(final ProductType type,
                                              ProductType... types) {
-        final Set<ProductInstance> components =
+        final List<ProductInstance> components =
                 Arrays.stream(types).map(p -> ProductInstance.builder().productType(p).build())
-                        .collect(toSet());
+                        .collect(toList());
         return PackageInstance.builder().productType(type).components(components).build();
     }
 }

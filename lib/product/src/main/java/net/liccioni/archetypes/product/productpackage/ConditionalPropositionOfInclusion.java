@@ -17,8 +17,11 @@ public class ConditionalPropositionOfInclusion extends PropositionOfInclusion {
     @Builder.Default
     Set<PropositionOfInclusion> body = new HashSet<>();
 
-    public boolean addBody(PropositionOfInclusion conditionProposition) {
-
-        return body.add(conditionProposition);
+    @Override
+    public boolean isSubSetOf(final PackageInstance targetPackage) {
+        if (condition.isSubSetOf(targetPackage)) {
+            return body.stream().allMatch(p -> p.isSubSetOf(targetPackage));
+        }
+        return true;
     }
 }

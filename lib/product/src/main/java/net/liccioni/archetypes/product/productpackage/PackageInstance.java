@@ -1,6 +1,8 @@
 package net.liccioni.archetypes.product.productpackage;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -14,5 +16,5 @@ import net.liccioni.archetypes.product.ProductInstance;
 public class PackageInstance extends ProductInstance {
 
     @Builder.Default
-    Set<ProductInstance> components = new HashSet<>();
+    List<ProductInstance> components = new ArrayList<>();
 }

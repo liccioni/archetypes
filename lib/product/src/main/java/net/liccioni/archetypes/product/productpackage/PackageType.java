@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.reducing;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -33,7 +34,7 @@ public class PackageType extends ProductType {
     Set<PropositionOfInclusion> internalPropositionOfInclusion = buildInternalPropositionOfInclusion();
 
     public boolean validate(PackageInstance packageInstance) {
-        return getInternalPropositionOfInclusion().stream().allMatch(p -> p.isSubSetOf(packageInstance));
+        return propositionOfInclusion.stream().allMatch(p -> p.isSubSetOf(packageInstance));
     }
 
     private Set<ProductSet> buildProductSets() {
@@ -50,6 +51,7 @@ public class PackageType extends ProductType {
     private Set<PropositionOfInclusion> buildInternalPropositionOfInclusion() {
         assert propositionOfInclusion != null;
         return propositionOfInclusion.stream()
+                .filter(p -> Objects.nonNull(p.getProductSet()))
                 .collect(groupingBy(PropositionOfInclusion::getProductSet,
                         reducing((poi1, poi2) -> poi1.toBuilder()
                                 .name(poi1.getName().concat("_").concat(poi2.getName()))
