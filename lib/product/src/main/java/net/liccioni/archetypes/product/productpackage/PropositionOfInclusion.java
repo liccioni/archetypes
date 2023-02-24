@@ -3,8 +3,11 @@ package net.liccioni.archetypes.product.productpackage;
 
 import java.util.Collections;
 import java.util.Optional;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.product.ProductInstance;
 import net.liccioni.archetypes.product.ProductType;
@@ -18,6 +21,8 @@ public class PropositionOfInclusion {
     private final int minimum;
     private final int maximum;
     @EqualsAndHashCode.Exclude
+    @Setter(AccessLevel.PACKAGE)
+    @Getter(AccessLevel.NONE)
     private PackageInstance targetPackage;
 
     public boolean isSubSetOf() {
