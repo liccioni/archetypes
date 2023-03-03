@@ -1,31 +1,11 @@
 package net.liccioni.archetypes.inventory;
 
+import lombok.Builder;
+import lombok.Value;
 
-/**
- * @generated
- */
+@Value
+@Builder(toBuilder = true)
 public class Reservation {
 
-
-    /**
-     * @generated
-     */
-    private ReservationRequest request;
-
-
-    /**
-     * @generated
-     */
-    public ReservationRequest getRequest() {
-        return this.request;
-    }
-
-    /**
-     * @generated
-     */
-    public void setRequest(ReservationRequest request) {
-        this.request = request;
-    }
-
-
+    ReservationRequest request;
 }

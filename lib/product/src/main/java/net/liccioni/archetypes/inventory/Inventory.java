@@ -1,171 +1,33 @@
 package net.liccioni.archetypes.inventory;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.product.ProductIdentifier;
+import net.liccioni.archetypes.product.ProductInstance;
 import net.liccioni.archetypes.product.ProductType;
 import net.liccioni.archetypes.rule.RuleContext;
 
-/**
- * @generated
- */
-public class Inventory {
+public interface Inventory {
 
 
-    /**
-     * @generated
-     */
-    private Set<InventoryEntry> entries;
+    void addInventoryEntry(InventoryEntry entry);
 
-    /**
-     * @generated
-     */
-    private Set<ReservationRequest> requests;
+    void removeInventoryEntry(InventoryEntry entry);
 
-    /**
-     * @generated
-     */
-    private Set<Reservation> reservations;
+    List<InventoryEntry> getInventoryEntries();
 
+    List<InventoryEntry> findInventoryEntries(ProductIdentifier identifier);
 
-    /**
-     * @generated
-     */
-    public Set<ReservationRequest> getRequests() {
-        if (this.requests == null) {
-            this.requests = new HashSet<ReservationRequest>();
-        }
-        return this.requests;
-    }
+    List<ProductType> getProductTypes();
 
-    /**
-     * @generated
-     */
-    public void setRequests(Set<ReservationRequest> requests) {
-        this.requests = requests;
-    }
+    Reservation makeReservation(ReservationRequest request);
 
+    Reservation cancelReservation(ReservationIdentifier identifier, RuleContext cancellationContext);
 
-    /**
-     * @generated
-     */
-    public Set<ProductType> getProductTypes() {
-        //TODO
-        return null;
-    }
+    List<Reservation> getReservations();
 
-    /**
-     * @generated
-     */
-    public Set<InventoryEntry> getEntries() {
-        if (this.entries == null) {
-            this.entries = new HashSet<InventoryEntry>();
-        }
-        return this.entries;
-    }
+    ReservationRequest findReservation(ReservationIdentifier identifier);
 
-    /**
-     * @generated
-     */
-    public void setEntries(Set<InventoryEntry> entries) {
-        this.entries = entries;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<Reservation> getReservations() {
-        if (this.reservations == null) {
-            this.reservations = new HashSet<Reservation>();
-        }
-        return this.reservations;
-    }
-
-    /**
-     * @generated
-     */
-    public void setReservations(Set<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-
-    //                          Operations                                  
-
-
-    /**
-     * @generated
-     */
-    public boolean addInventoryEntry(InventoryEntry entry) {
-        //TODO
-        return false;
-    }
-
-
-    /**
-     * @generated
-     */
-    public boolean removeInventoryEntry(InventoryEntry entry) {
-        //TODO
-        return false;
-    }
-
-
-    /**
-     * @generated
-     */
-    public List<InventoryEntry> getInventoryEntries(InventoryEntry entry) {
-        //TODO
-        return null;
-    }
-
-
-    /**
-     * @generated
-     */
-    public List<InventoryEntry> findInventoryEntries(ProductIdentifier identifier) {
-        //TODO
-        return null;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Reservation makeReservation(ReservationRequest request) {
-        //TODO
-        return null;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Reservation cancelReservation(ReservationIdentifier identifier, RuleContext cancellationContext) {
-        //TODO
-        return null;
-    }
-
-
-    /**
-     * @generated
-     */
-    public ReservationRequest findReservation(ReservationIdentifier identifier) {
-        //TODO
-        return null;
-    }
-
-
-    /**
-     * @generated
-     */
-    public List<Reservation> findReservationByDateReceivedAndRequesterName(TimeDate start, TimeDate end,
-                                                                           String requesterName) {
-        //TODO
-        return null;
-    }
-
+    List<Reservation> findReservationByDateReceivedAndRequesterName(TimeDate start, TimeDate end, String requesterName);
 
 }
