@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NonNull;
 import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.product.ProductInstance;
 import net.liccioni.archetypes.product.ProductType;
@@ -13,24 +14,26 @@ import net.liccioni.archetypes.rule.RuleSet;
 @SuperBuilder(toBuilder = true)
 public class InventoryEntry {
 
-    private final RuleSet availabilityPolicy;
+    @NonNull
     private final ProductType productType;
+    private final RuleSet availabilityPolicy;
 
     @Builder.Default
     private final Set<ProductInstance> productInstances = new HashSet<>();
 
-    public int getNumberAvailable() {
-        //TODO
-        return 0;
+    public long getNumberAvailable() {
+        return productInstances.stream()
+                .filter(p -> ReservationStatus.AVAILABLE.equals(p.getReservationStatus()))
+                .count();
     }
 
-    public int getNumberReserved() {
-        //TODO
-        return 0;
+    public long getNumberReserved() {
+        return productInstances.stream()
+                .filter(p -> ReservationStatus.RESERVED.equals(p.getReservationStatus()))
+                .count();
     }
 
     public boolean canAcceptReservationRequest(ReservationRequest request) {
-        //TODO
-        return false;
+        return productInstances.stream().anyMatch(p -> ReservationStatus.AVAILABLE.equals(p.getReservationStatus()));
     }
 }
