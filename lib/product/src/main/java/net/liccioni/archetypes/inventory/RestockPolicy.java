@@ -10,6 +10,7 @@ import net.liccioni.archetypes.rule.RuleSet;
 @Builder(toBuilder = true)
 public class RestockPolicy {
 
+    @Builder.Default
+    RuleSet ruleSet = RuleSet.builder().build();
     RuleContext ruleContext;
-    RuleSet ruleSet;
 }

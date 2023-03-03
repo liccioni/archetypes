@@ -16,7 +16,8 @@ public class InventoryEntry {
 
     @NonNull
     private final ProductType productType;
-    private final RuleSet availabilityPolicy;
+    @Builder.Default
+    private RuleSet availabilityPolicy = RuleSet.builder().build();
 
     @Builder.Default
     private final Set<ProductInstance> productInstances = new HashSet<>();
@@ -34,6 +35,10 @@ public class InventoryEntry {
     }
 
     public boolean canAcceptReservationRequest(ReservationRequest request) {
-        return productInstances.stream().anyMatch(p -> ReservationStatus.AVAILABLE.equals(p.getReservationStatus()));
+        var ap = availabilityPolicy.toBuilder().build();
+        request.getOverrides().forEach(ap::addRuleOverride);
+        return productType.getProductIdentifier().equals(request.getProductIdentifier()) &&
+                ap.evaluate(request.getContext()) &&
+                getNumberAvailable() >= request.getNumberRequested();
     }
 }

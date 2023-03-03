@@ -16,13 +16,13 @@ import net.liccioni.archetypes.rule.RuleContext;
 @EqualsAndHashCode(callSuper = true)
 public class ProductInventoryEntry extends InventoryEntry {
 
-    RestockPolicy restockPolicy;
+    @Builder.Default
+    RestockPolicy restockPolicy = RestockPolicy.builder().build();
     @Builder.Default
     Set<PurchaseOrder> outstandingPurchaseOrders = new HashSet<>();
 
     public boolean restock(RuleContext context) {
-        //TODO
-        return false;
+        return restockPolicy.getRuleSet().evaluate(context);
     }
 
     public int getQuantityExpectedByDate(TimeDate date) {
