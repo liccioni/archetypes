@@ -2,75 +2,30 @@ package net.liccioni.archetypes.inventory;
 
 import java.util.HashSet;
 import java.util.Set;
+import lombok.Builder;
+import lombok.NonNull;
+import lombok.Value;
+import net.liccioni.archetypes.common.TimeDate;
+import net.liccioni.archetypes.product.ProductIdentifier;
+import net.liccioni.archetypes.rule.RuleContext;
+import net.liccioni.archetypes.rule.RuleOverride;
 
-
-/**
- * @generated
- */
+@Value
+@Builder(toBuilder = true)
 public class ReservationRequest {
 
-
-    /**
-     * @generated
-     */
-    private Set<PartySummary> receivers;
-    /**
-     * @generated
-     */
-    private Set<PartySummary> requesters;
-    /**
-     * @generated
-     */
-    private ReservationIdentifier reservationIdentifier;
-
-
-    /**
-     * @generated
-     */
-    public Set<PartySummary> getReceivers() {
-        if (this.receivers == null) {
-            this.receivers = new HashSet<PartySummary>();
-        }
-        return this.receivers;
-    }
-
-    /**
-     * @generated
-     */
-    public void setReceivers(Set<PartySummary> receivers) {
-        this.receivers = receivers;
-    }
-
-    /**
-     * @generated
-     */
-    public ReservationIdentifier getReservationIdentifier() {
-        return this.reservationIdentifier;
-    }
-
-    /**
-     * @generated
-     */
-    public void setReservationIdentifier(ReservationIdentifier reservationIdentifier) {
-        this.reservationIdentifier = reservationIdentifier;
-    }
-
-    /**
-     * @generated
-     */
-    public Set<PartySummary> getRequesters() {
-        if (this.requesters == null) {
-            this.requesters = new HashSet<PartySummary>();
-        }
-        return this.requesters;
-    }
-
-    /**
-     * @generated
-     */
-    public void setRequesters(Set<PartySummary> requesters) {
-        this.requesters = requesters;
-    }
-
-
+    @NonNull
+    ProductIdentifier productIdentifier;
+    ReservationIdentifier reservationIdentifier;
+    @Builder.Default
+    Set<PartySummary> requesters = new HashSet<>();
+    @Builder.Default
+    Set<PartySummary> receivers = new HashSet<>();
+    @Builder.Default
+    RuleContext context = RuleContext.builder().build();
+    TimeDate dateReceived;
+    @Builder.Default
+    Long numberRequested = 0L;
+    @Builder.Default
+    Set<RuleOverride> overrides = new HashSet<>();
 }

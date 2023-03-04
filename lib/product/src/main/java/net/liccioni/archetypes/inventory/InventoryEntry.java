@@ -2,126 +2,43 @@ package net.liccioni.archetypes.inventory;
 
 import java.util.HashSet;
 import java.util.Set;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.product.ProductInstance;
 import net.liccioni.archetypes.product.ProductType;
 import net.liccioni.archetypes.rule.RuleSet;
 
-/**
- * @generated
- */
+@Data
+@SuperBuilder(toBuilder = true)
 public class InventoryEntry {
 
-    /**
-     * @generated
-     */
-    private RuleSet availabilityPolicy;
+    @NonNull
+    private final ProductType productType;
+    @Builder.Default
+    private RuleSet availabilityPolicy = RuleSet.builder().build();
 
+    @Builder.Default
+    private final Set<ProductInstance> productInstances = new HashSet<>();
 
-    /**
-     * @generated
-     */
-    private ProductType productType;
-
-    /**
-     * @generated
-     */
-    private Set<ProductInstance> productInstances;
-
-
-    /**
-     * @generated
-     */
-    public RuleSet getAvailabilityPolicy() {
-        return this.availabilityPolicy;
+    public long getNumberAvailable() {
+        return productInstances.stream()
+                .filter(p -> ReservationStatus.AVAILABLE.equals(p.getReservationStatus()))
+                .count();
     }
 
-    /**
-     * @generated
-     */
-    public void setAvailabilityPolicy(RuleSet availabilityPolicy) {
-        this.availabilityPolicy = availabilityPolicy;
+    public long getNumberReserved() {
+        return productInstances.stream()
+                .filter(p -> ReservationStatus.RESERVED.equals(p.getReservationStatus()))
+                .count();
     }
 
-
-    /**
-     * @generated
-     */
-    public ProductType getProductType() {
-        return this.productType;
-    }
-
-    /**
-     * @generated
-     */
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
-
-
-    /**
-     * @generated
-     */
-    public Set<ProductInstance> getProductInstances() {
-        if (this.productInstances == null) {
-            this.productInstances = new HashSet<ProductInstance>();
-        }
-        return this.productInstances;
-    }
-
-    /**
-     * @generated
-     */
-    public void setProductInstances(Set<ProductInstance> productInstances) {
-        this.productInstances = productInstances;
-    }
-
-
-    //                          Operations                                  
-
-
-    /**
-     * @generated
-     */
-    public boolean addProductInstance(ProductInstance productInstance) {
-        //TODO
-        return false;
-    }
-
-
-    /**
-     * @generated
-     */
-    public int getNumberAvailable() {
-        //TODO
-        return 0;
-    }
-
-
-    /**
-     * @generated
-     */
-    public int getNumberReserved() {
-        //TODO
-        return 0;
-    }
-
-
-    /**
-     * @generated
-     */
     public boolean canAcceptReservationRequest(ReservationRequest request) {
-        //TODO
-        return false;
+        var ap = availabilityPolicy.toBuilder().build();
+        request.getOverrides().forEach(ap::addRuleOverride);
+        return productType.getProductIdentifier().equals(request.getProductIdentifier()) &&
+                ap.evaluate(request.getContext()) &&
+                getNumberAvailable() >= request.getNumberRequested();
     }
-
-
-    /**
-     * @generated
-     */
-    public boolean removeProductInstance(ProductInstance productInstance) {
-        //TODO
-        return false;
-    }
-
-
 }

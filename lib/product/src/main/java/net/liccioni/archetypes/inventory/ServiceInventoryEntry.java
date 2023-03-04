@@ -2,40 +2,22 @@ package net.liccioni.archetypes.inventory;
 
 
 import java.util.Set;
+import java.util.stream.Collectors;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.product.service.ServiceInstance;
 
-/**
- * @generated
- */
+@Value
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 public class ServiceInventoryEntry extends InventoryEntry {
 
-    /**
-     * @generated
-     */
-    private CapacityManager capacityManager;
+    CapacityManager capacityManager;
 
-    /**
-     * @generated
-     */
-    public CapacityManager getCapacityManager() {
-        return this.capacityManager;
-    }
-
-    /**
-     * @generated
-     */
-    public void setCapacityManager(CapacityManager capacityManager) {
-        this.capacityManager = capacityManager;
-    }
-
-    /**
-     * @generated
-     */
     public Set<ServiceInstance> getProductInstances(TimeDate start, TimeDate end) {
-        //TODO
-        return null;
+
+        return super.getProductInstances().stream().map(ServiceInstance.class::cast).collect(Collectors.toSet());
     }
-
-
 }
