@@ -2,6 +2,7 @@ package net.liccioni.archetypes.order;
 
 import java.util.HashSet;
 import java.util.Set;
+import net.liccioni.archetypes.order.discount.DiscountType;
 
 /**
  * @generated

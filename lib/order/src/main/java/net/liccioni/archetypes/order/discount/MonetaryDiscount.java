@@ -1,4 +1,4 @@
-package net.liccioni.archetypes.order;
+package net.liccioni.archetypes.order.discount;
 
 
 import lombok.EqualsAndHashCode;
@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 @Value
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true)
-public class DeliveryReceiver extends PartySummary {
+public class MonetaryDiscount extends Discount {
 
-    String deliveryInstructions;
+
 }
