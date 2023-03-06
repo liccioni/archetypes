@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
 import net.liccioni.archetypes.order.event.OrderEvent;
+import net.liccioni.archetypes.order.event.amendment.AmendOrderLineEvent;
 import net.liccioni.archetypes.order.event.amendment.AmendPartySummaryEvent;
 import net.liccioni.archetypes.order.event.amendment.AmendTermsAndConditionsEvent;
 import net.liccioni.archetypes.order.event.lifecycle.CancelEvent;
@@ -110,5 +111,35 @@ class OrderTest {
         assertThat(order.getAuditTrail()).containsExactly(event);
         assertThat(ol1.getOrderLineReceiver()).isEqualTo(newReceiver);
         assertThat(event.getOldPartySummary()).isEqualTo(oldReceiver);
+    }
+
+    @Test
+    void shouldAmendOrderLine() {
+        var order = PurchaseOrder.builder().orderIdentifier(OrderIdentifier.builder().id("o1").build()).build();
+        final var ol1 = OrderLine.builder()
+                .orderLineIdentifier(OrderLineIdentifier.builder().id("ol1").build())
+                .build();
+        final var ol2 = OrderLine.builder()
+                .orderLineIdentifier(OrderLineIdentifier.builder().id("ol2").build())
+                .build();
+        final var ol3 = OrderLine.builder()
+                .orderLineIdentifier(OrderLineIdentifier.builder().id("ol3").build())
+                .build();
+        final var ol2Modified = ol2.toBuilder().comment("changed").build();
+        order.getLineItems().add(ol1);
+        order.getLineItems().add(ol2);
+
+        final var addOlEvent = AmendOrderLineEvent.builder().newOrderLine(ol3).build();
+        order.acceptEvent(addOlEvent);
+        assertThat(order.getLineItems()).containsExactlyInAnyOrder(ol1,ol2,ol3);
+
+        final var modifyOlEvent = AmendOrderLineEvent.builder().newOrderLine(ol2Modified).build();
+        order.acceptEvent(modifyOlEvent);
+        assertThat(order.getLineItems()).containsExactlyInAnyOrder(ol1,ol2Modified,ol3);
+
+        final var deleteOlEvent = AmendOrderLineEvent.builder()
+                .orderLineIdentifier(ol1.getOrderLineIdentifier()).build();
+        order.acceptEvent(deleteOlEvent);
+        assertThat(order.getLineItems()).containsExactlyInAnyOrder(ol2Modified,ol3);
     }
 }

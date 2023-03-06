@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Value;
+import lombok.NonNull;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.money.Money;
 import net.liccioni.archetypes.product.ProductType;
@@ -14,6 +14,7 @@ import net.liccioni.archetypes.product.SerialNumber;
 @Builder(toBuilder = true)
 public class OrderLine {
 
+    @NonNull
     private final OrderLineIdentifier orderLineIdentifier;
     private final ProductType productType;
     private final SerialNumber serialNumber;
