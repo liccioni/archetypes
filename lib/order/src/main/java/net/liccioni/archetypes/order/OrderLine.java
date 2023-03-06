@@ -3,27 +3,28 @@ package net.liccioni.archetypes.order;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.money.Money;
 import net.liccioni.archetypes.product.ProductType;
 import net.liccioni.archetypes.product.SerialNumber;
 
-@Value
+@Data
 @Builder(toBuilder = true)
 public class OrderLine {
 
-    OrderLineIdentifier orderLineIdentifier;
-    ProductType productType;
-    SerialNumber serialNumber;
-    String description;
-    String comment;
-    Integer numberOrdered;
-    Money unitPrice;
-    TimeDate expectedDeliveryDate;
+    private final OrderLineIdentifier orderLineIdentifier;
+    private final ProductType productType;
+    private final SerialNumber serialNumber;
+    private final String description;
+    private final String comment;
+    private final Integer numberOrdered;
+    private final Money unitPrice;
+    private final TimeDate expectedDeliveryDate;
     @Builder.Default
-    Set<ChargeLine> chargeLines = new HashSet<>();
+    private final Set<ChargeLine> chargeLines = new HashSet<>();
     @Builder.Default
-    Set<TaxOnLine> taxes = new HashSet<>();
-    DeliveryReceiver orderLineReceiver;
+    private final Set<TaxOnLine> taxes = new HashSet<>();
+    private DeliveryReceiver orderLineReceiver;
 }

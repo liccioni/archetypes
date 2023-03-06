@@ -21,19 +21,19 @@ public abstract class Order {
     private OrderStatus status = OrderStatus.INITIALIZING;
     private final TimeDate dateCreated;
     private final String salesChannel;
-    private final String termsAndCondition;
+    private String termsAndCondition;
     @Builder.Default
     private final Set<OrderLine> lineItems = new HashSet<>();
     @Builder.Default
     private final Set<ChargeLine> chargeLines = new HashSet<>();
     @Builder.Default
     private final List<OrderEvent> auditTrail = new ArrayList<>();
-    private final PartySummary orderInitiator;
-    private final PartySummary purchaser;
-    private final PartySummary salesAgent;
-    private final PartySummary paymentReceiver;
-    private final PartySummary vendor;
-    private final DeliveryReceiver orderReceiver;
+    private  PartySummary orderInitiator;
+    private  PartySummary purchaser;
+    private  PartySummary salesAgent;
+    private  PartySummary paymentReceiver;
+    private  PartySummary vendor;
+    private  DeliveryReceiver orderReceiver;
     private final RuleContext discountContext;
 
     public void acceptEvent(OrderEvent orderEvent) {
@@ -56,10 +56,6 @@ public abstract class Order {
     }
 
     public abstract void processInvoiceEvent();
-
-    public void addPartySummary(PartySummary reference, PartySummaryRoleInOrder role) {
-
-    }
 
     public void close() {
         status.close(this);

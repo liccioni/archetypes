@@ -1,4 +1,4 @@
-package net.liccioni.archetypes.order.event.ammendment;
+package net.liccioni.archetypes.order.event.amendment;
 
 
 import lombok.Data;

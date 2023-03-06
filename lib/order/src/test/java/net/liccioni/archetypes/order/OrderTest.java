@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
 import net.liccioni.archetypes.order.event.OrderEvent;
+import net.liccioni.archetypes.order.event.amendment.AmendPartySummaryEvent;
+import net.liccioni.archetypes.order.event.amendment.AmendTermsAndConditionsEvent;
 import net.liccioni.archetypes.order.event.lifecycle.CancelEvent;
 import net.liccioni.archetypes.order.event.lifecycle.CloseEvent;
 import net.liccioni.archetypes.order.event.lifecycle.OpenEvent;
@@ -53,5 +55,60 @@ class OrderTest {
         });
         assertThat(thrown.getMessage()).isEqualTo(
                 String.format("cannot close cancelled order %s", order));
+    }
+
+    @Test
+    void shouldAmendTermsAndConditions() {
+        final var oldTermsAndConditions = "original terms and conditions";
+        final var newTermsAndConditions = "new terms and conditions";
+        var order = PurchaseOrder.builder().orderIdentifier(OrderIdentifier.builder().id("o1").build())
+                .termsAndCondition(oldTermsAndConditions)
+                .build();
+        final var event = AmendTermsAndConditionsEvent.builder()
+                .newTermAndConditions(newTermsAndConditions)
+                .build();
+        order.acceptEvent(event);
+        assertThat(order.getAuditTrail()).containsExactly(event);
+        assertThat(order.getTermsAndCondition()).isEqualTo(newTermsAndConditions);
+        assertThat(event.getOldTermAndConditions()).isEqualTo(oldTermsAndConditions);
+    }
+
+    @Test
+    void shouldAmendPartySummary() {
+
+        final PartySummary oldSalesAgent = PartySummary.builder().emailAddress("sales@agent.com").build();
+        final PartySummary newSalesAgent = PartySummary.builder().emailAddress("new_sales@agent.com").build();
+        var order = PurchaseOrder.builder().orderIdentifier(OrderIdentifier.builder().id("o1").build())
+                .salesAgent(oldSalesAgent)
+                .build();
+        final var event = AmendPartySummaryEvent.builder()
+                .newPartySummary(newSalesAgent)
+                .role(PartySummaryRoleInOrder.SALES_AGENT)
+                .build();
+        order.acceptEvent(event);
+        assertThat(order.getAuditTrail()).containsExactly(event);
+        assertThat(order.getSalesAgent()).isEqualTo(newSalesAgent);
+        assertThat(event.getOldPartySummary()).isEqualTo(oldSalesAgent);
+    }
+
+    @Test
+    void shouldAmendOrderLineReceiver() {
+        final var oldReceiver = DeliveryReceiver.builder().emailAddress("sales@agent.com").build();
+        final var newReceiver = DeliveryReceiver.builder().emailAddress("new_sales@agent.com").build();
+        var order = PurchaseOrder.builder().orderIdentifier(OrderIdentifier.builder().id("o1").build()).build();
+        final var ol1 = OrderLine.builder()
+                .orderLineIdentifier(OrderLineIdentifier.builder().id("ol1").build())
+                .orderLineReceiver(oldReceiver)
+                .build();
+        order.getLineItems().add(ol1);
+        final var event = AmendPartySummaryEvent.builder()
+                .orderLineIdentifier(ol1.getOrderLineIdentifier())
+                .newPartySummary(newReceiver)
+                .role(PartySummaryRoleInOrder.ORDER_LINE_RECEIVER)
+                .build();
+        order.acceptEvent(event);
+        assertThat(order.getAuditTrail()).containsExactly(event);
+        assertThat(ol1.getOrderLineReceiver()).isEqualTo(newReceiver);
+        assertThat(event.getOldPartySummary()).isEqualTo(oldReceiver);
     }
 }
