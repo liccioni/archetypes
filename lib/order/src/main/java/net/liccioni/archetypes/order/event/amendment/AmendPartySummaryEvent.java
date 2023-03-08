@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.order.Order;
 import net.liccioni.archetypes.order.OrderLineIdentifier;
+import net.liccioni.archetypes.order.OrderStatus;
 import net.liccioni.archetypes.order.PartySummary;
 import net.liccioni.archetypes.order.PartySummaryRoleInOrder;
 
@@ -22,7 +23,8 @@ public class AmendPartySummaryEvent extends AmendEvent {
     private PartySummary oldPartySummary;
 
     @Override
-    protected void internalProcess(final Order order) {
-        role.handle(this, order);
+    public void process(final OrderStatus orderStatus,
+                        final Order order) {
+        orderStatus.handle(this, order);
     }
 }

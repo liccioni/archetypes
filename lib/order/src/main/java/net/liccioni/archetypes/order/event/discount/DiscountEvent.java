@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.order.Order;
+import net.liccioni.archetypes.order.OrderStatus;
 import net.liccioni.archetypes.order.event.OrderEvent;
 
 @Value
@@ -15,7 +16,7 @@ public class DiscountEvent extends OrderEvent {
     Boolean add;
 
     @Override
-    protected void internalProcess(final Order order) {
-
+    public void process(final OrderStatus orderStatus, final Order order) {
+        orderStatus.handle(this, order);
     }
 }

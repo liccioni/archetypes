@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.order.Order;
+import net.liccioni.archetypes.order.OrderStatus;
 
 @Value
 @SuperBuilder(toBuilder = true)
@@ -14,7 +15,7 @@ public class CancelEvent extends LifeCycleEvent {
     String reason;
 
     @Override
-    protected void internalProcess(final Order order) {
-        order.cancel();
+    public void process(final OrderStatus orderStatus, final Order order) {
+        orderStatus.handle(this, order);
     }
 }

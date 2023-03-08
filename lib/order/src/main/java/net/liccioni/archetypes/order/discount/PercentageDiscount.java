@@ -4,7 +4,7 @@ package net.liccioni.archetypes.order.discount;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
-import net.liccioni.archetypes.order.discount.Discount;
+import net.liccioni.archetypes.product.price.Price;
 
 @Value
 @SuperBuilder(toBuilder = true)
@@ -12,4 +12,8 @@ import net.liccioni.archetypes.order.discount.Discount;
 public class PercentageDiscount extends Discount {
 
 
+    @Override
+    public Price calculateDiscountedPrice(final Price price) {
+        return null;
+    }
 }

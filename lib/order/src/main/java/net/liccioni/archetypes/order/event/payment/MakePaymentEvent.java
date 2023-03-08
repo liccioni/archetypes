@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.order.Order;
-import net.liccioni.archetypes.order.event.payment.PaymentEvent;
+import net.liccioni.archetypes.order.OrderStatus;
 
 @Value
 @SuperBuilder(toBuilder = true)
@@ -14,7 +14,7 @@ public class MakePaymentEvent extends PaymentEvent {
 
 
     @Override
-    protected void internalProcess(final Order order) {
-
+    public void process(final OrderStatus orderStatus, final Order order) {
+        orderStatus.handle(this, order);
     }
 }

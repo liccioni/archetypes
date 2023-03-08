@@ -12,8 +12,5 @@ public abstract class Discount {
     private final String reason;
     private final DiscountType discountType;
 
-    public Price calculateDiscountedPrice(Price price) {
-        //TODO
-        return null;
-    }
+    public abstract Price calculateDiscountedPrice(Price price);
 }

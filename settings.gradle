@@ -41,4 +41,5 @@ include('lib:common',
         'lib:party',
         'lib:product',
         'lib:quantity',
-        'lib:money')
+        'lib:money',
+        'lib:simple-order-event-handler')

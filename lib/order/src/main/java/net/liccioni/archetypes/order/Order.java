@@ -13,8 +13,7 @@ import net.liccioni.archetypes.rule.RuleContext;
 
 @Data
 @SuperBuilder(toBuilder = true)
-public abstract class Order {
-
+public class Order {
 
     private final OrderIdentifier orderIdentifier;
     @Builder.Default
@@ -28,13 +27,14 @@ public abstract class Order {
     private final Set<ChargeLine> chargeLines = new HashSet<>();
     @Builder.Default
     private final List<OrderEvent> auditTrail = new ArrayList<>();
-    private  PartySummary orderInitiator;
-    private  PartySummary purchaser;
-    private  PartySummary salesAgent;
-    private  PartySummary paymentReceiver;
-    private  PartySummary vendor;
-    private  DeliveryReceiver orderReceiver;
-    private final RuleContext discountContext;
+    private PartySummary orderInitiator;
+    private PartySummary purchaser;
+    private PartySummary salesAgent;
+    private PartySummary paymentReceiver;
+    private PartySummary vendor;
+    private DeliveryReceiver orderReceiver;
+    @Builder.Default
+    private final RuleContext discountContext = RuleContext.builder().build();
 
     public void acceptEvent(OrderEvent orderEvent) {
         orderEvent.process(this);
@@ -45,27 +45,7 @@ public abstract class Order {
         return false;
     }
 
-    public boolean processLifeCycleEvent() {
-        //TODO
-        return false;
-    }
+    public void processInvoiceEvent() {
 
-    public boolean processAmendEvent() {
-        //TODO
-        return false;
-    }
-
-    public abstract void processInvoiceEvent();
-
-    public void close() {
-        status.close(this);
-    }
-
-    public void open() {
-        status.open(this);
-    }
-
-    public void cancel() {
-        status.cancel(this);
     }
 }

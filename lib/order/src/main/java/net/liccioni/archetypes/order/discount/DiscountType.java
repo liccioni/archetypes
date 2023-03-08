@@ -1,6 +1,7 @@
 package net.liccioni.archetypes.order.discount;
 
 
+import java.util.Optional;
 import lombok.Builder;
 import lombok.Value;
 import net.liccioni.archetypes.rule.RuleContext;
@@ -13,8 +14,8 @@ public class DiscountType {
     @Builder.Default
     RuleSet ruleSet = RuleSet.builder().build();
 
-    public Discount getDiscount(RuleContext context) {
+    public Optional<Discount> getDiscount(RuleContext context) {
         //TODO
-        return null;
+        return Optional.empty();
     }
 }
