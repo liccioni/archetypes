@@ -1,14 +1,19 @@
 package net.liccioni.archetypes.money;
 
 
+import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
+import lombok.With;
 import net.liccioni.archetypes.quantity.Quantity;
 
 @ToString(callSuper = true)
 public class Money extends Quantity {
+
+    @With
+    private final BigDecimal amount;
 
     @Getter
     @ToString.Exclude
@@ -18,6 +23,7 @@ public class Money extends Quantity {
     public Money(final Number amount, @NonNull final Currency currency) {
         super(amount, currency);
         this.currency = currency;
+        this.amount = super.getAmount();
     }
 
     @Override

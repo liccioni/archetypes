@@ -1,29 +1,14 @@
 package net.liccioni.archetypes.order;
 
 
-/**
- * @generated
- */
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
+
+@Value
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 public class DeliveryReceiver extends PartySummary {
 
-    /**
-     * @generated
-     */
-    private String deliveryInstructions;
-
-    /**
-     * @generated
-     */
-    public String getDeliveryInstructions() {
-        return this.deliveryInstructions;
-    }
-
-    /**
-     * @generated
-     */
-    public void setDeliveryInstructions(String deliveryInstructions) {
-        this.deliveryInstructions = deliveryInstructions;
-    }
-
-
+    String deliveryInstructions;
 }
