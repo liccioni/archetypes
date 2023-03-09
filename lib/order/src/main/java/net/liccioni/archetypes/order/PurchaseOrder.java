@@ -12,22 +12,4 @@ import net.liccioni.archetypes.common.TimeDate;
 public class PurchaseOrder extends Order {
 
     TimeDate dateSent;
-
-    public boolean processReceiptEvent() {
-        //TODO
-        return false;
-    }
-
-    public void processInvoiceEvent() {
-    }
-
-    public boolean processMakePaymentEvent() {
-        //TODO
-        return false;
-    }
-
-    public boolean processAcceptRefundEvent() {
-        //TODO
-        return false;
-    }
 }

@@ -39,13 +39,4 @@ public class Order {
     public void acceptEvent(OrderEvent orderEvent) {
         orderEvent.process(this);
     }
-
-    public boolean processDiscountEvent() {
-        //TODO
-        return false;
-    }
-
-    public void processInvoiceEvent() {
-
-    }
 }

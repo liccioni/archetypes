@@ -13,22 +13,4 @@ public class SalesOrder extends Order {
 
     TimeDate datePurchaseOrderReceived;
     String customerOrderPurchaseReference;
-
-    public boolean processDespatchEvent() {
-        //TODO
-        return false;
-    }
-
-    public void processInvoiceEvent() {
-    }
-
-    public boolean processAcceptPaymentEvent() {
-        //TODO
-        return false;
-    }
-
-    public boolean processMakeRefundEvent() {
-        //TODO
-        return false;
-    }
 }
