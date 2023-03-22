@@ -1,6 +1,8 @@
 package net.liccioni.archetypes.address;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -15,7 +17,7 @@ public class GeographicAddress extends Address {
 
 
     @Builder.Default
-    Set<String> addressLine = new HashSet<>();
+    List<String> addressLine = new ArrayList<>();
     @Builder.Default
     String city = "";
     @Builder.Default
