@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
@@ -15,12 +16,18 @@ public class GeographicAddress extends Address {
 
     @Builder.Default
     Set<String> addressLine = new HashSet<>();
-    String city;
-    String regionOrState;
-    String zipOrPostCode;
+    @Builder.Default
+    String city = "";
+    @Builder.Default
+    String regionOrState = "";
+    @Builder.Default
+    String zipOrPostCode = "";
+    @NonNull
+    Locale country;
 
     @Override
     public String getAddress() {
-        return this.toString();
+        return String.format("%s, %s, %s, %s, %s",
+                String.join(",", addressLine), city, regionOrState, zipOrPostCode, country.getName());
     }
 }
