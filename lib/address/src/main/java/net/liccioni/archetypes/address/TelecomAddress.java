@@ -19,6 +19,7 @@ public class TelecomAddress extends Address {
 
     @Override
     public String getAddress() {
-        return this.number;
+        return String.format("+%s (%s) %s %s ext. %s",
+                countryCode, nationalDirectDialingPrefix, areaCode, number, extension);
     }
 }
