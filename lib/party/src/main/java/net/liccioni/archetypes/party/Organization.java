@@ -14,4 +14,9 @@ public class Organization extends Party {
 
     @NonNull
     OrganizationName organizationName;
+
+    @Override
+    public String getName() {
+        return organizationName.getName();
+    }
 }
