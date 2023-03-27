@@ -15,4 +15,9 @@ public class Person extends Party {
 
     @NonNull
     PersonName personName;
+
+    @Override
+    public String getName() {
+        return personName.getGivenName().concat(",").concat(personName.getFamilyName());
+    }
 }

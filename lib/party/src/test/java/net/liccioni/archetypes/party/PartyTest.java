@@ -15,15 +15,15 @@ class PartyTest {
     @Test
     void shouldCreateAPerson() {
         final Person gus = Person.builder()
-                .partyIdentifier(PartyIdentifier.builder().id("1").build())
+                .identifier(PartyIdentifier.builder().id("1").build())
                 .personName(PersonName.builder().familyName("Rodriguez").build()).build();
 
         final Person gus2 = Person.builder()
-                .partyIdentifier(PartyIdentifier.builder().id("1").build())
+                .identifier(PartyIdentifier.builder().id("1").build())
                 .personName(PersonName.builder().familyName("Rodriguez").build()).build();
 
         final Person gus3 = Person.builder()
-                .partyIdentifier(PartyIdentifier.builder().id("1").build())
+                .identifier(PartyIdentifier.builder().id("1").build())
                 .personName(PersonName.builder().familyName("Rodriguez").build()).build();
         gus3.getPreferences()
                 .add(Preference.builder()
@@ -36,7 +36,7 @@ class PartyTest {
                         .build());
 
         final Person dora = Person.builder()
-                .partyIdentifier(PartyIdentifier.builder().id("2").build())
+                .identifier(PartyIdentifier.builder().id("2").build())
                 .personName(PersonName.builder().familyName("Angelov").build()).build();
 
         assertThat(gus).isNotEqualTo(dora);

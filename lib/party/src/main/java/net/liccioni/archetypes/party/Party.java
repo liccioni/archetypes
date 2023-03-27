@@ -14,8 +14,7 @@ import net.liccioni.archetypes.relationship.PartyRole;
 @SuperBuilder(toBuilder = true)
 public abstract class Party {
 
-    private final PartyIdentifier partyIdentifier;
-    private final String name;
+    private final PartyIdentifier identifier;
     @Builder.Default
     private final Capabilities capabilities = Capabilities.builder().name("noCapabilities").build();
     @Builder.Default
@@ -28,4 +27,6 @@ public abstract class Party {
     private final Set<AddressProperties> addressProperties = new HashSet<>();
     @Builder.Default
     private final Set<PartyRole> roles = new HashSet<>();
+
+    public abstract String getName();
 }
