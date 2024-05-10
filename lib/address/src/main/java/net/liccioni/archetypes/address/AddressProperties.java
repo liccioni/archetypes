@@ -1,20 +1,22 @@
 package net.liccioni.archetypes.address;
 
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 
-@Value
-@Builder(toBuilder = true)
-public class AddressProperties {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    TimeDate validFrom;
-    TimeDate validTo;
-    @Builder.Default
-    Set<String> use = new HashSet<>();
-    @NonNull
-    Address address;
+public record AddressProperties(TimeDate validFrom,
+                                TimeDate validTo,
+                                Set<String> use,
+                                @NonNull Address address) {
+    @Builder(toBuilder = true)
+    public AddressProperties(TimeDate validFrom, TimeDate validTo, Set<String> use, @NonNull Address address) {
+        this.validFrom = validFrom;
+        this.validTo = validTo;
+        this.use = Optional.ofNullable(use).orElseGet(HashSet::new);
+        this.address = address;
+    }
 }

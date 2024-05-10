@@ -8,11 +8,7 @@ import static net.liccioni.archetypes.rule.Operator.XOR;
 
 import lombok.Value;
 
-@Value
-public class Proposition implements RuleElement {
-
-    String name;
-    boolean value;
+public record Proposition(String name, boolean value) implements RuleElement {
 
     @Override
     public void acceptStack(RuleExecutionStack stack) {
@@ -20,22 +16,22 @@ public class Proposition implements RuleElement {
     }
 
     public Proposition and(Proposition other) {
-        return newProposition(other.getName(), AND, other.value && this.value);
+        return newProposition(other.name(), AND, other.value && this.value);
     }
 
     public Proposition or(Proposition other) {
-        return newProposition(other.getName(), OR, other.value || this.value);
+        return newProposition(other.name(), OR, other.value || this.value);
     }
 
     public Proposition xor(Proposition other) {
-        return newProposition(other.getName(), XOR, other.value ^ this.value);
+        return newProposition(other.name(), XOR, other.value ^ this.value);
     }
 
     public Proposition not() {
-        return new Proposition(String.format("%s_%s", NOT.getName(), this.getName()), !this.value);
+        return new Proposition(String.format("%s_%s", NOT.name(), this.name()), !this.value);
     }
 
     private Proposition newProposition(String otherName, Operator operator, boolean newValue) {
-        return new Proposition(String.format("%s_%s_%s", otherName, operator.getName(), this.getName()), newValue);
+        return new Proposition(String.format("%s_%s_%s", otherName, operator.name(), this.name()), newValue);
     }
 }

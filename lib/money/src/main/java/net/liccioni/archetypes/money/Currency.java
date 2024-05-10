@@ -8,24 +8,24 @@ import net.liccioni.archetypes.quantity.Metric;
 
 public interface Currency extends Metric {
 
-    String getAlphabeticCode();
+    String alphabeticCode();
 
-    String getNumericCode();
+    String numericCode();
 
-    String getMajorUnitSymbol();
+    String majorUnitSymbol();
 
-    String getMinorUnitSymbol();
+    String minorUnitSymbol();
 
-    Double getRatioOfMinorToMajorUnit();
+    Double ratioOfMinorToMajorUnit();
 
-    TimeDate getIntroductionDate();
+    TimeDate introductionDate();
 
-    TimeDate getExpirationDate();
+    TimeDate expirationDate();
 
-    Set<Locale> getAcceptedIn();
+    Set<Locale> acceptedIn();
 
     default boolean isEqualTo(Currency other) {
-        return Objects.equals(getAlphabeticCode(), other.getAlphabeticCode());
+        return Objects.equals(alphabeticCode(), other.alphabeticCode());
     }
 
     @Override

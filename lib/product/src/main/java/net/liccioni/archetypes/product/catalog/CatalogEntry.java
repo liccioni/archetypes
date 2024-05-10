@@ -1,19 +1,24 @@
 package net.liccioni.archetypes.product.catalog;
 
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
-import lombok.Value;
 import net.liccioni.archetypes.product.ProductType;
 
-@Value
-@Builder(toBuilder = true)
-public class CatalogEntry {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    String catalogIdentifier;
-    String description;
-    @Builder.Default
-    Set<ProductType> productTypes = new HashSet<>();
-    @Builder.Default
-    Set<String> category = new HashSet<>();
+public record CatalogEntry(String catalogIdentifier,
+                           String description,
+                           Set<ProductType> productTypes,
+                           Set<String> category) {
+    @Builder(toBuilder = true)
+    public CatalogEntry(String catalogIdentifier,
+                        String description,
+                        Set<ProductType> productTypes,
+                        Set<String> category) {
+        this.catalogIdentifier = catalogIdentifier;
+        this.description = description;
+        this.productTypes = Optional.ofNullable(productTypes).orElseGet(HashSet::new);
+        this.category = Optional.ofNullable(category).orElseGet(HashSet::new);
+    }
 }

@@ -1,58 +1,54 @@
 package net.liccioni.archetypes.product.productpackage;
 
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.reducing;
-
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.product.ProductIdentifier;
 import net.liccioni.archetypes.product.ProductType;
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class PackageType extends ProductType {
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-    @Getter(lazy = true)
-    Set<ProductSet> productSet = buildProductSets();
-    @Getter(lazy = true)
-    Set<ProductIdentifier> components = buildComponents();
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.reducing;
 
-    @Builder.Default
-    Set<PropositionOfInclusion> propositionOfInclusion = new HashSet<>();
+public interface PackageType extends ProductType {
 
-    public boolean validate(final PackageInstance packageInstance) {
+    Set<ProductSet> productSet();
 
-        return propositionOfInclusion.stream()
-                .peek(p -> p.setTargetPackage(packageInstance))
-                .collect(groupingBy(PropositionOfInclusion::getProductSet,
-                        reducing((poi1, poi2) -> poi1.toBuilder()
-                                .name(poi1.getName().concat("_").concat(poi2.getName()))
-                                .maximum(poi1.getMaximum() + poi2.getMaximum())
-                                .minimum(poi1.getMinimum() + poi2.getMinimum())
-                                .targetPackage(packageInstance)
+    Set<ProductIdentifier> components();
+
+    Set<PropositionOfInclusion> propositionOfInclusion();
+
+    default boolean validate(final PackageInstance packageInstance) {
+
+        return propositionOfInclusion().stream()
+                .filter(p->Objects.nonNull(p.productSet()))
+                .collect(groupingBy(PropositionOfInclusion::productSet,
+                        reducing((poi1, poi2) -> PropositionOfInclusionRecord.builder()
+                                .name(poi1.name().concat("_").concat(poi2.name()))
+                                .productSet(poi1.productSet())
+                                .maximum(poi1.maximum() + poi2.maximum())
+                                .minimum(poi1.minimum() + poi2.minimum())
                                 .build())))
                 .values().stream()
                 .filter(Optional::isPresent)
                 .map(Optional::get)
-                .allMatch(PropositionOfInclusion::isSubSetOf);
+                .allMatch(p -> p.isSubSetOf(packageInstance));
     }
 
-    private Set<ProductSet> buildProductSets() {
+    static Set<ProductSet> buildProductSets(Set<PropositionOfInclusion> propositionOfInclusion) {
         assert propositionOfInclusion != null;
-        return propositionOfInclusion.stream().map(PropositionOfInclusion::getProductSet).collect(Collectors.toSet());
+        return propositionOfInclusion.stream()
+                .map(PropositionOfInclusion::productSet)
+                .filter(Objects::nonNull).collect(Collectors.toSet());
     }
 
-    private Set<ProductIdentifier> buildComponents() {
+    static Set<ProductIdentifier> buildComponents(Set<PropositionOfInclusion> propositionOfInclusion) {
         assert propositionOfInclusion != null;
-        return propositionOfInclusion.stream().flatMap(p -> p.getProductSet().getProducts().stream())
+        return propositionOfInclusion.stream()
+                .map(PropositionOfInclusion::productSet)
+                .filter(Objects::nonNull)
+                .flatMap(p -> p.products().stream())
                 .collect(Collectors.toSet());
     }
 }

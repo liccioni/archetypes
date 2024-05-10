@@ -1,35 +1,28 @@
 package net.liccioni.archetypes.address;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.NonNull;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class GeographicAddress extends Address {
+import java.util.ArrayList;
+import java.util.List;
 
+@Builder(toBuilder = true)
+public record GeographicAddress(List<String> addressLine,
+                                String city,
+                                String regionOrState,
+                                String zipOrPostCode,
+                                @NonNull Locale country) implements Address {
 
-    @Builder.Default
-    List<String> addressLine = new ArrayList<>();
-    @Builder.Default
-    String city = "";
-    @Builder.Default
-    String regionOrState = "";
-    @Builder.Default
-    String zipOrPostCode = "";
-    @NonNull
-    Locale country;
+    public static class GeographicAddressBuilder {
+        private List<String> addressLine = new ArrayList<>();
+        private String city = "";
+        private String regionOrState = "";
+        private String zipOrPostCode = "";
+    }
 
     @Override
-    public String getAddress() {
+    public String address() {
         return String.format("%s, %s, %s, %s, %s",
-                String.join(",", addressLine), city, regionOrState, zipOrPostCode, country.getName());
+                String.join(",", addressLine), city, regionOrState, zipOrPostCode, country.name());
     }
 }

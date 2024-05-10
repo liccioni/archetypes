@@ -1,21 +1,22 @@
 package net.liccioni.archetypes.order.event.lifecycle;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
+import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.order.Order;
+import net.liccioni.archetypes.order.OrderIdentifier;
 import net.liccioni.archetypes.order.OrderStatus;
+import net.liccioni.archetypes.order.event.EventHandled;
+import net.liccioni.archetypes.party.PartySignature;
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class CancelEvent extends LifeCycleEvent {
-
-    String reason;
+@Builder(toBuilder = true)
+public record CancelEvent(OrderIdentifier orderIdentifier,
+                          PartySignature authorization,
+                          TimeDate dateAuthorized,
+                          String reason) implements LifeCycleEvent {
 
     @Override
-    public void process(final OrderStatus orderStatus, final Order order) {
-        orderStatus.handle(this, order);
+    public EventHandled process(final OrderStatus orderStatus, final Order order) {
+        return orderStatus.handle(this, order);
     }
 }

@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public interface Unit extends Metric {
 
-    SystemOfUnits getSystemOfUnits();
+    SystemOfUnits systemOfUnits();
 
     default boolean isEqualTo(Unit other) {
-        return Objects.equals(getSymbol(), other.getSymbol()) && Objects.equals(getSystemOfUnits(), getSystemOfUnits());
+        return Objects.equals(symbol(), other.symbol()) && Objects.equals(systemOfUnits(), other.systemOfUnits());
     }
 
     @Override

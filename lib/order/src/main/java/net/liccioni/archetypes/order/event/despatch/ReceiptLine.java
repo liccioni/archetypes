@@ -1,21 +1,25 @@
 package net.liccioni.archetypes.order.event.despatch;
 
-
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 import net.liccioni.archetypes.order.OrderLineIdentifier;
 
-@Value
-@Builder(toBuilder = true)
-public class ReceiptLine {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    @NonNull
-    OrderLineIdentifier orderLineIdentifier;
-    Integer numberReceived;
-    Boolean isAssessed;
-    @Builder.Default
-    Set<RejectedItem> rejectedItems = new HashSet<>();
+public record ReceiptLine(OrderLineIdentifier orderLineIdentifier,
+                          Integer numberReceived, Boolean isAssessed,
+                          Set<RejectedItem> rejectedItems) {
+
+    @Builder(toBuilder = true)
+    public ReceiptLine(@NonNull OrderLineIdentifier orderLineIdentifier,
+                       Integer numberReceived,
+                       Boolean isAssessed,
+                       Set<RejectedItem> rejectedItems) {
+        this.orderLineIdentifier = orderLineIdentifier;
+        this.numberReceived = numberReceived;
+        this.isAssessed = isAssessed;
+        this.rejectedItems = Optional.ofNullable(rejectedItems).orElseGet(HashSet::new);
+    }
 }

@@ -1,26 +1,24 @@
 package net.liccioni.archetypes.address;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
+import lombok.NonNull;
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class ISOCountryCode extends Locale {
-
-    String alphabeticThreeCharCode;
-    String numericCode;
-    String officialName;
+@Builder(toBuilder = true)
+public record ISOCountryCode(@NonNull String identifier,
+                             @NonNull String name,
+                             String description,
+                             String alphabeticThreeCharCode,
+                             String numericCode,
+                             String officialName) implements Locale {
 
     public String getShortName() {
 
-        return this.getName();
+        return this.name;
     }
 
     public String getAlphabeticTwoCharCode() {
 
-        return this.getIdentifier();
+        return this.identifier;
     }
 }

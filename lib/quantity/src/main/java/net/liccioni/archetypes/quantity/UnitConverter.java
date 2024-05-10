@@ -18,16 +18,16 @@ public class UnitConverter {
     public Quantity convert(Quantity quantity, Unit targetUnit) {
 
         return this.converters.stream()
-                .filter(converter -> converterMatches(quantity.getMetric(), targetUnit, converter))
-                .map(converter -> quantity.getAmount().multiply(converter.getConversionFactor()))
-                .map(convertedAmount -> new Quantity(convertedAmount, targetUnit))
+                .filter(converter -> converterMatches(quantity.metric(), targetUnit, converter))
+                .map(converter -> quantity.amount().multiply(converter.conversionFactor()))
+                .map(convertedAmount -> new QuantityRecord(convertedAmount, targetUnit))
                 .findFirst().orElseThrow(() -> new IllegalStateException(
-                        "Cannot find converter for " + quantity.getMetric() + " to " + targetUnit));
+                        "Cannot find converter for " + quantity.metric() + " to " + targetUnit));
     }
 
     private boolean converterMatches(final Metric sourceUnit, final Unit targetUnit,
                                      final StandardConversion converter) {
-        return converter.getSource().isEqualTo(sourceUnit) &&
-                converter.getTarget().isEqualTo(targetUnit);
+        return converter.source().isEqualTo(sourceUnit) &&
+                converter.target().isEqualTo(targetUnit);
     }
 }

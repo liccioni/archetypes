@@ -10,16 +10,16 @@ class ProductInstanceTest {
 
     @Test
     void shouldReserve() {
-        final ProductInstance p1 = ProductInstance.builder().productType(ProductType.builder()
+        final ProductInstance p1 = ProductInstanceRecord.builder().productType(ProductTypeRecord.builder()
                         .name("p1")
                 .build()).build();
         final ReservationIdentifier reservationIdentifier = ReservationIdentifier.builder().id("1").build();
-        p1.reserve(reservationIdentifier);
-        assertThat(p1.getReservationStatus()).isEqualTo(ReservationStatus.RESERVED);
-        assertThat(p1.getReservation()).isEqualTo(reservationIdentifier);
+        final var reservedProduct = p1.reserve(reservationIdentifier);
+        assertThat(reservedProduct.reservationStatus()).isEqualTo(ReservationStatus.RESERVED);
+        assertThat(reservedProduct.reservation()).isEqualTo(reservationIdentifier);
 
-        p1.cancelReservation();
-        assertThat(p1.getReservationStatus()).isEqualTo(ReservationStatus.AVAILABLE);
-        assertThat(p1.getReservation()).isNull();
+        final var cancelledReservation = reservedProduct.cancelReservation();
+        assertThat(cancelledReservation.reservationStatus()).isEqualTo(ReservationStatus.AVAILABLE);
+        assertThat(cancelledReservation.reservation()).isNull();
     }
 }

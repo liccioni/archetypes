@@ -1,31 +1,49 @@
 package net.liccioni.archetypes.order;
 
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NonNull;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.money.Money;
 import net.liccioni.archetypes.product.ProductType;
 import net.liccioni.archetypes.product.SerialNumber;
 
-@Data
-@Builder(toBuilder = true)
-public class OrderLine {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    @NonNull
-    private final OrderLineIdentifier orderLineIdentifier;
-    private final ProductType productType;
-    private final SerialNumber serialNumber;
-    private final String description;
-    private final String comment;
-    private final Integer numberOrdered;
-    private final Money unitPrice;
-    private final TimeDate expectedDeliveryDate;
-    @Builder.Default
-    private final Set<ChargeLine> chargeLines = new HashSet<>();
-    @Builder.Default
-    private final Set<TaxOnLine> taxes = new HashSet<>();
-    private DeliveryReceiver orderLineReceiver;
+public record OrderLine(OrderLineIdentifier orderLineIdentifier,
+                        ProductType productType,
+                        SerialNumber serialNumber,
+                        String description,
+                        String comment,
+                        Integer numberOrdered,
+                        Money unitPrice,
+                        TimeDate expectedDeliveryDate,
+                        Set<ChargeLine> chargeLines,
+                        Set<TaxOnLine> taxes,
+                        DeliveryReceiver orderLineReceiver) {
+    @Builder(toBuilder = true)
+    public OrderLine(@NonNull OrderLineIdentifier orderLineIdentifier,
+                     ProductType productType,
+                     SerialNumber serialNumber,
+                     String description,
+                     String comment,
+                     Integer numberOrdered,
+                     Money unitPrice,
+                     TimeDate expectedDeliveryDate,
+                     Set<ChargeLine> chargeLines,
+                     Set<TaxOnLine> taxes,
+                     DeliveryReceiver orderLineReceiver) {
+        this.orderLineIdentifier = orderLineIdentifier;
+        this.productType = productType;
+        this.serialNumber = serialNumber;
+        this.description = description;
+        this.comment = comment;
+        this.numberOrdered = numberOrdered;
+        this.unitPrice = unitPrice;
+        this.expectedDeliveryDate = expectedDeliveryDate;
+        this.chargeLines = Optional.ofNullable(chargeLines).orElseGet(HashSet::new);
+        this.taxes = Optional.ofNullable(taxes).orElseGet(HashSet::new);
+        this.orderLineReceiver = orderLineReceiver;
+    }
 }

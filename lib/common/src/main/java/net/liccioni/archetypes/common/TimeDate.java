@@ -1,14 +1,10 @@
 package net.liccioni.archetypes.common;
 
-import java.time.Instant;
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 
-@Value
+import java.time.Instant;
+
 @Builder(toBuilder = true)
-public class TimeDate {
-
-    @NonNull
-    Instant value;
+public record TimeDate(@NonNull Instant value) {
 }

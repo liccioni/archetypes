@@ -1,10 +1,9 @@
 package net.liccioni.archetypes.product.relationship;
 
 
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
+import net.liccioni.archetypes.product.ProductType;
 
-@SuperBuilder(toBuilder = true)
-public class ReplacedBy extends ProductRelationship {
-
-
+@Builder(toBuilder = true)
+public record ReplacedBy(ProductType supplier, ProductType client) implements ProductRelationship {
 }

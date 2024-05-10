@@ -9,9 +9,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-import net.liccioni.archetypes.product.ProductIdentifier;
-import net.liccioni.archetypes.product.ProductInstance;
-import net.liccioni.archetypes.product.ProductType;
+
+import net.liccioni.archetypes.product.*;
 import org.junit.jupiter.api.Test;
 
 class ConditionalPropositionOfInclusionTest {
@@ -49,56 +48,56 @@ class ConditionalPropositionOfInclusionTest {
         final var winME = createProductSet("winME", List.of("WinME"));
         final var winOther = createProductSet("winME", List.of("WinXP", "WinXPPro", "Win2000"));
 
-        final var includeAllStandardFeatures = PropositionOfInclusion.builder().name("IncludeAllStandardFeatures")
+        final var includeAllStandardFeatures = PropositionOfInclusionRecord.builder().name("IncludeAllStandardFeatures")
                 .productSet(standardFeatures)
                 .minimum(5)
                 .maximum(5)
                 .build();
-        final var includeOneHardDrive = PropositionOfInclusion.builder().name("IncludeOneHardDrive")
+        final var includeOneHardDrive = PropositionOfInclusionRecord.builder().name("IncludeOneHardDrive")
                 .productSet(hardDrive)
                 .minimum(1)
                 .maximum(1)
                 .build();
-        final var includeOneMonitor = PropositionOfInclusion.builder().name("IncludeOneMonitor")
+        final var includeOneMonitor = PropositionOfInclusionRecord.builder().name("IncludeOneMonitor")
                 .productSet(monitor)
                 .minimum(1)
                 .maximum(1)
                 .build();
 
-        final var includeOneVideoCard = PropositionOfInclusion.builder().name("IncludeOneVideoCard")
+        final var includeOneVideoCard = PropositionOfInclusionRecord.builder().name("IncludeOneVideoCard")
                 .productSet(videoCard)
                 .minimum(1)
                 .maximum(1)
                 .build();
 
-        final var includeDVDOrComboDrive = PropositionOfInclusion.builder().name("IncludeDVDOrComboDrive")
+        final var includeDVDOrComboDrive = PropositionOfInclusionRecord.builder().name("IncludeDVDOrComboDrive")
                 .productSet(device1)
                 .minimum(1)
                 .maximum(1)
                 .build();
 
-        final var includeSoundCard = PropositionOfInclusion.builder().name("IncludeSoundCard")
+        final var includeSoundCard = PropositionOfInclusionRecord.builder().name("IncludeSoundCard")
                 .productSet(soundCard)
                 .minimum(1)
                 .maximum(1)
                 .build();
 
-        final var includeSpeakers = PropositionOfInclusion.builder().name("IncludeSpeakers")
+        final var includeSpeakers = PropositionOfInclusionRecord.builder().name("IncludeSpeakers")
                 .productSet(speakers)
                 .minimum(1)
                 .maximum(1)
                 .build();
 
-        final var includeWindowsOS = PropositionOfInclusion.builder().name("IncludeWindowsOS")
+        final var includeWindowsOS = PropositionOfInclusionRecord.builder().name("IncludeWindowsOS")
                 .productSet(win)
                 .minimum(1)
                 .maximum(1)
                 .build();
         final var ifOSIsWinME = ConditionalPropositionOfInclusion.builder()
                 .name("IfOSIsWinME")
-                .condition(PropositionOfInclusion.builder().name("IfOSIsWinME").minimum(1).maximum(1)
+                .condition(PropositionOfInclusionRecord.builder().name("IfOSIsWinME").minimum(1).maximum(1)
                         .productSet(winME).build())
-                .body(Set.of(PropositionOfInclusion.builder().name("IncludeWinMEMemory")
+                .body(Set.of(PropositionOfInclusionRecord.builder().name("IncludeWinMEMemory")
                         .productSet(winMEMemory)
                         .minimum(1)
                         .maximum(1)
@@ -107,9 +106,9 @@ class ConditionalPropositionOfInclusionTest {
 
         final var ifOSIsNotWinME = ConditionalPropositionOfInclusion.builder()
                 .name("IfOSIsNotWinME")
-                .condition(PropositionOfInclusion.builder().name("IfOSIsNotWinME").minimum(1).maximum(1)
+                .condition(PropositionOfInclusionRecord.builder().name("IfOSIsNotWinME").minimum(1).maximum(1)
                         .productSet(winOther).build())
-                .body(Set.of(PropositionOfInclusion.builder().name("IncludeWinMEMemory")
+                .body(Set.of(PropositionOfInclusionRecord.builder().name("IncludeWinMEMemory")
                         .productSet(winOtherMemory)
                         .minimum(1)
                         .maximum(1)
@@ -118,9 +117,9 @@ class ConditionalPropositionOfInclusionTest {
 
         final var ifComboDrive = ConditionalPropositionOfInclusion.builder()
                 .name("IfComboDrive")
-                .condition(PropositionOfInclusion.builder().name("IfComboDrive").minimum(1).maximum(1)
+                .condition(PropositionOfInclusionRecord.builder().name("IfComboDrive").minimum(1).maximum(1)
                         .productSet(combo).build())
-                .body(Set.of(PropositionOfInclusion.builder().name("IncludeZip1")
+                .body(Set.of(PropositionOfInclusionRecord.builder().name("IncludeZip1")
                         .productSet(zip)
                         .minimum(0)
                         .maximum(1)
@@ -129,13 +128,13 @@ class ConditionalPropositionOfInclusionTest {
 
         final var ifDVDDrive = ConditionalPropositionOfInclusion.builder()
                 .name("IfDVDDrive")
-                .condition(PropositionOfInclusion.builder().name("IfDVDDrive").minimum(1).maximum(1)
+                .condition(PropositionOfInclusionRecord.builder().name("IfDVDDrive").minimum(1).maximum(1)
                         .productSet(dvd).build())
-                .body(Set.of(PropositionOfInclusion.builder().name("IncludeCDRW")
+                .body(Set.of(PropositionOfInclusionRecord.builder().name("IncludeCDRW")
                         .productSet(cdrw)
                         .minimum(0)
                         .maximum(1)
-                        .build(), PropositionOfInclusion.builder().name("IncludeZip2")
+                        .build(), PropositionOfInclusionRecord.builder().name("IncludeZip2")
                         .productSet(zip)
                         .minimum(0)
                         .maximum(1)
@@ -143,7 +142,7 @@ class ConditionalPropositionOfInclusionTest {
                 .build();
 
 
-        final var ruleForPc = PackageType.builder().name("Rule for PC")
+        final var ruleForPc = PackageTypeRecord.builder().name("Rule for PC")
                 .propositionOfInclusion(Set.of(
                         includeAllStandardFeatures,
                         includeOneHardDrive,
@@ -171,7 +170,7 @@ class ConditionalPropositionOfInclusionTest {
     private List<ProductInstance> createProductInstances(final String... productNames) {
         return Arrays.stream(productNames)
                 .map(products::get)
-                .map(p -> ProductInstance.builder()
+                .map(p -> ProductInstanceRecord.builder()
                         .productType(p)
                         .build())
                 .collect(Collectors.toList());
@@ -181,14 +180,14 @@ class ConditionalPropositionOfInclusionTest {
         return ProductSet.builder()
                 .name(name)
                 .products(products.stream().map(this::createProduct)
-                        .map(ProductType::getProductIdentifier).collect(Collectors.toSet()))
+                        .map(ProductType::productIdentifier).collect(Collectors.toSet()))
                 .build();
     }
 
     private ProductType createProduct(String name) {
 
         return products.computeIfAbsent(name, p ->
-                ProductType.builder()
+                ProductTypeRecord.builder()
                         .name(name)
                         .productIdentifier(ProductIdentifier.builder()
                                 .id(Integer.toString(productId.incrementAndGet())).build())

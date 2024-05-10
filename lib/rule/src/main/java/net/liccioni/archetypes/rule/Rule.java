@@ -2,22 +2,8 @@ package net.liccioni.archetypes.rule;
 
 import java.util.List;
 import java.util.Optional;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
 
-@Data
-public class Rule {
-
-    private final String name;
-
-    @Getter(AccessLevel.NONE)
-    private final List<RuleElement> elements;
-
-    Rule(String name, List<RuleElement> elements) {
-        this.name = name;
-        this.elements = elements;
-    }
+public record Rule(String name, List<RuleElement> elements) {
 
     public Proposition evaluate(RuleContext ruleContext) {
         RuleExecutionStack stack = new RuleExecutionStack(ruleContext);

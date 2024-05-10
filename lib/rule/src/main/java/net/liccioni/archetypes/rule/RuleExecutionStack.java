@@ -62,10 +62,6 @@ class RuleExecutionStack {
         performVariable(Variable::lessThanOrEqualTo);
     }
 
-    void matches() {
-        performVariable((lhs, rhs) -> ((StringVariable) lhs).matches(rhs));
-    }
-
     void acceptElement(RuleElement element) {
         element.acceptStack(this);
     }
@@ -74,7 +70,7 @@ class RuleExecutionStack {
         findInContextAndStack(proposition);
     }
 
-    void acceptElement(Variable<?> variable) {
+    void acceptElement(Variable variable) {
         findInContextAndStack(variable);
     }
 
@@ -84,14 +80,14 @@ class RuleExecutionStack {
         stack.push(operation.apply(lhs, rhs));
     }
 
-    private void performVariable(BiFunction<Variable<?>, Variable<?>, Proposition> operation) {
-        Variable<?> lhs = (Variable<?>) stack.pop();
-        Variable<?> rhs = (Variable<?>) stack.pop();
+    private void performVariable(BiFunction<Variable, Variable, Proposition> operation) {
+        Variable lhs = (Variable) stack.pop();
+        Variable rhs = (Variable) stack.pop();
         stack.push(operation.apply(lhs, rhs));
     }
 
     private void findInContextAndStack(RuleElement element) {
-        String name = element.getName();
+        String name = element.name();
         RuleElement fromContext = ruleContext.findElement(name)
                 .orElseThrow(() -> new IllegalArgumentException("Rule Element {" + name + "} not provided in context"));
         stack.push(fromContext);

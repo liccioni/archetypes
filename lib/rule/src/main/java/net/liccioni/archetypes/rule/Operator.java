@@ -14,18 +14,12 @@ public enum Operator implements RuleElement {
     GREATER_THAN(RuleExecutionStack::greaterThan),
     LESS_THAN(RuleExecutionStack::lessThan),
     GREATER_THAN_OR_EQUAL_TO(RuleExecutionStack::greaterThanOrEqualTo),
-    LESS_THAN_OR_EQUAL_TO(RuleExecutionStack::lessThanOrEqualTo),
-    MATCHES(RuleExecutionStack::matches);
+    LESS_THAN_OR_EQUAL_TO(RuleExecutionStack::lessThanOrEqualTo);
 
     private final Consumer<RuleExecutionStack> operation;
 
     Operator(final Consumer<RuleExecutionStack> operation) {
         this.operation = operation;
-    }
-
-    @Override
-    public String getName() {
-        return this.name();
     }
 
     @Override

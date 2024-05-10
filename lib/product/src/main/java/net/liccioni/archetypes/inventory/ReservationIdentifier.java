@@ -1,15 +1,10 @@
 package net.liccioni.archetypes.inventory;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
+import lombok.NonNull;
 import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
-@Value
-@ToString(callSuper = true)
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class ReservationIdentifier extends UniqueIdentifier {
+@Builder(toBuilder = true)
+public record ReservationIdentifier(@NonNull String id) implements UniqueIdentifier {
 }

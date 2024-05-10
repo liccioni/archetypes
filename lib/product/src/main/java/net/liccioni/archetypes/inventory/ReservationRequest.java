@@ -1,31 +1,41 @@
 package net.liccioni.archetypes.inventory;
 
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.product.ProductIdentifier;
 import net.liccioni.archetypes.rule.RuleContext;
 import net.liccioni.archetypes.rule.RuleOverride;
 
-@Value
-@Builder(toBuilder = true)
-public class ReservationRequest {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    @NonNull
-    ProductIdentifier productIdentifier;
-    ReservationIdentifier reservationIdentifier;
-    @Builder.Default
-    Set<PartySummary> requesters = new HashSet<>();
-    @Builder.Default
-    Set<PartySummary> receivers = new HashSet<>();
-    @Builder.Default
-    RuleContext context = RuleContext.builder().build();
-    TimeDate dateReceived;
-    @Builder.Default
-    Long numberRequested = 0L;
-    @Builder.Default
-    Set<RuleOverride> overrides = new HashSet<>();
+public record ReservationRequest(@NonNull ProductIdentifier productIdentifier,
+                                 ReservationIdentifier reservationIdentifier,
+                                 Set<PartySummary> requesters,
+                                 Set<PartySummary> receivers,
+                                 RuleContext context,
+                                 TimeDate dateReceived,
+                                 Long numberRequested,
+                                 Set<RuleOverride> overrides) {
+
+    @Builder(toBuilder = true)
+    public ReservationRequest(@NonNull ProductIdentifier productIdentifier,
+                              ReservationIdentifier reservationIdentifier,
+                              Set<PartySummary> requesters,
+                              Set<PartySummary> receivers,
+                              RuleContext context,
+                              TimeDate dateReceived,
+                              Long numberRequested,
+                              Set<RuleOverride> overrides) {
+        this.productIdentifier = productIdentifier;
+        this.reservationIdentifier = reservationIdentifier;
+        this.requesters = Optional.ofNullable(requesters).orElseGet(HashSet::new);
+        this.receivers = Optional.ofNullable(receivers).orElseGet(HashSet::new);
+        this.context = Optional.ofNullable(context).orElseGet(() -> RuleContext.builder().name("").build());
+        this.dateReceived = dateReceived;
+        this.numberRequested = Optional.ofNullable(numberRequested).orElse(0L);
+        this.overrides = Optional.ofNullable(overrides).orElseGet(HashSet::new);
+    }
 }

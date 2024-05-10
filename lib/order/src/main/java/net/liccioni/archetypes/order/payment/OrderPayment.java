@@ -1,31 +1,54 @@
 package net.liccioni.archetypes.order.payment;
 
-
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Value;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.money.Currency;
 import net.liccioni.archetypes.money.payment.Payment;
 import net.liccioni.archetypes.money.payment.PaymentMethod;
+import net.liccioni.archetypes.money.payment.PaymentRecord;
+import net.liccioni.archetypes.quantity.Quantity;
 
-@Value
-@EqualsAndHashCode(callSuper = true)
-public class OrderPayment extends Payment {
+import java.math.BigDecimal;
 
-    String toAccount;
-    String fromAccount;
+@Builder(builderMethodName = "orderPaymentBuilder", toBuilder = true)
+public record OrderPayment(PaymentRecord payment) implements Payment {
+    @Override
+    public Currency currency() {
+        return payment.currency();
+    }
 
-    @Builder(builderMethodName = "orderPaymentBuilder")
-    public OrderPayment(final Number amount, final Currency currency,
-                        final TimeDate dateMade,
-                        final TimeDate dateReceived,
-                        final TimeDate dateDue,
-                        final TimeDate dateCreated,
-                        final PaymentMethod paymentMethod, final String toAccount,
-                        final String fromAccount) {
-        super(amount, currency, dateMade, dateReceived, dateDue, dateCreated, paymentMethod);
-        this.toAccount = toAccount;
-        this.fromAccount = fromAccount;
+    @Override
+    public TimeDate dateMade() {
+        return payment.dateMade();
+    }
+
+    @Override
+    public TimeDate dateReceived() {
+        return payment.dateReceived();
+    }
+
+    @Override
+    public TimeDate dateDue() {
+        return payment.dateDue();
+    }
+
+    @Override
+    public TimeDate dateCreated() {
+        return payment.dateCreated();
+    }
+
+    @Override
+    public PaymentMethod paymentMethod() {
+        return payment.paymentMethod();
+    }
+
+    @Override
+    public BigDecimal amount() {
+        return payment.amount();
+    }
+
+    @Override
+    public Quantity withAmount(BigDecimal amount) {
+        return this.toBuilder().payment(payment.toBuilder().amount(amount).build()).build();
     }
 }

@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 
 class UnitConverterTest {
 
-    private final SimpleUnit km = new SimpleUnit("Kilometre", "km", "length", INTERNATIONAL_SYSTEM_OF_UNITS);
-    private final SimpleUnit hour = new SimpleUnit("hour", "h", "time", INTERNATIONAL_SYSTEM_OF_UNITS);
+    private final SimpleUnit km = new SimpleUnitRecord("Kilometre", "km", "length", INTERNATIONAL_SYSTEM_OF_UNITS);
+    private final SimpleUnit hour = new SimpleUnitRecord("hour", "h", "time", INTERNATIONAL_SYSTEM_OF_UNITS);
     private final DerivedUnit kmPerHour =
             new DerivedUnit(INTERNATIONAL_SYSTEM_OF_UNITS, new DerivedUnitTerm(-1, hour), new DerivedUnitTerm(1, km));
     private final DerivedUnit mPerSecond =
@@ -30,8 +30,8 @@ class UnitConverterTest {
 
         var unitConverter = new UnitConverter();
         unitConverter.addConverter(this.mToKm);
-        final var actual = unitConverter.convert(new Quantity(1, METRE), km).round(simple);
-        Quantity expected = new Quantity(1000, km);
+        final var actual = unitConverter.convert(new QuantityRecord(1, METRE), km).round(simple);
+        Quantity expected = new QuantityRecord(1000, km);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -41,8 +41,8 @@ class UnitConverterTest {
         var unitConverter = new UnitConverter();
         unitConverter.addConverter(mToKm);
         unitConverter.addConverter(kmTom);
-        final var actual = unitConverter.convert(new Quantity(1000, km), METRE).round(simple);
-        Quantity expected = new Quantity(1, METRE);
+        final var actual = unitConverter.convert(new QuantityRecord(1000, km), METRE).round(simple);
+        Quantity expected = new QuantityRecord(1, METRE);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -52,8 +52,8 @@ class UnitConverterTest {
         var unitConverter = new UnitConverter();
         unitConverter.addConverter(kmPerHrToMetrePerSecond);
         final var roundingPolicy = new RoundingPolicy(RoundingStrategy.ROUND_UP, 5, 5, 1);
-        final var actual = unitConverter.convert(new Quantity(60, kmPerHour), mPerSecond).round(roundingPolicy);
-        Quantity expected = new Quantity(16.66667, mPerSecond);
+        final var actual = unitConverter.convert(new QuantityRecord(60, kmPerHour), mPerSecond).round(roundingPolicy);
+        Quantity expected = new QuantityRecord(16.66667, mPerSecond);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -64,7 +64,7 @@ class UnitConverterTest {
         unitConverter.addConverter(mToKm);
         unitConverter.removeConverter(mToKm);
         IllegalStateException thrown = Assertions.assertThrows(IllegalStateException.class,
-                () -> unitConverter.convert(new Quantity(1, METRE), km), "IllegalStateException was expected");
+                () -> unitConverter.convert(new QuantityRecord(1, METRE), km), "IllegalStateException was expected");
 
         Assertions.assertEquals(
                 "Cannot find converter for " + METRE + " to " + km,
@@ -78,8 +78,8 @@ class UnitConverterTest {
         var wrongConverter = new StandardConversion(kmPerHour, CANDELA, 0.009);
         unitConverter.addConverter(wrongConverter);
         unitConverter.addConverter(kmPerHrToMetrePerSecond);
-        final var actual = unitConverter.convert(new Quantity(60, kmPerHour), mPerSecond).round(roundingPolicy);
-        Quantity expected = new Quantity(16.66667, mPerSecond);
+        final var actual = unitConverter.convert(new QuantityRecord(60, kmPerHour), mPerSecond).round(roundingPolicy);
+        Quantity expected = new QuantityRecord(16.66667, mPerSecond);
         assertThat(actual).isEqualTo(expected);
     }
 }

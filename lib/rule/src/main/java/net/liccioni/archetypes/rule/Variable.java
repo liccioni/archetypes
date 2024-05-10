@@ -1,32 +1,11 @@
 package net.liccioni.archetypes.rule;
 
-import static net.liccioni.archetypes.rule.Operator.EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operator.GREATER_THAN;
-import static net.liccioni.archetypes.rule.Operator.GREATER_THAN_OR_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operator.LESS_THAN;
-import static net.liccioni.archetypes.rule.Operator.LESS_THAN_OR_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operator.NOT_EQUAL_TO;
+import static net.liccioni.archetypes.rule.Operator.*;
 
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-public class Variable<T> implements RuleElement {
-    private final T value;
-    @ToString.Exclude
-    private final Class<?> type;
-    private final String name;
+public record Variable(String name, Comparable<?> value) implements RuleElement {
 
     public Variable(String name) {
-        this.name = name;
-        this.value = null;
-        this.type = null;
-    }
-
-    public Variable(String name, T value) {
-        this.name = name;
-        this.value = value;
-        this.type = value.getClass();
+        this(name, null);
     }
 
     @Override
@@ -34,47 +13,46 @@ public class Variable<T> implements RuleElement {
         stack.acceptElement(this);
     }
 
-    public Proposition equalTo(Variable<?> other) {
+    public Proposition equalTo(Variable other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) == 0;
         return newProposition(newValue, other, EQUAL_TO);
     }
 
-    public Proposition notEqualTo(Variable<?> other) {
+    public Proposition notEqualTo(Variable other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) != 0;
         return newProposition(newValue, other, NOT_EQUAL_TO);
     }
 
-    public Proposition greaterThan(Variable<?> other) {
+    public Proposition greaterThan(Variable other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) > 0;
         return newProposition(newValue, other, GREATER_THAN);
     }
 
-    public Proposition lessThan(Variable<?> other) {
+    public Proposition lessThan(Variable other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) < 0;
         return newProposition(newValue, other, LESS_THAN);
     }
 
-    public Proposition greaterThanOrEqualTo(Variable<?> other) {
+    public Proposition greaterThanOrEqualTo(Variable other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) >= 0;
         return newProposition(newValue, other, GREATER_THAN_OR_EQUAL_TO);
     }
 
-    public Proposition lessThanOrEqualTo(Variable<?> other) {
+    public Proposition lessThanOrEqualTo(Variable other) {
         boolean newValue = isAssignableFrom(other) && other.compareTo(this.value) <= 0;
         return newProposition(newValue, other, LESS_THAN_OR_EQUAL_TO);
     }
 
     @SuppressWarnings("unchecked")
     private int compareTo(Object value) {
-        return ((Comparable<T>) this.value).compareTo((T) value);
+        return ((Comparable<Object>) this.value).compareTo(value);
     }
 
-    protected boolean isAssignableFrom(Variable<?> other) {
-        return other.type.isAssignableFrom(this.type);
+    boolean isAssignableFrom(Variable other) {
+        return other.value.getClass().isAssignableFrom(this.value.getClass());
     }
 
-    protected Proposition newProposition(boolean newValue, Variable<?> other, Operator operator) {
-        return new Proposition(String.format("%s_%s_%s", other.getName(), operator.getName(), this.getName()),
-                newValue);
+    Proposition newProposition(boolean newValue, Variable other, Operator operator) {
+        return new Proposition(String.format("%s_%s_%s", other.name(), operator.name(), this.name()), newValue);
     }
 }

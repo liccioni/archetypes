@@ -3,80 +3,74 @@ package net.liccioni.archetypes.quantity;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.With;
 
-@Data
-public class Quantity {
+public interface Quantity {
 
-    @With
-    private final BigDecimal amount;
+    BigDecimal amount();
 
-    private final Metric metric;
+    Metric metric();
 
-    @Builder
-    public Quantity(@NonNull final Number amount, final Metric metric) {
-        this.amount = BigDecimal.valueOf(amount.doubleValue());
-        this.metric = metric;
+    default Quantity round(RoundingPolicy policy) {
+        return new QuantityRecord(policy.round(amount()), metric());
     }
 
-    public Quantity round(RoundingPolicy policy) {
-        return new Quantity(policy.round(this.amount), this.metric);
-    }
-
-    public boolean equalTo(Quantity quantity) {
+    default boolean equalTo(Quantity quantity) {
         return this.equals(quantity);
     }
 
-    public boolean greaterThan(Quantity quantity) {
-        if (!metric.isEqualTo(quantity.metric)) {
+    default boolean greaterThan(Quantity quantity) {
+        if (!metric().isEqualTo(quantity.metric())) {
             throw new IllegalArgumentException("Different units, cannot compare " + this + " and " + quantity);
         }
-        return amount.compareTo(quantity.amount) > 0;
+        return amount().compareTo(quantity.amount()) > 0;
     }
 
-    public boolean lessThan(Quantity quantity) {
-        if (!metric.isEqualTo(quantity.metric)) {
+    default boolean lessThan(Quantity quantity) {
+        if (!metric().isEqualTo(quantity.metric())) {
             throw new IllegalArgumentException("Different units, cannot compare " + this + " and " + quantity);
         }
-        return amount.compareTo(quantity.amount) < 0;
+        return amount().compareTo(quantity.amount()) < 0;
     }
 
-    public Quantity add(Quantity quantity) {
-        if (!metric.isEqualTo(quantity.metric)) {
+    default Quantity add(Quantity quantity) {
+        if (!metric().isEqualTo(quantity.metric())) {
             throw new IllegalArgumentException("Different units, cannot add " + this + " and " + quantity);
         }
-        return this.withAmount(this.amount.add(quantity.amount));
+        return this.withAmount(this.amount().add(quantity.amount()));
     }
 
-    public Quantity subtract(Quantity quantity) {
-        if (!metric.isEqualTo(quantity.metric)) {
+    Quantity withAmount(BigDecimal amount);
+
+    default Quantity subtract(Quantity quantity) {
+        if (!metric().isEqualTo(quantity.metric())) {
             throw new IllegalArgumentException("Different units, cannot subtract " + this + " and " + quantity);
         }
-        return this.withAmount(this.amount.subtract(quantity.amount));
+        return this.withAmount(this.amount().subtract(quantity.amount()));
     }
 
-    public Quantity multiply(double multiplier) {
-        return this.withAmount(this.amount.multiply(BigDecimal.valueOf(multiplier)));
+    default Quantity multiply(double multiplier) {
+        return this.withAmount(this.amount().multiply(BigDecimal.valueOf(multiplier)));
     }
 
-    public Quantity multiply(Quantity quantity) {
-        final var derivedMetric = new DerivedUnit(metric,
-                new DerivedUnitTerm(1, this.metric),
-                new DerivedUnitTerm(1, quantity.metric));
-        return new Quantity(this.amount.multiply(quantity.amount), derivedMetric);
+    default Quantity multiply(Quantity quantity) {
+        final var derivedMetric = new DerivedUnit(metric(),
+                new DerivedUnitTerm(1, this.metric()),
+                new DerivedUnitTerm(1, quantity.metric()));
+        return new QuantityRecord(this.amount().multiply(quantity.amount()), derivedMetric);
     }
 
-    public Quantity divide(double divisor) {
-        return this.withAmount(this.amount.divide(BigDecimal.valueOf(divisor), RoundingMode.UP));
+    default Quantity divide(double divisor) {
+        return this.withAmount(this.amount().divide(BigDecimal.valueOf(divisor), RoundingMode.UP));
     }
 
-    public Quantity divide(Quantity quantity) {
-        final var derivedMetric = new DerivedUnit(metric,
-                new DerivedUnitTerm(1, this.metric),
-                new DerivedUnitTerm(-1, quantity.metric));
-        return new Quantity(this.amount.divide(quantity.amount, RoundingMode.UP), derivedMetric);
+    default Quantity divide(Quantity quantity) {
+        return Quantity.divide(this, quantity);
+    }
+
+    static Quantity divide(Quantity instance, Quantity other) {
+        final var derivedMetric = new DerivedUnit(instance.metric(),
+                new DerivedUnitTerm(1, instance.metric()),
+                new DerivedUnitTerm(-1, other.metric()));
+        return new QuantityRecord(instance.amount().divide(other.amount(), RoundingMode.UP), derivedMetric);
     }
 }

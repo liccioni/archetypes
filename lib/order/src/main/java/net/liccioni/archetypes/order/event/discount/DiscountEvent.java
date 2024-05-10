@@ -1,28 +1,40 @@
 package net.liccioni.archetypes.order.event.discount;
 
-
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.order.Order;
+import net.liccioni.archetypes.order.OrderIdentifier;
 import net.liccioni.archetypes.order.OrderStatus;
 import net.liccioni.archetypes.order.discount.Discount;
+import net.liccioni.archetypes.order.event.EventHandled;
 import net.liccioni.archetypes.order.event.OrderEvent;
+import net.liccioni.archetypes.party.PartySignature;
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class DiscountEvent extends OrderEvent {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    Boolean add;
-    @Builder.Default
-    Set<Discount> discounts = new HashSet<>();
+public record DiscountEvent(OrderIdentifier orderIdentifier,
+                            PartySignature authorization,
+                            TimeDate dateAuthorized,
+                            Boolean add,
+                            Set<Discount> discounts) implements OrderEvent {
+
+    @Builder(toBuilder = true)
+    public DiscountEvent(OrderIdentifier orderIdentifier,
+                         PartySignature authorization,
+                         TimeDate dateAuthorized,
+                         Boolean add,
+                         Set<Discount> discounts) {
+        this.orderIdentifier = orderIdentifier;
+        this.authorization = authorization;
+        this.dateAuthorized = dateAuthorized;
+        this.add = add;
+        this.discounts = Optional.ofNullable(discounts).orElseGet(HashSet::new);
+    }
 
     @Override
-    public void process(final OrderStatus orderStatus, final Order order) {
-        orderStatus.handle(this, order);
+    public EventHandled process(final OrderStatus orderStatus, final Order order) {
+        return orderStatus.handle(this, order);
     }
 }

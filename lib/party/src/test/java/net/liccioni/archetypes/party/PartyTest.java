@@ -7,7 +7,9 @@ import net.liccioni.archetypes.preference.Preference;
 import net.liccioni.archetypes.preference.PreferenceOption;
 import net.liccioni.archetypes.preference.PreferenceType;
 import net.liccioni.archetypes.quantity.Quantity;
+import net.liccioni.archetypes.quantity.QuantityRecord;
 import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
+import net.liccioni.archetypes.uniqueid.UniqueIdentifierRecord;
 import org.junit.jupiter.api.Test;
 
 class PartyTest {
@@ -25,12 +27,12 @@ class PartyTest {
         final Person gus3 = Person.builder()
                 .identifier(PartyIdentifier.builder().id("1").build())
                 .personName(PersonName.builder().familyName("Rodriguez").build()).build();
-        gus3.getPreferences()
+        gus3.preferences()
                 .add(Preference.builder()
                         .option(PreferenceOption.builder().name("email").build())
-                        .preferenceWeight(new Quantity(1, METRE))
+                        .preferenceWeight(new QuantityRecord(1, METRE))
                         .preferenceType(PreferenceType.builder()
-                                .id(UniqueIdentifier.builder().id("2").build())
+                                .id(UniqueIdentifierRecord.builder().id("2").build())
                                 .name("Communication")
                                 .build())
                         .build());

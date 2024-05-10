@@ -1,41 +1,29 @@
 package net.liccioni.archetypes.money;
 
-
-import java.math.BigDecimal;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.ToString;
-import lombok.With;
+import net.liccioni.archetypes.quantity.Metric;
 import net.liccioni.archetypes.quantity.Quantity;
 
-@ToString(callSuper = true)
-public class Money extends Quantity {
+import java.math.BigDecimal;
 
-    @With
-    private final BigDecimal amount;
+public interface Money extends Quantity {
 
-    @Getter
-    @ToString.Exclude
-    private final Currency currency;
-
-    @Builder(builderMethodName = "moneyBuilder")
-    public Money(final Number amount, @NonNull final Currency currency) {
-        super(amount, currency);
-        this.currency = currency;
-        this.amount = super.getAmount();
-    }
+    Currency currency();
 
     @Override
-    public Quantity multiply(final Quantity quantity) {
+    default Quantity multiply(final Quantity quantity) {
         throw new UnsupportedOperationException("Money cannot be multiplied by anything " + this + " * " + quantity);
     }
 
     @Override
-    public Quantity divide(final Quantity quantity) {
+    default Quantity divide(final Quantity quantity) {
         if (quantity instanceof Money) {
             throw new IllegalArgumentException("Money cannot be divided by money " + this + " / " + quantity);
         }
-        return super.divide(quantity);
+        return Quantity.divide(this, quantity);
+    }
+
+    @Override
+    default Metric metric() {
+        return currency();
     }
 }

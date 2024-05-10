@@ -1,16 +1,9 @@
 package net.liccioni.archetypes.address;
 
-import lombok.Data;
-import lombok.NonNull;
-import lombok.experimental.SuperBuilder;
+public interface Locale {
+    String identifier();
 
-@Data
-@SuperBuilder(toBuilder = true)
-public abstract class Locale {
+    String name();
 
-    @NonNull
-    private final String identifier;
-    @NonNull
-    private final String name;
-    private final String description;
+    String description();
 }

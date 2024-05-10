@@ -1,7 +1,8 @@
 package net.liccioni.archetypes.order;
 
-import lombok.Getter;
 import lombok.Setter;
+import net.liccioni.archetypes.order.event.EventHandled;
+import net.liccioni.archetypes.order.event.amendment.AmendPartySummaryEvent;
 import net.liccioni.archetypes.order.event.amendment.AmendPartySummaryEventHandler;
 
 public enum PartySummaryRoleInOrder {
@@ -13,7 +14,10 @@ public enum PartySummaryRoleInOrder {
     ORDER_RECEIVER,
     ORDER_LINE_RECEIVER;
 
-    @Getter
     @Setter
     private AmendPartySummaryEventHandler amendPartySummaryEventHandler;
+
+    public EventHandled handle(AmendPartySummaryEvent event, Order order) {
+        return amendPartySummaryEventHandler.handle(event, order);
+    }
 }

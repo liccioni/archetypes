@@ -1,14 +1,18 @@
 package net.liccioni.archetypes.money.payment;
 
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
+import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.money.Money;
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class CreditCard extends PaymentCard {
-    Money creditLimit;
-    Money dailyWithdrawalLimit;
+@Builder(toBuilder = true)
+public record CreditCard(String cardAssociationName,
+                         String cardNumber,
+                         String nameOnCard,
+                         TimeDate expiryDate,
+                         String billingAddress,
+                         TimeDate validFrom,
+                         String cardVerificationCode,
+                         String issueNumber,
+                         Money creditLimit,
+                         Money dailyWithdrawalLimit) implements PaymentCard {
 }

@@ -1,21 +1,11 @@
 package net.liccioni.archetypes.rule;
 
-import static net.liccioni.archetypes.rule.Operator.AND;
-import static net.liccioni.archetypes.rule.Operator.EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operator.GREATER_THAN;
-import static net.liccioni.archetypes.rule.Operator.GREATER_THAN_OR_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operator.LESS_THAN;
-import static net.liccioni.archetypes.rule.Operator.LESS_THAN_OR_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operator.MATCHES;
-import static net.liccioni.archetypes.rule.Operator.NOT;
-import static net.liccioni.archetypes.rule.Operator.NOT_EQUAL_TO;
-import static net.liccioni.archetypes.rule.Operator.OR;
-import static net.liccioni.archetypes.rule.Operator.XOR;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+
+import static net.liccioni.archetypes.rule.Operator.*;
 
 public class RuleBuilder {
 
@@ -36,13 +26,8 @@ public class RuleBuilder {
     }
 
     public VariableDSL variable(String name) {
-        elements.add(new Variable<>(name));
+        elements.add(new Variable(name));
         return new VariableDSL(elements::add);
-    }
-
-    public StringVariableDSL stringVariable(String name) {
-        elements.add(new Variable<>(name));
-        return new StringVariableDSL(elements::add);
     }
 
     private Rule build(String name) {
@@ -116,17 +101,6 @@ public class RuleBuilder {
         protected PropositionDSL buildPropositionDSL(VariableDSL other, Operator operator) {
             other.operationChain.accept(operator);
             return new PropositionDSL(other.operationChain);
-        }
-    }
-
-    public static class StringVariableDSL extends VariableDSL {
-
-        private StringVariableDSL(Consumer<Operator> operationChain) {
-            super(operationChain);
-        }
-
-        public PropositionDSL matches(StringVariableDSL other) {
-            return buildPropositionDSL(other, MATCHES);
         }
     }
 }
