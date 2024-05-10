@@ -1,20 +1,25 @@
 package net.liccioni.archetypes.relationship;
 
-
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 import net.liccioni.archetypes.rule.RuleSet;
 
-@Value
-@Builder(toBuilder = true)
-public class Responsibility {
+import java.util.Optional;
 
-    @NonNull
-    String name;
-    String description;
-    @Builder.Default
-    RuleSet conditionsOfSatisfaction = new RuleSet("conditionsOfSatisfaction");
-    @Builder.Default
-    RuleSet requirementsForResponsibility = new RuleSet("requirementsForResponsibility");
+@Builder(toBuilder = true)
+public record Responsibility(@NonNull String name,
+                             String description,
+                             RuleSet conditionsOfSatisfaction,
+                             RuleSet requirementsForResponsibility) {
+    public Responsibility(@NonNull String name,
+                          String description,
+                          RuleSet conditionsOfSatisfaction,
+                          RuleSet requirementsForResponsibility) {
+        this.name = name;
+        this.description = description;
+        this.conditionsOfSatisfaction = Optional.ofNullable(conditionsOfSatisfaction)
+                .orElseGet(() -> new RuleSet("conditionsOfSatisfaction"));
+        this.requirementsForResponsibility = Optional.ofNullable(requirementsForResponsibility)
+                .orElseGet(() -> new RuleSet("requirementsForResponsibility"));
+    }
 }

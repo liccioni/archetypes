@@ -1,14 +1,16 @@
 package net.liccioni.archetypes.order;
 
+import lombok.Builder;
+import net.liccioni.archetypes.party.PartyIdentifier;
+import net.liccioni.archetypes.relationship.PartyRoleIdentifier;
 
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+@Builder(toBuilder = true)
+public record DeliveryReceiver(PartyRoleIdentifier partyRoleIdentifier,
+                               String name,
+                               String address,
+                               String telephoneNumber,
+                               String emailAddress,
+                               PartyIdentifier partyIdentifier,
+                               String deliveryInstructions) implements PartySummary {
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class DeliveryReceiver extends PartySummary {
-
-    String deliveryInstructions;
 }

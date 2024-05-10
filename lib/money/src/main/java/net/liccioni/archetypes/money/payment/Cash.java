@@ -1,8 +1,8 @@
 package net.liccioni.archetypes.money.payment;
 
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 
-@SuperBuilder(toBuilder = true)
-public class Cash extends PaymentMethod {
+@Builder(toBuilder = true)
+public record Cash() implements PaymentMethod {
 
 }

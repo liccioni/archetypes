@@ -26,30 +26,30 @@ public enum RoundingStrategy {
     }
 
     private static BigDecimal roundUp(BigDecimal amount, RoundingPolicy policy) {
-        return amount.setScale(policy.getNumberOfDigits(), RoundingMode.UP);
+        return amount.setScale(policy.numberOfDigits(), RoundingMode.UP);
     }
 
     private static BigDecimal roundUpByStep(BigDecimal amount, RoundingPolicy policy) {
-        final var increment = BigDecimal.valueOf(policy.getRoundingStep());
+        final var increment = BigDecimal.valueOf(policy.roundingStep());
         var divided = amount.divide(increment, 0, RoundingMode.UP);
         return divided.multiply(increment);
     }
 
     private static BigDecimal roundDownByStep(BigDecimal amount, RoundingPolicy policy) {
-        final var increment = BigDecimal.valueOf(policy.getRoundingStep());
+        final var increment = BigDecimal.valueOf(policy.roundingStep());
         var divided = amount.divide(increment, 0, RoundingMode.DOWN);
         return divided.multiply(increment);
     }
 
     private static BigDecimal roundTowardsPositive(BigDecimal amount, RoundingPolicy policy) {
-        return amount.setScale(policy.getNumberOfDigits(), RoundingMode.CEILING);
+        return amount.setScale(policy.numberOfDigits(), RoundingMode.CEILING);
     }
 
     private static BigDecimal roundDown(BigDecimal amount, RoundingPolicy policy) {
-        return amount.setScale(policy.getNumberOfDigits(), RoundingMode.DOWN);
+        return amount.setScale(policy.numberOfDigits(), RoundingMode.DOWN);
     }
 
     private static BigDecimal roundTowardsNegative(BigDecimal amount, RoundingPolicy policy) {
-        return amount.setScale(policy.getNumberOfDigits(), RoundingMode.FLOOR);
+        return amount.setScale(policy.numberOfDigits(), RoundingMode.FLOOR);
     }
 }

@@ -1,15 +1,11 @@
 package net.liccioni.archetypes.order.discount;
 
 
-import lombok.Data;
-import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.product.price.Price;
 
-@Data
-@SuperBuilder(toBuilder = true)
-public abstract class Discount {
+public interface Discount {
 
-    private final String reason;
+    String reason();
 
-    public abstract Price calculateDiscountedPrice(Price price);
+    Price calculateDiscountedPrice(Price price);
 }

@@ -1,49 +1,39 @@
 package net.liccioni.archetypes.rule;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeSet;
-import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Value;
 
-@Value
-@Builder(toBuilder = true)
-public class RuleSet {
+import java.util.*;
 
-    String name;
-    @Getter(AccessLevel.NONE)
-    Set<Rule> rules = new TreeSet<>(Comparator.comparing(Rule::getName));
-    @Getter(AccessLevel.NONE)
-    Map<String, RuleOverride> ruleOverrides = new HashMap<>();
+public record RuleSet(String name, Set<Rule> rules, Map<String, RuleOverride> ruleOverrides) {
 
-    @Builder
-    public RuleSet(final String name, Rule... rules) {
+    @Builder(toBuilder = true)
+    public RuleSet(String name, Set<Rule> rules, Map<String, RuleOverride> ruleOverrides) {
         this.name = name;
-        this.rules.addAll(Arrays.asList(rules));
+        this.rules = new TreeSet<>(Comparator.comparing(Rule::name));
+        this.ruleOverrides = Optional.ofNullable(ruleOverrides).orElseGet(HashMap::new);
+        Optional.ofNullable(rules).ifPresent(this.rules::addAll);
+    }
+
+    public RuleSet(final String name, Rule... rules) {
+        this(name, new HashSet<>(Arrays.asList(rules)), new HashMap<>());
     }
 
     public boolean evaluate(RuleContext context) {
         return rules.stream()
                 .filter(this::isNotOverride)
                 .map(rule -> rule.evaluate(context))
-                .allMatch(Proposition::isValue);
+                .allMatch(Proposition::value);
     }
 
     public void addRuleOverride(RuleOverride ruleOverride) {
-        if (rules.stream().anyMatch(p -> p.getName().equals(ruleOverride.getRuleName()))) {
-            this.ruleOverrides.put(ruleOverride.getRuleName(), ruleOverride);
+        if (rules.stream().anyMatch(p -> p.name().equals(ruleOverride.ruleName()))) {
+            this.ruleOverrides.put(ruleOverride.ruleName(), ruleOverride);
         }
     }
 
     private boolean isNotOverride(final Rule rule) {
-        return !Optional.ofNullable(ruleOverrides.get(rule.getName()))
-                .map(RuleOverride::getOverride)
+        return !Optional.ofNullable(ruleOverrides.get(rule.name()))
+                .map(RuleOverride::override)
                 .orElse(false);
     }
 }

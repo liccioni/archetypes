@@ -16,38 +16,32 @@ import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.product.price.Price;
 import net.liccioni.archetypes.rule.RuleContext;
 
-@Data
-@SuperBuilder(toBuilder = true)
-public class ProductType {
+public interface ProductType {
 
-    private final ProductIdentifier productIdentifier;
-    @NonNull
-    private final String name;
-    private final String description;
-    @Builder.Default
-    private final Set<ProductFeatureType> mandatoryFeatureTypes = new HashSet<>();
-    @Builder.Default
-    private final Set<ProductFeatureType> optionalFeatureTypes = new HashSet<>();
-    @Builder.Default
-    private final Set<Price> prices = new HashSet<>();
+    ProductIdentifier productIdentifier();
+    String name();
+    String description();
+    Set<ProductFeatureType> mandatoryFeatureTypes();
+    Set<ProductFeatureType> optionalFeatureTypes();
+    Set<Price> prices();
 
-    public List<Price> getPrices(RuleContext context) {
-        return prices.stream().filter(p -> p.isValid(context, Collections.emptySet()))
+    default List<Price> getPrices(RuleContext context) {
+        return prices().stream().filter(p -> p.isValid(context, Collections.emptySet()))
                 .collect(Collectors.toList());
     }
 
-    public List<Price> getPrices(TimeDate validFrom, TimeDate validTo) {
+    default List<Price> getPrices(TimeDate validFrom, TimeDate validTo) {
 
-        return prices.stream()
-                .filter(p -> isValid(p.getValidFrom(), priceFrom -> priceFrom.isAfter(validFrom.getValue())))
-                .filter(p -> isValid(p.getValidTo(), priceTo -> priceTo.isBefore(validTo.getValue())))
+        return prices().stream()
+                .filter(p -> isValid(p.validFrom(), priceFrom -> priceFrom.isAfter(validFrom.value())))
+                .filter(p -> isValid(p.validTo(), priceTo -> priceTo.isBefore(validTo.value())))
                 .collect(Collectors.toList());
     }
 
     private boolean isValid(final TimeDate priceValidFrom,
                             final Predicate<Instant> isValid) {
         return Optional.ofNullable(priceValidFrom)
-                .map(TimeDate::getValue)
+                .map(TimeDate::value)
                 .filter(isValid)
                 .isPresent();
     }

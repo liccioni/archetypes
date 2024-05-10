@@ -1,10 +1,15 @@
 package net.liccioni.archetypes.relationship;
 
 
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 import net.liccioni.archetypes.rule.RuleContext;
 
-@SuperBuilder(toBuilder = true)
-public class Capabilities extends RuleContext {
+import java.util.Optional;
 
+public record Capabilities(RuleContext ruleContext) {
+
+    @Builder(toBuilder = true)
+    public Capabilities(RuleContext ruleContext) {
+        this.ruleContext = Optional.ofNullable(ruleContext).orElseGet(() -> RuleContext.builder().name("").build());
+    }
 }

@@ -1,28 +1,27 @@
 package net.liccioni.archetypes.product;
 
 
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
-import lombok.Value;
 
-@Value
-@Builder(toBuilder = true)
-public class ProductFeatureInstance {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    String value;
-    ProductFeatureType productFeatureType;
-
-    @Builder.Default
-    Set<String> possibleValues = new HashSet<>();
+public record ProductFeatureInstance(String value,
+                                     ProductFeatureType productFeatureType,
+                                     Set<String> possibleValues) {
+    @Builder(toBuilder = true)
+    public ProductFeatureInstance(String value, ProductFeatureType productFeatureType, Set<String> possibleValues) {
+        this.value = value;
+        this.productFeatureType = productFeatureType;
+        this.possibleValues = Optional.ofNullable(possibleValues).orElseGet(HashSet::new);
+    }
 
     public String getName() {
-
-        return productFeatureType.getName();
+        return productFeatureType.name();
     }
 
     public String getDescription() {
-
-        return productFeatureType.getDescription();
+        return productFeatureType.description();
     }
 }

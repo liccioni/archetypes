@@ -1,23 +1,47 @@
 package net.liccioni.archetypes.party;
 
 
-import lombok.EqualsAndHashCode;
+import lombok.Builder;
 import lombok.NonNull;
-import lombok.ToString;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import net.liccioni.archetypes.address.AddressProperties;
+import net.liccioni.archetypes.preference.Preference;
+import net.liccioni.archetypes.relationship.Capabilities;
+import net.liccioni.archetypes.relationship.PartyRole;
 
-@Value
-@ToString(callSuper = true)
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class Person extends Party {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    @NonNull
-    PersonName personName;
+public record Person(PartyIdentifier identifier,
+                     Capabilities capabilities,
+                     Set<Preference> preferences,
+                     Set<PartyAuthentication> authentications,
+                     Set<RegisteredIdentifier> registeredIdentifier,
+                     Set<AddressProperties> addressProperties,
+                     Set<PartyRole> roles,
+                     PersonName personName) implements Party {
+
+    @Builder(toBuilder = true)
+    public Person(PartyIdentifier identifier,
+                  Capabilities capabilities,
+                  Set<Preference> preferences,
+                  Set<PartyAuthentication> authentications,
+                  Set<RegisteredIdentifier> registeredIdentifier,
+                  Set<AddressProperties> addressProperties,
+                  Set<PartyRole> roles,
+                  @NonNull PersonName personName) {
+        this.identifier = identifier;
+        this.capabilities = capabilities;
+        this.preferences = Optional.ofNullable(preferences).orElseGet(HashSet::new);
+        this.authentications = Optional.ofNullable(authentications).orElseGet(HashSet::new);
+        this.registeredIdentifier = Optional.ofNullable(registeredIdentifier).orElseGet(HashSet::new);
+        this.addressProperties = Optional.ofNullable(addressProperties).orElseGet(HashSet::new);
+        this.roles = Optional.ofNullable(roles).orElseGet(HashSet::new);
+        this.personName = personName;
+    }
 
     @Override
     public String getName() {
-        return personName.getGivenName().concat(",").concat(personName.getFamilyName());
+        return personName.givenName().concat(",").concat(personName.familyName());
     }
 }

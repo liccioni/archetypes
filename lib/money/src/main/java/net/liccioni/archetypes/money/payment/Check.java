@@ -1,20 +1,15 @@
 package net.liccioni.archetypes.money.payment;
 
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 import net.liccioni.archetypes.common.TimeDate;
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class Check extends PaymentMethod {
-    String accountName;
-    String accountNumber;
-    String checkNumber;
-    String payee;
-    TimeDate dateWritten;
-    String bankName;
-    String bankAddress;
-    String bankIdentificationNumber;
+@Builder(toBuilder = true)
+public record Check(String accountName,
+                    String accountNumber,
+                    String checkNumber,
+                    String payee,
+                    TimeDate dateWritten,
+                    String bankName,
+                    String bankAddress,
+                    String bankIdentificationNumber) implements PaymentMethod {
 }

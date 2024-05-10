@@ -1,29 +1,35 @@
 package net.liccioni.archetypes.relationship;
 
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 import net.liccioni.archetypes.party.Party;
 import net.liccioni.archetypes.rule.RuleContext;
 import net.liccioni.archetypes.rule.RuleSet;
 
-@Value
-@Builder(toBuilder = true)
-public class PartyRoleType {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    @NonNull
-    String name;
-    String description;
-    @Builder.Default
-    RuleSet requirementsForRole = new RuleSet("");
-    @Builder.Default
-    Set<PartyRoleConstraint> constraints = new HashSet<>();
-    @Builder.Default
-    Set<Responsibility> optionalResponsibilities = new HashSet<>();
-    @Builder.Default
-    Set<Responsibility> mandatoryResponsibilities = new HashSet<>();
+@Builder(toBuilder = true)
+public record PartyRoleType(@NonNull String name,
+                            String description,
+                            RuleSet requirementsForRole,
+                            Set<PartyRoleConstraint> constraints,
+                            Set<Responsibility> optionalResponsibilities,
+                            Set<Responsibility> mandatoryResponsibilities) {
+    public PartyRoleType(@NonNull String name,
+                         String description,
+                         RuleSet requirementsForRole,
+                         Set<PartyRoleConstraint> constraints,
+                         Set<Responsibility> optionalResponsibilities,
+                         Set<Responsibility> mandatoryResponsibilities) {
+        this.name = name;
+        this.description = description;
+        this.requirementsForRole = Optional.ofNullable(requirementsForRole).orElseGet(() -> new RuleSet(""));
+        this.constraints = Optional.ofNullable(constraints).orElseGet(HashSet::new);
+        this.optionalResponsibilities = Optional.ofNullable(optionalResponsibilities).orElseGet(HashSet::new);
+        this.mandatoryResponsibilities = Optional.ofNullable(mandatoryResponsibilities).orElseGet(HashSet::new);
+    }
 
     public boolean canPlayRole(Party party) {
         return this.constraints.stream().allMatch(constraint -> constraint.canPlayRole(party));

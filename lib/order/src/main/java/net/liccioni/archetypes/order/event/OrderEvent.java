@@ -1,33 +1,23 @@
 package net.liccioni.archetypes.order.event;
 
-
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.order.Order;
 import net.liccioni.archetypes.order.OrderIdentifier;
 import net.liccioni.archetypes.order.OrderStatus;
 import net.liccioni.archetypes.party.PartySignature;
 
-@Data
-@SuperBuilder(toBuilder = true)
-public abstract class OrderEvent {
+public interface OrderEvent {
+    OrderIdentifier orderIdentifier();
 
-    @NonNull
-    private OrderIdentifier orderIdentifier;
-    private final PartySignature authorization;
-    private final TimeDate dateAuthorized;
-    @Builder.Default
-    private Boolean processed = false;
+    PartySignature authorization();
 
-    public void process(final Order order) {
-        this.orderIdentifier = order.getOrderIdentifier();
-        order.getStatus().handle(order, this);
-        order.getAuditTrail().add(this);
-        this.processed = true;
+    TimeDate dateAuthorized();
+
+    default Order process(final Order order) {
+        var eventHandled = order.status().handle(order, this);
+        eventHandled.order().auditTrail().add(eventHandled.event());
+        return eventHandled.order();
     }
 
-    public abstract void process(final OrderStatus orderStatus, final Order order);
+    EventHandled process(final OrderStatus orderStatus, final Order order);
 }

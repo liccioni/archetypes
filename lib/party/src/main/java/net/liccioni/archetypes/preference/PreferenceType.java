@@ -1,20 +1,26 @@
 package net.liccioni.archetypes.preference;
 
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 import net.liccioni.archetypes.uniqueid.UniqueIdentifier;
 
-@Value
-@Builder(toBuilder = true)
-public class PreferenceType {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    UniqueIdentifier id;
-    @NonNull
-    String name;
-    String description;
-    @Builder.Default
-    Set<PreferenceOption> preferenceOptions = new HashSet<>();
+
+public record PreferenceType(UniqueIdentifier id,
+                             String name,
+                             String description,
+                             Set<PreferenceOption> preferenceOptions) {
+    @Builder(toBuilder = true)
+    public PreferenceType(UniqueIdentifier id,
+                          @NonNull String name,
+                          String description,
+                          Set<PreferenceOption> preferenceOptions) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.preferenceOptions = Optional.ofNullable(preferenceOptions).orElseGet(HashSet::new);
+    }
 }

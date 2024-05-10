@@ -27,7 +27,7 @@ class PartyRelationshipTest {
         val employingProject = PartyRoleType.builder().name("TechnicalConsultant").build();
 
         val jimCapabilities = Capabilities.builder().build();
-        jimCapabilities.addProposition("pmCertified", true);
+        jimCapabilities.ruleContext().addProposition("pmCertified", true);
         val jim = Person.builder().personName(PersonName.builder().givenName("Jim").build())
                 .capabilities(jimCapabilities).build();
         val ila = Person.builder().personName(PersonName.builder().givenName("Ila").build()).build();
@@ -36,24 +36,24 @@ class PartyRelationshipTest {
                 .name("ArchetypeCartridgeProject")
                 .build()).build();
 
-        projectManager.getConstraints().add(PartyRoleConstraint.builder().typeOfParty(Person.class).build());
-        if (projectManager.canPlayRole(jim, jim.getCapabilities())) {
-            jim.getRoles().add(PartyRole.builder().type(projectManager).build());
+        projectManager.constraints().add(PartyRoleConstraint.builder().typeOfParty(Person.class).build());
+        if (projectManager.canPlayRole(jim, jim.capabilities().ruleContext())) {
+            jim.roles().add(PartyRole.builder().type(projectManager).build());
         }
 
-        jim.getRoles().add(PartyRole.builder().type(architect).build());
+        jim.roles().add(PartyRole.builder().type(architect).build());
 
-        ila.getRoles().add(PartyRole.builder().type(developer).build());
+        ila.roles().add(PartyRole.builder().type(developer).build());
 
-        ronald.getRoles().add(PartyRole.builder().type(technicalConsultant).build());
+        ronald.roles().add(PartyRole.builder().type(technicalConsultant).build());
 
         val employingProjectRole = PartyRole.builder().type(employingProject).build();
-        archetypeCartridgeProject.getRoles().add(employingProjectRole);
+        archetypeCartridgeProject.roles().add(employingProjectRole);
 
         val memberOfProject = PartyRelationshipType.builder().name("MemberOfProject").build();
 
         val relationships = Stream.of(jim, ila, ronald)
-                .flatMap(p -> p.getRoles().stream())
+                .flatMap(p -> p.roles().stream())
                 .map(p -> PartyRelationship.builder()
                         .type(memberOfProject)
                         .client(employingProjectRole)

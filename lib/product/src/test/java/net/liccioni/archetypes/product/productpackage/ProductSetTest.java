@@ -22,8 +22,8 @@ class ProductSetTest {
         final var productSet3 = ProductSet.builder()
                 .name("productSet3").products(getIdSet(1, 2, 3, 4, 6))
                 .build();
-        assertThat(productSet1.getProducts()).isEqualTo(productSet2.getProducts());
-        assertThat(productSet1.getProducts()).isNotEqualTo(productSet3.getProducts());
+        assertThat(productSet1.products()).isEqualTo(productSet2.products());
+        assertThat(productSet1.products()).isNotEqualTo(productSet3.products());
     }
 
     private Set<ProductIdentifier> getIdSet(final int... i) {

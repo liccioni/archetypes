@@ -1,48 +1,32 @@
 package net.liccioni.archetypes.product;
 
-import java.util.Set;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.experimental.SuperBuilder;
 import net.liccioni.archetypes.inventory.ReservationIdentifier;
 import net.liccioni.archetypes.inventory.ReservationStatus;
 import net.liccioni.archetypes.product.price.ArbitraryPrice;
 import net.liccioni.archetypes.product.price.Price;
 
-@Data
-@SuperBuilder(toBuilder = true)
-public class ProductInstance {
+import java.util.Set;
 
-    private final SerialNumber serialNumber;
-    @NonNull
-    private final ProductType productType;
-    @Getter(lazy = true)
-    private final String name = productTypeGetName();
+public interface ProductInstance {
+    SerialNumber serialNumber();
 
-    private final Set<ProductFeatureInstance> features;
+    ProductType productType();
 
-    private final Price priceAgreed;
-    private final ArbitraryPrice priceApplied;
-    private final Batch batch;
-    private ReservationIdentifier reservation;
-    @Builder.Default
-    private ReservationStatus reservationStatus = ReservationStatus.AVAILABLE;
+    String name();
 
-    public void reserve(ReservationIdentifier reservationIdentifier) {
+    Set<ProductFeatureInstance> features();
 
-        this.reservation = reservationIdentifier;
-        this.reservationStatus = ReservationStatus.RESERVED;
-    }
+    Price priceAgreed();
 
-    public void cancelReservation() {
-        this.reservation = null;
-        this.reservationStatus = ReservationStatus.AVAILABLE;
-    }
+    ArbitraryPrice priceApplied();
 
-    private String productTypeGetName() {
-        assert productType != null;
-        return productType.getName();
-    }
+    Batch batch();
+
+    ReservationIdentifier reservation();
+
+    ReservationStatus reservationStatus();
+
+    ProductInstance reserve(ReservationIdentifier reservationIdentifier);
+
+    ProductInstance cancelReservation();
 }

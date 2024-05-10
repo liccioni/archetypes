@@ -18,33 +18,33 @@ public enum SIBaseUnit implements Unit {
         this.definition = definition;
     }
 
-    @Override
-    public String getName() {
-        return this.name().toLowerCase();
-    }
+//    @Override
+//    public String name() {
+//        return this.name().toLowerCase();
+//    }
 
     @Override
-    public String getSymbol() {
+    public String symbol() {
         return this.symbol;
     }
 
     @Override
-    public String getDefinition() {
+    public String definition() {
         return this.definition;
     }
 
     @Override
-    public SystemOfUnits getSystemOfUnits() {
+    public SystemOfUnits systemOfUnits() {
         return this.systemOfUnits;
     }
 
     @Override
     public String toString() {
         return "Unit{" +
-                "name='" + getName() + '\'' +
-                ", symbol='" + getSymbol() + '\'' +
-                ", definition='" + getDefinition() + '\'' +
-                ", systemOfUnits=" + getSystemOfUnits() +
+                "name='" + name() + '\'' +
+                ", symbol='" + symbol() + '\'' +
+                ", definition='" + definition() + '\'' +
+                ", systemOfUnits=" + systemOfUnits +
                 "} ";
     }
 }

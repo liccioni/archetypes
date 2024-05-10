@@ -8,9 +8,8 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import net.liccioni.archetypes.product.ProductIdentifier;
-import net.liccioni.archetypes.product.ProductInstance;
-import net.liccioni.archetypes.product.ProductType;
+
+import net.liccioni.archetypes.product.*;
 import org.junit.jupiter.api.Test;
 
 class PackageTypeTest {
@@ -36,7 +35,7 @@ class PackageTypeTest {
             "Assortiment du chariot de desserts").map(this::createProduct).collect(Collectors.toList());
 
     private final ProductSet startersSet = createProductSet("starters", starters);
-    private final PropositionOfInclusion poiStarters = PropositionOfInclusion.builder()
+    private final PropositionOfInclusion poiStarters = PropositionOfInclusionRecord.builder()
             .name("starters")
             .minimum(1)
             .maximum(1)
@@ -44,7 +43,7 @@ class PackageTypeTest {
             .build();
 
     private final ProductSet mainsSet = createProductSet("mains", mains);
-    private final PropositionOfInclusion poiMains = PropositionOfInclusion.builder()
+    private final PropositionOfInclusion poiMains = PropositionOfInclusionRecord.builder()
             .name("mains")
             .minimum(1)
             .maximum(1)
@@ -52,14 +51,14 @@ class PackageTypeTest {
             .build();
 
     private final ProductSet dessertsSet = createProductSet("desserts", desserts);
-    private final PropositionOfInclusion poiDesserts = PropositionOfInclusion.builder()
+    private final PropositionOfInclusion poiDesserts = PropositionOfInclusionRecord.builder()
             .name("desserts")
             .minimum(1)
             .maximum(1)
             .productSet(dessertsSet)
             .build();
 
-    private final PackageType menu = PackageType.builder().name("French Menu")
+    private final PackageType menu = PackageTypeRecord.builder().name("French Menu")
             .propositionOfInclusion(Set.of(poiStarters, poiMains, poiDesserts))
             .build();
 
@@ -67,21 +66,21 @@ class PackageTypeTest {
     void shouldValidate() {
 
         final var components = new HashSet<>();
-        starters.stream().map(ProductType::getProductIdentifier).forEach(components::add);
-        mains.stream().map(ProductType::getProductIdentifier).forEach(components::add);
-        desserts.stream().map(ProductType::getProductIdentifier).forEach(components::add);
-        assertThat(menu.getComponents()).containsExactlyInAnyOrder(components.toArray(ProductIdentifier[]::new));
+        starters.stream().map(ProductType::productIdentifier).forEach(components::add);
+        mains.stream().map(ProductType::productIdentifier).forEach(components::add);
+        desserts.stream().map(ProductType::productIdentifier).forEach(components::add);
+        assertThat(menu.components()).containsExactlyInAnyOrder(components.toArray(ProductIdentifier[]::new));
 
         final var pSets = new HashSet<>();
         pSets.add(startersSet);
         pSets.add(mainsSet);
         pSets.add(dessertsSet);
-        assertThat(menu.getProductSet()).containsExactlyInAnyOrder(pSets.toArray(ProductSet[]::new));
+        assertThat(menu.productSet()).containsExactlyInAnyOrder(pSets.toArray(ProductSet[]::new));
 
         final var validInstance = PackageInstance.builder()
                 .productType(menu)
-                .components(Stream.of(starters.get(0), mains.get(2), desserts.get(3))
-                        .map(p -> ProductInstance.builder().productType(p).build())
+                .components(Stream.of(starters.getFirst(), mains.get(2), desserts.get(3))
+                        .map(p -> ProductInstanceRecord.builder().productType(p).build())
                         .collect(Collectors.toList()))
                 .build();
 
@@ -89,8 +88,8 @@ class PackageTypeTest {
 
         final var inValidInstance = PackageInstance.builder()
                 .productType(menu)
-                .components(Stream.of(starters.get(0), mains.get(2), desserts.get(3), desserts.get(0))
-                        .map(p -> ProductInstance.builder().productType(p).build())
+                .components(Stream.of(starters.getFirst(), mains.get(2), desserts.get(3), desserts.get(0))
+                        .map(p -> ProductInstanceRecord.builder().productType(p).build())
                         .collect(Collectors.toList()))
                 .build();
 
@@ -99,20 +98,20 @@ class PackageTypeTest {
 
     @Test
     void shouldValidateIsSelectionOf() {
-        PropositionOfInclusion secondStarterOptional = PropositionOfInclusion.builder()
+        PropositionOfInclusion secondStarterOptional = PropositionOfInclusionRecord.builder()
                 .name("secondStarterOptional")
                 .minimum(0)
                 .maximum(1)
                 .productSet(startersSet)
                 .build();
-        PackageType menu2StartersOptional = PackageType.builder().name("French Menu")
+        PackageType menu2StartersOptional = PackageTypeRecord.builder().name("French Menu")
                 .propositionOfInclusion(Set.of(poiStarters, secondStarterOptional, poiMains, poiDesserts))
                 .build();
 
         final var validInstance = PackageInstance.builder()
                 .productType(menu2StartersOptional)
                 .components(Stream.of(starters.get(0), mains.get(2), desserts.get(3))
-                        .map(p -> ProductInstance.builder().productType(p).build())
+                        .map(p -> ProductInstanceRecord.builder().productType(p).build())
                         .collect(Collectors.toList()))
                 .build();
 
@@ -121,7 +120,7 @@ class PackageTypeTest {
         final var validInstanceSecondStarter = PackageInstance.builder()
                 .productType(menu2StartersOptional)
                 .components(Stream.of(starters.get(0), starters.get(1), mains.get(2), desserts.get(3))
-                        .map(p -> ProductInstance.builder().productType(p).build())
+                        .map(p -> ProductInstanceRecord.builder().productType(p).build())
                         .collect(Collectors.toList()))
                 .build();
 
@@ -131,14 +130,14 @@ class PackageTypeTest {
     private ProductSet createProductSet(final String name, final List<ProductType> products) {
         return ProductSet.builder()
                 .name(name)
-                .products(products.stream().map(ProductType::getProductIdentifier).collect(Collectors.toSet()))
+                .products(products.stream().map(ProductType::productIdentifier).collect(Collectors.toSet()))
                 .build();
     }
 
     private ProductType createProduct(String name) {
         final ProductIdentifier id =
                 ProductIdentifier.builder().id(Integer.toString(productId.incrementAndGet())).build();
-        return ProductType.builder()
+        return ProductTypeRecord.builder()
                 .productIdentifier(id)
                 .name(name)
                 .build();

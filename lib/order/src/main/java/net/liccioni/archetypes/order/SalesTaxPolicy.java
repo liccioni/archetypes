@@ -1,13 +1,8 @@
 package net.liccioni.archetypes.order;
 
-
 import lombok.Builder;
-import lombok.Value;
 
-@Value
 @Builder(toBuilder = true)
-public class SalesTaxPolicy {
+public record SalesTaxPolicy(String taxationType, Double taxationRate) {
 
-    String taxationType;
-    Double taxationRate;
 }

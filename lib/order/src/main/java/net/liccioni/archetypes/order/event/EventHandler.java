@@ -10,39 +10,63 @@ import net.liccioni.archetypes.order.event.discount.DiscountEvent;
 import net.liccioni.archetypes.order.event.lifecycle.CancelEvent;
 import net.liccioni.archetypes.order.event.lifecycle.CloseEvent;
 import net.liccioni.archetypes.order.event.lifecycle.OpenEvent;
-import net.liccioni.archetypes.order.event.payment.AcceptPaymentEvent;
-import net.liccioni.archetypes.order.event.payment.AcceptRefundEvent;
-import net.liccioni.archetypes.order.event.payment.InvoiceEvent;
-import net.liccioni.archetypes.order.event.payment.MakePaymentEvent;
-import net.liccioni.archetypes.order.event.payment.MakeRefundEvent;
+import net.liccioni.archetypes.order.event.payment.*;
 
 public interface EventHandler {
 
-    void handle(final AmendOrderLineEvent event, final Order order);
+    default EventHandled handle(final AmendOrderLineEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final AmendPartySummaryEvent event, final Order order);
+    default EventHandled handle(final AmendPartySummaryEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final AmendTermsAndConditionsEvent event, final Order order);
+    default EventHandled handle(final AmendTermsAndConditionsEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final DespatchEvent event, final Order order);
+    default EventHandled handle(final DespatchEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final ReceiptEvent event, final Order order);
+    default EventHandled handle(final ReceiptEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final DiscountEvent event, final Order order);
+    default EventHandled handle(final DiscountEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final CancelEvent event, final Order order);
+    default EventHandled handle(final CancelEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final CloseEvent event, final Order order);
+    default EventHandled handle(final CloseEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final OpenEvent event, final Order order);
+    default EventHandled handle(final OpenEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final AcceptPaymentEvent event, final Order order);
+    default EventHandled handle(final AcceptPaymentEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final AcceptRefundEvent event, final Order order);
+    default EventHandled handle(final AcceptRefundEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final InvoiceEvent event, final Order order);
+    default EventHandled handle(final InvoiceEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final MakePaymentEvent event, final Order order);
+    default EventHandled handle(final MakePaymentEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 
-    void handle(final MakeRefundEvent event, final Order order);
+    default EventHandled handle(final MakeRefundEvent event, final Order order) {
+        return new EventHandled(event, order);
+    }
 }

@@ -3,7 +3,7 @@ package net.liccioni.archetypes.rule;
 
 public interface RuleElement {
 
-    String getName();
+    String name();
 
     void acceptStack(RuleExecutionStack stack);
 }

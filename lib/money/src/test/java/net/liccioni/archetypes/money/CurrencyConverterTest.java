@@ -18,7 +18,7 @@ class CurrencyConverterTest {
     private final Currency euro = ISOCurrency.builder().alphabeticCode("EUR").build();
     private final Currency gbp = ISOCurrency.builder().alphabeticCode("GBP").build();
     private final Clock testClock = Clock.fixed(Instant.parse("2023-01-26T10:22:47.353154Z"), UTC);
-    private final Money hundredEuro = new Money(100, euro);
+    private final Money hundredEuro = new MoneyRecord(100, euro);
     private final TimeDate oneMinuteAgo =
             TimeDate.builder().value(testClock.instant().minus(1, ChronoUnit.MINUTES)).build();
     private final TimeDate oneMinuteFromNow =
@@ -39,8 +39,9 @@ class CurrencyConverterTest {
                 .build();
 
         val converter = CurrencyConverter.builder().exchangeRates(Set.of(euroUsdRate)).build();
+        val oneTwentyUsd = new MoneyRecord(120, usd);
 
-        assertThat(converter.exchange(hundredEuro, usd, euroUsdRate)).isEqualTo(new Money(120, usd));
+        assertThat(converter.exchange(hundredEuro, usd, euroUsdRate)).isEqualTo(oneTwentyUsd);
 
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class,
                 () -> converter.exchange(hundredEuro, gbp, euroUsdRate), "IllegalArgumentException was expected");
@@ -67,9 +68,9 @@ class CurrencyConverterTest {
         val converter = CurrencyConverter.builder().exchangeRates(Set.of(euroUsdRate)).build();
 
         val littleAfterOneMinuteAgo =
-                TimeDate.builder().value(oneMinuteAgo.getValue().plus(1, ChronoUnit.MILLIS)).build();
+                TimeDate.builder().value(oneMinuteAgo.value().plus(1, ChronoUnit.MILLIS)).build();
         val littleBeforeOneMinuteFromNow =
-                TimeDate.builder().value(oneMinuteFromNow.getValue().minus(1, ChronoUnit.MILLIS)).build();
+                TimeDate.builder().value(oneMinuteFromNow.value().minus(1, ChronoUnit.MILLIS)).build();
 
         assertThat(converter.getExchangeRates(euro, usd, littleAfterOneMinuteAgo, littleBeforeOneMinuteFromNow))
                 .containsExactly(euroUsdRate);

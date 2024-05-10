@@ -2,15 +2,16 @@ package net.liccioni.archetypes.inventory;
 
 
 import lombok.Builder;
-import lombok.Value;
 import net.liccioni.archetypes.rule.RuleContext;
 import net.liccioni.archetypes.rule.RuleSet;
 
-@Value
-@Builder(toBuilder = true)
-public class RestockPolicy {
+import java.util.Optional;
 
-    @Builder.Default
-    RuleSet ruleSet = RuleSet.builder().build();
-    RuleContext ruleContext;
+public record RestockPolicy(RuleSet ruleSet, RuleContext ruleContext) {
+
+    @Builder(toBuilder = true)
+    public RestockPolicy(RuleSet ruleSet, RuleContext ruleContext) {
+        this.ruleSet = Optional.ofNullable(ruleSet).orElseGet(() -> RuleSet.builder().build());
+        this.ruleContext = ruleContext;
+    }
 }

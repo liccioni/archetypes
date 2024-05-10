@@ -5,61 +5,69 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Value;
+import java.util.stream.Stream;
 
-@Value
-@EqualsAndHashCode(callSuper = true)
-public class DerivedUnit extends SimpleUnit {
+public record DerivedUnit(String name,
+                          String symbol,
+                          String definition,
+                          SystemOfUnits systemOfUnits,
+                          Map<Metric, DerivedUnitTerm> terms) implements SimpleUnit {
 
-    @Getter(AccessLevel.NONE)
-    Map<Metric, DerivedUnitTerm> terms = new ConcurrentHashMap<>();
-
-    @Getter(lazy = true)
-    String symbol = generateSymbol();
+    public DerivedUnit(String name,
+                       String symbol,
+                       String definition,
+                       SystemOfUnits systemOfUnits,
+                       Map<Metric, DerivedUnitTerm> terms) {
+        this.name = name;
+        this.terms = Optional.ofNullable(terms).orElseGet(ConcurrentHashMap::new);
+        this.symbol = Optional.ofNullable(symbol).orElseGet(this::generateSymbol);
+        this.definition = definition;
+        this.systemOfUnits = systemOfUnits;
+    }
 
     public DerivedUnit(final SystemOfUnits systemOfUnits, DerivedUnitTerm... terms) {
-        super("", "", "", systemOfUnits);
-        Arrays.stream(terms).forEach(this::addTerm);
+        this("", null, "", systemOfUnits, processTerms(terms));
     }
 
     public DerivedUnit(final Metric metric, DerivedUnitTerm... terms) {
-        super("", "", "", metric instanceof Unit ? ((Unit) metric).getSystemOfUnits() : null);
-        Arrays.stream(terms).forEach(this::addTerm);
+        this("", null, "", processMetric(metric), processTerms(terms));
     }
 
-    private void addTerm(final DerivedUnitTerm term) {
-        if (term.getUnit() instanceof DerivedUnit) {
-            ((DerivedUnit) term.getUnit()).terms.values().forEach(this::addTermInternal);
+    private static SystemOfUnits processMetric(Metric metric) {
+        return metric instanceof Unit ? ((Unit) metric).systemOfUnits() : null;
+    }
+
+    private static Map<Metric, DerivedUnitTerm> processTerms(DerivedUnitTerm[] terms) {
+        return Arrays.stream(terms)
+                .flatMap(DerivedUnit::getDerivedUnitTerm)
+                .collect(Collectors.toMap(DerivedUnitTerm::unit, Function.identity(), DerivedUnit::mergeUnits,
+                        (Supplier<Map<Metric, DerivedUnitTerm>>) ConcurrentHashMap::new));
+    }
+
+    private static DerivedUnitTerm mergeUnits(DerivedUnitTerm unit1, DerivedUnitTerm unit2) {
+        return Optional.of(unit1)
+                .map(DerivedUnitTerm::power)
+                .map(p -> p + unit2.power())
+                .filter(p -> p != 0)
+                .map(p -> new DerivedUnitTerm(p, unit1.unit()))
+                .orElse(null);
+    }
+
+    private static Stream<DerivedUnitTerm> getDerivedUnitTerm(DerivedUnitTerm term) {
+        if (term.unit() instanceof DerivedUnit) {
+            return ((DerivedUnit) term.unit()).terms.values().stream();
         } else {
-            addTermInternal(term);
+            return Stream.of(term);
         }
-    }
-
-    private void addTermInternal(final DerivedUnitTerm term) {
-
-        this.terms.compute(term.getUnit(), (metric, derivedUnitTerm) -> {
-
-            if (derivedUnitTerm == null) {
-                return term;
-            }
-
-            return Optional.of(derivedUnitTerm)
-                    .map(DerivedUnitTerm::getPower)
-                    .map(p -> p + term.getPower())
-                    .filter(p -> p != 0)
-                    .map(p -> new DerivedUnitTerm(p, metric))
-                    .orElse(null);
-        });
     }
 
     private String generateSymbol() {
         return this.terms.values().stream()
-                .sorted(Comparator.comparing(o -> o.getUnit().getSymbol()))
-                .map(p -> p.getUnit().getSymbol() + (p.getPower() != 1 ? p.getPower() : ""))
+                .sorted(Comparator.comparing(o -> o.unit().symbol()))
+                .map(p -> p.unit().symbol() + (p.power() != 1 ? p.power() : ""))
                 .collect(Collectors.joining(","));
     }
 }

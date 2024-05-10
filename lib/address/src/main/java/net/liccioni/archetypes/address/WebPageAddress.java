@@ -1,18 +1,12 @@
 package net.liccioni.archetypes.address;
 
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 
-@Value
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class WebPageAddress extends Address {
-
-    String url;
+@Builder(toBuilder = true)
+public record WebPageAddress(String url) implements Address {
 
     @Override
-    public String getAddress() {
+    public String address() {
         return this.url;
     }
 }

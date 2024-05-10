@@ -6,7 +6,9 @@ import java.util.Collections;
 import java.util.Set;
 import net.liccioni.archetypes.money.ISOCurrency;
 import net.liccioni.archetypes.money.Money;
+import net.liccioni.archetypes.money.MoneyRecord;
 import net.liccioni.archetypes.product.price.Price;
+import net.liccioni.archetypes.product.price.PriceRecord;
 import net.liccioni.archetypes.rule.RuleBuilder;
 import net.liccioni.archetypes.rule.RuleContext;
 import net.liccioni.archetypes.rule.RuleOverride;
@@ -22,9 +24,9 @@ class PriceTest {
 
         RuleSet preconditions = new RuleSet("conditions for price",
                 RuleBuilder.newRule("approvedBy", b -> b.proposition("isApprovedBy")));
-        final Price price = Price.builder()
+        final Price price = PriceRecord.builder()
                 .preConditions(preconditions)
-                .amount(Money.moneyBuilder().amount(1).currency(ISOCurrency.builder()
+                .amount(MoneyRecord.moneyBuilder().amount(1).currency(ISOCurrency.builder()
                         .alphabeticCode("EUR")
                         .build()).build()).build();
         var actual = price.isValid(RuleContext.builder().build().addProposition("isApprovedBy", approved),
@@ -38,13 +40,13 @@ class PriceTest {
 
         RuleSet preconditions = new RuleSet("conditions for price",
                 RuleBuilder.newRule("approvedBy", b -> b.proposition("isApprovedBy")));
-        final Price price = Price.builder()
+        final Price price = PriceRecord.builder()
                 .preConditions(preconditions)
-                .amount(Money.moneyBuilder().amount(1).currency(ISOCurrency.builder()
+                .amount(MoneyRecord.moneyBuilder().amount(1).currency(ISOCurrency.builder()
                         .alphabeticCode("EUR")
                         .build()).build()).build();
         var actual = price.isValid(RuleContext.builder().build().addProposition("isApprovedBy", approved),
-                Set.of(RuleOverride.builder().ruleName("isApprovedBy").override(true).build()));
+                Set.of(RuleOverride.builder().ruleName("approvedBy").override(true).build()));
         assertThat(actual).isEqualTo(expected);
     }
 }

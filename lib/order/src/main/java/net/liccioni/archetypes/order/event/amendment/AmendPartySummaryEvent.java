@@ -1,30 +1,26 @@
 package net.liccioni.archetypes.order.event.amendment;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Builder;
 import lombok.NonNull;
-import lombok.experimental.SuperBuilder;
-import net.liccioni.archetypes.order.Order;
-import net.liccioni.archetypes.order.OrderLineIdentifier;
-import net.liccioni.archetypes.order.OrderStatus;
-import net.liccioni.archetypes.order.PartySummary;
-import net.liccioni.archetypes.order.PartySummaryRoleInOrder;
+import net.liccioni.archetypes.common.TimeDate;
+import net.liccioni.archetypes.order.*;
+import net.liccioni.archetypes.order.event.EventHandled;
+import net.liccioni.archetypes.party.PartySignature;
 
-@Data
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
-public class AmendPartySummaryEvent extends AmendEvent {
-
-    @NonNull
-    private final PartySummaryRoleInOrder role;
-    private final OrderLineIdentifier orderLineIdentifier;
-    private final PartySummary newPartySummary;
-    private PartySummary oldPartySummary;
+@Builder(toBuilder = true)
+public record AmendPartySummaryEvent(OrderIdentifier orderIdentifier,
+                                     PartySignature authorization,
+                                     TimeDate dateAuthorized,
+                                     String reason,
+                                     @NonNull PartySummaryRoleInOrder role,
+                                     OrderLineIdentifier orderLineIdentifier,
+                                     PartySummary newPartySummary,
+                                     PartySummary oldPartySummary) implements AmendEvent {
 
     @Override
-    public void process(final OrderStatus orderStatus,
-                        final Order order) {
-        orderStatus.handle(this, order);
+    public EventHandled process(final OrderStatus orderStatus,
+                                final Order order) {
+        return orderStatus.handle(this, order);
     }
 }

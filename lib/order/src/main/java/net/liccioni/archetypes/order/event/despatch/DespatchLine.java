@@ -1,20 +1,23 @@
 package net.liccioni.archetypes.order.event.despatch;
 
 
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Builder;
 import lombok.NonNull;
-import lombok.Value;
 import net.liccioni.archetypes.order.OrderLineIdentifier;
 
-@Value
-@Builder(toBuilder = true)
-public class DespatchLine {
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-    @NonNull
-    OrderLineIdentifier orderLineIdentifier;
-    Integer numberDespatched;
-    @Builder.Default
-    Set<RejectedItem> rejectedItems = new HashSet<>();
+public record DespatchLine(OrderLineIdentifier orderLineIdentifier,
+                           Integer numberDespatched,
+                           Set<RejectedItem> rejectedItems) {
+    @Builder(toBuilder = true)
+    public DespatchLine(@NonNull OrderLineIdentifier orderLineIdentifier,
+                        Integer numberDespatched,
+                        Set<RejectedItem> rejectedItems) {
+        this.orderLineIdentifier = orderLineIdentifier;
+        this.numberDespatched = numberDespatched;
+        this.rejectedItems = Optional.ofNullable(rejectedItems).orElseGet(HashSet::new);
+    }
 }

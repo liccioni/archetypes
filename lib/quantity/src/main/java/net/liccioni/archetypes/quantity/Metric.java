@@ -2,11 +2,11 @@ package net.liccioni.archetypes.quantity;
 
 public interface Metric {
 
-    String getName();
+    String name();
 
-    String getSymbol();
+    String symbol();
 
-    String getDefinition();
+    String definition();
 
     boolean isEqualTo(Metric metric);
 }

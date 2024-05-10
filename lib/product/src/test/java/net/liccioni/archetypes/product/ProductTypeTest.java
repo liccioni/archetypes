@@ -11,7 +11,9 @@ import lombok.val;
 import net.liccioni.archetypes.common.TimeDate;
 import net.liccioni.archetypes.money.ISOCurrency;
 import net.liccioni.archetypes.money.Money;
+import net.liccioni.archetypes.money.MoneyRecord;
 import net.liccioni.archetypes.product.price.Price;
+import net.liccioni.archetypes.product.price.PriceRecord;
 import net.liccioni.archetypes.rule.RuleBuilder;
 import net.liccioni.archetypes.rule.RuleContext;
 import net.liccioni.archetypes.rule.RuleSet;
@@ -37,9 +39,9 @@ class ProductTypeTest {
                 TimeDate.builder().value(testClock.instant().plus(1, ChronoUnit.MINUTES)).build();
 
         val littleAfterOneMinuteAgo =
-                TimeDate.builder().value(oneMinuteAgo.getValue().plus(1, ChronoUnit.MILLIS)).build();
+                TimeDate.builder().value(oneMinuteAgo.value().plus(1, ChronoUnit.MILLIS)).build();
         val littleBeforeOneMinuteFromNow =
-                TimeDate.builder().value(oneMinuteFromNow.getValue().minus(1, ChronoUnit.MILLIS)).build();
+                TimeDate.builder().value(oneMinuteFromNow.value().minus(1, ChronoUnit.MILLIS)).build();
 
         final TimeDate thirtyMinutesAgo =
                 TimeDate.builder().value(testClock.instant().minus(30, ChronoUnit.MINUTES)).build();
@@ -47,19 +49,19 @@ class ProductTypeTest {
                 TimeDate.builder().value(testClock.instant().plus(30, ChronoUnit.MINUTES)).build();
 
         final var euro = ISOCurrency.builder().alphabeticCode("EUR").build();
-        final Price price1 = Price.builder()
+        final Price price1 = PriceRecord.builder()
                 .preConditions(preconditions1)
-                .amount(Money.moneyBuilder().amount(10).currency(euro).build()).build();
-        final Price price2 = Price.builder()
+                .amount(MoneyRecord.moneyBuilder().amount(10).currency(euro).build()).build();
+        final Price price2 = PriceRecord.builder()
                 .validFrom(littleAfterOneMinuteAgo)
                 .validTo(littleBeforeOneMinuteFromNow)
                 .preConditions(preconditions2)
-                .amount(Money.moneyBuilder().amount(15).currency(euro).build()).build();
-        final Price price3 = Price.builder()
+                .amount(MoneyRecord.moneyBuilder().amount(15).currency(euro).build()).build();
+        final Price price3 = PriceRecord.builder()
                 .validFrom(thirtyMinutesAgo)
                 .validTo(thirtyMinutesFromNow)
-                .amount(Money.moneyBuilder().amount(20).currency(euro).build()).build();
-        final var p1 = ProductType.builder().name("p1").prices(Set.of(price1, price2, price3)).build();
+                .amount(MoneyRecord.moneyBuilder().amount(20).currency(euro).build()).build();
+        final var p1 = ProductTypeRecord.builder().name("p1").prices(Set.of(price1, price2, price3)).build();
         final var actual = p1.getPrices(
                 RuleContext.builder().build().addProposition("expectTrue", true).addProposition("expectFalse", false));
         assertThat(actual).containsExactlyInAnyOrder(price1, price3);
